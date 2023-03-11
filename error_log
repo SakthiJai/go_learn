@@ -1,0 +1,4 @@
+[22-Sep-2021 15:44:44 Asia/Kolkata] PHP Fatal error:  Cannot redeclare Super_model::faculty() in /home2/vidarka/public_html/test/application/models/Super_model.php on line 57
+[28-Sep-2021 15:59:14 Asia/Kolkata] PHP Fatal error:  Cannot redeclare Super_model::course() in /home2/vidarka/public_html/test/application/models/Super_model.php on line 227
+[15-Jul-2022 22:03:06 Asia/Kolkata] PHP Fatal error:  Cannot redeclare Super_model::editprogramlist() in /home3/atheoaom/vidhyapeeth.biz/test/application/models/Super_model.php on line 354
+[15-Jul-2022 22:03:58 Asia/Kolkata] PHP Fatal error:  Cannot redeclare Super_model::editprogramlist() in /home3/atheoaom/vidhyapeeth.biz/test/application/models/Super_model.php on line 354

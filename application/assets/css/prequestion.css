@@ -1,0 +1,7 @@
+  .error{
+    color: #bb3434;
+    font-size: 12px;
+}
+input.error{border-color:#bb3434 !important;} 
+select.error{border-color:#bb3434 !important;} 
+#listgrid{width:100%;}

@@ -1,0 +1,41 @@
+   .error{
+    color: #d66161;
+    font-size: 12px;
+}
+
+
+
+input.error{border-color:#d66161 !important;}
+.image22{
+ color:#10adf5;
+(size : 500 * 300);
+}
+#name22{
+margin-top: 5px;
+}
+#name33{
+margin-top: 5px;
+}
+#name44{
+margin-top: 5px;
+}
+#radio55{
+margin-top: 4px;
+}
+.nauitem33{
+float:right;
+}
+.elample{
+max-width:1200px !important;
+}
+.nauitem44{
+align-items: center;border-radius: 30px;
+}
+.nauitem77{
+float:right;
+}
+.nauitem99{
+margin-top:3%;text-align:center;
+}
+
+
