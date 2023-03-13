@@ -35,7 +35,8 @@ class Main extends CI_Controller {
 		$this->form_validation->set_rules('user_name', 'Username', 'trim|required');
 		$this->form_validation->set_rules('password', 'Password', 'trim|required|md5');
 		if ($this->form_validation->run() == FALSE) {	
-			 redirect(base_url().'index.php/ui/loginn');
+			// redirect(base_url().'index.php/main/loginn');
+			redirect(base_url().'main/loginn');
 		} else {
 			$data = array(
 				'user_name' => $this->input->post('user_name'),
@@ -51,7 +52,7 @@ class Main extends CI_Controller {
 				);
 				
 			$this->session->set_userdata('superadmin_login', $session_data);
-             redirect(base_url().'ui/dashboard');
+             redirect(base_url().'main/dashboard');
 				}else{
 					$this->session->set_flashdata('signinmsg', '<div class="alert alert-danger text-center"> Your Email Id was not Activated !Please Activate Your Email</div>');
                 }
@@ -67,7 +68,7 @@ class Main extends CI_Controller {
         $sess_array = array('username' => '');
         $this->session->unset_userdata('superadmin_login', $sess_array);
         $data['message_display'] = 'Successfully Logout';
-        redirect(base_url().'superadmin');
+        redirect(base_url().'main');
             
     }
 	public function dashboard(){
