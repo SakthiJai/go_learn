@@ -59,7 +59,7 @@ class Main extends CI_Controller {
 			} 
 			else {
 				$this->session->set_flashdata('signinmsg', '<div class="alert alert-danger text-center">Invalid Username or Password! Please try with correct details </div>');
-							 redirect(base_url().'ui/loginn');
+							 redirect(base_url().'main/loginn');
 			}
 		}
 	}
@@ -68,7 +68,7 @@ class Main extends CI_Controller {
         $sess_array = array('username' => '');
         $this->session->unset_userdata('superadmin_login', $sess_array);
         $data['message_display'] = 'Successfully Logout';
-        redirect(base_url().'main');
+        redirect(base_url().'main/logout');
             
     }
 	public function dashboard(){
@@ -86,86 +86,43 @@ class Main extends CI_Controller {
     public function addemp(){
 		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
 		$data['division']=$this->Super_model->divisions1();
+		$data['grade']=$this->Super_model->grade();
+		$data['sbu']=$this->Super_model->sbu();
+		$data['branch']=$this->Super_model->branch();
+		$data['employee_type']=$this->Super_model->employee_type();
+		$data['designation']=$this->Super_model->designation();
+		$data['organization']=$this->Super_model->organization();
+		$data['function_master']=$this->Super_model->function_master();
+		$data['gender']=$this->Super_model->gender();
 		$data['h_title'] = "Go Learn "; 	    
 	    $this->load->view('ui/addemp',$data);
 	}
 	
-	
-	
-/*	
-	public function addsbu(){
-		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
-		$data = array(
-		'sbu' => $this->input->post('sbu'));
-		//print_r($data);exit;
-		$data['addsbu']=$this->Super_model->addsbu($data);
-		$data['h_title'] = "Go Learn "; 	    
-	    $this->load->view('ui/addsbu',$data);
-	}
-
-public function grade_master(){
-		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
-		$data['grade_master']=$this->Super_model->grade_master();
-		$data['h_title'] = "Go Learn "; 	    
-	    $this->load->view('ui/grade_master',$data);
-	}
-	public function addgrade(){
-		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
-		$data['addgrade']=$this->Super_model->addgrade();
-		$data['h_title'] = "Go Learn "; 	    
-	    $this->load->view('ui/addgrade',$data);
-	}
-	
-	public function employee_type_master(){
-		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
-		$data['employee_type_master']=$this->Super_model->employee_type_master();
-		$data['h_title'] = "Go Learn "; 	    
-	    $this->load->view('ui/employee_type_master',$data);
-	}
-	public function designation_master(){
-		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
-		$data['designation_master']=$this->Super_model->designation_master();
-		$data['h_title'] = "Go Learn "; 	    
-	    $this->load->view('ui/designation_master',$data);
-	}
-	public function organication_master(){
-		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
-		$data['organication_master']=$this->Super_model->organication_master();
-		$data['h_title'] = "Go Learn "; 	    
-	    $this->load->view('ui/organication_master',$data);
-	}
-	public function function_master(){
-		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
-		$data['function_master']=$this->Super_model->function_master();
-		$data['h_title'] = "Go Learn "; 	    
-	    $this->load->view('ui/function_master',$data);
-	}
-	*/
 	public function addingemp(){
     	//print_r($_POST);exit();
-        $division=$this->input->post('division_id');
+       $division=$this->input->post('division_id');
         $sql="select * from divisions where id='".$division."'";
-        $q=$this->db->query($sql);
-        $division_id= $q->row();
-        $divisions=$division_id->divisions;
-        $emp_id = $this->input->post('emp_id');
+       $q=$this->db->query($sql);
+       $division_id= $q->row();
+       $divisions=$division_id->divisions;
+       $emp_id = $this->input->post('emp_id');
         
 		$data = array(
 		    
 		'division' =>$divisions,
 		'division_id' => $this->input->post('division_id'),
 		'emp_id' => $this->input->post('emp_id'),
-		'name' => $this->input->post('name'),
+		'name' => $this->input->post('firstname'),
 		'mobile' => $this->input->post('phone'),
 		'email' => $this->input->post('email'),
-		'password' => $this->input->post('password'),
+		'password' => $this->input->post('passwords'),
 		'sbu' => $this->input->post('sbu'),
 		'branch_plant' => $this->input->post('branch_plant'),
 		'designation' => $this->input->post('designation'),
 		'grade' => $this->input->post('grade'),
 		'emp_type' => $this->input->post('emp_type'),
-		'dob' => $this->input->post('dob'),
-		'doj' => $this->input->post('doj'),
+		//'dob' => $this->input->post('dob'),
+		//'doj' => $this->input->post('doj'),
 		'organisation_unit' => $this->input->post('organisation_unit'),
 		'function' => $this->input->post('function'),
 		'prev_exp' => $this->input->post('prev_exp'),
@@ -176,10 +133,10 @@ public function grade_master(){
 		'fro_name' => $this->input->post('fro_name'),
 		'ro_id' => $this->input->post('ro_id'),
 		'ro_name' => $this->input->post('ro_name'),
-		'blood_group' => $this->input->post('blood_group'),
-		'religion' => $this->input->post('religion'),
-		'birth_place' => $this->input->post('birth_place'),
-		'state' => $this->input->post('state'),
+		/*'blood_group' => $this->input->post('blood_group'),
+		 'religion' => $this->input->post('religion'),
+		 'birth_place' => $this->input->post('birth_place'),
+		 'state' => $this->input->post('state'),
 		'father_name' => $this->input->post('father_name'),
 		'pf_nominee1' => $this->input->post('pf_nominee1'),
 		'relationship1' => $this->input->post('relationship1'),
@@ -191,14 +148,15 @@ public function grade_master(){
 		'passport_expiry_date' => $this->input->post('passport_expiry_date'),
 		'emp_status'=> '1',
 		'last_updated' => date('Y-m-d H:i:s')
-		//'zone' => $this->input->post('zone')
+		//'zone' => $this->input->post('zone') */
 		);
-		//print_r($data);exit();
+		// print_r($data);exit();
         $insertUserData = $this->Super_model->addingemp($emp_id,$data);
+		 
         if($insertUserData){
-        	$this->session->set_flashdata('msg', '<div class="alert alert-success text-center">Successfully submitted. Thank you. </div>');
+        	$this->session->set_flashdata('msg', '<div class="alert alert-success text-center">Successfully Submitted</div>');
         } else {     
-        	$this->session->set_flashdata('msg', '<div class="alert alert-danger text-center">Employee ID already Exist. </div>');
+        	$this->session->set_flashdata('msg', '<div class="alert alert-danger text-center">Employee ID Already Exist</div>');
         }
         redirect(base_url().'main/addemp','refresh');            
     }
@@ -225,7 +183,7 @@ public function grade_master(){
 	        	'divisions' => $this->input->post('division')
 			    );
         $insertUserData = $this->Super_model->adddivision($data);
-        $this->session->set_flashdata('msg','<div class="alert alert-success text-center">Successfully submitted. Thank you.</div>');
+        $this->session->set_flashdata('msg','<div class="alert alert-success text-center">Successfully Submitted. Thank you.</div>');
         redirect(base_url().'ui/division','refresh');            
     }
 	public function updatedivision($id){
@@ -303,8 +261,8 @@ public function grade_master(){
 	}
 	public function faculty_delete($id){
 		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
-$result= $this->Super_model->faculty_delete($id);
-		$this->session->set_flashdata('msg','<div class="alert alert-danger text-center">deleted.</div>');
+        $result= $this->Super_model->faculty_delete($id);
+		$this->session->set_flashdata('msg','<div class="alert alert-danger text-center">Deleted</div>');
 		//print_r($id);exit;
         redirect($_SERVER['HTTP_REFERER']);
 	}
@@ -2345,5 +2303,54 @@ $headers .= 'From: '.$from."\r\n".
     border-color: #eb4141;;">deleted.</div>');
         redirect(base_url().'main/gender_master','refresh');
 	}
+	/*	
+	public function addsbu(){
+		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
+		$data = array(
+		'sbu' => $this->input->post('sbu'));
+		//print_r($data);exit;
+		$data['addsbu']=$this->Super_model->addsbu($data);
+		$data['h_title'] = "Go Learn "; 	    
+	    $this->load->view('ui/addsbu',$data);
+	}
+
+public function grade_master(){
+		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
+		$data['grade_master']=$this->Super_model->grade_master();
+		$data['h_title'] = "Go Learn "; 	    
+	    $this->load->view('ui/grade_master',$data);
+	}
+	public function addgrade(){
+		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
+		$data['addgrade']=$this->Super_model->addgrade();
+		$data['h_title'] = "Go Learn "; 	    
+	    $this->load->view('ui/addgrade',$data);
+	}
+	
+	public function employee_type_master(){
+		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
+		$data['employee_type_master']=$this->Super_model->employee_type_master();
+		$data['h_title'] = "Go Learn "; 	    
+	    $this->load->view('ui/employee_type_master',$data);
+	}
+	public function designation_master(){
+		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
+		$data['designation_master']=$this->Super_model->designation_master();
+		$data['h_title'] = "Go Learn "; 	    
+	    $this->load->view('ui/designation_master',$data);
+	}
+	public function organication_master(){
+		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
+		$data['organication_master']=$this->Super_model->organication_master();
+		$data['h_title'] = "Go Learn "; 	    
+	    $this->load->view('ui/organication_master',$data);
+	}
+	public function function_master(){
+		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
+		$data['function_master']=$this->Super_model->function_master();
+		$data['h_title'] = "Go Learn "; 	    
+	    $this->load->view('ui/function_master',$data);
+	}
+	*/
 }
 ?>

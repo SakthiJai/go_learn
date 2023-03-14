@@ -23,26 +23,32 @@ class Super_model extends CI_model {
 	public function divisions1(){
 		return $this->db->from('divisions')->order_by('id','divisions')->get();
 	}
-	
-	
-	
     public function addingemp($emp_id,$insertUserData){
-        $query =$this->db->query("select * from emp where emp_id = $emp_id");
-           if ($query->num_rows() >= 1){
+      //  $query =$this->db->query("select * from emp where emp_id = $emp_id");
+		
+		//$query = $this->db->table('emp')->where('emp_id',$emp_id)->select('emp.*')->get()->getNumRows();
+	  
+	     $this->db->where('emp_id', $emp_id);
+		 $query = $this->db->get('emp');
+		 $count_row = $query->num_rows();
+		 
+           if ($count_row >= 1){
                return false;
            } else {
                return $this->db->insert('emp',$insertUserData);
            }
+		   
+		   
      }
 	public function emp_history(){
        $list= $this->db->from('emp_history')->get();
         return $list->result();   
      }
-        /*------------------------division------------------------------*/
+	 
+   /*------------------------division------------------------------*/
     public function divisions(){
 		return $this->db->from('divisions')->order_by('id','desc')->get();
 	}
-	
 	public function editdivision($id){
         return $this->db->from('divisions')->where('id',$id)->get();	
     }
@@ -54,7 +60,9 @@ class Super_model extends CI_model {
     }
     
     /*--------------------division--------------------------*/
-         /*--------------------faculty--------------------------*/
+	
+	
+   /*--------------------faculty--------------------------*/
     public function faculty()
     {
 		return $this->db->from('faculty')->order_by('id','desc')->get();
@@ -413,6 +421,9 @@ class Super_model extends CI_model {
 	public function function_master(){
 		//return $this->db->from('sbu_master')->order_by('id')->get();
 	}*/
+	public function sbu(){
+		return $this->db->from('sbu')->order_by('id','sbu')->get();
+	}
 	public function sbu_master(){
 		return $this->db->from('sbu')->get();
 	}
@@ -426,6 +437,9 @@ class Super_model extends CI_model {
                return $this->db->insert('emp',$insertUserData);
            }*/
 	}
+	public function branch(){
+		return $this->db->from('branch')->order_by('id','branch')->get();
+	}
 	public function branch_master(){
 		return $this->db->from('branch')->get();
 	}
@@ -435,8 +449,14 @@ class Super_model extends CI_model {
 	public function grade_master(){
 		return $this->db->from('grade')->get();
 	}
+	public function grade(){
+		return $this->db->from('grade')->order_by('id','grade')->get();
+	}
 	public function addgrade($data){
 		return $this->db->insert('grade',$data);
+	}
+	public function employee_type(){
+		return $this->db->from('emp_type')->order_by('id','emp_type')->get();
 	}
 	public function employee_type_master(){
 		return $this->db->from('emp_type')->get();
@@ -444,11 +464,17 @@ class Super_model extends CI_model {
 	public function addemployee_type($data){
 		return $this->db->insert('emp_type',$data);
 	}
+	public function designation(){
+		return $this->db->from('designation')->order_by('id','designation')->get();
+	}
 	public function designation_master(){
 		return $this->db->from('designation')->get();
 	}
 	public function adddesignation($data){
 		return $this->db->insert('designation',$data);
+	}
+	public function organization(){
+		return $this->db->from('organication')->order_by('id','organication')->get();
 	}
 	public function organication_master(){
 		return $this->db->from('organication')->get();
@@ -464,6 +490,9 @@ class Super_model extends CI_model {
 	}
 	public function gender_master(){
 		return $this->db->from('gender')->get();
+	}
+	public function gender(){
+		return $this->db->from('gender')->order_by('id','gender')->get();
 	}
 	public function addgender($data){
 		return $this->db->insert('gender',$data);
@@ -518,7 +547,6 @@ class Super_model extends CI_model {
         $this->db->where('id',$id)->delete('function');
         return true;
     }
-	
 	public function editemptype($id){
         return $this->db->from('organication')->where('id',$id)->get();	
     }

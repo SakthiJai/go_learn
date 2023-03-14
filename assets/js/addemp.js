@@ -2,10 +2,6 @@ setTimeout(function() {
   $(".alert-success").hide();
 }, 2000);
 
-$(document).ready(function(){
-		    CKEDITOR.replace('info');
-		
-	});
 	$(document).ready(function() {
 
     var start = moment().subtract(29, 'days');
@@ -15,18 +11,14 @@ $(document).ready(function(){
         $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
     }
 
-    $('#reportrange').daterangepicker({
-        startDate: start,
-        endDate: end,
-        ranges: {
-           'Today': [moment(), moment()],
-           'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-           'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-           'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-           'This Month': [moment().startOf('month'), moment().endOf('month')],
-           'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-        }
-    }, cb);
+    //$('#reportrange').daterangepicker();
+	  $('#reportrange').daterangepicker({
+		singleDatePicker: true,
+		showDropdowns: true,
+		minYear: 1901,
+		maxYear: parseInt(moment().format('YYYY'),10)
+	  });
+                                
 
     cb(start, end);
 
@@ -41,20 +33,13 @@ $(document).ready(function() {
     }
 
     $('#reportrange1').daterangepicker({
-        startDate: start,
-        endDate: end,
-        ranges: {
-           'Today': [moment(), moment()],
-           'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-           'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-           'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-           'This Month': [moment().startOf('month'), moment().endOf('month')],
-           'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-        }
-    }, cb);
-
+		singleDatePicker: true,
+		showDropdowns: true,
+		minYear: 1901,
+		maxYear: parseInt(moment().format('YYYY'),10)
+      });
+              
     cb(start, end);
-
 });
 $(document).ready(function() {
         $('#employee').validate({
@@ -62,7 +47,7 @@ $(document).ready(function() {
 				emp_id: {
                     required: true,
                 },
-				firstname: {
+			 	firstname: {
                     required: true,
                 },
 				lastname: {
@@ -131,83 +116,83 @@ $(document).ready(function() {
                 },
 				function: {
                     required: true,
-                },
+                },  
 				
             },
             messages: {
                 
 				emp_id: {
-                    required: "Enter  Employee Id"
+                    required: "Please Enter  Employee Id"
                 },
-				firstname: {
-                     required: "Enter First Number"
+			 	firstname: {
+                     required: "Please Enter First Name"
                 },
 				lastname: {
-                    required: "Enter Last Name"
+                    required: "Please Enter Last Name"
                 },
 				division_id: {
-                     required: "Enter Division"
+                     required: "Please Enter Division"
                 },
 				phone: {
-                     required: "Enter phone Number"
+                     required: "Please Enter Phone Number"
                 },
 				exampleEmail: {
-                     required: "Enter Email"
+                     required: "Please Enter Email"
                 },
 				passwords: {
-                     required: "Enter Password"
+                     required: "Please Enter Password"
                 },
 				sbu: {
-                     required: "Enter Sbu"
+                     required: "Please Select Sbu"
                 },
 				branch_plant: {
-                     required: "Enter Branch/Plant "
+                     required: "Please Select Branch/Plant "
                 },
 				grade: {
-                   required: "Enter Grade"
+                   required: "Please Select Grade"
                 },
 				emp_type: {
-                   required: "Select Employee Type"
+                   required: "Please Select Employee Type"
                 },
 				designation: {
-                   required: "Enter Designation"
+                   required: "Please Select Designation"
                 },
 				dob: {
-                   required: "Enter Date Of Birth"
+                   required: "Please Select Date Of Birth"
                 },
 				doj: {
-                   required: "Enter Date Of Join"
+                   required: "Please Select Date Of Join"
                 },
 				organisation_unit: {
-                     required: "Select Organisation "
+                     required: "Please Select Organisation "
                 },
 				prev_exp: {
-                     required: "Enter Previous Experience"
+                     required: "Please Enter Previous Experience"
                 },
 				gender: {
-                     required: "Select Gender"
+                     required: "Please Select Gender"
                 },
 				io_id: {
-                     required: "Enter Io Id"
+                     required: "Please Enter Io Id"
                 },
 				io_name: {
-                     required: "Enter Io Name"
+                     required: "Please Enter Io Name"
                 },
 				fro_id: {
-                     required: "Enter Fro Id"
+                     required: "Please Enter Fro Id"
                 },
 				fro_name: {
-                     required: "Enter Fro Name"
+                     required: "Please Enter Fro Name"
                 },
 				ro_id: {
-                     required: "Enter  Ro Id"
+                     required: "Please Enter  Ro Id"
                 },
 				ro_name: {
-                     required: "Enter  Ro Name"
+                     required: "Please Enter  Ro Name"
                 },
 				function: {
-                     required: "Select Function"
-                },
+                     required: "Please Select Function"
+                },  
             },
 
             highlight: function(element) {
@@ -218,18 +203,14 @@ $(document).ready(function() {
             },
             submitHandler: function(form) {
 
-
                 var formdata = $("#employee").serialize();
                 var id = $("#id").val();
                 if (formdata != "") {
-
+                        form.submit();
                     //    var url=" ";
                 } else {
-                      form.submit();
+                    
                 }
-                
-
-
             }
         });
-    });
+  });
