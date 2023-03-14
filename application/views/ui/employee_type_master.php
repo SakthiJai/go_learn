@@ -33,6 +33,7 @@
                       <h5 class="card-sub-title mb-2 mb-sm-0"></h5>
                       <div class="menu-button-container">
                         <div class="mdc-card">
+						<center><span class=""> <?php echo $this->session->flashdata('msg'); ?></span></center>
                   <form  id="employee" class="" action="<?php echo base_url('main/employee_type_master');?>" method="POST">
                     <div class="mdc-layout-grid">
                       <div class="mdc-layout-grid__inner">
@@ -42,9 +43,9 @@
                           <table class="table table-hoverable">
 						  <thead>
 							<tr>
-                                        <th class="demo" style='text-align: center;'>S No</th>
-                                        <th class="demo" style='text-align: center;'>Employee Type</th>
-                                        <th class="demo" style='text-align: center;'>Action</th>
+                                        <th style='text-align: center;'>S No</th>
+                                        <th  style='text-align: center;'>Employee Type</th>
+                                        <th  style='text-align: center;'>Action</th>
                                     </tr>
 							</thead>		
                             <tbody>
@@ -53,10 +54,10 @@
                                             <td style='text-align: center;'><?php echo $i;?></td>
                                             <td style='text-align: center;'><?php echo $row->type;?></td>
 												 <td style='text-align: center;'><a href="<?php echo base_url(); ?>main/employee_type_master/<?php echo $row->id; ?>"  class="mdc-button mdc-button--raised icon-button filled-button--success mdc-ripple-upgraded" style="--mdc-ripple-fg-size:21px; --mdc-ripple-fg-scale:2.90056; --mdc-ripple-fg-translate-start:12.375px, 18.5px; --mdc-ripple-fg-translate-end:7.5px, 7.5px; background-color: #00bbdd;">
-											  <i class="material-icons mdc-button__icon" style="margin-right: 10px;margin-left: 9px;text-align: center;";>colorize</i>
+											  <img alt="Eye icon" srcset="https://img.icons8.com/material/2x/visible.png 2x, https://img.icons8.com/material/1x/visible.png 1x" src="https://img.icons8.com/material/1x/visible.png" style="filter: invert(0%) sepia(0%) saturate(7465%) hue-rotate(196deg) brightness(93%) contrast(95%);">
 												 
 												</a>
-												<a href="<?php echo base_url(); ?>main/delete_emptype/<?php echo $row->id; ?>"  class="mdc-button mdc-button--raised icon-button filled-button--success mdc-ripple-upgraded" style="--mdc-ripple-fg-size:21px; --mdc-ripple-fg-scale:2.90056; --mdc-ripple-fg-translate-start:12.375px, 18.5px; --mdc-ripple-fg-translate-end:7.5px, 7.5px; background-color: #ff420f;" ><i class="material-icons mdc-button__icon"  onclick="return confirm('Are you sure you want to delete this item')" style="margin-right: 10px;margin-left: 9px;text-align: center;"; >delete</i>
+													<a   class="mdc-button mdc-button--raised icon-button filled-button--success mdc-ripple-upgraded" style="--mdc-ripple-fg-size:21px; --mdc-ripple-fg-scale:2.90056; --mdc-ripple-fg-translate-start:12.375px, 18.5px; --mdc-ripple-fg-translate-end:7.5px, 7.5px; background-color: #ff420f;" ><i class="material-icons mdc-button__icon"  onclick="showConfirmation(<?php echo $row->id;?>)" style="margin-right: 10px;margin-left: 9px;text-align: center;"; >delete</i>
 												</a></td>
                                         </tr>
 										<?php $i++;   }  ?>
@@ -65,17 +66,6 @@
                           </table>
                         </div>
                     </div>
-						 
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
-                          <button class=" mt-1 btn btn-primary mdc-button mdc-button--raised filled-button--success mdc-ripple-upgraded vertical-center" style="--mdc-ripple-fg-size:56px;     --mdc-ripple-fg-scale:1.96936; --mdc-ripple-fg-translate-start:22.9px, -19.6px; --mdc-ripple-fg-translate-end:18.8px, -10px ,float: right; ">
-                              Submit
-                            </button>&nbsp;&nbsp;&nbsp;&nbsp;
-							<button class=" mt-1 btn btn-primarymdc-button mdc-button--unelevated filled-button--info mdc-ripple-upgraded" style="--mdc-ripple-fg-size:38px; --mdc-ripple-fg-scale:2.19553; --mdc-ripple-fg-translate-start:8.23752px, -2.59998px; --mdc-ripple-fg-translate-end:13px, -1px;">
-                            Cancel 
-                           </button>
-                        </div>
-					
-						
                       </div>
                     </div>
                   </form>
@@ -113,6 +103,7 @@
  <script type="text/javascript" src="<?php echo base_url();?>assets/js/daterangepicker.js"></script>	
 	 <script type="text/javascript" src="<?php echo base_url();?>assets/js/master.js"></script>
     <script type="text/javascript" src="<?php echo base_url();?>assets/js/ckeditor.js"></script>
+	<script type="text/javascript" src="<?php echo base_url();?>assets/js/csweetalert2@11"></script>
 	<style>.error {
         color: #fa4040;
         font-size: 12px;

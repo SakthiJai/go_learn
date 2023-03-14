@@ -112,56 +112,9 @@
  <script type="text/javascript" src="<?php echo base_url();?>assets/js/daterangepicker.js"></script>	
 	 <script type="text/javascript" src="<?php echo base_url();?>assets/js/sbu.js"></script>
     <script type="text/javascript" src="<?php echo base_url();?>assets/js/ckeditor.js"></script>
-	<script src="https://www.bootstrapdash.com/demo/material-dash-bootstrap/template/assets/vendors/sweetalert/sweetalert.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script type="text/javascript" src="<?php echo base_url();?>assets/js/csweetalert2@11"></script>
 
-	<script>
-	function showConfirmation(id)
-	{
-		/*swal({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3f51b5',
-        cancelButtonColor: '#ff4081',
-        confirmButtonText: 'Great ',
-        buttons: {
-          cancel: {
-            text: "Cancel",
-            value: null,
-            visible: true,
-            className: "btn btn-danger",
-            closeModal: true,
-          },
-          confirm: {
-            text: "OK",
-            value: true,
-            visible: true,
-            className: "btn btn-primary",
-            closeModal: true
-          }
-        }
-      })*/
-	  
-	  Swal.fire({
-      title: 'Do you want delete this details ?',
-      text: "",
-      icon: 'question',
-      showCancelButton: true,
-      confirmButtonColor: 'green',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        window.location.href= 'delete_sbu/'+id;
-      } else {
-        console.log('clicked cancel');
-      }
-    })
-	  
-	}
-	</script>
+
 	<style>.error {
         color: #fa4040;
         font-size: 12px;

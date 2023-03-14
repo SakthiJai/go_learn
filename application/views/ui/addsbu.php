@@ -32,6 +32,7 @@
 						
 						        <?php if (isset($editsbu) && ($editsbu->num_rows() > 0)) {
             foreach ($editsbu->result() as $row) { ?>
+			<center><span class=""> <?php echo $this->session->flashdata('msgse'); ?></span></center>
                   <form  id="employee" class="" action="<?php echo base_url(); ?>main/updatesbu/<?php echo $row->id; ?> " method="POST">
                     <div class="mdc-layout-grid">
                       <div class="mdc-layout-grid__inner">
@@ -43,11 +44,12 @@
 							<input class="mdc-text-field__input" id="text-field-hero-input exampleText" name="sbu"  value="<?php echo $row->sbu;?>"  >
                           </div>
                         </div>
-                        <div class=" mt-4 mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-2">
-                          <button class=" mt-4 btn btn-primary mdc-button mdc-button--raised filled-button--success mdc-ripple-upgraded vertical-center" style="--mdc-ripple-fg-size:56px;     --mdc-ripple-fg-scale:1.96936; --mdc-ripple-fg-translate-start:22.9px, -19.6px; --mdc-ripple-fg-translate-end:18.8px, -10px ,float: right;   ">
+                       
+						 <div class="mdc-3 ayout-grid__cell stretch-card mdc-layout-grid__cell--span-2">
+                          <button class=" mt-4 btn btn-primary mdc-button mdc-button--raised filled-button--success mdc-ripple-upgraded vertical-center" style="--mdc-ripple-fg-size:56px;     --mdc-ripple-fg-scale:1.96936; --mdc-ripple-fg-translate-start:22.9px, -19.6px; --mdc-ripple-fg-translate-end:18.8px, -10px ,float:   ">
                               Submit
-                            </button>&nbsp;&nbsp;
-							<a href="<?php echo base_url('main/sbu_master'); ?>"class=" mt-4  mdc-button mdc-button--raised filled-button--secondary mdc-ripple-upgraded"  style="--mdc-ripple-fg-size:70px; --mdc-ripple-fg-scale:1.90907; --mdc-ripple-fg-translate-start:8.11121px, -9.33333px; --mdc-ripple-fg-translate-end:24.1389px, -17px;">
+                            </button>&nbsp;&nbsp;&nbsp;&nbsp;
+							<a href="<?php echo base_url('main/sbu_master'); ?>"class=" mt-4 mdc-button mdc-button--raised filled-button--secondary mdc-ripple-upgraded"  style="--mdc-ripple-fg-size:70px; --mdc-ripple-fg-scale:1.90907; --mdc-ripple-fg-translate-start:8.11121px, -9.33333px; --mdc-ripple-fg-translate-end:24.1389px, -17px;   ">
 									 Cancel
 									</a>
                         </div>
@@ -55,7 +57,7 @@
                     </div>
                   </form>
 				  <?php } ?>   <?php }else { ?>
-				  
+				  <center><span class=""> <?php echo $this->session->flashdata('msgse'); ?></span></center>
 				    <form  id="employee" class="" action="<?php echo base_url('main/addsbu');?>" method="POST">
                     <div class="mdc-layout-grid">
                       <div class="mdc-layout-grid__inner">
@@ -67,11 +69,11 @@
 							<input class="mdc-text-field__input" id="text-field-hero-input exampleText" name="sbu"  value="<?php echo $row->sbu;?>"  >
                           </div>
                         </div>
-                        <div class=" mt-4 mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-2">
-                          <button class=" mt-4 btn btn-primary mdc-button mdc-button--raised filled-button--success mdc-ripple-upgraded vertical-center" style="--mdc-ripple-fg-size:56px;     --mdc-ripple-fg-scale:1.96936; --mdc-ripple-fg-translate-start:22.9px, -19.6px; --mdc-ripple-fg-translate-end:18.8px, -10px ,float: right;  ">
+                       	 <div class="mdc-3 ayout-grid__cell stretch-card mdc-layout-grid__cell--span-2">
+                          <button class=" mt-4 btn btn-primary mdc-button mdc-button--raised filled-button--success mdc-ripple-upgraded vertical-center" style="--mdc-ripple-fg-size:56px;     --mdc-ripple-fg-scale:1.96936; --mdc-ripple-fg-translate-start:22.9px, -19.6px; --mdc-ripple-fg-translate-end:18.8px, -10px ,float:   ">
                               Submit
                             </button>&nbsp;&nbsp;&nbsp;&nbsp;
-							<a href="<?php echo base_url('main/sbu_master'); ?>"class=" mt-4 mdc-button mdc-button--raised filled-button--secondary mdc-ripple-upgraded"  style="--mdc-ripple-fg-size:70px; --mdc-ripple-fg-scale:1.90907; --mdc-ripple-fg-translate-start:8.11121px, -9.33333px; --mdc-ripple-fg-translate-end:24.1389px, -17px;">
+							<a href="<?php echo base_url('main/sbu_master'); ?>"class=" mt-4 mdc-button mdc-button--raised filled-button--secondary mdc-ripple-upgraded"  style="--mdc-ripple-fg-size:70px; --mdc-ripple-fg-scale:1.90907; --mdc-ripple-fg-translate-start:8.11121px, -9.33333px; --mdc-ripple-fg-translate-end:24.1389px, -17px;   ">
 									 Cancel
 									</a>
                         </div>

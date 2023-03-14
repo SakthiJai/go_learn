@@ -15,28 +15,25 @@
         <main class="content-wrapper">
           <div class="mdc-layout-grid">
             <div class="mdc-layout-grid__inner">
-              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop mdc-layout-grid__cell--span-4-tablet">
-                <div class="mdc-card info-card info-card--info">
-                  <div class="card-inner">
-                  <button class="mdc-button mdc-button--outlined outlined-button--secondary mdc-ripple-upgraded" style="--mdc-ripple-fg-size:95px; --mdc-ripple-fg-scale:1.82773; --mdc-ripple-fg-translate-start:88.9px, -26.3px; --mdc-ripple-fg-translate-end:32.3125px, -29.5px;">
-                        Add Division
-                      </button>
-                     
-                    <div class="card-icon-wrapper">
-                      <i class="material-icons">credit_card</i>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              
               <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
                 <div class="mdc-card">
                   <div class="d-flex justify-content-between">
+                   <button class="mdc-button mdc-button--outlined outlined-button--secondary mdc-ripple-upgraded" style="--mdc-ripple-fg-size:95px; --mdc-ripple-fg-scale:1.82773; --mdc-ripple-fg-translate-start:-36.7px, -39.1px; --mdc-ripple-fg-translate-end:32.3125px, -29.5px;">
+                       Unit
+                      </button>
                     <div>
-                        <i class="material-icons refresh-icon">refresh</i>
-                        <i class="material-icons options-icon ml-2">more_vert</i>
+					 <a class="mdc-button mdc-button--raised filled-button--secondary mdc-ripple-upgraded" href="<?php echo base_url('main/adddivision'); ?>">
+                                     Add Unit
+                                </a>&nbsp;&nbsp;
+                        
                     </div>
                   </div>
-                 
+				   &nbsp;&nbsp;&nbsp;&nbsp;
+				  
+				   <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--span-8-tablet">
+                 	<center><span class=""> <?php echo $this->session->flashdata('msg'); ?></span></center>
+					</div>
                   <div class="mdc-layout-grid__inner mt-2">
                     <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--span-8-tablet">
                         <div class="table-responsive border">
@@ -55,8 +52,13 @@
                                             <td><?php echo $i;?></td>
 											<td><?php echo $row->divisions;?></td>
 											<td><?php echo $row->id;?></td>
-											<td><a href="<?php echo base_url();?>main/division/<?php echo $row->id;?>"class="mdc-button mdc-button--raised filled-button--success mdc-ripple-upgraded" style="--mdc-ripple-fg-size:56px; --mdc-ripple-fg-scale:1.96936; --mdc-ripple-fg-translate-start:8.5px, -4.40001px; --mdc-ripple-fg-translate-end:18.8px, -10px;"> Edit</a>
-											</td>
+											
+											<td style='text-align: center;'><a href="<?php echo base_url(); ?>main/division/<?php echo $row->id; ?>"  class="mdc-button mdc-button--raised icon-button filled-button--success mdc-ripple-upgraded" style="--mdc-ripple-fg-size:21px; --mdc-ripple-fg-scale:2.90056; --mdc-ripple-fg-translate-start:12.375px, 18.5px; --mdc-ripple-fg-translate-end:7.5px, 7.5px; background-color: #00bbdd;">
+											 <img alt="Eye icon" srcset="https://img.icons8.com/material/2x/visible.png 2x, https://img.icons8.com/material/1x/visible.png 1x" src="https://img.icons8.com/material/1x/visible.png" style="filter: invert(0%) sepia(0%) saturate(7465%) hue-rotate(196deg) brightness(93%) contrast(95%);">
+												 
+												</a>
+												<a   class="mdc-button mdc-button--raised icon-button filled-button--success mdc-ripple-upgraded" style="--mdc-ripple-fg-size:21px; --mdc-ripple-fg-scale:2.90056; --mdc-ripple-fg-translate-start:12.375px, 18.5px; --mdc-ripple-fg-translate-end:7.5px, 7.5px; background-color: #ff420f;" ><i class="material-icons mdc-button__icon"  onclick="showConfirmation(<?php echo $row->id;?>)" style="margin-right: 10px;margin-left: 9px;text-align: center;"; >delete</i>
+												</a></td>
 										</tr>
 										<?php $i++;   }  ?>
                                         
@@ -79,6 +81,25 @@
       </div>
     </div>
   </div>
-  
+   <link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url();?>assets/css/daterangepicker.css" />
+   <script type="text/javascript" src="<?php echo base_url();?>assets/js/main.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.min.js"></script>
+	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/validate.min.js"></script>
+	 <script type="text/javascript" src="<?php echo base_url();?>assets/js/moment.min.js"></script>	
+ <script type="text/javascript" src="<?php echo base_url();?>assets/js/daterangepicker.js"></script>	
+	 <script type="text/javascript" src="<?php echo base_url();?>assets/js/division.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>assets/js/ckeditor.js"></script>
+	<script type="text/javascript" src="<?php echo base_url();?>assets/js/csweetalert2@11"></script>
+
+
+	<style>.error {
+        color: #fa4040;
+        font-size: 12px;
+		margin-top: 2%;
+    }
+	
+</style>
 </body>
 </html> 
+
+

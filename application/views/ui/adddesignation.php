@@ -21,7 +21,7 @@
                 <div class="mdc-card">
                   <div class="d-flex justify-content-between">
                    <button class="mdc-button mdc-button--outlined outlined-button--secondary mdc-ripple-upgraded" style="--mdc-ripple-fg-size:95px; --mdc-ripple-fg-scale:1.82773; --mdc-ripple-fg-translate-start:-36.7px, -39.1px; --mdc-ripple-fg-translate-end:32.3125px, -29.5px;">
-                       Grade Master
+                       Designation
                       </button>
                     <div>
                     </div>
@@ -32,7 +32,7 @@
                         <div class="mdc-card">
 						    <?php if (isset($editdes) && ($editdes->num_rows() > 0)) {
             foreach ($editdes->result() as $row) { ?>
-                  <form  id="employee" class="" action="<?php echo base_url('main/addgrade');?>" method="POST">
+                  <form  id="employee" class="" action="<?php echo base_url(); ?>main/update_des/<?php echo $row->id; ?>" method="POST">
                     <div class="mdc-layout-grid">
                       <div class="mdc-layout-grid__inner">
 					 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
@@ -43,13 +43,13 @@
                           </div>
                         </div>
                        
-                        <div class="mdc-4 layout-grid__cell stretch-card mdc-layout-grid__cell--span-2">
-                          <button class=" mt-1 btn btn-primary mdc-button mdc-button--raised filled-button--success mdc-ripple-upgraded vertical-center" style="--mdc-ripple-fg-size:56px;     --mdc-ripple-fg-scale:1.96936; --mdc-ripple-fg-translate-start:22.9px, -19.6px; --mdc-ripple-fg-translate-end:18.8px, -10px ,float: right; border-radius: 18px;padding: 27px 27px;width: 100px;"type="">
+                        <div class="mdc-3 ayout-grid__cell stretch-card mdc-layout-grid__cell--span-2">
+                          <button class=" mt-4 btn btn-primary mdc-button mdc-button--raised filled-button--success mdc-ripple-upgraded vertical-center" style="--mdc-ripple-fg-size:56px;     --mdc-ripple-fg-scale:1.96936; --mdc-ripple-fg-translate-start:22.9px, -19.6px; --mdc-ripple-fg-translate-end:18.8px, -10px ,float:   ">
                               Submit
                             </button>&nbsp;&nbsp;&nbsp;&nbsp;
-							<button class=" mdc-4 btn btn-primarymdc-button mdc-button--unelevated filled-button--info mdc-ripple-upgraded" style="--mdc-ripple-fg-size:38px; --mdc-ripple-fg-scale:2.19553; --mdc-ripple-fg-translate-start:8.23752px, -2.59998px; --mdc-ripple-fg-translate-end:13px, -1px;border-radius: 18px;padding: 27px 27px;width: 100px;">
-                            Cancel 
-                           </button>
+							<a href="<?php echo base_url('main/designation_master'); ?>"class=" mt-4 mdc-button mdc-button--raised filled-button--secondary mdc-ripple-upgraded"  style="--mdc-ripple-fg-size:70px; --mdc-ripple-fg-scale:1.90907; --mdc-ripple-fg-translate-start:8.11121px, -9.33333px; --mdc-ripple-fg-translate-end:24.1389px, -17px;   ">
+									 Cancel
+									</a>
                         </div>
 					
 						
@@ -57,7 +57,7 @@
                     </div>
                   </form>
 				    <?php } ?>   <?php }else { ?>
-					 <form  id="employee" class="" action="<?php echo base_url('main/addgrade');?>" method="POST">
+					 <form  id="employee" class="" action="<?php echo base_url('main/adddesignation');?>" method="POST">
                     <div class="mdc-layout-grid">
                       <div class="mdc-layout-grid__inner">
 					 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
@@ -68,13 +68,13 @@
                           </div>
                         </div>
                        
-                        <div class="mdc-4 ayout-grid__cell stretch-card mdc-layout-grid__cell--span-2">
-                          <button class=" mt-1 btn btn-primary mdc-button mdc-button--raised filled-button--success mdc-ripple-upgraded vertical-center" style="--mdc-ripple-fg-size:56px;     --mdc-ripple-fg-scale:1.96936; --mdc-ripple-fg-translate-start:22.9px, -19.6px; --mdc-ripple-fg-translate-end:18.8px, -10px ,float: right; border-radius: 18px;padding: 27px 27px;width: 100px;"type="">
+                       <div class="mdc-3 ayout-grid__cell stretch-card mdc-layout-grid__cell--span-2">
+                          <button class=" mt-4 btn btn-primary mdc-button mdc-button--raised filled-button--success mdc-ripple-upgraded vertical-center" style="--mdc-ripple-fg-size:56px;     --mdc-ripple-fg-scale:1.96936; --mdc-ripple-fg-translate-start:22.9px, -19.6px; --mdc-ripple-fg-translate-end:18.8px, -10px ,float:   ">
                               Submit
                             </button>&nbsp;&nbsp;&nbsp;&nbsp;
-							<button class=" mdc-4 btn btn-primarymdc-button mdc-button--unelevated filled-button--info mdc-ripple-upgraded" style="--mdc-ripple-fg-size:38px; --mdc-ripple-fg-scale:2.19553; --mdc-ripple-fg-translate-start:8.23752px, -2.59998px; --mdc-ripple-fg-translate-end:13px, -1px;border-radius: 18px;padding: 27px 27px;width: 100px;">
-                            Cancel 
-                           </button>
+							<a href="<?php echo base_url('main/designation_master'); ?>"class=" mt-4 mdc-button mdc-button--raised filled-button--secondary mdc-ripple-upgraded"  style="--mdc-ripple-fg-size:70px; --mdc-ripple-fg-scale:1.90907; --mdc-ripple-fg-translate-start:8.11121px, -9.33333px; --mdc-ripple-fg-translate-end:24.1389px, -17px;   ">
+									 Cancel
+									</a>
                         </div>
 					
 						

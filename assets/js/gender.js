@@ -33,3 +33,26 @@ $(document).ready(function() {
             }
         });
     });
+	$('#trw').on('shown.bs.modal', function () {
+  $('#exampleModal').trigger('focus')
+})
+
+	function showConfirmation(id)
+	{
+	  Swal.fire({
+      title: 'Do you want delete this details ?',
+      text: "",
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonColor: 'green',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.href= 'delete_gender/'+id;
+      } else {
+        console.log('clicked cancel');
+      }
+    })
+	  
+	}

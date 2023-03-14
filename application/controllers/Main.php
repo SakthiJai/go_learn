@@ -174,17 +174,21 @@ class Main extends CI_Controller {
 		$data['division']=$this->Super_model->divisions();
 		if(isset($id) && !empty($id)){
 			$data['editdivision'] = $this->Super_model->editdivision($id);
+			$this->load->view('ui/adddivision',$data);
 		}
 		$data['h_title'] = "Go Learn "; 	    
 	    $this->load->view('ui/division',$data);
 	}
 	public function adddivision(){
+		//print($_POST);exit;
 		$data = array(
 	        	'divisions' => $this->input->post('division')
 			    );
+				//print_r($data);exit;
         $insertUserData = $this->Super_model->adddivision($data);
+		//print_r($insertUserData);exit;
         $this->session->set_flashdata('msg','<div class="alert alert-success text-center">Successfully Submitted. Thank you.</div>');
-        redirect(base_url().'ui/division','refresh');            
+        redirect(base_url().'ui/adddivision','refresh');            
     }
 	public function updatedivision($id){
 		$data['division']=$this->Super_model->division();
@@ -195,11 +199,25 @@ class Main extends CI_Controller {
 			$res=$this->Super_model->updatedivision($id,$inputdata);
 			if($res) {
 				$this->session->set_flashdata('msg','<div class="alert alert-success text-center">Updated Successfully.</div>');
-				redirect(base_url().'ui/division','refresh'); 
+				redirect(base_url().'main/division','refresh'); 
 			}else{
 				$this->session->set_flashdata('msg','<div class="alert alert-danger text-center"> Updated Failed! Try Again </div>');
-				redirect(base_url().'ui/division','refresh'); 
+				redirect(base_url().'main/division','refresh'); 
 			}
+	}
+	public function delete_division($id){
+		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
+		$result= $this->Super_model->delete_division($id);
+		$this->session->set_flashdata('msg','<div class="alert alert-danger" role="alert" style="color: #c04444;
+    background-color: rgba(252, 90, 90, 0.2);
+    border-color: #e85353;font-size: 0.75rem;color: #832f2f;
+    background-color: #fedede;
+    border-color: #fed1d1;position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    ;"> Delete Successfully. </div>');
+        redirect(base_url().'main/division','refresh');
 	}
 	/*----------------faculty----------------------------*/
     public function faculty($id=false)
@@ -231,8 +249,8 @@ class Main extends CI_Controller {
 			);
 		//print_r($data);exit();
         $insertUserData = $this->Super_model->addfaculty($data);
-		$this->session->set_flashdata('msg','<div class="alert alert-success text-center">Faculty Added Successfully.</div>');  
-        redirect(base_url().'ui/faculty','refresh');            
+		$this->session->set_flashdata('msg','<div class="alert alert-success text-center">Faculty Added Successfully.</div>');   
+        $this->load->view('main/addfaculty',$data);		
     }
 
 	public function updatefaculty($id)
@@ -2000,23 +2018,9 @@ $headers .= 'From: '.$from."\r\n".
 	public function addsbu(){
 		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
 		//print_r($_POST);exit;
-		$data = array(
-		'sbu' => $this->input->post('sbu'));
-		$data['addsbu']=$this->Super_model->addsbu($data);
-		/*$this->session->set_flashdata('msgs','<div class="alert alert-success" role="alert" style="color: #008a5d;
-    background-color: rgba(0, 182, 122, 0.2);
-    border-color: #00a770;    font-size: 0.75rem;color: #005f3f;
-    background-color: #ccf0e4;
-    border-color: #b8ebda;position: relative;
-    padding: 0.75rem 1.25rem;
-    margin-bottom: 1rem;
-    border: 1px solid transparent;
-    border-radius: 0.25rem;
-	 border-radius: 0.25rem;.btn, .fc button, .ajax-upload-dragdrop .ajax-file-upload, .swal2-modal .swal2-buttonswrapper .swal2-styled, .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-confirm, .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-cancel, .wizard > .actions a, .btn-group.open .dropdown-toggle, .fc .open.fc-button-group .dropdown-toggle, .btn:active, .fc button:active, .ajax-upload-dragdrop .ajax-file-upload:active, .swal2-modal .swal2-buttonswrapper .swal2-styled:active, .wizard > .actions a:active, .btn:focus, .fc button:focus, .ajax-upload-dragdrop .ajax-file-upload:focus, .swal2-modal .swal2-buttonswrapper .swal2-styled:focus, .wizard > .actions a:focus, .btn:hover, .fc button:hover, .ajax-upload-dragdrop .ajax-file-upload:hover, .swal2-modal .swal2-buttonswrapper .swal2-styled:hover, .wizard > .actions a:hover, .btn:visited, .fc button:visited, .ajax-upload-dragdrop .ajax-file-upload:visited, .swal2-modal .swal2-buttonswrapper .swal2-styled:visited, .wizard > .actions a:visited, a, a:active, a:checked, a:focus, a:hover, a:visited, body, button, button:active, button:hover, button:visited, div, input, input:active, input:focus, input:hover, input:visited, select, select:active, select:focus, select:visited, textarea, textarea:active, textarea:focus, textarea:hover, textarea:visited {
-    -webkit-box-shadow: none;
-    box-shadow: none;
-	">  Add Successfully . </div>');*/
-	//redirect(base_url().'main/sbu_master','refresh');
+		$data = array('sbu' => $this->input->post('sbu'));
+		$test=$data['addsbu']=$this->Super_model->addsbu($data);
+		//echo($test);exit;
 		$data['h_title'] = "Go Learn ";
         $this->load->view('ui/addsbu',$data);
 	}
@@ -2026,9 +2030,21 @@ $headers .= 'From: '.$from."\r\n".
 		$data['editsbu'] = $this->Super_model->editsbu($id);	
 			$inputdata = array(
 				'sbu' => $this->input->post('sbu'));
-			$this->Super_model->updatesbu($id,$inputdata);
-				redirect(base_url().'main/sbu_master','refresh'); 	
-	}
+			$res=$this->Super_model->updatesbu($id,$inputdata);
+			if($res) {
+				$this->session->set_flashdata('msg','<div class="alert alert-success text-center" style="color: #008a5d;
+    background-color: rgba(0, 182, 122, 0.2);
+    border-color: #00a770;    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;">Updated Successed.</div>');
+				redirect(base_url().'main/sbu_master','refresh'); 
+			}else{
+				$this->session->set_flashdata('msg','<div class="alert alert-danger text-center"> Updated Failed! Try Again </div>');
+				redirect(base_url().'main/sbu_master','refresh'); 
+			}
+	}		
 	public function delete_sbu($id){
 		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
 		$result= $this->Super_model->delete_sbu($id);
@@ -2040,9 +2056,7 @@ $headers .= 'From: '.$from."\r\n".
     padding: 0.75rem 1.25rem;
     margin-bottom: 1rem;
     border: 1px solid transparent;
-    border-radius: 0.25rem;.btn, .fc button, .ajax-upload-dragdrop .ajax-file-upload, .swal2-modal .swal2-buttonswrapper .swal2-styled, .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-confirm, .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-cancel, .wizard > .actions a, .btn-group.open .dropdown-toggle, .fc .open.fc-button-group .dropdown-toggle, .btn:active, .fc button:active, .ajax-upload-dragdrop .ajax-file-upload:active, .swal2-modal .swal2-buttonswrapper .swal2-styled:active, .wizard > .actions a:active, .btn:focus, .fc button:focus, .ajax-upload-dragdrop .ajax-file-upload:focus, .swal2-modal .swal2-buttonswrapper .swal2-styled:focus, .wizard > .actions a:focus, .btn:hover, .fc button:hover, .ajax-upload-dragdrop .ajax-file-upload:hover, .swal2-modal .swal2-buttonswrapper .swal2-styled:hover, .wizard > .actions a:hover, .btn:visited, .fc button:visited, .ajax-upload-dragdrop .ajax-file-upload:visited, .swal2-modal .swal2-buttonswrapper .swal2-styled:visited, .wizard > .actions a:visited, a, a:active, a:checked, a:focus, a:hover, a:visited, body, button, button:active, button:hover, button:visited, div, input, input:active, input:focus, input:hover, input:visited, select, select:active, select:focus, select:visited, textarea, textarea:active, textarea:focus, textarea:hover, textarea:visited {
-    -webkit-box-shadow: none;
-    box-shadow: none;"> Delete Successfully. </div>');
+  "> Delete Successfully. </div>');
         redirect(base_url().'main/sbu_master','refresh');
 	}
 	
@@ -2075,8 +2089,20 @@ $headers .= 'From: '.$from."\r\n".
 		$data['editsbu'] = $this->Super_model->editsbu($id);	
 			$inputdata = array(
 				'sbu' => $this->input->post('sbu'));
-			$this->Super_model->updatebranch($id,$inputdata);
-				redirect(base_url().'main/branch_master','refresh'); 	
+			$res=$this->Super_model->updatebranch($id,$inputdata);
+			if($res) {
+				$this->session->set_flashdata('msg','<div class="alert alert-success text-center" style="color: #008a5d;
+    background-color: rgba(0, 182, 122, 0.2);
+    border-color: #00a770;    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;">Updated Successed.</div>');
+				redirect(base_url().'main/branch_master','refresh'); 
+			}else{
+				$this->session->set_flashdata('msg','<div class="alert alert-danger text-center"> Updated Failed! Try Again </div>');
+				redirect(base_url().'main/branch_master','refresh'); 
+			}	
 	}
 	public function delete_branch($id){
 		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
@@ -2089,9 +2115,7 @@ $headers .= 'From: '.$from."\r\n".
     padding: 0.75rem 1.25rem;
     margin-bottom: 1rem;
     border: 1px solid transparent;
-    border-radius: 0.25rem;.btn, .fc button, .ajax-upload-dragdrop .ajax-file-upload, .swal2-modal .swal2-buttonswrapper .swal2-styled, .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-confirm, .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-cancel, .wizard > .actions a, .btn-group.open .dropdown-toggle, .fc .open.fc-button-group .dropdown-toggle, .btn:active, .fc button:active, .ajax-upload-dragdrop .ajax-file-upload:active, .swal2-modal .swal2-buttonswrapper .swal2-styled:active, .wizard > .actions a:active, .btn:focus, .fc button:focus, .ajax-upload-dragdrop .ajax-file-upload:focus, .swal2-modal .swal2-buttonswrapper .swal2-styled:focus, .wizard > .actions a:focus, .btn:hover, .fc button:hover, .ajax-upload-dragdrop .ajax-file-upload:hover, .swal2-modal .swal2-buttonswrapper .swal2-styled:hover, .wizard > .actions a:hover, .btn:visited, .fc button:visited, .ajax-upload-dragdrop .ajax-file-upload:visited, .swal2-modal .swal2-buttonswrapper .swal2-styled:visited, .wizard > .actions a:visited, a, a:active, a:checked, a:focus, a:hover, a:visited, body, button, button:active, button:hover, button:visited, div, input, input:active, input:focus, input:hover, input:visited, select, select:active, select:focus, select:visited, textarea, textarea:active, textarea:focus, textarea:hover, textarea:visited {
-    -webkit-box-shadow: none;
-    box-shadow: none;"> Delete Successfully. </div>');
+   "> Delete Successfully. </div>');
         redirect(base_url().'main/branch_master','refresh');
 	}
 	
@@ -2123,8 +2147,20 @@ $headers .= 'From: '.$from."\r\n".
 		$data['editgrade'] = $this->Super_model->editgrade($id);	
 			$inputdata = array(
 				'grade' => $this->input->post('grade'));
-			$this->Super_model->updategrade($id,$inputdata);
-		redirect(base_url().'main/grade_master','refresh'); 	
+			$res=$this->Super_model->updategrade($id,$inputdata);
+			if($res) {
+				$this->session->set_flashdata('msg','<div class="alert alert-success text-center" style="color: #008a5d;
+    background-color: rgba(0, 182, 122, 0.2);
+    border-color: #00a770;    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;">Updated Successed.</div>');
+				redirect(base_url().'main/grade_master','refresh'); 
+			}else{
+				$this->session->set_flashdata('msg','<div class="alert alert-danger text-center"> Updated Failed! Try Again </div>');
+				redirect(base_url().'main/grade_master','refresh'); 
+			}	
 	}
 	public function delete_grade($id){
 		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
@@ -2137,19 +2173,16 @@ $headers .= 'From: '.$from."\r\n".
     padding: 0.75rem 1.25rem;
     margin-bottom: 1rem;
     border: 1px solid transparent;
-    border-radius: 0.25rem;.btn, .fc button, .ajax-upload-dragdrop .ajax-file-upload, .swal2-modal .swal2-buttonswrapper .swal2-styled, .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-confirm, .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-cancel, .wizard > .actions a, .btn-group.open .dropdown-toggle, .fc .open.fc-button-group .dropdown-toggle, .btn:active, .fc button:active, .ajax-upload-dragdrop .ajax-file-upload:active, .swal2-modal .swal2-buttonswrapper .swal2-styled:active, .wizard > .actions a:active, .btn:focus, .fc button:focus, .ajax-upload-dragdrop .ajax-file-upload:focus, .swal2-modal .swal2-buttonswrapper .swal2-styled:focus, .wizard > .actions a:focus, .btn:hover, .fc button:hover, .ajax-upload-dragdrop .ajax-file-upload:hover, .swal2-modal .swal2-buttonswrapper .swal2-styled:hover, .wizard > .actions a:hover, .btn:visited, .fc button:visited, .ajax-upload-dragdrop .ajax-file-upload:visited, .swal2-modal .swal2-buttonswrapper .swal2-styled:visited, .wizard > .actions a:visited, a, a:active, a:checked, a:focus, a:hover, a:visited, body, button, button:active, button:hover, button:visited, div, input, input:active, input:focus, input:hover, input:visited, select, select:active, select:focus, select:visited, textarea, textarea:active, textarea:focus, textarea:hover, textarea:visited {
-    -webkit-box-shadow: none;
-    box-shadow: none;"> Delete Successfully. </div>');
+    ;"> Delete Successfully. </div>');
         redirect(base_url().'main/grade_master','refresh');
 	}
 	
-	public function employee_type_master(){
+	public function employee_type_master($id=false){
 		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
 		$data['emp_type']=$this->Super_model->employee_type_master();
 		if(isset($id) && !empty($id)){
 			$data['editemptype'] = $this->Super_model->editemptype($id);
 			 $this->load->view('ui/addemployee_type',$data);
-			// print_r($data['editsbu']);exit;
 		}else{
 		$data['h_title'] = "Go Learn "; 	    
 	    $this->load->view('ui/employee_type_master',$data);
@@ -2159,18 +2192,57 @@ $headers .= 'From: '.$from."\r\n".
 		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
 		$data = array(
 		'type' => $this->input->post('emp_type'));
-		//print_r($data);exit;
 		$data['addemployee_type']=$this->Super_model->addemployee_type($data);
 		$data['h_title'] = "Go Learn "; 	    
 	    $this->load->view('ui/addemployee_type',$data);
+	
 	}
-	public function designation_master(){
+	public function update_emp_type($id)
+	{
+		//print_r($id);exit;
+		$data['editemptype'] = $this->Super_model->editemptype($id);	
+			$inputdata = array(
+				'type' => $this->input->post('emp_type'));
+			$res=$this->Super_model->update_emp_type($id,$inputdata);
+			if($res) {
+				$this->session->set_flashdata('msg','<div class="alert alert-success text-center" style="color: #008a5d;
+    background-color: rgba(0, 182, 122, 0.2);
+    border-color: #00a770;    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;">Updated Successed.</div>');
+				redirect(base_url().'main/employee_type_master','refresh'); 
+			}else{
+				$this->session->set_flashdata('msg','<div class="alert alert-danger text-center"> Updated Failed! Try Again </div>');
+				redirect(base_url().'main/employee_type_master','refresh'); 
+			}	
+	}
+	public function delete_emp_type($id){
+		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
+		$result= $this->Super_model->delete_emp_type($id);
+		$this->session->set_flashdata('msg',' <div class="alert alert-danger" role="alert" style="color: #c04444;background-color: rgba(252, 90, 90, 0.2);border-color: #e85353;font-size: 0.75rem;color: #832f2f;
+    background-color: #fedede;
+    border-color: #fed1d1;position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+   "> Deleted Successfully. </div>');
+        redirect(base_url().'main/employee_type_master','refresh');
+	}
+	public function designation_master($id=false){
 		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
 		$data['designation_master']=$this->Super_model->designation_master();
+		if(isset($id) && !empty($id)){
+			$data['editdes'] = $this->Super_model->editdes($id);
+			 $this->load->view('ui/adddesignation',$data);
+			// print_r($data['editsbu']);exit;
+		}else{
 		$data['h_title'] = "Go Learn "; 	    
 	    $this->load->view('ui/designation_master',$data);
-		//print_r($data);exit;
+		}
 	}
+	
 	public function adddesignation(){
 		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
 		$data = array(
@@ -2180,6 +2252,42 @@ $headers .= 'From: '.$from."\r\n".
 		$data['h_title'] = "Go Learn "; 	    
 	    $this->load->view('ui/adddesignation',$data);
 	}	
+	public function update_des($id)
+	{
+		//$data['sbu']=$this->Super_model->sbu();
+		$data['editdes'] = $this->Super_model->editdes($id);	
+			$inputdata = array(
+				'designation' => $this->input->post('designation'));
+			$res=$this->Super_model->update_des($id,$inputdata);
+			if($res) {
+				$this->session->set_flashdata('msg','<div class="alert alert-success text-center" style="color: #008a5d;
+					background-color: rgba(0, 182, 122, 0.2);
+					border-color: #00a770;    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;">Updated Successed.</div>');
+				redirect(base_url().'main/designation_master','refresh'); 
+			}else{
+				$this->session->set_flashdata('msg','<div class="alert alert-danger text-center"> Updated Failed! Try Again </div>');
+				redirect(base_url().'main/designation_master','refresh'); 
+			}		
+	}
+	public function delete_des($id){
+		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
+		$result= $this->Super_model->delete_des($id);
+		$this->session->set_flashdata('msg','<div class="alert alert-danger" role="alert" style="color: #c04444;
+    background-color: rgba(252, 90, 90, 0.2);
+    border-color: #e85353;font-size: 0.75rem;color: #832f2f;
+    background-color: #fedede;
+    border-color: #fed1d1;position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+  "> Deleted Successfully. </div>');
+        redirect(base_url().'main/designation_master','refresh');
+	}
+	
     public function organication_master($id=false){
 		$data['organication_master']=$this->Super_model->organication_master();
 		if(isset($id) && !empty($id)){
@@ -2206,8 +2314,20 @@ $headers .= 'From: '.$from."\r\n".
 		$data['editorg'] = $this->Super_model->editorg($id);	
 			$inputdata = array(
 				'organication' => $this->input->post('organication'));
-			$this->Super_model->updateorg($id,$inputdata);
-		redirect(base_url().'main/organication_master','refresh'); 	
+			$res=$this->Super_model->updateorg($id,$inputdata);
+			if($res) {
+				$this->session->set_flashdata('msg','<div class="alert alert-success text-center" style="color: #008a5d;
+					background-color: rgba(0, 182, 122, 0.2);
+					border-color: #00a770;    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;">Updated Successed.</div>');
+				redirect(base_url().'main/organication_master','refresh'); 
+			}else{
+				$this->session->set_flashdata('msg','<div class="alert alert-danger text-center"> Updated Failed! Try Again </div>');
+				redirect(base_url().'main/organication_master','refresh'); 
+			}	
 	}
 	public function delete_org($id){
 		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
@@ -2220,9 +2340,7 @@ $headers .= 'From: '.$from."\r\n".
     padding: 0.75rem 1.25rem;
     margin-bottom: 1rem;
     border: 1px solid transparent;
-    border-radius: 0.25rem;.btn, .fc button, .ajax-upload-dragdrop .ajax-file-upload, .swal2-modal .swal2-buttonswrapper .swal2-styled, .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-confirm, .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-cancel, .wizard > .actions a, .btn-group.open .dropdown-toggle, .fc .open.fc-button-group .dropdown-toggle, .btn:active, .fc button:active, .ajax-upload-dragdrop .ajax-file-upload:active, .swal2-modal .swal2-buttonswrapper .swal2-styled:active, .wizard > .actions a:active, .btn:focus, .fc button:focus, .ajax-upload-dragdrop .ajax-file-upload:focus, .swal2-modal .swal2-buttonswrapper .swal2-styled:focus, .wizard > .actions a:focus, .btn:hover, .fc button:hover, .ajax-upload-dragdrop .ajax-file-upload:hover, .swal2-modal .swal2-buttonswrapper .swal2-styled:hover, .wizard > .actions a:hover, .btn:visited, .fc button:visited, .ajax-upload-dragdrop .ajax-file-upload:visited, .swal2-modal .swal2-buttonswrapper .swal2-styled:visited, .wizard > .actions a:visited, a, a:active, a:checked, a:focus, a:hover, a:visited, body, button, button:active, button:hover, button:visited, div, input, input:active, input:focus, input:hover, input:visited, select, select:active, select:focus, select:visited, textarea, textarea:active, textarea:focus, textarea:hover, textarea:visited {
-    -webkit-box-shadow: none;
-    box-shadow: none;"> Delete Successfully. </div>');
+    "> Delete Successfully. </div>');
         redirect(base_url().'main/grade_master','refresh');
 	}
 	 public function function_master($id=false){
@@ -2253,15 +2371,33 @@ $headers .= 'From: '.$from."\r\n".
 		$data['editfunction'] = $this->Super_model->editfunction($id);	
 			$inputdata = array(
 				'function' => $this->input->post('function'));
-			$this->Super_model->updatefunction($id,$inputdata);
-		redirect(base_url().'main/function_master','refresh'); 	
+			$res=$this->Super_model->updatefunction($id,$inputdata);
+			if($res) {
+				$this->session->set_flashdata('msg','<div class="alert alert-success text-center" style="color: #008a5d;
+					background-color: rgba(0, 182, 122, 0.2);
+					border-color: #00a770;    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;">Updated Successed.</div>');
+				redirect(base_url().'main/function_master','refresh'); 
+			}else{
+				$this->session->set_flashdata('msg','<div class="alert alert-danger text-center"> Updated Failed! Try Again </div>');
+				redirect(base_url().'main/function_master','refresh'); 
+			}		
 	}
 	public function delete_function($id){
 		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
 		$result= $this->Super_model->delete_function($id);
-		$this->session->set_flashdata('msg','<div class="alert alert-danger text-center" style="    color: #c23636;
-    background-color: rgba(255, 71, 71, 0.2);
-    border-color: #eb4141;;">deleted.</div>');
+		$this->session->set_flashdata('msg',' <div class="alert alert-danger" role="alert" style="color: #c04444;
+    background-color: rgba(252, 90, 90, 0.2);
+    border-color: #e85353;font-size: 0.75rem;color: #832f2f;
+    background-color: #fedede;
+    border-color: #fed1d1;position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+   "> Deleted Successfully. </div>');
         redirect(base_url().'main/function_master','refresh');
 	}
 	 public function gender_master($id=false){
@@ -2275,13 +2411,11 @@ $headers .= 'From: '.$from."\r\n".
 			$data['h_title'] = "Go Learn "; 	    
 	    $this->load->view('ui/gender_master',$data);
 		}
-		//print_r($data);exit;
 	}
 	public function addgender(){
 		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
 		$data = array(
 		'gender' => $this->input->post('gender'));
-		//print_r($data);exit;
 		$data['addgender']=$this->Super_model->addgender($data);
 		$data['h_title'] = "Go Learn "; 	    
 	    $this->load->view('ui/addgender',$data);
@@ -2292,65 +2426,35 @@ $headers .= 'From: '.$from."\r\n".
 		$data['editgender'] = $this->Super_model->editgender($id);	
 			$inputdata = array(
 				'gender' => $this->input->post('gender'));
-			$this->Super_model->updategender($id,$inputdata);
-				redirect(base_url().'main/gender_master','refresh'); 	
+			$res=$this->Super_model->updategender($id,$inputdata);
+			if($res) {
+				$this->session->set_flashdata('msg','<div class="alert alert-success text-center" style="color: #008a5d;
+					background-color: rgba(0, 182, 122, 0.2);
+					border-color: #00a770;    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;">Updated Successed.</div>');
+				redirect(base_url().'main/gender_master','refresh'); 
+			}else{
+				$this->session->set_flashdata('msg','<div class="alert alert-danger text-center"> Updated Failed! Try Again </div>');
+				redirect(base_url().'main/gender_master','refresh'); 
+			}	
 	}
 	public function delete_gender($id){
 		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
 		$result= $this->Super_model->delete_gender($id);
-		$this->session->set_flashdata('msg','<div class="alert alert-danger text-center" style="    color: #c23636;
-    background-color: rgba(255, 71, 71, 0.2);
-    border-color: #eb4141;;">deleted.</div>');
+		$this->session->set_flashdata('msg',' <div class="alert alert-danger" role="alert" style="color: #c04444;
+    background-color: rgba(252, 90, 90, 0.2);
+    border-color: #e85353;font-size: 0.75rem;color: #832f2f;
+    background-color: #fedede;
+    border-color: #fed1d1;position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+   "> Deleted Successfully. </div>');
         redirect(base_url().'main/gender_master','refresh');
 	}
-	/*	
-	public function addsbu(){
-		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
-		$data = array(
-		'sbu' => $this->input->post('sbu'));
-		//print_r($data);exit;
-		$data['addsbu']=$this->Super_model->addsbu($data);
-		$data['h_title'] = "Go Learn "; 	    
-	    $this->load->view('ui/addsbu',$data);
-	}
 
-public function grade_master(){
-		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
-		$data['grade_master']=$this->Super_model->grade_master();
-		$data['h_title'] = "Go Learn "; 	    
-	    $this->load->view('ui/grade_master',$data);
-	}
-	public function addgrade(){
-		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
-		$data['addgrade']=$this->Super_model->addgrade();
-		$data['h_title'] = "Go Learn "; 	    
-	    $this->load->view('ui/addgrade',$data);
-	}
-	
-	public function employee_type_master(){
-		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
-		$data['employee_type_master']=$this->Super_model->employee_type_master();
-		$data['h_title'] = "Go Learn "; 	    
-	    $this->load->view('ui/employee_type_master',$data);
-	}
-	public function designation_master(){
-		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
-		$data['designation_master']=$this->Super_model->designation_master();
-		$data['h_title'] = "Go Learn "; 	    
-	    $this->load->view('ui/designation_master',$data);
-	}
-	public function organication_master(){
-		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
-		$data['organication_master']=$this->Super_model->organication_master();
-		$data['h_title'] = "Go Learn "; 	    
-	    $this->load->view('ui/organication_master',$data);
-	}
-	public function function_master(){
-		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
-		$data['function_master']=$this->Super_model->function_master();
-		$data['h_title'] = "Go Learn "; 	    
-	    $this->load->view('ui/function_master',$data);
-	}
-	*/
 }
 ?>

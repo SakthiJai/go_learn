@@ -55,10 +55,15 @@ class Super_model extends CI_model {
     public function updatedivision($id,$data){
         return $this->db->where('id',$id)->update('divisions',$data);	
     }
-	public function adddivision($insertUserData){
-		return $this->db->insert('divisions',$insertUserData);
+	public function adddivision($data){
+		//print_r($data);
+		return $this->db->insert('divisions',$data);
     }
-    
+    public function delete_division($id){
+        $this->db->where('id',$id)->delete('divisions');
+        return true;
+    }
+
     /*--------------------division--------------------------*/
 	
 	
@@ -537,6 +542,13 @@ class Super_model extends CI_model {
         $this->db->where('id',$id)->delete('gender');
         return true;
     }
+	public function update_emp_type($id,$data){
+        return $this->db->where('id',$id)->update('emp_type',$data);	
+    }
+	public function delete_emp_type($id){
+        $this->db->where('id',$id)->delete('emp_type');
+        return true;
+    }
 	public function editfunction($id){
         return $this->db->from('function')->where('id',$id)->get();	
     }
@@ -547,8 +559,18 @@ class Super_model extends CI_model {
         $this->db->where('id',$id)->delete('function');
         return true;
     }
+	public function editdes($id){
+        return $this->db->from('designation')->where('id',$id)->get();	
+    }
+	public function update_des($id,$data){
+        return $this->db->where('id',$id)->update('designation',$data);	
+    }
+	public function delete_des($id){
+        $this->db->where('id',$id)->delete('designation');
+        return true;
+    }
 	public function editemptype($id){
-        return $this->db->from('organication')->where('id',$id)->get();	
+        return $this->db->from('emp_type')->where('id',$id)->get();	
     }
 	public function editgrade($id){
         return $this->db->from('grade')->where('id',$id)->get();	

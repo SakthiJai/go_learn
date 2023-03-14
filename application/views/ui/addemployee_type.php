@@ -23,10 +23,6 @@
                    <button class="mdc-button mdc-button--outlined outlined-button--secondary mdc-ripple-upgraded" style="--mdc-ripple-fg-size:95px; --mdc-ripple-fg-scale:1.82773; --mdc-ripple-fg-translate-start:-36.7px, -39.1px; --mdc-ripple-fg-translate-end:32.3125px, -29.5px;">
                        Grade Master
                       </button>
-                    <div>
-                        <i class="material-icons refresh-icon">refresh</i>
-                        <i class="material-icons options-icon ml-2">more_vert</i>
-                    </div>
                   </div>
                   <div class="template-demo">
                       <h5 class="card-sub-title mb-2 mb-sm-0"></h5>
@@ -34,27 +30,24 @@
                         <div class="mdc-card"> 
 						<?php if (isset($editemptype) && ($editemptype->num_rows() > 0)) {
             foreach ($editemptype->result() as $row) { ?>
-                  <form  id="employee" class="" action="<?php echo base_url('main/updateemployee_type');?>" method="POST">
+                  <form  id="employee" class="" action="<?php echo base_url(); ?>main/update_emp_type/<?php echo $row->id; ?>" method="POST">
                     <div class="mdc-layout-grid">
                       <div class="mdc-layout-grid__inner">
-					 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+					 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
                           <div class="mdc-text-field w-100 mdc-ripple-upgraded">
                             <div class="mdc-line-ripple"></div>
                             <label for="text-field-hero-input" class="mdc-floating-label">Employee type</label>
 							<input class="mdc-text-field__input" id="text-field-hero-input exampleText" name= "emp_type"   value="<?php echo $row->type;?>">
                           </div>
                         </div>
-                       						  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4"></div>
                         <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-2">
-                          <button class=" mt-1 btn btn-primary mdc-button mdc-button--raised filled-button--success mdc-ripple-upgraded vertical-center" style="--mdc-ripple-fg-size:56px;     --mdc-ripple-fg-scale:1.96936; --mdc-ripple-fg-translate-start:22.9px, -19.6px; --mdc-ripple-fg-translate-end:18.8px, -10px ,float: right; "type="">
+                          <button class=" mt-3 btn btn-primary mdc-button mdc-button--raised filled-button--success mdc-ripple-upgraded vertical-center" style="--mdc-ripple-fg-size:56px;     --mdc-ripple-fg-scale:1.96936; --mdc-ripple-fg-translate-start:22.9px, -19.6px; --mdc-ripple-fg-translate-end:18.8px, -10px ,float: right; "type="">
                               Submit
                             </button>&nbsp;&nbsp;&nbsp;&nbsp;
-							<a href="<?php echo base_url('main/employee_type_master'); ?>"class="mdc-button mdc-button--raised filled-button--secondary mdc-ripple-upgraded"  style="--mdc-ripple-fg-size:70px; --mdc-ripple-fg-scale:1.90907; --mdc-ripple-fg-translate-start:8.11121px, -9.33333px; --mdc-ripple-fg-translate-end:24.1389px, -17px;">
+							<a href="<?php echo base_url('main/employee_type_master'); ?>"class=" mt-3 mdc-button mdc-button--raised filled-button--secondary mdc-ripple-upgraded"  style="--mdc-ripple-fg-size:70px; --mdc-ripple-fg-scale:1.90907; --mdc-ripple-fg-translate-start:8.11121px, -9.33333px; --mdc-ripple-fg-translate-end:24.1389px, -17px;">
 									 Cancel
 									</a>
-                        </div>
-					
-												  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4"></div>
+                        </div
                       </div>
                     </div>
                   </form>
@@ -62,27 +55,25 @@
 				     <form  id="employee" class="" action="<?php echo base_url('main/addemployee_type');?>" method="POST">
                     <div class="mdc-layout-grid">
                       <div class="mdc-layout-grid__inner">
-					 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+					 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
                           <div class="mdc-text-field w-100 mdc-ripple-upgraded">
                             <div class="mdc-line-ripple"></div>
                             <label for="text-field-hero-input" class="mdc-floating-label">Employee type</label>
 							<input class="mdc-text-field__input" id="text-field-hero-input exampleText" name= "emp_type"  >
                           </div>
                         </div>
-                       						  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4"></div>
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-2">
-                          <button class=" mt-1 btn btn-primary mdc-button mdc-button--raised filled-button--success mdc-ripple-upgraded vertical-center" style="--mdc-ripple-fg-size:56px;     --mdc-ripple-fg-scale:1.96936; --mdc-ripple-fg-translate-start:22.9px, -19.6px; --mdc-ripple-fg-translate-end:18.8px, -10px ,float: right; "type="">
+                        <div class=" mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-2">
+                          <button class=" mt-3  btn btn-primary mdc-button mdc-button--raised filled-button--success mdc-ripple-upgraded vertical-center" style="--mdc-ripple-fg-size:56px;     --mdc-ripple-fg-scale:1.96936; --mdc-ripple-fg-translate-start:22.9px, -19.6px; --mdc-ripple-fg-translate-end:18.8px, -10px ,float: right; "type="">
                               Submit
                             </button>&nbsp;&nbsp;&nbsp;&nbsp;
-							<a href="<?php echo base_url('main/employee_type_master'); ?>"class="mdc-button mdc-button--raised filled-button--secondary mdc-ripple-upgraded"  style="--mdc-ripple-fg-size:70px; --mdc-ripple-fg-scale:1.90907; --mdc-ripple-fg-translate-start:8.11121px, -9.33333px; --mdc-ripple-fg-translate-end:24.1389px, -17px;">
+							<a href="<?php echo base_url('main/employee_type_master'); ?>"class=" mt-3  mdc-button mdc-button--raised filled-button--secondary mdc-ripple-upgraded"  style="--mdc-ripple-fg-size:70px; --mdc-ripple-fg-scale:1.90907; --mdc-ripple-fg-translate-start:8.11121px, -9.33333px; --mdc-ripple-fg-translate-end:24.1389px, -17px;">
 									 Cancel
 									</a>
                         </div>
-					
-												  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4"></div>
                       </div>
                     </div>
                   </form>
+				  <?php } ?> 
                 </div>
                       </div>
                   </div>

@@ -33,7 +33,7 @@
                         <div class="mdc-card">
 						<?php if (isset($editbranch) && ($editbranch->num_rows() > 0)) {
             foreach ($editbranch->result() as $row) { ?>
-                  <form  id="employee" class="" action="<?php echo base_url(); ?>main/updatesbu/<?php echo $row->id; ?>" method="POST">
+                  <form  id="employee" class="" action="<?php echo base_url(); ?>main/updatebranch/<?php echo $row->id; ?>" method="POST">
                     <div class="mdc-layout-grid">
                       <div class="mdc-layout-grid__inner">
 					  

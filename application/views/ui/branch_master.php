@@ -24,7 +24,7 @@
                        Branch/Plant 
                       </button>
                     <div>
-					<a class="mdc-button mdc-button--raised filled-button--secondary mdc-ripple-upgraded" href="http://localhost/superadmin/main/addbranch" style="--mdc-ripple-fg-size:59px; --mdc-ripple-fg-scale:1.94721; --mdc-ripple-fg-translate-start:25.8472px, -1.16667px; --mdc-ripple-fg-translate-end:19.7569px, -11.5px;">
+					<a class="mdc-button mdc-button--raised filled-button--secondary mdc-ripple-upgraded"  href="<?php echo base_url('main/addbranch'); ?>">
                                     Add Branch
                                 </a>
                         

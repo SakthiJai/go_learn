@@ -32,6 +32,12 @@
                 Unit
               </a>
             </div>
+			  <div class="mdc-list-item mdc-drawer-item">
+              <a class="mdc-drawer-link" href="<?php echo base_url('main/faculty'); ?>">
+                <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">description</i>
+                Faculty
+              </a>
+            </div>
 			 <div class="mdc-list-item mdc-drawer-item">
               <a class="mdc-expansion-panel-link" href="#" data-toggle="expansionPanel" data-target="sample-page-submenu2">
                 <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">pages</i>
@@ -123,12 +129,7 @@
                 Assign Traning course
               </a>
             </div>
-            <div class="mdc-list-item mdc-drawer-item">
-              <a class="mdc-drawer-link" href="<?php echo base_url('main/faculty'); ?>">
-                <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">description</i>
-                Faculty
-              </a>
-            </div>
+          
             <div class="mdc-list-item mdc-drawer-item">
               <a class="mdc-drawer-link" href="<?php echo base_url('main/events_list') ?>">
                 <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">description</i>
