@@ -34,25 +34,12 @@ class Super_model extends CI_model {
 		 
            if ($count_row >= 1){
                return false;
+			   // return $this->db->update('emp',$insertUserData);
            } else {
                return $this->db->insert('emp',$insertUserData);
-           }
-		   
-		   
+           }   
      }
-	 public function updateEmp($emp_id,$updateUserData){
-     
-	     $this->db->where('emp_id', $emp_id);
-		 $query = $this->db->get('emp');
-		 $count_row = $query->num_rows();
-		 
-           if ($count_row >= 1){
-			    return $this->db->update('emp',$updateUserData);
-               //return false;
-           } else {
-               return false;
-           }
-     }
+	
 	 
 	public function emp_history(){
        $list= $this->db->from('emp_history')->get();
@@ -420,26 +407,6 @@ class Super_model extends CI_model {
         $this->db->where('program_id',$id)->delete('assign_emp');
         return 1;
     }
-    ///Master
-	/*
-	public function grade_master(){
-		//return $this->db->from('sbu_master')->order_by('id')->get();
-	}
-	public function addgrade(){
-		//return $this->db->from('sbu_master')->order_by('id')->get();
-	}
-	public function employee_type_master(){
-		//return $this->db->from('sbu_master')->order_by('id')->get();
-	}
-	public function designation_master(){
-		//return $this->db->from('sbu_master')->order_by('id')->get();
-	}
-	public function organication_master(){
-		//return $this->db->from('sbu_master')->order_by('id')->get();
-	}
-	public function function_master(){
-		//return $this->db->from('sbu_master')->order_by('id')->get();
-	}*/
 	public function sbu(){
 		return $this->db->from('sbu')->order_by('id','sbu')->get();
 	}
@@ -599,5 +566,9 @@ class Super_model extends CI_model {
     public function editEmployee($id){
 		return $this->db->from('emp')->where('id',$id)->get()->result_array();	
 	}
+	public function updateEmp($id,$data){
+		 return $this->db->where('id',$id)->update('emp',$data);	  
+    }
+	
 }
 ?>

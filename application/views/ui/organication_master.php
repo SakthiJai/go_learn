@@ -21,11 +21,11 @@
                 <div class="mdc-card">
                   <div class="d-flex justify-content-between">
                    <button class="mdc-button mdc-button--outlined outlined-button--secondary mdc-ripple-upgraded" style="--mdc-ripple-fg-size:95px; --mdc-ripple-fg-scale:1.82773; --mdc-ripple-fg-translate-start:-36.7px, -39.1px; --mdc-ripple-fg-translate-end:32.3125px, -29.5px;">
-                      Organication
+                      Organization
                       </button>
                     <div>
 					 <a class="mdc-button mdc-button--raised filled-button--secondary mdc-ripple-upgraded" href="<?php echo base_url('main/addorganication'); ?>">
-                                    New Organication
+                                    New Organization
                                 </a>&nbsp;&nbsp;
                         
                     </div>
@@ -44,7 +44,7 @@
 						  <thead>
 							<tr>
                                         <th class="demo" style='text-align: center;'>S No</th>
-                                        <th class="demo" style='text-align: center;'>Oranication</th>
+                                        <th class="demo" style='text-align: center;'>Oranization</th>
                                         <th class="demo" style='text-align: center;'>Action</th>
                                     </tr>
 							</thead>		
@@ -57,7 +57,7 @@
 											  <i class="material-icons mdc-button__icon" style="margin-right: 10px;margin-left: 9px;text-align: center;";>colorize</i>
 												 
 												</a>
-												<a href="<?php echo base_url(); ?>main/delete_org/<?php echo $row->id; ?>"  class="mdc-button mdc-button--raised icon-button filled-button--success mdc-ripple-upgraded" style="--mdc-ripple-fg-size:21px; --mdc-ripple-fg-scale:2.90056; --mdc-ripple-fg-translate-start:12.375px, 18.5px; --mdc-ripple-fg-translate-end:7.5px, 7.5px; background-color: #ff420f;" ><i class="material-icons mdc-button__icon"  onclick="return confirm('Are you sure you want to delete this item')" style="margin-right: 10px;margin-left: 9px;text-align: center;"; >delete</i>
+												<a href="<?php echo base_url(); ?>main/delete_org/<?php echo $row->id; ?>"  class="mdc-button mdc-button--raised icon-button filled-button--success mdc-ripple-upgraded" style="--mdc-ripple-fg-size:21px; --mdc-ripple-fg-scale:2.90056; --mdc-ripple-fg-translate-start:12.375px, 18.5px; --mdc-ripple-fg-translate-end:7.5px, 7.5px; background-color: #ff420f;" ><i class="material-icons mdc-button__icon"  onclick="return confirm('Are you sure you want to delete this item')" style="margin-right: 10px;margin-left: 9px;text-align: center;"; >Delete</i>
 												</a></td>
                                         </tr>
 										<?php $i++;   }  ?>

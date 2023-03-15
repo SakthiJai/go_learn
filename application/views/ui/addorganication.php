@@ -21,7 +21,7 @@
                 <div class="mdc-card">
                   <div class="d-flex justify-content-between">
                    <button class="mdc-button mdc-button--outlined outlined-button--secondary mdc-ripple-upgraded" style="--mdc-ripple-fg-size:95px; --mdc-ripple-fg-scale:1.82773; --mdc-ripple-fg-translate-start:-36.7px, -39.1px; --mdc-ripple-fg-translate-end:32.3125px, -29.5px;">
-                        Organisation
+                        Organization
                       </button>
                     <div>
                     </div>
@@ -38,7 +38,7 @@
 					 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
                           <div class="mdc-text-field w-100 mdc-ripple-upgraded">
                             <div class="mdc-line-ripple"></div>
-                            <label for="text-field-hero-input" class="mdc-floating-label">Organisation</label>
+                            <label for="text-field-hero-input" class="mdc-floating-label">Organization</label>
 							<input class="mdc-text-field__input" id="text-field-hero-input exampleText" name="organication" value="<?php echo $row->organication;?>">
                           </div>
                         </div>

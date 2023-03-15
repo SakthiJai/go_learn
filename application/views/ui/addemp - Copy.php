@@ -1,261 +1,396 @@
- 
+<!DOCTYPE html>
+<html lang="en">
+<?php include('header.php');?>
 
-            <div class="app-main__outer">
-               <div class="app-main__inner" >
-                    <div class="app-page-title">
-            <div class="page-title-wrapper">
-                <div class="page-title-heading">
-                    <div class="page-title-icon">
-                        <i class="fa fa-user-plus icon-gradient bg-night-fade"></i>
-                    </div>
-                    <div>Add Employee
-                        <div class="page-title-subheading">Add employee details</div>
-                    </div>
-                </div>
-            </div>
-        </div> 
-                    <ul class="body-tabs body-tabs-layout tabs-animated body-tabs-animated nav">
-            <!--<li class="nav-item" >
-                <a role="tab"  class="nav-link active" id="tab-0" data-toggle="tab" href="#tab-content-0">
-                <span>Import CSV file</span>
-                </a>
-            </li>-->
-        </ul>
-                    <div class="tab-content" >
-                        <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="main-card mb-3 card">
-                                        <div class="card-body">
-                                            <center><span class="btn-danger"> <?php echo $this->session->flashdata('msg'); ?></span></center>
-                                            <form class="" action="<?php echo base_url('superadmin/addingemp');?>" method="POST">
-                                                <div class="form-row">
-                                                    <div class="col-md-4">
-                                                        <div class="position-relative form-group">
-                                                            <label for="exampleSelect" class=""><strong>Division: </strong></label>
-                                                            <select class="custom-select" name="division_id" required>
-                                                                <option value="" >Select Division</option>
-                                                                <?php foreach($division->result() as $divisions){ ?>
-                                                                    <option value="<?php echo $divisions->id; ?>"> <?php echo $divisions->divisions; ?></option>
-                                                                <?php } ?>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="position-relative form-group">
-                                                            <label for="exampleText" class=""> <strong>  Employee ID :</strong></label>
-                                                            <input name="emp_id" id="exampleText" placeholder="Employee ID" type="text" class="form-control" required>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="position-relative form-group">
-                                                            <label for="exampleText" class="">  <strong>Name :</strong></label>
-                                                            <input name="name" id="exampleText" placeholder="Name" type="text" class="form-control" required>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-row">
-                                                    <div class="col-md-4">
-                                                        <div class="position-relative form-group">
-                                                            <label for="examplePhone" class=""> <strong>Phone :</strong></label>
-                                                            <input name="phone" id="exampleEmail" placeholder="Phone" type="Phone" class="form-control">
-                                                            
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="position-relative form-group">
-                                                            <label for="exampleEmail" class=""><strong>Email :</strong></label>
-                                                                <input name="email" id="exampleEmail" placeholder="Email" type="email" class="form-control">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="position-relative form-group">
-                                                            <label for="examplePassword" class=""> <strong>Password :</strong></label>
-                                                                <input name="password" id="examplePassword" placeholder="Password"  value="coromandel" type="password" class="form-control">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-row">
-                                                    <div class="col-md-4">
-                                                        <div class="position-relative form-group">
-                                                            <label for="exampleText" class=""><strong>SBU :</strong></label>
-                                                            <input name="sbu" id="exampleText" placeholder="SBU" type="email" class="form-control" required>
-                                                            </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="position-relative form-group">
-                                                            <label for="exampleText" class=""> <strong> Branch/Plant :</strong></label>
-                                                            <input name="branch_plant" id="exampleText" placeholder="Branch/Plant" type="text" class="form-control">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="position-relative form-group">
-                                                            <label for="exampleText" class=""><strong>Grade :</strong></label>
-                                                            <input name="grade" id="exampleText" placeholder="Grade" type="text" class="form-control">
-                                                        </div>
-                                                    </div>
-                                                </div>
-            
-                                                <div class="form-row">
-                                                    <div class="col-md-4">
-                                                        <div class="position-relative form-group">
-                                                            <label for="exampleText" class="">  <strong>Employee Type :</strong></label>
-                                                            <select class="form-control" name= "emp_type" >
-                                                                <option value="">select</option>
-                                                                <option value="MS">MS</option>
-                                                                <option value="NMS">NMS</option>
-                                                                <option value="Contract">Contract</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="position-relative form-group">
-                                                            <label for="exampleText" class=""> <strong>  Designation :</strong></label>
-                                                            <input name="designation" id="exampleText" placeholder="Designation" type="text" class="form-control">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="position-relative form-group"><label for="exampleDate" class=""> <strong>Date of Birth :</strong></label>
-                                                        <input name="dob" input type="date" id="exampleDate" placeholder="Date of birth" type="10/07/1984" class="form-control"></div>
-                                                    </div>
-                                                </div>
-                            
-                                                <div class="form-row">
-                                                    <div class="col-md-4">
-                                                        <div class="position-relative form-group">
-                                                            <label for="exampleDate" class="">  <strong> Date of Join :</strong></label>
-                                                            <input name="doj" input type="date" id="exampleDate" placeholder="10/7/2010" type="Date" class="form-control">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="position-relative form-group">
-                                                            <label for="exampleText" class=""> <strong>   Organisation Unit :</strong></label>
-                                                            <input name="organisation_unit" id="exampleText" placeholder="Organisation Unit" type="text" class="form-control">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="position-relative form-group">
-                                                            <label for="exampleText" class=""> <strong> Function :</strong></label>
-                                                            <input name="function" id="exampleText" placeholder="Function" type="text" class="form-control">
-                                                        </div>
-                                                    </div>
-                                                </div>
-            
-                                
-                                                <div class="form-row">
-                                                    <div class="col-md-4">
-                                                        <div class="position-relative form-group"><label for="exampleText" class="">  <strong> Previous Experience :</strong></label><input name="prev_exp" id="exampleText" placeholder="Previous Experience" type="text" class="form-control"></div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="position-relative form-group"><label for="exampleText" class=""> <strong>  Gender :</strong></label><input name="gender" id="exampleText" placeholder="Gender" type="text" class="form-control"></div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="position-relative form-group"><label for="exampleText" class=""> <strong>  IO ID :</strong></label><input name="io_id" id="exampleText" placeholder="IO ID" type="text" class="form-control"></div>
-                                                    </div>
-                                                </div>
-                            
-                                                <div class="form-row">
-                                                    <div class="col-md-4">
-                                                        <div class="position-relative form-group"><label for="exampleText" class="">  <strong> IO Name :</strong></label><input name="io_name" id="exampleText" placeholder="IO Name" type="text" class="form-control"></div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="position-relative form-group"><label for="exampleText" class=""> <strong>  FRO ID :</strong></label><input name="fro_id" id="exampleText" placeholder="FRO ID" type="text" class="form-control"></div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="position-relative form-group"><label for="exampleText" class=""> <strong>  FRO Name :</strong></label><input name="fro_name" id="exampleText" placeholder="FRO Name" type="text" class="form-control"></div>
-                                                    </div>
-                                                </div>
-            
-                                                <div class="form-row">
-                                                    <div class="col-md-4">
-                                                        <div class="position-relative form-group"><label for="exampleText" class="">  <strong> RO ID :</strong></label><input name="ro_id" id="exampleText" placeholder="RO ID" type="text" class="form-control"></div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="position-relative form-group"><label for="exampleText" class=""> <strong>  RO Name :</strong></label><input name="ro_name" id="exampleText" placeholder="RO Name" type="text" class="form-control"></div>
-                                                    </div>
-                                                    <!--<div class="col-md-4">
-                                                        <div class="position-relative form-group"><label for="exampleText" class=""> <strong>  Blood Group :</strong></label><input name="blood_group" id="exampleText" placeholder="Blood Group" type="text" class="form-control"></div>
-                                                    </div>-->
-                                                </div>
-                            
-                                                <!--<div class="form-row">
-                                                    <div class="col-md-4">
-                                                        <div class="position-relative form-group"><label for="exampleText" class="">  <strong> Religion :</strong></label><input name="religion" id="exampleText" placeholder="Religion" type="text" class="form-control"></div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="position-relative form-group"><label for="exampleText" class=""> <strong>  Birth place :</strong></label><input name="birth_place" id="exampleText" placeholder="Birth place" type="text" class="form-control"></div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="position-relative form-group"><label for="exampleText" class=""> <strong> State :</strong></label><input name="state" id="exampleText" placeholder="State" type="text" class="form-control"></div>
-                                                    </div>
-                                                </div>
-            
-                                                <div class="form-row">
-                                                    <div class="col-md-4">
-                                                        <div class="position-relative form-group"><label for="exampleText" class="">  <strong> Father name :</strong></label><input name="father_name" id="exampleText" placeholder="Religion" type="text" class="form-control"></div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="position-relative form-group"><label for="exampleText" class=""> <strong>  PF nominee 1 :</strong></label><input name="pf_nominee1" id="exampleText" placeholder="Birth place" type="text" class="form-control"></div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="position-relative form-group"><label for="exampleText" class=""> <strong> Nominee 1 relationship :</strong></label><input name="relationship1" id="exampleText" placeholder="State" type="text" class="form-control"></div>
-                                                    </div>
-                                                </div>
-                            
-                                                <div class="form-row">
-                                                    <div class="col-md-4">
-                                                        <div class="position-relative form-group"><label for="exampleText" class="">  <strong> PF Nominee 2 :</strong></label><input name="pf_nominee2" id="exampleText" placeholder="Religion" type="text" class="form-control"></div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="position-relative form-group"><label for="exampleText" class=""> <strong>  Nominee 2 relationship :</strong></label><input name="relationship2" id="exampleText" placeholder="Birth place" type="text" class="form-control"></div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="position-relative form-group"><label for="exampleText" class=""> <strong> T-shirt size :</strong></label><input name="tshirt_size" id="exampleText" placeholder="State" type="text" class="form-control"></div>
-                                                    </div>
-                                                </div>
-            
-                                                <div class="form-row">
-                                                    <div class="col-md-4">
-                            
-                                                       <div class="position-relative form-group"><label for="exampleSelect" class=""><strong>Preferred Food</strong></label>
-                                                       <select name="food_pref" id="exampleSelect" class="custom-select">
-                            
-                                                         <option value="">Select</option>
-                                                         <option>Veg</option>
-                                                         <option>Non Veg</option></select>
-                            
-                                                        </div>
-                                                    </div>
-                                                    
-                                                    <div class="col-md-4">
-                                                        <div class="position-relative form-group"><label for="exampleText" class=""> <strong>  Passport NO :</strong></label>
-                                                        <input name="passport_no" id="exampleText" placeholder="Passport NO" type="text" class="form-control"></div>
-                                                    </div>
-                                                    
-                                                    <div class="col-md-4">
-                                                        <div class="position-relative form-group"><label for="exampleDate" class="">  <strong> Passport Expiry Date : </strong></label>
-                                                        <input name="passport_expiry_date" id="exampleDate" input type="date" placeholder="10/07/2026" type="Date" class="form-control"></div>
-                                                    </div>
-                                                    
-                                                </div>-->
-                                                <button class="mt-1 btn btn-primary">Add</button>
-                                            </form>
-                                        </div>
+<body>
+  <script src="<?php echo base_url(); ?>/assets/js/preloader.js"></script>
+
+  <div class="body-wrapper">
+    <!-- partial:partials/_sidebar.html -->
+    <?php include('sidebar.php');?>
+    <!-- partial -->
+    <div class="main-wrapper mdc-drawer-app-content">
+      <!-- partial:partials/_navbar.html -->
+      <?php include('nav.php');?>
+      <!-- partial -->
+
+      <div class="page-wrapper mdc-toolbar-fixed-adjust">
+        <main class="content-wrapper">
+          <div class="mdc-layout-grid">
+            <div class="mdc-layout-grid__inner">
+              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                <div class="mdc-card">
+                  <div class="d-flex justify-content-between">
+                    <button class="mdc-button mdc-button--outlined outlined-button--secondary mdc-ripple-upgraded" id="emp">
+                      Add Employee
+                    </button>
+                   <!-- <div>
+                      <i class="material-icons refresh-icon">Refresh</i>
+                      <i class="material-icons options-icon ml-2">more_vert</i>
+                    </div> -->
+                  </div>
+                  <div class="template-demo">
+                    <h5 class="card-sub-title mb-2 mb-sm-0"></h5>
+                    <div class="menu-button-container">
+                      <div class="mdc-card">
+                        <form id="employee" action="<?php echo base_url('main/addingemp');?>" method="POST">
+                          <div class="mdc-layout-grid">
+                            <div class="mdc-layout-grid__inner">
+							
+                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop">
+                                <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                                  <input class="mdc-text-field__input" id="text-field-hero-input exampleText"
+                                    name="emp_id" value="<?php echo (isset($editEmployee))? $editEmployee[0]['emp_id']:''?>">
+                                  <div class="mdc-line-ripple"></div>
+                                  <label for="text-field-hero-input" class="mdc-floating-label">Employee ID</label>
+                                </div>
+                              </div>
+							  
+							  <input type="hidden" name="id" id="id" value="<?php echo (isset($editEmployee))? $editEmployee[0]['id']:''?>">
+							  
+                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
+                                <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                                  <input class="mdc-text-field__input" id="text-field-hero-input 1" name="firstname" value="<?php echo (isset($editEmployee))? $editEmployee[0]['name']:''?>">
+                                  <div class="mdc-line-ripple"></div>
+                                  <label for="text-field-hero-input" class="mdc-floating-label">First Name</label>
+                                </div>
+                              </div>
+							  
+                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
+                                <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                                  <input class="mdc-text-field__input" id="text-field-hero-input 2" name="lastname" >
+                                  <div class="mdc-line-ripple"></div>
+                                  <label for="text-field-hero-input" class="mdc-floating-label">Last Name</label>
+                                </div>
+                              </div>
+							  
+                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop">
+                                <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                                  <div class="mdc-line-ripple"></div>
+                                  <label for="text-field-hero-input" class="mdc-floating-label">Division</label>
+                           <select class="mdc-text-field__input" name="division_id">
+                                    <option disabled selected value> </option>
+									
+                                    <?php foreach($division->result() as $divisions){ ?>
+                                    <option value="<?php echo $divisions->id; ?>" >
+                                      <?php echo $divisions->divisions; ?>
+                                    </option>
+                                    <?php } ?>
+                                  </select>
+                                </div>
+                              </div>
+							  
+                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
+                                <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                                  <input class="mdc-text-field__input" type="phone" name="phone" id="phone" value="<?php echo (isset($editEmployee))? $editEmployee[0]['mobile']:''?>">
+                                  <div class="mdc-line-ripple"></div>
+                                  <label for="text-field-hero-input" class="mdc-floating-label">Phone</label>
+                                </div>
+                              </div>
+							  
+                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop">
+                                <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                                  <input class="mdc-text-field__input" name="email"
+                                    placeholder="Email" type="email" value="<?php echo (isset($editEmployee))? $editEmployee[0]['email']:''?>">
+                                  <div class="mdc-line-ripple"></div>
+                                  <label for="text-field-hero-input" class="mdc-floating-label">Email</label>
+                                </div>
+                              </div>
+							  
+                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
+                                <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                                  <input class="mdc-text-field__input" name="passwords" id="passwords" type="password"
+                                    value="<?php echo (isset($editEmployee))? $editEmployee[0]['password']:''?>">
+                                  <div class="mdc-line-ripple"></div>
+                                  <label for="text-field-hero-input" class="mdc-floating-label">Password</label>
+                                </div>
+                              </div>
+							  
+                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
+                                <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                                  <div class="mdc-line-ripple"></div>
+                                  <label for="text-field-hero-input" class="mdc-floating-label">SBU</label>
+                                  <select class="mdc-text-field__input" name="sbu" placeholder="SBU">
+                                    <option value="" disabled selected value> </option>
+									<?php foreach($sbu->result() as $sbu){ ?>
+										<?php if ($sbu->sbu != null): ?>
+											<option value="<?php echo $sbu->id; ?>">
+											  <?php echo $sbu->sbu; ?>
+											</option>
+										<?php endif; ?>
+                                    <?php } ?>
+									
+                                  </select>
+                                </div>
+                              </div>
+							  
+                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
+                                <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                                  <div class="mdc-line-ripple"></div>
+                                  <label for="text-field-hero-input" class="mdc-floating-label">Branch/Plant</label>
+                                  <select class="mdc-text-field__input" name="branch_plant" placeholder="Branch/Plant">
+                                    <option value="" disabled selected value> </option>
+										<?php foreach($branch->result() as $branch){ ?>
+											<?php if ($branch->branch != null): ?>
+												<option value="<?php echo $branch->id; ?>">
+												  <?php echo $branch->branch; ?>
+												</option>
+											<?php endif; ?>
+										<?php } ?>
+                                  </select>
+                                </div>
+                              </div>
+							  
+                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
+                                <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                                  <div class="mdc-line-ripple"></div>
+                                  <label for="text-field-hero-input" class="mdc-floating-label">Grade</label>
+                                  <select class="mdc-text-field__input" name="grade" placeholder="Grade" required>
+                                    <option value="" disabled selected value> </option>
+										<?php foreach($grade->result() as $grade){ ?>
+											<?php if ($grade->grade != null): ?>
+												<option value="<?php echo $grade->id; ?>">
+												  <?php echo $grade->grade; ?>
+												</option>
+											 <?php endif; ?>
+										<?php } ?>
+                                  </select>
+                                </div>
+                              </div>
+							  
+                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop">
+                                <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                                  <div class="mdc-line-ripple"></div>
+                                  <label for="text-field-hero-input" class="mdc-floating-label">Employee Type</label>
+                                  <select class="mdc-text-field__input" name="emp_type">
+                                     <option value=""  disabled selected value></option>
+										  <?php foreach($employee_type->result() as $employee_type){ ?>
+												 <?php if ($employee_type->type != null): ?>
+													<option value="<?php echo $employee_type->id; ?>">
+													  <?php echo $employee_type->type; ?>
+													</option>
+												 <?php endif; ?>
+										  <?php } ?>
+                                  </select>
+                                </div>
+                              </div>
+							  
+                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
+                                <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                                  <div class="mdc-line-ripple"></div>
+                                    <label for="text-field-hero-input" class="mdc-floating-label">Designation</label>
+									  <select class="mdc-text-field__input" name="designation" placeholder="Designation">
+										<option value=""  disabled selected value></option>
+										  <?php foreach($designation->result() as $designation){ ?>
+											  <?php if ($designation->designation != null): ?>
+												<option value="<?php echo $designation->designation; ?>">
+												  <?php echo $designation->designation; ?>
+												</option>
+											 <?php endif; ?>
+										 <?php } ?>
+									  </select>
+                                </div>
+                              </div>
+
+                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
+                                <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                                  <div class="mdc-line-ripple"></div>
+                                  <label for="text-field-hero-input" class="mdc-floating-label">Organization Unit</label>
+                                  <select class="mdc-text-field__input" name="organisation_unit"
+                                    placeholder="Organization Unit">
+                                    <option value="" disabled selected value></option>
+										<?php foreach($organization->result() as $organization){ ?>
+										  <?php if ($organization->organication != null): ?>
+											<option value="<?php echo $organization->id; ?>">
+											  <?php echo $organization->organication; ?>
+											</option>
+										   <?php endif; ?>
+										<?php } ?>
+                                  </select>
+                                </div>
+                              </div>
+							  
+                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
+                                <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                                  <div class="mdc-line-ripple"></div>
+                                  <label for="text-field-hero-input" class="mdc-floating-label">Function</label>
+                                  <select class="mdc-text-field__input" name="function" placeholder="Function">
+                                    <option value="" disabled selected value></option>
+									<?php foreach($function_master->result() as $function_master){ ?>
+										<?php if ($function_master->function != null): ?>
+											<option value="<?php echo $function_master->id; ?>">
+											  <?php echo $function_master->function; ?>
+											</option>
+										<?php endif; ?>
+									<?php } ?>
+                                  </select>
+                                </div>
+                              </div>
+							  
+                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
+                                <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                                  <input class="mdc-text-field__input" name="prev_exp" id="exampleText"
+                                    placeholder="Previous Experience" type="text" value="<?php echo (isset($editEmployee))? $editEmployee[0]['prev_exp']:''?>">
+                                  <div class="mdc-line-ripple"></div>
+                                  <label for="text-field-hero-input" class="mdc-floating-label">Previous Experience</label>
+                                </div>
+                              </div>
+							  
+                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
+                                <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                                  <div class="mdc-line-ripple"></div>
+                                  <label for="text-field-hero-input" class="mdc-floating-label">Gender</label>
+                                  <select class="mdc-text-field__input" name="gender" placeholder="Gender">
+                                    <option value="" disabled selected value></option>
+									<?php foreach($gender->result() as $gender){ ?>
+									  <?php if ($gender->gender != null): ?>
+											<option value="<?php echo $gender->id; ?>">
+											  <?php echo $gender->gender; ?>
+											</option>
+									  <?php endif; ?>
+								    <?php } ?>
+                                  </select>
+                                </div>
+                              </div>
+							  
+                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
+                                <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                                  <input class="mdc-text-field__input" name="io_id" id="io_id" placeholder="IO ID"
+                                    type="text" value="<?php echo (isset($editEmployee))? $editEmployee[0]['io_id']:''?>" >
+                                  <div class="mdc-line-ripple"></div>
+                                  <label for="text-field-hero-input" class="mdc-floating-label">IO ID</label>
+                                </div>
+                              </div>
+							  
+                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
+                                <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                                  <input class="mdc-text-field__input" name="io_name" id="io_name" placeholder="IO Name"
+                                    type="text" value="<?php echo (isset($editEmployee))? $editEmployee[0]['io_name']:''?>">
+                                  <div class="mdc-line-ripple"></div>
+                                  <label for="text-field-hero-input" class="mdc-floating-label">IO Name</label>
+                                </div>
+                              </div>
+							  
+                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
+                                <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                                  <input class="mdc-text-field__input" name="fro_id" id="fro_id" placeholder="FRO ID"
+                                    type="text" value="<?php echo (isset($editEmployee))? $editEmployee[0]['fro_id']:''?>">
+                                  <div class="mdc-line-ripple"></div>
+                                  <label for="text-field-hero-input" class="mdc-floating-label"> FRO ID</label>
+                                </div>
+                              </div>
+							  
+                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
+                                <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                                  <input class="mdc-text-field__input" name="fro_name" id="fro_name"
+                                    placeholder="FRO Name" type="text" value="<?php echo (isset($editEmployee))? $editEmployee[0]['fro_name']:''?>">
+                                  <div class="mdc-line-ripple"></div>
+                                  <label for="text-field-hero-input" class="mdc-floating-label">FRO Name</label>
+                                </div>
+                              </div>
+							  
+                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
+                                <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                                  <input class="mdc-text-field__input" name="ro_id" id="ro_id" placeholder="RO ID"
+                                    type="text" value="<?php echo (isset($editEmployee))? $editEmployee[0]['ro_id']:''?>">
+                                  <div class="mdc-line-ripple"></div>
+                                  <label for="text-field-hero-input" class="mdc-floating-label">RO ID</label>
+                                </div>
+                              </div>
+							  
+                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
+                                <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                                  <input class="mdc-text-field__input" name="ro_name" id="ro_name" placeholder="RO Name"
+                                    type="text" value="<?php echo (isset($editEmployee))? $editEmployee[0]['ro_name']:''?>">
+                                  <div class="mdc-line-ripple"></div>
+                                  <label for="text-field-hero-input" class="mdc-floating-label">RO Name</label>
+                                </div>
+                              </div>
+
+                             <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-1">
+                                <div class="mdc-text-field w-100 mdc-ripple-upgraded" name="dob" id='dob'
+                                  style='padding-right: 114px;' >
+                                  <div class="mdc-line-ripple"></div>
+                                  <label for="text-field-hero-input" class="mdc-floating-label">DOB</label>
+                                </div>
+                              </div>
+							  
+                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3">
+                                <div class="mdc-text-field w-100 mdc-ripple-upgraded" name="dob" id="reportrange">
+                                  <!--<span style="padding: 10px;"></span><i class="fa fa-caret-down"></i> -->
+                                  <div class="mdc-line-ripple"></div>
+                                </div>
+                              </div>
+							  
+                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-1">
+                                <div class="mdc-text-field w-100 mdc-ripple-upgraded" name="doj" id='doj'
+                                  style='padding-right: 114px;'>
+                                  <div class="mdc-line-ripple"></div>
+                                  <label for="text-field-hero-input" class="mdc-floating-label">DOJ</label>
+                                </div>
+                              </div>
+							  
+                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3">
+                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded" name="doj" id="reportrange1">
+                                 <!-- <span style="padding: 10px;"></span><i class="fa fa-caret-down"></i> -->
+                                  <div class="mdc-line-ripple">
                                     </div>
-                                </div>                                                                                                   
+                                  </div>
+                               </div>
+                              </div>  
+							  
+                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
+                                <button
+                                  class=" mt-1 btn btn-primary mdc-button mdc-button--raised filled-button--success mdc-ripple-upgraded vertical-center"
+                                  style="--mdc-ripple-fg-size:56px;     --mdc-ripple-fg-scale:1.96936; --mdc-ripple-fg-translate-start:22.9px, -19.6px; --mdc-ripple-fg-translate-end:18.8px, -10px ,float: right; ">
+                                  Submit
+                                </button>&nbsp;&nbsp;&nbsp;&nbsp; 
+								  
+                                <button
+                                  class=" mt-1 btn btn-primary mdc-button mdc-button--unelevated filled-button--info mdc-ripple-upgraded vertical-center"
+                                  style="--mdc-ripple-fg-size:56px; --mdc-ripple-fg-scale:2.19553; --mdc-ripple-fg-translate-start:8.23752px, -2.59998px; --mdc-ripple-fg-translate-end:13px, -1px;">
+                                  Cancel
+                                </button>
+                              </div>
+
+
                             </div>
-                        </div>
+                          </div>
+                        </form>
+                      </div>
                     </div>
+                  </div>
+				  
+                  
+				  
                 </div>
-            </div>                                                                                                                                                                    
-        </div>
+              </div>
+            </div>
+          </div>
+        </main>
+        <!-- partial:partials/_footer.html -->
+        <?php include('footer.php');?>
+        <!-- partial -->
+      </div>
     </div>
+  </div>
+  
+  <link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url();?>assets/css/daterangepicker.css" />
+  <script type="text/javascript" src="<?php echo base_url();?>assets/js/main.js"></script>
+  <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.min.js"></script>
+  <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/validate.min.js"></script>
+  <script type="text/javascript" src="<?php echo base_url();?>assets/js/moment.min.js"></script>
+  <script type="text/javascript" src="<?php echo base_url();?>assets/js/daterangepicker.js"></script>
+  <script type="text/javascript" src="<?php echo base_url();?>assets/js/addemp.js"></script>
+	
+  <style>
+    .error {
+      color: #fa4040;
+      font-size: 12px;
+      margin-top: 2%;
+    }
+  </style>
    
-    <script type="text/javascript" src="<?php echo base_url();?>assets/js/main.js"></script>
-    <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.min.js"></script>	
-	 <script type="text/javascript" src="<?php echo base_url();?>assets/js/addemp.js"></script>
-    <script type="text/javascript" src="<?php echo base_url();?>assets/js/ckeditor.js"></script>
-    
 </body>
 
 </html>

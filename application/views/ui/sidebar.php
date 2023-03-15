@@ -54,7 +54,7 @@
                   </div>
                   <div class="mdc-list-item mdc-drawer-item">
                     <a class="mdc-drawer-link"  href="<?php echo base_url('main/branch_master'); ?>">
-                    Branch/plant
+                    Branch
                     </a>
                   </div>
 				  <i class='fas fa-angle-double-right'></i>
@@ -65,7 +65,7 @@
                   </div>
 				   <div class="mdc-list-item mdc-drawer-item">
                     <a class="mdc-drawer-link" href="<?php echo base_url('main/employee_type_master'); ?>">
-                    EmployeeType
+                    Employee Type
                     </a>
                   </div>
 				   <div class="mdc-list-item mdc-drawer-item">
@@ -75,7 +75,7 @@
                   </div>
 				   <div class="mdc-list-item mdc-drawer-item">
                     <a class="mdc-drawer-link" href="<?php echo base_url('main/organication_master'); ?>">
-                    Organication 
+                    Organization 
                     </a>
                   </div>
 				   <div class="mdc-list-item mdc-drawer-item">
@@ -126,14 +126,14 @@
             <div class="mdc-list-item mdc-drawer-item">
               <a class="mdc-drawer-link" href="<?php echo base_url('main/createprogram'); ?>">
                 <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">description</i>
-                Assign Traning course
+                Assign Training course
               </a>
             </div>
           
             <div class="mdc-list-item mdc-drawer-item">
               <a class="mdc-drawer-link" href="<?php echo base_url('main/events_list') ?>">
                 <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">description</i>
-                Programs List
+                Program List
               </a>
             </div>
             <div class="mdc-list-item mdc-drawer-item">

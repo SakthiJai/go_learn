@@ -46,6 +46,8 @@
                                 </div>
                               </div>
 							  
+							  <input type="hidden" name="id" id="id" value="<?php echo (isset($editEmployee))? $editEmployee[0]['id']:''?>">
+							  
                               <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded">
                                   <input class="mdc-text-field__input" id="text-field-hero-input 1" name="firstname" value="<?php echo (isset($editEmployee))? $editEmployee[0]['name']:''?>">
@@ -75,7 +77,6 @@
                                     </option>
                                     <?php } ?>
                                   </select>
-
                                 </div>
                               </div>
 							  
@@ -182,7 +183,7 @@
 										<option value=""  disabled selected value></option>
 										  <?php foreach($designation->result() as $designation){ ?>
 											  <?php if ($designation->designation != null): ?>
-												<option value="<?php echo $designation->id; ?>">
+												<option value="<?php echo $designation->designation; ?>">
 												  <?php echo $designation->designation; ?>
 												</option>
 											 <?php endif; ?>

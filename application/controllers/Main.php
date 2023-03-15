@@ -113,13 +113,13 @@ class Main extends CI_Controller {
 	    $data['editEmployee'] = $this->Super_model->editEmployee($id);
 		 //print_r($data['editEmployee']);exit;
 		 
-	    $this->load->view('ui/addemp',$data); 
+	    $this->load->view('ui/viewEmp',$data); 
 	}
 	
 	public function addingemp(){
     	//print_r($_POST);exit();
        $division=$this->input->post('division_id');
-        $sql="select * from divisions where id='".$division."'";
+       $sql="select * from divisions where id='".$division."'";
        $q=$this->db->query($sql);
        $division_id= $q->row();
        $divisions=$division_id->divisions;
@@ -178,52 +178,53 @@ class Main extends CI_Controller {
         }
         redirect(base_url().'main/addemp','refresh');            
     }
-	public function updateEmployee(){
-    	//print_r($_POST);exit();
+	 
+	public function updateEmp()
+	{ 
        $division=$this->input->post('division_id');
        $sql="select * from divisions where id='".$division."'";
        $q=$this->db->query($sql);
        $division_id= $q->row();
        $divisions=$division_id->divisions;
        $emp_id = $this->input->post('emp_id');
-        
-		$data = array(
-		    
-		'division' =>$divisions,
-		'division_id' => $this->input->post('division_id'),
-		'emp_id' => $this->input->post('emp_id'),
-		'name' => $this->input->post('firstname'),
-		'mobile' => $this->input->post('phone'),
-		'email' => $this->input->post('email'),
-		'password' => $this->input->post('passwords'),
-		'sbu' => $this->input->post('sbu'),
-		'branch_plant' => $this->input->post('branch_plant'),
-		'designation' => $this->input->post('designation'),
-		'grade' => $this->input->post('grade'),
-		'emp_type' => $this->input->post('emp_type'),
-		//'dob' => $this->input->post('dob'),
-		//'doj' => $this->input->post('doj'),
-		'organisation_unit' => $this->input->post('organisation_unit'),
-		'function' => $this->input->post('function'),
-		'prev_exp' => $this->input->post('prev_exp'),
-		'gender' => $this->input->post('gender'),
-		'io_id' => $this->input->post('io_id'),
-		'io_name' => $this->input->post('io_name'),
-		'fro_id' => $this->input->post('fro_id'),
-		'fro_name' => $this->input->post('fro_name'),
-		'ro_id' => $this->input->post('ro_id'),
-		'ro_name' => $this->input->post('ro_name'),
-		);
-		// print_r($data);exit();
-        $updateUserData = $this->Super_model->updateEmp($emp_id,$data);
-		 
-        if($updateUserData){
-        	$this->session->set_flashdata('msg', '<div class="alert alert-success text-center">Successfully Updated</div>');
-        } else {     
-        	$this->session->set_flashdata('msg', '<div class="alert alert-danger text-center">Error</div>');
-        }
-        redirect(base_url().'main/addemp','refresh');            
-    }
+			$data = array(
+				    'division' =>$divisions,
+					'division_id' => $this->input->post('division_id'),
+					'emp_id' => $this->input->post('emp_id'),
+					'name' => $this->input->post('firstname'),
+					'mobile' => $this->input->post('phone'),
+					'email' => $this->input->post('email'),
+					'password' => $this->input->post('passwords'),
+					'sbu' => $this->input->post('sbu'),
+					'branch_plant' => $this->input->post('branch_plant'),
+					'designation' => $this->input->post('designation'),
+					'grade' => $this->input->post('grade'),
+					'emp_type' => $this->input->post('emp_type'),
+					//'dob' => $this->input->post('dob'),
+					//'doj' => $this->input->post('doj'),
+					'organisation_unit' => $this->input->post('organisation_unit'),
+					'function' => $this->input->post('function'),
+					'prev_exp' => $this->input->post('prev_exp'),
+					'gender' => $this->input->post('gender'),
+					'io_id' => $this->input->post('io_id'),
+					'io_name' => $this->input->post('io_name'),
+					'fro_id' => $this->input->post('fro_id'),
+					'fro_name' => $this->input->post('fro_name'),
+					'ro_id' => $this->input->post('ro_id'),
+					'ro_name' => $this->input->post('ro_name'),
+				);
+				
+			$result=$this->Super_model->updateEmp($this->input->post('id'),$data);
+			if($result) {
+				$this->session->set_flashdata('msg','<div class="alert alert-success text-center">Updated Successfully!</div>'); 
+				redirect(base_url().'main/emp','refresh');  
+			}else{
+				$this->session->set_flashdata('msg','<div class="alert alert-success text-center">Update Failed.</div>');
+				redirect(base_url().'main/emp','refresh');  
+			}
+			
+	}
+	
     public function employee_history(){
 		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
 		$data['emp_history']=$this->Super_model->emp_history();
