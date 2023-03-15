@@ -21,7 +21,8 @@
               <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
                 <div class="mdc-card">
                   <div class="d-flex justify-content-between">
-                    <button class="mdc-button mdc-button--outlined outlined-button--secondary mdc-ripple-upgraded" id="emp">
+                    <button class="mdc-button mdc-button--outlined outlined-button--secondary mdc-ripple-upgraded"
+                      style="--mdc-ripple-fg-size:95px; --mdc-ripple-fg-scale:1.82773; --mdc-ripple-fg-translate-start:-36.7px, -39.1px; --mdc-ripple-fg-translate-end:32.3125px, -29.5px;">
                       Add Employee
                     </button>
                    <!-- <div>
@@ -40,7 +41,7 @@
                               <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop">
                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded">
                                   <input class="mdc-text-field__input" id="text-field-hero-input exampleText"
-                                    name="emp_id" value="<?php echo (isset($editEmployee))? $editEmployee[0]['emp_id']:''?>">
+                                    name="emp_id">
                                   <div class="mdc-line-ripple"></div>
                                   <label for="text-field-hero-input" class="mdc-floating-label">Employee ID</label>
                                 </div>
@@ -50,7 +51,7 @@
 							  
                               <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded">
-                                  <input class="mdc-text-field__input" id="text-field-hero-input 1" name="firstname" value="<?php echo (isset($editEmployee))? $editEmployee[0]['name']:''?>">
+                                  <input class="mdc-text-field__input" id="text-field-hero-input 1" name="firstname">
                                   <div class="mdc-line-ripple"></div>
                                   <label for="text-field-hero-input" class="mdc-floating-label">First Name</label>
                                 </div>
@@ -58,7 +59,7 @@
 							  
                               <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded">
-                                  <input class="mdc-text-field__input" id="text-field-hero-input 2" name="lastname" >
+                                  <input class="mdc-text-field__input" id="text-field-hero-input 2" name="lastname">
                                   <div class="mdc-line-ripple"></div>
                                   <label for="text-field-hero-input" class="mdc-floating-label">Last Name</label>
                                 </div>
@@ -68,11 +69,10 @@
                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded">
                                   <div class="mdc-line-ripple"></div>
                                   <label for="text-field-hero-input" class="mdc-floating-label">Division</label>
-                           <select class="mdc-text-field__input" name="division_id">
+                                  <select class="mdc-text-field__input" name="division_id" required> 
                                     <option disabled selected value> </option>
-									
                                     <?php foreach($division->result() as $divisions){ ?>
-                                    <option value="<?php echo $divisions->id; ?>" >
+                                    <option value="<?php echo $divisions->id; ?>">
                                       <?php echo $divisions->divisions; ?>
                                     </option>
                                     <?php } ?>
@@ -82,7 +82,7 @@
 							  
                               <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded">
-                                  <input class="mdc-text-field__input" type="phone" name="phone" id="phone" value="<?php echo (isset($editEmployee))? $editEmployee[0]['mobile']:''?>">
+                                  <input class="mdc-text-field__input" type="phone" name="phone" id="phone">
                                   <div class="mdc-line-ripple"></div>
                                   <label for="text-field-hero-input" class="mdc-floating-label">Phone</label>
                                 </div>
@@ -90,8 +90,8 @@
 							  
                               <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop">
                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded">
-                                  <input class="mdc-text-field__input" name="email"
-                                    placeholder="Email" type="email" value="<?php echo (isset($editEmployee))? $editEmployee[0]['email']:''?>">
+                                  <input class="mdc-text-field__input" name="email" id="exampleEmail"
+                                    placeholder="Email" type="email" autocomplete="off">
                                   <div class="mdc-line-ripple"></div>
                                   <label for="text-field-hero-input" class="mdc-floating-label">Email</label>
                                 </div>
@@ -100,7 +100,7 @@
                               <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded">
                                   <input class="mdc-text-field__input" name="passwords" id="passwords" type="password"
-                                    value="<?php echo (isset($editEmployee))? $editEmployee[0]['password']:''?>">
+                                    autocomplete="off">
                                   <div class="mdc-line-ripple"></div>
                                   <label for="text-field-hero-input" class="mdc-floating-label">Password</label>
                                 </div>
@@ -128,7 +128,7 @@
                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded">
                                   <div class="mdc-line-ripple"></div>
                                   <label for="text-field-hero-input" class="mdc-floating-label">Branch/Plant</label>
-                                  <select class="mdc-text-field__input" name="branch_plant" placeholder="Branch/Plant">
+                                  <select class="mdc-text-field__input" name="branch_plant" placeholder="SBU">
                                     <option value="" disabled selected value> </option>
 										<?php foreach($branch->result() as $branch){ ?>
 											<?php if ($branch->branch != null): ?>
@@ -145,7 +145,7 @@
                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded">
                                   <div class="mdc-line-ripple"></div>
                                   <label for="text-field-hero-input" class="mdc-floating-label">Grade</label>
-                                  <select class="mdc-text-field__input" name="grade" placeholder="Grade" required>
+                                  <select class="mdc-text-field__input" name="grade" placeholder="SBU" required>
                                     <option value="" disabled selected value> </option>
 										<?php foreach($grade->result() as $grade){ ?>
 											<?php if ($grade->grade != null): ?>
@@ -230,7 +230,7 @@
                               <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded">
                                   <input class="mdc-text-field__input" name="prev_exp" id="exampleText"
-                                    placeholder="Previous Experience" type="text" value="<?php echo (isset($editEmployee))? $editEmployee[0]['prev_exp']:''?>">
+                                    placeholder="Previous Experience" type="text">
                                   <div class="mdc-line-ripple"></div>
                                   <label for="text-field-hero-input" class="mdc-floating-label">Previous Experience</label>
                                 </div>
@@ -256,7 +256,7 @@
                               <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded">
                                   <input class="mdc-text-field__input" name="io_id" id="io_id" placeholder="IO ID"
-                                    type="text" value="<?php echo (isset($editEmployee))? $editEmployee[0]['io_id']:''?>" >
+                                    type="text">
                                   <div class="mdc-line-ripple"></div>
                                   <label for="text-field-hero-input" class="mdc-floating-label">IO ID</label>
                                 </div>
@@ -265,7 +265,7 @@
                               <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded">
                                   <input class="mdc-text-field__input" name="io_name" id="io_name" placeholder="IO Name"
-                                    type="text" value="<?php echo (isset($editEmployee))? $editEmployee[0]['io_name']:''?>">
+                                    type="text">
                                   <div class="mdc-line-ripple"></div>
                                   <label for="text-field-hero-input" class="mdc-floating-label">IO Name</label>
                                 </div>
@@ -274,7 +274,7 @@
                               <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded">
                                   <input class="mdc-text-field__input" name="fro_id" id="fro_id" placeholder="FRO ID"
-                                    type="text" value="<?php echo (isset($editEmployee))? $editEmployee[0]['fro_id']:''?>">
+                                    type="text">
                                   <div class="mdc-line-ripple"></div>
                                   <label for="text-field-hero-input" class="mdc-floating-label"> FRO ID</label>
                                 </div>
@@ -283,7 +283,7 @@
                               <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded">
                                   <input class="mdc-text-field__input" name="fro_name" id="fro_name"
-                                    placeholder="FRO Name" type="text" value="<?php echo (isset($editEmployee))? $editEmployee[0]['fro_name']:''?>">
+                                    placeholder="FRO Name" type="text">
                                   <div class="mdc-line-ripple"></div>
                                   <label for="text-field-hero-input" class="mdc-floating-label">FRO Name</label>
                                 </div>
@@ -292,7 +292,7 @@
                               <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded">
                                   <input class="mdc-text-field__input" name="ro_id" id="ro_id" placeholder="RO ID"
-                                    type="text" value="<?php echo (isset($editEmployee))? $editEmployee[0]['ro_id']:''?>">
+                                    type="text">
                                   <div class="mdc-line-ripple"></div>
                                   <label for="text-field-hero-input" class="mdc-floating-label">RO ID</label>
                                 </div>
@@ -301,15 +301,15 @@
                               <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded">
                                   <input class="mdc-text-field__input" name="ro_name" id="ro_name" placeholder="RO Name"
-                                    type="text" value="<?php echo (isset($editEmployee))? $editEmployee[0]['ro_name']:''?>">
+                                    type="text">
                                   <div class="mdc-line-ripple"></div>
                                   <label for="text-field-hero-input" class="mdc-floating-label">RO Name</label>
                                 </div>
                               </div>
 
-                             <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-1">
+                           <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-1">
                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded" name="dob" id='dob'
-                                  style='padding-right: 114px;' >
+                                  style='padding-right: 114px;'>
                                   <div class="mdc-line-ripple"></div>
                                   <label for="text-field-hero-input" class="mdc-floating-label">DOB</label>
                                 </div>
@@ -317,7 +317,7 @@
 							  
                               <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3">
                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded" name="dob" id="reportrange">
-                                  <!--<span style="padding: 10px;"></span><i class="fa fa-caret-down"></i> -->
+                                  <span style="padding: 10px;"></span><i class="fa fa-caret-down"></i>
                                   <div class="mdc-line-ripple"></div>
                                 </div>
                               </div>
@@ -332,7 +332,9 @@
 							  
                               <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3">
                                  <div class="mdc-text-field w-100 mdc-ripple-upgraded" name="doj" id="reportrange1">
-                                 <!-- <span style="padding: 10px;"></span><i class="fa fa-caret-down"></i> -->
+                                  <i style="padding-top: 10px;"
+                                    class="material-icons mdc-button__icon">Event Available</i>
+                                  <span style="padding: 10px;"></span><i class="fa fa-caret-down"></i>
                                   <div class="mdc-line-ripple">
                                     </div>
                                   </div>

@@ -414,14 +414,8 @@ class Super_model extends CI_model {
 		return $this->db->from('sbu')->get();
 	}
 	public function addsbu($data){
-		 $this->db->insert('sbu',$data);
-	return true;
-		/*$query =$this->db->query("select * from sbu where id = $emp_id");
-           if ($query->num_rows() >= 1){
-               return false;
-           } else {
-               return $this->db->insert('emp',$insertUserData);
-           }*/
+		return $this->db->insert('sbu',$data);
+	
 	}
 	public function branch(){
 		return $this->db->from('branch')->order_by('id','branch')->get();

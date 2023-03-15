@@ -334,7 +334,7 @@ class Main extends CI_Controller {
 				
 			$res=$this->Super_model->updatefaculty($id,$inputdata);
 			if($res) {
-				$this->session->set_flashdata('msg','<div class="alert alert-success text-center">Updated Successed.</div>');
+				$this->session->set_flashdata('msg','<div class="alert alert-success text-center">Updated Successfully.</div>');
 				redirect(base_url().'ui/faculty','refresh'); 
 			}else{
 				$this->session->set_flashdata('msg','<div class="alert alert-danger text-center"> Updated Failed! Try Again </div>');
@@ -369,7 +369,7 @@ class Main extends CI_Controller {
 		);
 		//print_r($data);exit();
         $insertUserData = $this->Super_model->addprogram_types($data);
-        $this->session->set_flashdata('msg','<div class="alert alert-success text-center">submit Successed.</div>');
+        $this->session->set_flashdata('msg','<div class="alert alert-success text-center">submit Successfully.</div>');
         redirect(base_url().'ui/program_types','refresh');            
     }
 
@@ -805,7 +805,7 @@ class Main extends CI_Controller {
 				
 			$res=$this->Super_model->updateprogram($id,$inputdata);
 			if($res) {
-				$this->session->set_flashdata('msg','<div class="alert alert-success text-center">Updated Successed.</div>');
+				$this->session->set_flashdata('msg','<div class="alert alert-success text-center">Updated Successfully.</div>');
 				redirect(base_url().'ui/program','refresh'); 
 			}else{
 				$this->session->set_flashdata('msg','<div class="alert alert-danger text-center"> Updated Failed! Try Again </div>');
@@ -2081,13 +2081,33 @@ $headers .= 'From: '.$from."\r\n".
 		}
 	}
 	public function addsbu(){
-		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
-		//print_r($_POST);exit;
-		$data = array('sbu' => $this->input->post('sbu'));
-		$test=$data['addsbu']=$this->Super_model->addsbu($data);
-		//echo($test);exit;
-		$data['h_title'] = "Go Learn ";
-        $this->load->view('ui/addsbu',$data);
+		
+		     $data['h_title'] = "Go Learn "; 	
+			 $this->load->view('ui/addsbu',$data);
+		
+		
+	}
+	public function addSbu_master(){
+		
+		
+		     
+			$data = array(
+			'sbu' => $this->input->post('sbu')
+			);
+			$data=$this->Super_model->addsbu($data);
+			if($data){
+				$this->session->set_flashdata('msg','<div class="alert alert-success text-center" style="color: #008a5d;
+    background-color: rgba(0, 182, 122, 0.2);
+    border-color: #00a770;    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;">Added Successfully.</div>');
+			redirect('main/sbu_master'); 
+			
+			}else{
+				redirect('main/addsbu'); 
+			}
 	}
 	public function updatesbu($id)
 	{
@@ -2103,7 +2123,7 @@ $headers .= 'From: '.$from."\r\n".
     padding: 0.75rem 1.25rem;
     margin-bottom: 1rem;
     border: 1px solid transparent;
-    border-radius: 0.25rem;">Updated Successed.</div>');
+    border-radius: 0.25rem;">Updated Successfully.</div>');
 				redirect(base_url().'main/sbu_master','refresh'); 
 			}else{
 				$this->session->set_flashdata('msg','<div class="alert alert-danger text-center"> Updated Failed! Try Again </div>');
@@ -2113,15 +2133,13 @@ $headers .= 'From: '.$from."\r\n".
 	public function delete_sbu($id){
 		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
 		$result= $this->Super_model->delete_sbu($id);
-		$this->session->set_flashdata('msg','<div class="alert alert-danger" role="alert" style="color: #c04444;
-    background-color: rgba(252, 90, 90, 0.2);
-    border-color: #e85353;font-size: 0.75rem;color: #832f2f;
-    background-color: #fedede;
-    border-color: #fed1d1;position: relative;
+		$this->session->set_flashdata('msg','<div class="alert alert-success text-center" style="color: #008a5d;
+    background-color: rgba(0, 182, 122, 0.2);
+    border-color: #00a770;    position: relative;
     padding: 0.75rem 1.25rem;
     margin-bottom: 1rem;
     border: 1px solid transparent;
-  "> Delete Successfully. </div>');
+    border-radius: 0.25rem;">Deleted Successfully. </div>');
         redirect(base_url().'main/sbu_master','refresh');
 	}
 	
@@ -2153,7 +2171,7 @@ $headers .= 'From: '.$from."\r\n".
 		//$data['sbu']=$this->Super_model->sbu();
 		$data['editsbu'] = $this->Super_model->editsbu($id);	
 			$inputdata = array(
-				'sbu' => $this->input->post('sbu'));
+				'branch' => $this->input->post('branch'));
 			$res=$this->Super_model->updatebranch($id,$inputdata);
 			if($res) {
 				$this->session->set_flashdata('msg','<div class="alert alert-success text-center" style="color: #008a5d;
@@ -2162,7 +2180,7 @@ $headers .= 'From: '.$from."\r\n".
     padding: 0.75rem 1.25rem;
     margin-bottom: 1rem;
     border: 1px solid transparent;
-    border-radius: 0.25rem;">Updated Successed.</div>');
+    border-radius: 0.25rem;">Updated Successfully.</div>');
 				redirect(base_url().'main/branch_master','refresh'); 
 			}else{
 				$this->session->set_flashdata('msg','<div class="alert alert-danger text-center"> Updated Failed! Try Again </div>');
@@ -2172,15 +2190,13 @@ $headers .= 'From: '.$from."\r\n".
 	public function delete_branch($id){
 		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
 		$result= $this->Super_model->delete_branch($id);
-		$this->session->set_flashdata('msg','<div class="alert alert-danger" role="alert" style="color: #c04444;
-    background-color: rgba(252, 90, 90, 0.2);
-    border-color: #e85353;font-size: 0.75rem;color: #832f2f;
-    background-color: #fedede;
-    border-color: #fed1d1;position: relative;
+		$this->session->set_flashdata('msg','<div class="alert alert-success text-center" style="color: #008a5d;
+    background-color: rgba(0, 182, 122, 0.2);
+    border-color: #00a770;    position: relative;
     padding: 0.75rem 1.25rem;
     margin-bottom: 1rem;
     border: 1px solid transparent;
-   "> Delete Successfully. </div>');
+    border-radius: 0.25rem;"> Deleted Successfully. </div>');
         redirect(base_url().'main/branch_master','refresh');
 	}
 	
@@ -2220,7 +2236,7 @@ $headers .= 'From: '.$from."\r\n".
     padding: 0.75rem 1.25rem;
     margin-bottom: 1rem;
     border: 1px solid transparent;
-    border-radius: 0.25rem;">Updated Successed.</div>');
+    border-radius: 0.25rem;">Updated Successfully.</div>');
 				redirect(base_url().'main/grade_master','refresh'); 
 			}else{
 				$this->session->set_flashdata('msg','<div class="alert alert-danger text-center"> Updated Failed! Try Again </div>');
@@ -2230,15 +2246,13 @@ $headers .= 'From: '.$from."\r\n".
 	public function delete_grade($id){
 		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
 		$result= $this->Super_model->delete_grade($id);
-		$this->session->set_flashdata('msg','<div class="alert alert-danger" role="alert" style="color: #c04444;
-    background-color: rgba(252, 90, 90, 0.2);
-    border-color: #e85353;font-size: 0.75rem;color: #832f2f;
-    background-color: #fedede;
-    border-color: #fed1d1;position: relative;
+		$this->session->set_flashdata('msg','<div class="alert alert-success text-center" style="color: #008a5d;
+    background-color: rgba(0, 182, 122, 0.2);
+    border-color: #00a770;    position: relative;
     padding: 0.75rem 1.25rem;
     margin-bottom: 1rem;
     border: 1px solid transparent;
-    ;"> Delete Successfully. </div>');
+    border-radius: 0.25rem;"> Deleted Successfully. </div>');
         redirect(base_url().'main/grade_master','refresh');
 	}
 	
@@ -2276,7 +2290,7 @@ $headers .= 'From: '.$from."\r\n".
     padding: 0.75rem 1.25rem;
     margin-bottom: 1rem;
     border: 1px solid transparent;
-    border-radius: 0.25rem;">Updated Successed.</div>');
+    border-radius: 0.25rem;">Updated Successfully.</div>');
 				redirect(base_url().'main/employee_type_master','refresh'); 
 			}else{
 				$this->session->set_flashdata('msg','<div class="alert alert-danger text-center"> Updated Failed! Try Again </div>');
@@ -2286,13 +2300,13 @@ $headers .= 'From: '.$from."\r\n".
 	public function delete_emp_type($id){
 		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
 		$result= $this->Super_model->delete_emp_type($id);
-		$this->session->set_flashdata('msg',' <div class="alert alert-danger" role="alert" style="color: #c04444;background-color: rgba(252, 90, 90, 0.2);border-color: #e85353;font-size: 0.75rem;color: #832f2f;
-    background-color: #fedede;
-    border-color: #fed1d1;position: relative;
+		$this->session->set_flashdata('msg','<div class="alert alert-success text-center" style="color: #008a5d;
+    background-color: rgba(0, 182, 122, 0.2);
+    border-color: #00a770;    position: relative;
     padding: 0.75rem 1.25rem;
     margin-bottom: 1rem;
     border: 1px solid transparent;
-   "> Deleted Successfully. </div>');
+    border-radius: 0.25rem;"> Deleted Successfully. </div>');
         redirect(base_url().'main/employee_type_master','refresh');
 	}
 	public function designation_master($id=false){
@@ -2331,7 +2345,7 @@ $headers .= 'From: '.$from."\r\n".
     padding: 0.75rem 1.25rem;
     margin-bottom: 1rem;
     border: 1px solid transparent;
-    border-radius: 0.25rem;">Updated Successed.</div>');
+    border-radius: 0.25rem;">Updated Successfully.</div>');
 				redirect(base_url().'main/designation_master','refresh'); 
 			}else{
 				$this->session->set_flashdata('msg','<div class="alert alert-danger text-center"> Updated Failed! Try Again </div>');
@@ -2341,15 +2355,13 @@ $headers .= 'From: '.$from."\r\n".
 	public function delete_des($id){
 		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
 		$result= $this->Super_model->delete_des($id);
-		$this->session->set_flashdata('msg','<div class="alert alert-danger" role="alert" style="color: #c04444;
-    background-color: rgba(252, 90, 90, 0.2);
-    border-color: #e85353;font-size: 0.75rem;color: #832f2f;
-    background-color: #fedede;
-    border-color: #fed1d1;position: relative;
+		$this->session->set_flashdata('msg','<div class="alert alert-success text-center" style="color: #008a5d;
+    background-color: rgba(0, 182, 122, 0.2);
+    border-color: #00a770;    position: relative;
     padding: 0.75rem 1.25rem;
     margin-bottom: 1rem;
     border: 1px solid transparent;
-  "> Deleted Successfully. </div>');
+    border-radius: 0.25rem;"> Deleted Successfully. </div>');
         redirect(base_url().'main/designation_master','refresh');
 	}
 	
@@ -2387,7 +2399,7 @@ $headers .= 'From: '.$from."\r\n".
     padding: 0.75rem 1.25rem;
     margin-bottom: 1rem;
     border: 1px solid transparent;
-    border-radius: 0.25rem;">Updated Successed.</div>');
+    border-radius: 0.25rem;">Updated Successfully.</div>');
 				redirect(base_url().'main/organication_master','refresh'); 
 			}else{
 				$this->session->set_flashdata('msg','<div class="alert alert-danger text-center"> Updated Failed! Try Again </div>');
@@ -2397,15 +2409,13 @@ $headers .= 'From: '.$from."\r\n".
 	public function delete_org($id){
 		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
 		$result= $this->Super_model->delete_org($id);
-		$this->session->set_flashdata('msg',' <div class="alert alert-danger" role="alert" style="color: #c04444;
-    background-color: rgba(252, 90, 90, 0.2);
-    border-color: #e85353;font-size: 0.75rem;color: #832f2f;
-    background-color: #fedede;
-    border-color: #fed1d1;position: relative;
+		$this->session->set_flashdata('msg',' <div class="alert alert-success text-center" style="color: #008a5d;
+    background-color: rgba(0, 182, 122, 0.2);
+    border-color: #00a770;    position: relative;
     padding: 0.75rem 1.25rem;
     margin-bottom: 1rem;
     border: 1px solid transparent;
-    "> Delete Successfully. </div>');
+    border-radius: 0.25rem;"> Deleted Successfully. </div>');
         redirect(base_url().'main/grade_master','refresh');
 	}
 	 public function function_master($id=false){
@@ -2444,7 +2454,7 @@ $headers .= 'From: '.$from."\r\n".
     padding: 0.75rem 1.25rem;
     margin-bottom: 1rem;
     border: 1px solid transparent;
-    border-radius: 0.25rem;">Updated Successed.</div>');
+    border-radius: 0.25rem;">Updated Successfully.</div>');
 				redirect(base_url().'main/function_master','refresh'); 
 			}else{
 				$this->session->set_flashdata('msg','<div class="alert alert-danger text-center"> Updated Failed! Try Again </div>');
@@ -2454,15 +2464,13 @@ $headers .= 'From: '.$from."\r\n".
 	public function delete_function($id){
 		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
 		$result= $this->Super_model->delete_function($id);
-		$this->session->set_flashdata('msg',' <div class="alert alert-danger" role="alert" style="color: #c04444;
-    background-color: rgba(252, 90, 90, 0.2);
-    border-color: #e85353;font-size: 0.75rem;color: #832f2f;
-    background-color: #fedede;
-    border-color: #fed1d1;position: relative;
+		$this->session->set_flashdata('msg',' <div class="alert alert-success text-center" style="color: #008a5d;
+    background-color: rgba(0, 182, 122, 0.2);
+    border-color: #00a770;    position: relative;
     padding: 0.75rem 1.25rem;
     margin-bottom: 1rem;
     border: 1px solid transparent;
-   "> Deleted Successfully. </div>');
+    border-radius: 0.25rem;">Deleted Successfully. </div>');
         redirect(base_url().'main/function_master','refresh');
 	}
 	 public function gender_master($id=false){
@@ -2499,7 +2507,7 @@ $headers .= 'From: '.$from."\r\n".
     padding: 0.75rem 1.25rem;
     margin-bottom: 1rem;
     border: 1px solid transparent;
-    border-radius: 0.25rem;">Updated Successed.</div>');
+    border-radius: 0.25rem;">Updated Successfully.</div>');
 				redirect(base_url().'main/gender_master','refresh'); 
 			}else{
 				$this->session->set_flashdata('msg','<div class="alert alert-danger text-center"> Updated Failed! Try Again </div>');
@@ -2509,15 +2517,13 @@ $headers .= 'From: '.$from."\r\n".
 	public function delete_gender($id){
 		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
 		$result= $this->Super_model->delete_gender($id);
-		$this->session->set_flashdata('msg',' <div class="alert alert-danger" role="alert" style="color: #c04444;
-    background-color: rgba(252, 90, 90, 0.2);
-    border-color: #e85353;font-size: 0.75rem;color: #832f2f;
-    background-color: #fedede;
-    border-color: #fed1d1;position: relative;
+		$this->session->set_flashdata('msg',' <div class="alert alert-success text-center" style="color: #008a5d;
+    background-color: rgba(0, 182, 122, 0.2);
+    border-color: #00a770;    position: relative;
     padding: 0.75rem 1.25rem;
     margin-bottom: 1rem;
     border: 1px solid transparent;
-   "> Deleted Successfully. </div>');
+    border-radius: 0.25rem;"> Deleted Successfully. </div>');
         redirect(base_url().'main/gender_master','refresh');
 	}
 
