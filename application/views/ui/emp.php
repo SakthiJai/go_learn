@@ -53,7 +53,7 @@
                             </tr>
                           </thead>
                           <tbody>
-                            <?php $i=1; foreach($emp->result() as $row) { ?>
+                             <?php $i=1; foreach($emp->result() as $row) { ?>
 							 
                             <tr>
                               <td>
@@ -75,12 +75,13 @@
                                 <?php echo $row->designation;?>
                               </td>
                               <td>
-                                <?php if($row->emp_status==2){ ?>
+                                <?php if($row->emp_status==1){ ?>
                               <td>
+							  
                                 <div class="mdc-form-field">
                                   <div class="mdc-checkbox mdc-checkbox--success">
                                     <input type="checkbox" id="basic-disabled-checkbox"
-                                      class="mdc-checkbox__native-control" checked="" disabled>
+                                      class="mdc-checkbox__native-control" checked>
                                     <div class="mdc-checkbox__background">
                                       <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
                                         <path class="mdc-checkbox__checkmark-path" fill="none"
@@ -91,6 +92,7 @@
                                   </div>
                                   <label for="basic-disabled-checkbox" id="basic-disabled-checkbox-label"></label>
                                 </div>
+								
                                 <?php }else{ ?>
                                 <div class="mdc-form-field">
                                   <div class="mdc-checkbox mdc-checkbox--secondary">
@@ -109,10 +111,10 @@
                                 <?php } ?>
 								  <td>
 									<?php if($row->admin=='admin'){ ?>
-									<a class="btn btn-danger"></a>
+									  <a class="btn btn-danger"></a>
 									<?php }else{ ?>
-
-									<a href="<?php echo base_url('superadmin/addemp'); ?>"
+									
+                                   <a href="<?php echo base_url();?>main/viewEmployee/<?php echo $row->id;?>"
 									  class="mdc-button mdc-button--raised filled-button--success mdc-ripple-upgraded"
 									  style="--mdc-ripple-fg-size:56px; --mdc-ripple-fg-scale:1.96936; --mdc-ripple-fg-translate-start:8.5px, -4.40001px; --mdc-ripple-fg-translate-end:18.8px, -10px;">
 									  View

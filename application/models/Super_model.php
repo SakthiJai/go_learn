@@ -40,6 +40,20 @@ class Super_model extends CI_model {
 		   
 		   
      }
+	 public function updateEmp($emp_id,$updateUserData){
+     
+	     $this->db->where('emp_id', $emp_id);
+		 $query = $this->db->get('emp');
+		 $count_row = $query->num_rows();
+		 
+           if ($count_row >= 1){
+			    return $this->db->update('emp',$updateUserData);
+               //return false;
+           } else {
+               return false;
+           }
+     }
+	 
 	public function emp_history(){
        $list= $this->db->from('emp_history')->get();
         return $list->result();   
@@ -582,6 +596,8 @@ class Super_model extends CI_model {
         $this->db->where('id',$id)->delete('grade');
         return true;
     }
-
+    public function editEmployee($id){
+		return $this->db->from('emp')->where('id',$id)->get()->result_array();	
+	}
 }
 ?>
