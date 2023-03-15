@@ -55,6 +55,7 @@
 							</thead>		
                             <tbody>
 							<?php $i=1; foreach($sbu_master->result() as $row) { ?>
+							
                                       <tr>
                                             <td style='text-align: center;'><?php echo $i;?></td>
                                             <td style='text-align: center;'><?php echo $row->sbu;?></td>

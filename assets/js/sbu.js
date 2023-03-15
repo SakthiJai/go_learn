@@ -24,8 +24,9 @@ $(document).ready(function() {
               
                 if (formdata != "") {
                       form.submit();
+					  //window.location.href= 'sbu_master';
                 } else {
-                      form.submit();
+                      //form.submit();
                 }
                 
 
@@ -81,3 +82,6 @@ function showConfirmation(id)
     })
 	  
 	}
+	//function functionToExecute(){
+  //window.location.href= 'sbu_master/';
+ // }
