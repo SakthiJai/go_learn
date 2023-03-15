@@ -334,7 +334,7 @@ class Main extends CI_Controller {
 				
 			$res=$this->Super_model->updatefaculty($id,$inputdata);
 			if($res) {
-				$this->session->set_flashdata('msg','<div class="alert alert-success text-center">Updated Successfully.</div>');
+				$this->session->set_flashdata('msg','<div class="alert alert-success text-center">Updated Successed.</div>');
 				redirect(base_url().'ui/faculty','refresh'); 
 			}else{
 				$this->session->set_flashdata('msg','<div class="alert alert-danger text-center"> Updated Failed! Try Again </div>');
@@ -369,7 +369,7 @@ class Main extends CI_Controller {
 		);
 		//print_r($data);exit();
         $insertUserData = $this->Super_model->addprogram_types($data);
-        $this->session->set_flashdata('msg','<div class="alert alert-success text-center">submit Successfully.</div>');
+        $this->session->set_flashdata('msg','<div class="alert alert-success text-center">submit Successed.</div>');
         redirect(base_url().'ui/program_types','refresh');            
     }
 
@@ -2086,6 +2086,7 @@ $headers .= 'From: '.$from."\r\n".
 			 $this->load->view('ui/addsbu',$data);
 		
 		
+		 
 	}
 	public function addSbu_master(){
 		
