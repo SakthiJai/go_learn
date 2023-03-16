@@ -43,9 +43,9 @@
                           <table class="table table-hoverable">
 						  <thead>
 							<tr>
-                                        <th class="demo" style='text-align: center;'>S No</th>
-                                        <th class="demo" style='text-align: center;'>Oranization</th>
-                                        <th class="demo" style='text-align: center;'>Action</th>
+                                        <th  style='text-align: center;'>S No</th>
+                                        <th  style='text-align: center;'>Oranization</th>
+                                        <th  style='text-align: center;'>Action</th>
                                     </tr>
 							</thead>		
                             <tbody>
@@ -54,10 +54,9 @@
                                             <td style='text-align: center;'><?php echo $i;?></td>
                                             <td style='text-align: center;'><?php echo $row->organication;?></td>
 											 <td style='text-align: center;'><a href="<?php echo base_url(); ?>main/organication_master/<?php echo $row->id; ?>"  class="mdc-button mdc-button--raised icon-button filled-button--success mdc-ripple-upgraded" style="--mdc-ripple-fg-size:21px; --mdc-ripple-fg-scale:2.90056; --mdc-ripple-fg-translate-start:12.375px, 18.5px; --mdc-ripple-fg-translate-end:7.5px, 7.5px; background-color: #00bbdd;">
-											  <i class="material-icons mdc-button__icon" style="margin-right: 10px;margin-left: 9px;text-align: center;";>colorize</i>
-												 
+											  <img alt="Eye icon" srcset="https://img.icons8.com/material/2x/visible.png 2x, https://img.icons8.com/material/1x/visible.png 1x" src="https://img.icons8.com/material/1x/visible.png" style="filter: invert(0%) sepia(0%) saturate(7465%) hue-rotate(196deg) brightness(93%) contrast(95%);">
 												</a>
-												<a href="<?php echo base_url(); ?>main/delete_org/<?php echo $row->id; ?>"  class="mdc-button mdc-button--raised icon-button filled-button--success mdc-ripple-upgraded" style="--mdc-ripple-fg-size:21px; --mdc-ripple-fg-scale:2.90056; --mdc-ripple-fg-translate-start:12.375px, 18.5px; --mdc-ripple-fg-translate-end:7.5px, 7.5px; background-color: #ff420f;" ><i class="material-icons mdc-button__icon"  onclick="return confirm('Are you sure you want to delete this item')" style="margin-right: 10px;margin-left: 9px;text-align: center;"; >Delete</i>
+													<a   class="mdc-button mdc-button--raised icon-button filled-button--success mdc-ripple-upgraded" style="--mdc-ripple-fg-size:21px; --mdc-ripple-fg-scale:2.90056; --mdc-ripple-fg-translate-start:12.375px, 18.5px; --mdc-ripple-fg-translate-end:7.5px, 7.5px; background-color: #ff420f;" ><i class="material-icons mdc-button__icon"  onclick="showConfirmation(<?php echo $row->id;?>)" style="margin-right: 10px;margin-left: 9px;text-align: center;"; >delete</i>
 												</a></td>
                                         </tr>
 										<?php $i++;   }  ?>

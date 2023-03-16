@@ -74,7 +74,7 @@
                     </a>
                   </div>
 				   <div class="mdc-list-item mdc-drawer-item">
-                    <a class="mdc-drawer-link" href="<?php echo base_url('main/organication_master'); ?>">
+                    <a class="mdc-drawer-link" href="<?php echo base_url('main/organization_master'); ?>">
                     Organization 
                     </a>
                   </div>

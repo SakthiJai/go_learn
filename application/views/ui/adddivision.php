@@ -32,7 +32,7 @@
 						
 						        <?php if (isset($editdivision) && ($editdivision->num_rows() > 0)) {
             foreach ($editdivision->result() as $row) { ?>
-			<center><span class=""> <?php echo $this->session->flashdata('msgse'); ?></span></center>
+			<center><span class=""> <?php echo $this->session->flashdata('msg'); ?></span></center>
                   <form  id="employee" class="" action="<?php echo base_url(); ?>main/updatedivision/<?php echo $row->id; ?> " method="POST">
                     <div class="mdc-layout-grid">
                       <div class="mdc-layout-grid__inner">
@@ -57,15 +57,15 @@
                     </div>
                   </form>
 				  <?php } ?>   <?php }else { ?>
-				  <center><span class=""> <?php echo $this->session->flashdata('msgse'); ?></span></center>
-				    <form  id="employee" class="" action="<?php echo base_url('main/adddivision');?>" method="POST">
+				  <center><span class=""> <?php echo $this->session->flashdata('msg'); ?></span></center>
+				    <form  id="employee" class="" action="<?php echo base_url('main/adddivision_master');?>" method="POST">
                     <div class="mdc-layout-grid">
                       <div class="mdc-layout-grid__inner">
 					   
                         <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
                           <div class="mdc-text-field w-100 mdc-ripple-upgraded">           
                             <div class="mdc-line-ripple"></div>
-                            <label for="text-field-hero-input" class="mdc-floating-label">Function</label>
+                            <label for="text-field-hero-input" class="mdc-floating-label">Unit</label>
 							<input class="mdc-text-field__input" id="text-field-hero-input exampleText" name="division"  value="<?php echo $row->division;?>"  >
                           </div>
                         </div>
@@ -113,7 +113,7 @@
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/validate.min.js"></script>
 	 <script type="text/javascript" src="<?php echo base_url();?>assets/js/moment.min.js"></script>	
  <script type="text/javascript" src="<?php echo base_url();?>assets/js/daterangepicker.js"></script>	
-	 <script type="text/javascript" src="<?php echo base_url();?>assets/js/.js"></script>
+	 <script type="text/javascript" src="<?php echo base_url();?>assets/js/division.js"></script>
     <script type="text/javascript" src="<?php echo base_url();?>assets/js/ckeditor.js"></script>
 	<style>.error {
         color: #fa4040;

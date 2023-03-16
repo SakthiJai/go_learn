@@ -31,25 +31,23 @@
                   </div>
 				   &nbsp;&nbsp;&nbsp;&nbsp;
 				  
-				   <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--span-8-tablet">
                  	<center><span class=""> <?php echo $this->session->flashdata('msg'); ?></span></center>
-					</div>
+					
                   <div class="mdc-layout-grid__inner mt-2">
                     <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--span-8-tablet">
                         <div class="table-responsive border">
                            <table id="datatable-buttons" class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th>S.No</th>
-                                    <th>Faculty Name</th>
-                                    <th>Mobile</th>
-                                    <th>Email</th>
-                                    <th>Company name</th>
-                                    <th>City</th>
-                                    <th>State</th>
-                                    <th>Country</th>
-                                    <th>Edit</th>
-                                    <th>Delete</th>
+                                    <th style="text-align: center;">S.No</th>
+                                    <th style="text-align: center;">Faculty Name</th>
+                                    <th style="text-align: center;">Mobile</th>
+                                    <th style="text-align: center;">Email</th>
+                                    <th style="text-align: center;">Company name</th>
+                                    <th style="text-align: center;">City</th>
+                                    <th style="text-align: center;">State</th>
+                                    <th style="text-align: center;">Country</th>
+                                    <th style="text-align: center;">Action</th>
                                 </tr>
                             </thead>
                             <?php $i = 1; ?>
@@ -57,16 +55,22 @@
 
                                 <?php foreach ($faculty->result() as $row) { ?>
                                     <tr>
-                                        <td><?php echo $i; ?></td>
-                                        <td><?php echo $row->name; ?></td>
-                                        <td><?php echo $row->mobile; ?></td>
-                                        <td><?php echo $row->email; ?></td>
-                                        <td><?php echo $row->company_name; ?></td>
-                                        <td><?php echo $row->city; ?></td>
-                                        <td><?php echo $row->state; ?></td>
-                                        <td><?php echo $row->country; ?></td>
-                                        <td><a href="<?php echo base_url(); ?>superadmin/faculty/<?php echo $row->id; ?>" class="btn btn-info">Edit</a></td>
-                                        <td><a href="<?php echo base_url(); ?>superadmin/faculty_delete/<?php echo $row->id; ?>" onclick="return confirm ('Do you want to Delete this record?');" class="btn btn-danger">Delete</a></td>
+                                        <td style="text-align: center;"><?php echo $i; ?></td>
+                                        <td style="text-align: center;"><?php echo $row->name; ?></td>
+                                        <td style="text-align: center;"><?php echo $row->mobile; ?></td>
+                                        <td style="text-align: center;"><?php echo $row->email; ?></td>
+                                        <td style="text-align: center;"><?php echo $row->company_name; ?></td>
+                                        <td style="text-align: center;"><?php echo $row->city; ?></td>
+                                        <td style="text-align: center;"><?php echo $row->state; ?></td>
+                                        <td style="text-align: center;"><?php echo $row->country; ?></td>
+										 <td style='text-align: center;'><a href="<?php echo base_url(); ?>main/faculty/<?php echo $row->id; ?>"  class="mdc-button mdc-button--raised icon-button filled-button--success mdc-ripple-upgraded" style="--mdc-ripple-fg-size:21px; --mdc-ripple-fg-scale:2.90056; --mdc-ripple-fg-translate-start:12.375px, 18.5px; --mdc-ripple-fg-translate-end:7.5px, 7.5px; background-color: #00bbdd;">
+											 <img alt="Eye icon" srcset="https://img.icons8.com/material/2x/visible.png 2x, https://img.icons8.com/material/1x/visible.png 1x" src="https://img.icons8.com/material/1x/visible.png" style="filter: invert(0%) sepia(0%) saturate(7465%) hue-rotate(196deg) brightness(93%) contrast(95%);">
+												 
+												</a>
+												<a   class="mdc-button mdc-button--raised icon-button filled-button--success mdc-ripple-upgraded" style="--mdc-ripple-fg-size:21px; --mdc-ripple-fg-scale:2.90056; --mdc-ripple-fg-translate-start:12.375px, 18.5px; --mdc-ripple-fg-translate-end:7.5px, 7.5px; background-color: #ff420f;" ><i class="material-icons mdc-button__icon"  onclick="showConfirmation(<?php echo $row->id;?>)" style="margin-right: 10px;margin-left: 9px;text-align: center;"; >delete</i>
+												</a></td>
+                                       <!-- <td><a href="<?php echo base_url(); ?>superadmin/faculty/<?php echo $row->id; ?>" class="btn btn-info">Edit</a></td>
+                                        <td><a href="<?php echo base_url(); ?>superadmin/faculty_delete/<?php echo $row->id; ?>" onclick="return confirm ('Do you want to Delete this record?');" class="btn btn-danger">Delete</a></td>-->
                                     </tr>
                                 <?php $i++;
                                 }  ?>
@@ -96,7 +100,7 @@
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/validate.min.js"></script>
 	 <script type="text/javascript" src="<?php echo base_url();?>assets/js/moment.min.js"></script>	
  <script type="text/javascript" src="<?php echo base_url();?>assets/js/daterangepicker.js"></script>	
-	 <script type="text/javascript" src="<?php echo base_url();?>assets/js/division.js"></script>
+	 <script type="text/javascript" src="<?php echo base_url();?>assets/js/faculty.js"></script>
     <script type="text/javascript" src="<?php echo base_url();?>assets/js/ckeditor.js"></script>
 	<script type="text/javascript" src="<?php echo base_url();?>assets/js/csweetalert2@11"></script>
 
