@@ -1,3 +1,6 @@
+setTimeout(function() { 
+  $(".alert-success").hide();
+}, 2000);
 $(document).ready(function() {
         $('#employee').validate({
             rules: {

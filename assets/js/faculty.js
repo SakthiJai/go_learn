@@ -1,4 +1,7 @@
-//document.getElementById("facultyid").addEventListener("blur", checkFaculty());
+//document.getElementById("facultyid").addEventListener("blur", checkFaculty());\
+setTimeout(function() { 
+  $(".alert-success").hide();
+}, 2000);
 $(document).ready(function() {
         $('#addFaculty').validate({
             rules: {

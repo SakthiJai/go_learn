@@ -102,21 +102,16 @@
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/validate.min.js"></script>
 	 <script type="text/javascript" src="<?php echo base_url();?>assets/js/moment.min.js"></script>	
  <script type="text/javascript" src="<?php echo base_url();?>assets/js/daterangepicker.js"></script>	
-	 <script type="text/javascript" src="<?php echo base_url();?>assets/js/master.js"></script>
+	 <script type="text/javascript" src="<?php echo base_url();?>assets/js/branch.js"></script>
     <script type="text/javascript" src="<?php echo base_url();?>assets/js/ckeditor.js"></script>
-	<script src="https://www.bootstrapdash.com/demo/material-dash-bootstrap/template/assets/vendors/sweetalert/sweetalert.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script type="text/javascript" src="<?php echo base_url();?>assets/js/csweetalert2@11"></script>
 	
 	<style>.error {
         color: #fa4040;
         font-size: 12px;
 		margin-top: 2%;
     }
-	.demo{  background-color: #f2f2f2;
-  color: #333;
-  font-weight: bold;
-  padding: 12px;
-  border: 1px solid #ccc;}
+	
 	</style>
 </body>
 </html> 

@@ -85,3 +85,6 @@ function showConfirmation(id)
 	//function functionToExecute(){
   //window.location.href= 'sbu_master/';
  // }
+ setTimeout(function() { 
+  $(".alert-success").hide();
+}, 2000);

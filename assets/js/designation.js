@@ -81,3 +81,6 @@ function showConfirmation(id)
     })
 	  
 	}
+		setTimeout(function() { 
+  $(".alert-success").hide();
+}, 2000);

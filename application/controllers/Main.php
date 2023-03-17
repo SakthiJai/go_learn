@@ -404,42 +404,77 @@ class Main extends CI_Controller {
 		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
 		$data['program_types']=$this->Super_model->program_types();
 		if(isset($id) && !empty($id)){
+			//print_r($id);exit;
 			$data['editprogram_types'] = $this->Super_model->editprogram_types($id);
-		}
+			$this->load->view('ui/addprogram_types',$data);
+		}else{
 		$data['h_title'] = "Go Learn "; 	    
-		$this->load->view('ui/header',$data);
-		$this->load->view('ui/program_types.php',$data);
+		$this->load->view('ui/program_types',$data);
 	}
-	
+	}
 	public function addprogram_types()
     {
-    	//print_r($_POST);exit();
-		$data = array(
+    	$data['h_title'] = "Go Learn "; 	    
+		$this->load->view('ui/addprogram_types',$data);
+                 
+    }
+	public function addprogram_types_master(){
+			$data = array(
 		    'type' => $this->input->post('type'),
 		);
-		//print_r($data);exit();
         $insertUserData = $this->Super_model->addprogram_types($data);
-        $this->session->set_flashdata('msg','<div class="alert alert-success text-center">submit Successed.</div>');
-        redirect(base_url().'ui/program_types','refresh');            
-    }
-
+		if($data){
+				$this->session->set_flashdata('msg','<div class="alert alert-success text-center" style="color: #008a5d;
+    background-color: rgba(0, 182, 122, 0.2);
+    border-color: #00a770;    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;">Added Successfully.</div>');
+			redirect('main/program_types'); 
+			
+			}else{
+				redirect('main/addprogram_types'); 
+			}
+	}
+	public function deleteProgramtypes($id)
+    
+	{
+	     //print_r($id);exit();
+	    $updateUserData = $this->Super_model->deleteProgramtypes($id);
+                 $this->session->set_flashdata('msg','<div class="alert alert-success text-center" style="color: #008a5d;
+    background-color: rgba(0, 182, 122, 0.2);
+    border-color: #00a770;    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;">Deleted  Successfully.</div>');
+        redirect(base_url().'main/program_types','refresh'); 
 	
+	}
 	public function updateprogram_types($id)
 	{
-		$data['program_types']=$this->Super_model->program_types();
+		//$data['program_types']=$this->Super_model->program_types();
 		$data['editprogram_types'] = $this->Super_model->editprogram_types($id);	
 
 			$inputdata = array(
 				'type' => $this->input->post('type'),
 				);
-				
+				//print_r($inputdata);exit;
 			$res=$this->Super_model->updateprogram_types($id,$inputdata);
+			//print_r($res);exit;
 			if($res) {
-				$this->session->set_flashdata('msg','<div class="alert alert-success text-center">Updated Successfully!</div>'); 
-				redirect(base_url().'ui/program_types','refresh'); 
+				$this->session->set_flashdata('msg','<div class="alert alert-success text-center" style="color: #008a5d;
+    background-color: rgba(0, 182, 122, 0.2);
+    border-color: #00a770;    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;">Updated Successfully.</div>'); 
+				redirect(base_url().'main/program_types','refresh'); 
 			}else{
 				$this->session->set_flashdata('msg','<div class="alert alert-success text-center">Update Failed.</div>');
-				redirect(base_url().'ui/program_types','refresh'); 
+				redirect(base_url().'main/program_types','refresh'); 
 			}
 			
 	}
