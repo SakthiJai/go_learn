@@ -303,7 +303,7 @@
                         </form>
 						<?php } ?>
        <?php }else{ ?>
-	   <form id="createProgram" action="<?php echo base_url('main/creatingprogram'); ?>" method="POST">
+	   <form id="createProgram" action="<?php echo base_url('main/'); ?>" method="POST">creatingprogram
                         <input type="hidden" id="program_id" name="program_id" value>
                         <input type="hidden" id="base_url" name="base_url" value="<?php echo $base_url ?>"/>
                           <div class="mdc-layout-grid">

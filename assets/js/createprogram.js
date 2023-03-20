@@ -1,77 +1,10 @@
 
 
-
-$('#divLoading').hide();
-
-document.getElementById("course_name").addEventListener("change", updateRelevents);
-setTimeout(function(){
-$('.btn-danger').hide();
-},1000);
-    $(function(){
-    var dtToday = new Date();
-
-    var month = dtToday.getMonth() + 1;
-    var day = dtToday.getDate();
-    var year = dtToday.getFullYear();
-
-    if(month < 10)
-        month = '0' + month.toString();
-    if(day < 10)
-        day = '0' + day.toString();
-
-    var maxDate = year + '-' + month + '-' + day;    
-    $('#txtDate').attr('max', maxDate);
-});
-
-
-$( document ).ready(function() {
-    var date_input = document.getElementById('start_time');
-//date_input.valueAsDate = new Date();
-
-date_input.onchange = function(){
- $('#end_time').val('');
-	var spiltTime= this.value.split(":");
-	var no_of_hours = $('#no_of_hrs').val().split('.');
-	let min = no_of_hours[1];
-	let time = parseInt(spiltTime[0])+parseInt($('#no_of_hrs').val())+":"+spiltTime[1]+":"+0+0;
-	var endtime= addTimes('0:'+ min, time).split(':');	
-   $('#end_time').val(endtime[0]+":"+endtime[1])
-}
-function addTimes(t0, t1) {
-  return secsToTime(timeToSecs(t0) + timeToSecs(t1));
-}
-function timeToSecs(time) {
-  let [h, m, s] = time.split(':');
-  return h*3600 + (m|0)*60 + (s|0)*1;
-}
-function secsToTime(seconds) {
-  let z = n => (n<10? '0' : '') + n; 
-  return (seconds / 3600 | 0) + ':' +
-       z((seconds % 3600) / 60 | 0) + ':' +
-        z(seconds % 60);
-}
-       jQuery.validator.addMethod("greaterThan", 
-function(value, element, params) {
-
-    if (!/Invalid|NaN/.test(new Date(value))) {
-        return new Date(value) >= new Date($(params).val());
-    }
-
-    return isNaN(value) && isNaN($(params).val()) 
-        || (Number(value) >= Number($(params).val())); 
-},'Must be greater than From Date.');;
-    
-});
-   
-
-$("input[name='from_date']").change(function() {
-  $("input[name='to_date']").val($(this).val());
-})
-
-
 var baseurl = $('#base_url').val();
 console.log(baseurl);
-    $(document).ready(function() {
+
+$('#divLoading').hide();
+ $(document).ready(function() {
         $('#createProgram').validate({
             rules: {
                 course_name: {
@@ -216,22 +149,20 @@ console.log(baseurl);
                
                 var formdata = $("#createProgram").serialize();
                 var id = $("#id").val();
+				
                 if (id != "") {
-
-                    //    var url="updateProgram";
+					 form.submit();
                 } else {
+ "main/creatingprogram"
+            }
 
-                    //   var url="createprogram";
-
-                }
-
-                checkEmpValue(form);
-                
+                //checkEmpValue(form);
+                form.submit();
             }
         });
     });
 
-
+/*
     function updateRelevents() {
 
         console.log('test');
@@ -328,3 +259,71 @@ console.log(baseurl);
  		
 		
 
+
+document.getElementById("course_name").addEventListener("change", updateRelevents);
+setTimeout(function(){
+$('.btn-danger').hide();
+},1000);
+    $(function(){
+    var dtToday = new Date();
+
+    var month = dtToday.getMonth() + 1;
+    var day = dtToday.getDate();
+    var year = dtToday.getFullYear();
+
+    if(month < 10)
+        month = '0' + month.toString();
+    if(day < 10)
+        day = '0' + day.toString();
+
+    var maxDate = year + '-' + month + '-' + day;    
+    $('#txtDate').attr('max', maxDate);
+});
+
+
+/*$( document ).ready(function() {
+    var date_input = document.getElementById('start_time');
+//date_input.valueAsDate = new Date();
+
+date_input.onchange = function(){
+ $('#end_time').val('');
+	var spiltTime= this.value.split(":");
+	var no_of_hours = $('#no_of_hrs').val().split('.');
+	let min = no_of_hours[1];
+	let time = parseInt(spiltTime[0])+parseInt($('#no_of_hrs').val())+":"+spiltTime[1]+":"+0+0;
+	var endtime= addTimes('0:'+ min, time).split(':');	
+   $('#end_time').val(endtime[0]+":"+endtime[1])
+}
+function addTimes(t0, t1) {
+  return secsToTime(timeToSecs(t0) + timeToSecs(t1));
+}
+function timeToSecs(time) {
+  let [h, m, s] = time.split(':');
+  return h*3600 + (m|0)*60 + (s|0)*1;
+}
+function secsToTime(seconds) {
+  let z = n => (n<10? '0' : '') + n; 
+  return (seconds / 3600 | 0) + ':' +
+       z((seconds % 3600) / 60 | 0) + ':' +
+        z(seconds % 60);
+}
+       jQuery.validator.addMethod("greaterThan", 
+function(value, element, params) {
+
+    if (!/Invalid|NaN/.test(new Date(value))) {
+        return new Date(value) >= new Date($(params).val());
+    }
+
+    return isNaN(value) && isNaN($(params).val()) 
+        || (Number(value) >= Number($(params).val())); 
+},'Must be greater than From Date.');;
+    
+});*/
+   
+
+$("input[name='from_date']").change(function() {
+  $("input[name='to_date']").val($(this).val());
+})
+
+
+   
