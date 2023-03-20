@@ -9,7 +9,7 @@
         <div class="mdc-list-group">
           <nav class="mdc-list mdc-drawer-menu">
             <div class="mdc-list-item mdc-drawer-item">
-              <a class="mdc-drawer-link" href="index.html">
+              <a class="mdc-drawer-link" href="<?php echo base_url('main/dashboard'); ?>">
                 <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">home</i>
                 Dashboard
               </a>
@@ -47,8 +47,10 @@
               <div class="mdc-expansion-panel" id="sample-page-submenu2">
                 <nav class="mdc-list mdc-drawer-submenu">
                   <div class="mdc-list-item mdc-drawer-item">
-				  <i class='fas fa-angle-double-right'></i>
-                    <a class="mdc-drawer-link" href="<?php echo base_url('main/sbu_master'); ?>">
+				 
+
+                 
+				  <a class="mdc-drawer-link" href="<?php echo base_url('main/sbu_master'); ?>">
                     SBU 
                     </a>
                   </div>
@@ -114,18 +116,18 @@
                     Program Type
                     </a>
                   </div>
-				   <div class="mdc-list-item mdc-drawer-item">
+				  <!-- <div class="mdc-list-item mdc-drawer-item">
                     <a class="mdc-drawer-link" href="<?php echo base_url('main/events_list') ?>">
                     Program List
                     </a>
-                  </div>
+                  </div>-->
                 </nav>
               </div>
             </div>
             <div class="mdc-list-item mdc-drawer-item">
               <a class="mdc-drawer-link" href="<?php echo base_url('main/course'); ?>" target="_blank"    >
                 <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">description</i>
-                Create Course
+                New Course
               </a>
             </div>
             <div class="mdc-list-item mdc-drawer-item">
@@ -164,11 +166,11 @@
                     MandaysMaster&nbsp;Data
                     </a>
                   </div>
-                  <div class="mdc-list-item mdc-drawer-item">
+                 <!-- <div class="mdc-list-item mdc-drawer-item">
                     <a class="mdc-drawer-link" href="<?php echo base_url('Reports/attendance'); ?>">
                     Attendance
                     </a>
-                  </div>
+                  </div>-->
                   <div class="mdc-list-item mdc-drawer-item">
                     <a class="mdc-drawer-link" href="<?php echo base_url('main/evaluationreport'); ?>">
                     Evaluation Feedback

@@ -76,7 +76,7 @@
                               </td>
                               <td>
                                 <?php if($row->emp_status==1){ ?>
-                              <td>
+                              
 							  
                                 <div class="mdc-form-field">
                                   <div class="mdc-checkbox mdc-checkbox--success">
@@ -109,6 +109,7 @@
                                   <label for="basic-disabled-checkbox" id="basic-disabled-checkbox-label"></label>
                                 </div>
                                 <?php } ?>
+								</td>
 								  <td>
 									<?php if($row->admin=='admin'){ ?>
 									  <a class="btn btn-danger"></a>

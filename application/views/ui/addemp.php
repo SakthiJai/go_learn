@@ -91,7 +91,7 @@
                               <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop">
                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded">
                                   <input class="mdc-text-field__input" name="email" id="exampleEmail"
-                                    placeholder="Email" type="email" autocomplete="off">
+                                     type="email" autocomplete="off">
                                   <div class="mdc-line-ripple"></div>
                                   <label for="text-field-hero-input" class="mdc-floating-label">Email</label>
                                 </div>
@@ -327,34 +327,31 @@
                                   style='padding-right: 114px;'>
                                   <div class="mdc-line-ripple"></div>
                                   <label for="text-field-hero-input" class="mdc-floating-label">DOJ</label>
+								  
                                 </div>
                               </div>
 							  
                               <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3">
-                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded" name="doj" id="reportrange1">
-                                  <i style="padding-top: 10px;"
-                                    class="material-icons mdc-button__icon">Event Available</i>
+                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded" type="text" name="birthday">
                                   <span style="padding: 10px;"></span><i class="fa fa-caret-down"></i>
                                   <div class="mdc-line-ripple">
                                     </div>
                                   </div>
                                </div>
-                              </div>  
-							  
-                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
-                                <button
-                                  class=" mt-1 btn btn-primary mdc-button mdc-button--raised filled-button--success mdc-ripple-upgraded vertical-center"
-                                  style="--mdc-ripple-fg-size:56px;     --mdc-ripple-fg-scale:1.96936; --mdc-ripple-fg-translate-start:22.9px, -19.6px; --mdc-ripple-fg-translate-end:18.8px, -10px ,float: right; ">
+                               
+							    <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4"></div>
+                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
+                                <button type="submit"
+                                  class=" btn btn-primary mdc-button mdc-button--raised filled-button--success mdc-ripple-upgraded vertical-center"
+                                  style="--mdc-ripple-fg-size:56px;     --mdc-ripple-fg-scale:1.96936; --mdc-ripple-fg-translate-start:22.9px, -19.6px; --mdc-ripple-fg-translate-end:18.8px, -10px ,float: right;     width: 200px;">
                                   Submit
-                                </button>&nbsp;&nbsp;&nbsp;&nbsp; 
-								  
-                                <button
-                                  class=" mt-1 btn btn-primary mdc-button mdc-button--unelevated filled-button--info mdc-ripple-upgraded vertical-center"
-                                  style="--mdc-ripple-fg-size:56px; --mdc-ripple-fg-scale:2.19553; --mdc-ripple-fg-translate-start:8.23752px, -2.59998px; --mdc-ripple-fg-translate-end:13px, -1px;">
-                                  Cancel
-                                </button>
-                              </div>
 
+                                </button>&nbsp;&nbsp;&nbsp;&nbsp;
+								<a href="<?php echo base_url('main/emp'); ?>"class=" mdc-button mdc-button--raised filled-button--secondary mdc-ripple-upgraded"  style="--mdc-ripple-fg-size:70px; --mdc-ripple-fg-scale:1.90907; --mdc-ripple-fg-translate-start:8.11121px, -9.33333px; --mdc-ripple-fg-translate-end:24.1389px, -17px;     width: 200px;  ">
+									 Cancel
+									</a>
+                              </div>
+							   <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4"></div>
 
                             </div>
                           </div>
@@ -384,6 +381,10 @@
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/moment.min.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/daterangepicker.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/addemp.js"></script>
+  
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 	
   <style>
     .error {
@@ -392,7 +393,15 @@
       margin-top: 2%;
     }
   </style>
-   
+   <script>
+$(function() {
+  $('input[name="daterange"]').daterangepicker({
+    opens: 'left'
+  }, function(start, end, label) {
+    console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+  });
+});
+</script>
 </body>
 
 </html>

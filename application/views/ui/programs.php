@@ -20,16 +20,11 @@
                   <div class="d-flex justify-content-between">
                     
 					<button class="mdc-button mdc-button--outlined outlined-button--secondary mdc-ripple-upgraded" style="--mdc-ripple-fg-size:65px; --mdc-ripple-fg-scale:1.92333; --mdc-ripple-fg-translate-start:-21.6875px, -3.5px; --mdc-ripple-fg-translate-end:22.1188px, -14.5px;">
-                        Emplyoee Details
+                       
+                Assign Training course
+              
                       </button>
-                    <div>
-					 <a class="mdc-button mdc-button--raised filled-button--secondary mdc-ripple-upgraded" href="<?php echo base_url('superadmin/addemp'); ?>">
-                                    New Employee
-                                </a>&nbsp;&nbsp;
-                        <i class="material-icons refresh-icon">refresh</i>
-                        <i class="material-icons options-icon ml-2">more_vert</i>
-						
-                    </div>
+                    
                   </div>
                  
                   <div class="mdc-layout-grid__inner mt-2">

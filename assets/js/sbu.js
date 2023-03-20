@@ -3,11 +3,13 @@ $(document).ready(function() {
             rules: {
 				sbu: {
                     required: true,
+					 pattern: /^[a-zA-Z0-9]+$/
                 },	
             },
             messages: {
 				sbu: {
                    required: "Enter SBU"
+				    pattern: "Special characters are not allowed"
                 },
             },
 
@@ -82,9 +84,8 @@ function showConfirmation(id)
     })
 	  
 	}
-	//function functionToExecute(){
-  //window.location.href= 'sbu_master/';
- // }
+	
  setTimeout(function() { 
   $(".alert-success").hide();
 }, 2000);
+  

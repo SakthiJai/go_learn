@@ -132,7 +132,7 @@ $("#facultyid").on("keyup", function() {
                 id: $('#facultyid').val()
             },
             function(data) {
-                console.log(JSON.parse(data));
+                console.log(data);
                 var list = JSON.parse(data);
                 if (data!=500) {
                     $('#facultyname').val(list.name);

@@ -33,7 +33,7 @@
                     <div class="menu-button-container">
                       <div class="mdc-card">
                        <?php if(isset($editprogramlist)){ ?><?php foreach ($editprogramlist->result() as $value) { ?><span><?php echo $value->program_name;?></span>
-                        <form id="employee" action="<?php echo base_url('main/creatingprogram'); ?>" method="POST">
+                        <form id="createProgram" action="<?php echo base_url('main/creatingprogram'); ?>" method="POST">
                         <input type="hidden" id="program_id" name="program_id" value>
                         <input type="hidden" id="base_url" name="base_url" value="<?php echo $base_url ?>"/>
                           <div class="mdc-layout-grid">
@@ -233,7 +233,7 @@
                               </div>
 							  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded">
-                                  <input class="mdc-text-field__input" id="  from_date" name="from_date" input type="date" min="<?php echo date("Y-m-d"); ?>" value="<?php echo $value->from_date; ?>" type="10/07/1984"  >
+                                  <input class="mdc-text-field__input" id="  from_date" name="from_date" min="<?php echo date("Y-m-d"); ?>" value="<?php echo $value->from_date; ?>" type="10/07/1984"  >
                                   <div class="mdc-line-ripple"></div>
                                   <label for="" class="mdc-floating-label">Start Date:</label>
                                 </div>
@@ -249,7 +249,7 @@
                               
                               <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded">
-                                  <input class="mdc-text-field__input" name="start_time" type="time" id="start_time" placeholder="Start Time" min="09:00" max="22:00" value="<?php echo $value->start_time; ?>">
+                                  <input class="mdc-text-field__input" name="start_time" type="text" id="start_time" placeholder="Start Time" value="<?php echo $value->start_time; ?>">
                                   <div class="mdc-line-ripple"></div>
                                   <label for="text-field-hero-input" class="mdc-floating-label">Start Time:</label>
                                 </div>
@@ -313,13 +313,13 @@
                         </form>
 						<?php } ?>
        <?php }else{ ?>
-	   <form id="employee" action="<?php echo base_url('main/creatingprogram'); ?>" method="POST">
+	   <form id="createProgram" action="<?php echo base_url('main/creatingprogram'); ?>" method="POST">
                         <input type="hidden" id="program_id" name="program_id" value>
                         <input type="hidden" id="base_url" name="base_url" value="<?php echo $base_url ?>"/>
                           <div class="mdc-layout-grid">
                             <div class="mdc-layout-grid__inner">
                             
-                            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
+                            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded">
                                   <div class="mdc-line-ripple"></div>
                                   <label for="text-field-hero-input" class="mdc-floating-label">Course Name</label>
@@ -332,7 +332,7 @@
                                                 </select>
                                 </div>
                               </div>
-                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
+                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded">
                                   <div class="mdc-line-ripple"></div>
                                   <label for="text-field-hero-input" class="mdc-floating-label">Program Name </label>
@@ -345,7 +345,7 @@
                                                 </select>
                                 </div>
                               </div> 
-							   <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
+							   <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded">
                                   <div class="mdc-line-ripple"></div>
                                   <label for="text-field-hero-input" class="mdc-floating-label">Program Group </label>
@@ -358,7 +358,7 @@
                                                 </select>
                                 </div>
                               </div> 
-							   <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
+							   <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded">
                                   <div class="mdc-line-ripple"></div>
                                   <label for="text-field-hero-input" class="mdc-floating-label">Training Type </label>
@@ -371,7 +371,7 @@
                                                 </select>
                                 </div>
                               </div> 
-							  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
+							  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded">
                                   <div class="mdc-line-ripple"></div>
                                   <label for="text-field-hero-input" class="mdc-floating-label">Nature of Program </label>
@@ -386,13 +386,12 @@
                                                 </select>
                                 </div>
                               </div> 
-							   <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
+							   <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded">
                                   <div class="mdc-line-ripple"></div>
                                   <label for="text-field-hero-input" class="mdc-floating-label">TNI Source </label>
                                   <select class="mdc-text-field__input training_type"id="tni_source" name="tni_source">
 													 <option disabled selected value> </option>
-                                                     <option value="">Select TNI Source</option>
                                                     <option value="Competency Gaps">Competency Gaps</option>
                                                     <option value="Succession Planning">Succession Planning</option>
                                                     <option value="Inputs from P M S">Inputs From P M S</option>
@@ -402,7 +401,7 @@
                                                 </select>
                                 </div>
                               </div> 
-							     <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
+							     <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded">
                                   <div class="mdc-line-ripple"></div>
                                   <label for="text-field-hero-input" class="mdc-floating-label">Faculty Name </label>
@@ -414,7 +413,7 @@
                                                 </select>
                                 </div>
                               </div> 
-							   <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
+							   <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded">
                                   <div class="mdc-line-ripple"></div>
                                   <label for="text-field-hero-input" class="mdc-floating-label">Faculty Type </label>
@@ -426,7 +425,7 @@
                                                 </select>
                                 </div>
                               </div>
-							    <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
+							    <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded">
                                   <div class="mdc-line-ripple"></div>
                                   <label for="text-field-hero-input" class="mdc-floating-label">Training Mode</label>
@@ -438,7 +437,7 @@
                                                 </select>
                                 </div>
                               </div>
-							   <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
+							   <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3">
                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded">
                                   <div class="mdc-line-ripple"></div>
                                   <label for="text-field-hero-input" class="mdc-floating-label">No. of Hours:<?php echo $value->no_of_hrs;?></label>
@@ -461,7 +460,7 @@
                                                 </select>
                                 </div>
                               </div>
-							   <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
+							   <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3">
                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded">
                                   <div class="mdc-line-ripple"></div>
                                   <label for="text-field-hero-input" class="mdc-floating-label">TTT</label>
@@ -475,14 +474,13 @@
                               </div>
 							  
 							  
-							  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
+							  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3">
                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded">
-                                  <input class="mdc-text-field__input" id="  from_date" name="from_date" input type="date" min="<?php echo date("Y-m-d"); ?>" value="<?php echo $value->from_date; ?>" type="10/07/1984"  >
-                                  <div class="mdc-line-ripple"></div>
+                                  <input class="mdc-text-field__input" id="  from_date" name="from_date"   min="<?php echo date("Y-m-d"); ?>" value="<?php echo $value->from_date; ?>"   >
                                   <label for="" class="mdc-floating-label">Start Date:</label>
                                 </div>
                               </div>
-							   <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
+							   <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3">
                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded">
                                   <input class="mdc-text-field__input" name="to_date" input type="date" id="to_date" min="<?php echo date("Y-m-d"); ?>" value="<?php echo $value->to_date; ?>" type="10/07/1984">
                                   <div class="mdc-line-ripple"></div>
@@ -491,17 +489,17 @@
                               </div>
                               <input type="hidden" name="id" id="id" value="<?php echo (isset($editEmployee)) ? $editEmployee[0]['id'] : '' ?>">
                               
-                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
+                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3">
                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded">
-                                  <input class="mdc-text-field__input" name="start_time" type="time" id="start_time" placeholder="Start Time" min="09:00" max="22:00" value="<?php echo $value->start_time; ?>">
+                                  <input class="mdc-text-field__input" name="start_time" type="text" id="start_time"  value="<?php echo $value->start_time; ?>">
                                   <div class="mdc-line-ripple"></div>
                                   <label for="text-field-hero-input" class="mdc-floating-label">Start Time:</label>
                                 </div>
                               </div>
                               
-                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
+                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3">
                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded">
-                                  <input class="mdc-text-field__input" name="end_time"  type="text" id="end_time" placeholder="End Time"  value="<?php echo $value->end_time; ?>"  readonly>
+                                  <input class="mdc-text-field__input" name="end_time"  type="time" id="end_time" placeholder="End Time"  value="<?php echo $value->end_time; ?>"  >
                                   <div class="mdc-line-ripple"></div>
                                   <label for="text-field-hero-input" class="mdc-floating-label">End Time:</label>
                                 </div>
@@ -581,7 +579,9 @@
   <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/moment.min.js"></script>
   <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/daterangepicker.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>assets/js/createprogram.js"></script>
-    
+     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://unpkg.com/gijgo@1.9.14/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.14/css/gijgo.min.css" rel="stylesheet" type="text/css" />
   <style>
     .error {
       color: #fa4040;
@@ -589,7 +589,9 @@
       margin-top: 2%;
     }
   </style>
-   
+     <script>
+        $('#start_time').timepicker();
+    </script>
 </body>
 
 </html>

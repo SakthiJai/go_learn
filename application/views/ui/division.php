@@ -20,7 +20,7 @@
                 <div class="mdc-card">
                   <div class="d-flex justify-content-between">
                    <button class="mdc-button mdc-button--outlined outlined-button--secondary mdc-ripple-upgraded" style="--mdc-ripple-fg-size:95px; --mdc-ripple-fg-scale:1.82773; --mdc-ripple-fg-translate-start:-36.7px, -39.1px; --mdc-ripple-fg-translate-end:32.3125px, -29.5px;">
-                       Unit
+                       Unit Name
                       </button>
                     <div>
 					 <a class="mdc-button mdc-button--raised filled-button--secondary mdc-ripple-upgraded" href="<?php echo base_url('main/adddivision'); ?>">
@@ -40,8 +40,8 @@
 						  <thead>
                           <tr>
                                             <th  style="text-align: center;">S.No</th>
-                                            <th  style='text-align: center;'>Unit</th>
-											<th  style='text-align: center;'>Edit</th>
+                                            <th  style='text-align: center;'>Unit Name</th>
+											<th  style='text-align: center;'>Action</th>
                                         </tr>
 							</thead>		
                             <tbody>

@@ -68,7 +68,8 @@ class Main extends CI_Controller {
         $sess_array = array('username' => '');
         $this->session->unset_userdata('superadmin_login', $sess_array);
         $data['message_display'] = 'Successfully Logout';
-        redirect(base_url().'main/logout');
+		$this->load->view('ui/login');
+       // redirect(base_url().'main/logout');
             
     }
 	public function dashboard(){
@@ -1039,6 +1040,7 @@ class Main extends CI_Controller {
 	public function programs(){
 	    //if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
 		$data['programs']=$this->Super_model->programs();
+		//print_r($data['programs']);exit;
 		$data['h_title'] = "Go Learn  programs"; 	    
 		$this->load->view('ui/header',$data);
 		$this->load->view('ui/programs.php',$data);
@@ -1527,7 +1529,8 @@ $message ='<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http:
                 break; 
             }
         }
-        echo $error;
+		//print_r($divisionaa);exit;
+        //echo $error;
 	}
 	public function store_assign_emp(){
 	    //print_r($this->input->post('assign_empid'));exit;

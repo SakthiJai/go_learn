@@ -47,7 +47,8 @@
                                   <div class="mdc-line-ripple"></div>
                                   <label for="text-field-hero-input" class="mdc-floating-label">SBU</label>
                                   <input class="mdc-text-field__input" id="text-field-hero-input exampleText" name="sbu"
-                                    value="<?php echo $row->sbu;?>">
+                                    value="<?php echo $row->sbu;?>" pattern="^[a-zA-Z0-9]+$">
+									<span id="lblError" style="color: red"></span>
                                 </div>
                               </div>
 
@@ -79,7 +80,7 @@
                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded">
                                   <div class="mdc-line-ripple"></div>
                                   <label for="text-field-hero-input" class="mdc-floating-label">SBU</label>
-                                  <input class="mdc-text-field__input" id="text-field-hero-input exampleText" name="sbu">
+                                  <input class="mdc-text-field__input" id="exampleText" name="sbu" pattern="^[a-zA-Z0-9]+$">
                                 </div>
                               </div>
                               <div class="mdc-3 ayout-grid__cell stretch-card mdc-layout-grid__cell--span-2">
