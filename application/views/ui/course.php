@@ -1,193 +1,52 @@
-        
-		<div class="app-main__outer  table-responsive">
-    <div class="app-main__inner" >
-        <div class="app-page-title">
-            <div class="page-title-wrapper">
-                <div class="page-title-heading">
-                    <div class="page-title-icon">
-                        <i class="fa fa-rocket icon-gradient bg-happy-itmeo"></i>
-                    </div>
-                    <div>Courses
-                        <div class="page-title-subheading">Add course image, title, program type, attach files and add text
-                       <input type="hidden" value="<?php echo $this->uri->segment(3);?>"  id="editId"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> 
-       
-        
-        <div class="row">
-            <div class="col-md-12" id="showCourseAdd">
-                <div class="main-card mb-3 card">
-                    <div class="card-body">
-                        <div class="tab-content">
-                            <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
-                                <div class="main-card mb-3 card">
-                                    <div class="card-body">
-                                        
-                                        <form class="" id="courseadd" name="courseadd"  action="<?php echo base_url();?>courses/course_adding" method="POST" enctype="multipart/form-data">
-										<input type="hidden" id="base_url" name="base_url" value="<?php echo $baseurl ?>"/>
-                                            <div class="form-group">
-                                                <div class="form-group row">
-                                                    <label for="title" class="form-control-label col-md-2">
-                                                        Image <br> <span class="image22" ></span>
-                                                        </label>
-                                                    <div class="col-md-10"><input id="title" name="image" type="file" class="form-control"/>
-                                                    </div>
-                                                </div>     
+<!DOCTYPE html>
+<html lang="en">
+<?php include('header.php');?>
+<body>
+<script src="<?php echo base_url(); ?>/assets/js/preloader.js"></script>
 
-                                                <div class="form-group row">
-                                                    <label for="title" class="form-control-label col-md-2">Title</label>
-                                                    <div class="col-md-10">
-                                                         <input id="test_temp_id" name="test_temp_id" type="hidden" class="form-control" value="<?php echo $this->uri->segment(3);?>">
-                                                         
-                                                        <input type="hidden" name="courseid" value="<?php echo $this->uri->segment(3);?>"/>
-                                                       
-                                                        <input id="course_title" name="course_title" type="text" class="form-control" placeholder="Title"
-                                                        value="<?php echo isset($details[0])?$details[0]->course_title:"";?>" onkeypress="return NumbersOnly(this,event)">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="name" class="form-control-label col-md-2">Program Name:</label><br>
-                                                    <div class="col-md-10">
-                                                    <select name="program_name" id="program_name" class="form-control" required>
-                                                    <option value="">Select program name</option>
-                                                    <?php foreach($program_name->result() as $row) { ?>
-													<?Php if($row->id==$details[0]->program_id){?>
-														<option  value="<?php echo $row->id; ?>" selected><?php echo $row->program_name; ?></option>
-													   <?php }else{?>	
-													   <option  value="<?php echo $row->id; ?>"><?php echo $row->program_name; ?></option>
-													    <?php }?>
-                                                    <?php }?>
-                                                    
-                                                    </select> 
-                                                    
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="name" class="form-control-label col-md-2">Program Group:</label><br>
-                                                    <div class="col-md-10">
-                                                    <select name="program_group" id="program_group" class="form-control" required>
-                                                    <option value="">Select program group</option>
-                                                    <?php foreach($program_group->result() as $rows) { ?>  
-													<?Php if($rows->id==$details[0]->program_group_id){?>
-														<option  value="<?php echo $rows->id; ?>" selected><?php echo $rows->group_name; ?></option>
-													<?php }else{?>
-														  <option  value="<?php echo $rows->id; ?>"><?php echo $rows->group_name; ?></option>
-													<?php }?>
-                                                    <?php } ?>
-                                                    
-                                                    </select> 
-                                                    
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="name" class="form-control-label col-md-2">Program Type :</label><br>
-                                                    <div class="col-md-10">
-                                                    <select name="training_type" id="training_type" class="form-control" required>
-                                                    <option value="">Select program type</option>
-                                                    <?php foreach($program_types->result() as $rowss) {?>
-                                                     <?Php if($rowss->id==$details[0]->traning_type_id){?>
-														<option  value="<?php echo $rowss->id; ?>" selected><?php echo $rowss->type;?></option>
-													<?php } else{?>
-														<option  value="<?php echo $rowss->id; ?>"><?php echo $rowss->type;?></option>
-													<?php } ?>
-                                                    <?php } ?>
-                                                    
-                                                    </select> 
-                                                    
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group row">
-                                                    <label for="title" class="form-control-label col-md-2">PDF file 1</label>
-                                                    <div class="col-md-10">
-                                                    <input id="title" name="pdf_file" type="file" class="form-control"/>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group row">
-                                                    <label for="title" class="form-control-label col-md-2">PDF file 2</label>
-                                                    <div class="col-md-10">
-                                                    <input id="title" name="pdf_file2" type="file" class="form-control"/>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group row">
-                                                    <label for="title" class="form-control-label col-md-2">PDF file 3</label>
-                                                    <div class="col-md-10">
-                                                    <input id="title" name="pdf_file3" type="file" class="form-control"/>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group row">
-                                                    <label for="title" class="form-control-label col-md-2">Description</label>
-                                                    <div class="col-md-12">
-                                                    <textarea id="description" name="description" class="form-control" ><?php echo  isset($details[0]->description)?$details[0]->description:""; ?></textarea>
-                                                    </div>
-                                                </div>
-                                                
-                                                <div class="form-group row">
-                                                    
-                                                    <label for="title" class="form-control-label col-md-3">Learning Level Evaluation</label>
-                                                    <div class="col-md-4 col-lg-6">
-                                                        <div class="row">
-                                                            <input id="name name22" type="radio" class="radioBtnClass" name="test"  value="1" <?php echo  (isset($details[0]->posttest_id) && $details[0]->pretest_id==1 )?'checked':""?> >&nbsp;<label>Pre test</label>&nbsp;&nbsp;
-                                                            <input id="name name33" type="radio" class="radioBtnClass" name="test"  value="2"  <?php echo  (isset($details[0]->posttest_id) && $details[0]->posttest_id==1 )?'checked':""?>  >&nbsp;<label>Post test</label>&nbsp;&nbsp;
-                                                            <input id="name name44" type="radio"  class="radioBtnClass" name="test"  value="3" <?php echo  (isset($details[0]->pre_and_post) && $details[0]->pre_and_post==1 )?'checked':""?>  >&nbsp;<label>Pre and Post test</label>
-                                                        </div>
-                                                         
-                                                    </div>
-                                                    <?php if(isset($details[0])){?>
-                                                    <div class="col-md-3 col-lg-3"><button type="button" class="mb-2 mr-2 btn btn-success" id="viewQuestion">View Questions</button></div>
-                                                     
-                                                     <?php } else{?>
-                                                      <div class="col-md-3 col-lg-3"><button type="button" class="mb-2 mr-2 btn btn-success  viewq testview">View Questions</button></div>
-                                                      <?php } ?>
-                                                </div>
-                                                <div class="form-group row">
-                                                    
-                                                    <label for="title" class="form-control-label col-md-3">Reaction Level Evaluation</label>
-                                                    <div class="col-md-3 col-lg-3">
-                                                        <div class="row">
-				<input id="edit_feedback_id" name="edit_feedback_id" type="hidden" class="form-control" value="<?php echo isset($feedbackmainid[0])?$feedbackmainid[0]->id:"";?>">
-              <input id="feedback_main_id" name="feedback_main_id" type="hidden" class="form-control" value="<?php echo isset($feedbackmainid[0])?$feedbackmainid[0]->id:"";?>">
-                                                                <input id="radioBtnClassR"   class="radioBtnClassR"  type="radio" name="reactionlevel"   value="4"  <?php echo  (isset($details[0]->feedback) && $details[0]->feedback==1 )?'checked':""?>  >&nbsp;<label>Feedback Form</label>&nbsp;&nbsp;
-                                                             </div>
-                                                    </div><!-- viewq feedbackview -->
-													
-                                                    <div class="col-md-3 col-lg-3"><button type="button" class="mb-2 mr-2 btn btn-success feedbackview viewq">Components</button></div>
-													 
-                                                </div>
-                                             <div class="row nauitem33" >
-                                                <div class="d-block text-right">
-                                                    <button type="submit" id="update" class="mb-2 mr-2 btn btn-success">Update</button>
-                                                    <button type="submit" id="add" class="mb-2 mr-2 btn btn-success">Submit</button>
-                                                    <button type="button" class="mb-2 mr-2 btn btn-danger" onclick="pageLoad()">Cancel</button>
-                                                </div>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> 
-            </div>
-            
-            <div class="col-md-12 mb-3 text-right">
-                <a class="btn btn-success right col-lg-3 col-md-3 col-xl-3 addnewbtn" href="#">Add New Course</a>
-            </div>
-            
-            <div class="col-md-12" id="showCourseList">
-                
-                <div class="main-card mb-3 card">
+  <div class="body-wrapper">
+    <!-- partial:partials/_sidebar.html -->
+    <?php include('sidebar.php');?>
+    <!-- partial -->
+    <div class="main-wrapper mdc-drawer-app-content">
+      <!-- partial:partials/_navbar.html -->
+		<?php include('nav.php');?>
+      <!-- partial -->
+	  
+      <div class="page-wrapper mdc-toolbar-fixed-adjust">
+        <main class="content-wrapper">
+          <div class="mdc-layout-grid">
+            <div class="mdc-layout-grid__inner">
+              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                <div class="mdc-card">
+                  <div class="d-flex justify-content-between">
+                   <button class="mdc-button mdc-button--outlined outlined-button--secondary mdc-ripple-upgraded" style="--mdc-ripple-fg-size:95px; --mdc-ripple-fg-scale:1.82773; --mdc-ripple-fg-translate-start:-36.7px, -39.1px; --mdc-ripple-fg-translate-end:32.3125px, -29.5px;">
+                       Courses
+                      </button>
+                    <div>
+					 <a class="mdc-button mdc-button--raised filled-button--secondary mdc-ripple-upgraded" href="<?php echo base_url('main/newcourse'); ?>">
+					  <input type="hidden" value="<?php echo $this->uri->segment(3);?>"  id="editId"/>
+                                    Add New Course
+                                </a>&nbsp;&nbsp;
                         
-                    <div class="card-body table-responsive">
-                                        <center><span class="btn-success"> <?php echo $this->session->flashdata('msg'); ?></span></center>
-                                        <table id="datatable-buttons" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+                    </div>
+                  </div>
+				  &nbsp;&nbsp;&nbsp;&nbsp;
+				  
+                  <div class="template-demo">
+                      <h5 class="card-sub-title mb-2 mb-sm-0"></h5>
+                      <div class="menu-button-container">
+                        <div class="mdc-card">
+						  <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--span-12-tablet">
+                        <div class="table-responsive border">
+						</div>
+						<center><span class=""> <?php echo $this->session->flashdata('msg'); ?></span></center>
+                  <form  id="employee" class="" action="<?php echo base_url('main/sbu_master');?>" method="POST">
+                    <div class="mdc-layout-grid">
+                      <div class="mdc-layout-grid__inner">
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--span-12-tablet">
+                        <div class="table-responsive border">
+                         <table id="datatable-buttons" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
                                             <thead>
                                                 <tr>
                                                     <th class="th-sm">S.No</th>
@@ -225,48 +84,50 @@
                                             </tbody>
                                             
                                         </table>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
+                   
+                       
+						
+                        
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                      </div>
+                  </div>
+                  <div class="mdc-layout-grid__inner mt-2">
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6 mdc-layout-grid__cell--span-8-tablet">
+                        <div class="table-responsive">
+                        
+                        </div>
+                    </div>
+                  
+                  </div>
                 </div> 
-    </div> 
-</div>
- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-         <div class="modal-dialog elample" role="document" >
-             <div class="modal-content p-4 nauitem44" >
-                <!--  onclick="dismissModal()" 
-						<button class="btn btn-info nauitem77"  aria-label="Close" >X</button>-->
-						<div class="modal-header1 ">
-							
-							<button type="button" class="btn-close btn btn-info nauitem77" data-bs-dismiss="modal" aria-label="Close">Submit</button>
-						</div>
-                 
-                 <div class="modal-body feedbackmodal nauitem99" > 
-                 <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="card-box">
-        								        
-                                            </div>
-                                        </div>
-                                   </div>
-                 </div>
-				 <div class="modal-header1 ">
-							
-							<button type="button" class="btn-close btn btn-info nauitem77" data-bs-dismiss="modal" aria-label="Close">Submit</button>
-						</div>
-             </div>
-         </div>
-     </div>
-<link rel="stylesheet" href="<?php echo base_url();?>assets/css/coures.css">
-<script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.min.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery-ui.min.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>assets/js/validate.min.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>assets/js/bundle.min.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>assets/scripts/main.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>assets/js/courses.js"></script>
+              </div>
+              
+              
+             
+             
+            </div>
+          </div>
+        </main>
+        <!-- partial:partials/_footer.html -->
+        <?php include('footer.php');?>
+        <!-- partial -->
+      </div>
+    </div>
+  </div>
+  <link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url();?>assets/css/daterangepicker.css" />
+   <script type="text/javascript" src="<?php echo base_url();?>assets/js/main.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.min.js"></script>
+	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/validate.min.js"></script>
+	 <script type="text/javascript" src="<?php echo base_url();?>assets/js/moment.min.js"></script>	
+ <script type="text/javascript" src="<?php echo base_url();?>assets/js/daterangepicker.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>assets/js/ckeditor.js"></script>
+	<script type="text/javascript" src="<?php echo base_url();?>assets/js/csweetalert2@11"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>assets/js/courses.js"></script>
 <!-- Required datatable js -->
 <script src="<?php echo base_url()?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url()?>assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
@@ -287,11 +148,31 @@
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/prequestion.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>assets/js/coursefeedbackform.js"></script>
 
+	<style>.error {
+        color: #fa4040;
+        font-size: 12px;
+		margin-top: 2%;
+    }
+	.demo{  background-color: #f2f2f2;
+  color: #333;
+  font-weight: bold;
+  
 
-
-
-
-
+}
+.alert {
+    font-size: 0.75rem;
+}
+.alert {
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+}
+.btn, .fc button, .ajax-upload-dragdrop .ajax-file-upload, .swal2-modal .swal2-buttonswrapper .swal2-styled, .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-confirm, .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-cancel, .wizard > .actions a, .btn-group.open .dropdown-toggle, .fc .open.fc-button-group .dropdown-toggle, .btn:active, .fc button:active, .ajax-upload-dragdrop .ajax-file-upload:active, .swal2-modal .swal2-buttonswrapper .swal2-styled:active, .wizard > .actions a:active, .btn:focus, .fc button:focus, .ajax-upload-dragdrop .ajax-file-upload:focus, .swal2-modal .swal2-buttonswrapper .swal2-styled:focus, .wizard > .actions a:focus, .btn:hover, .fc button:hover, .ajax-upload-dragdrop .ajax-file-upload:hover, .swal2-modal .swal2-buttonswrapper .swal2-styled:hover, .wizard > .actions a:hover, .btn:visited, .fc button:visited, .ajax-upload-dragdrop .ajax-file-upload:visited, .swal2-modal .swal2-buttonswrapper .swal2-styled:visited, .wizard > .actions a:visited, a, a:active, a:checked, a:focus, a:hover, a:visited, body, button, button:active, button:hover, button:visited, div, input, input:active, input:focus, input:hover, input:visited, select, select:active, select:focus, select:visited, textarea, textarea:active, textarea:focus, textarea:hover, textarea:visited {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+</style>
 </body>
-
-</html>
+</html> 

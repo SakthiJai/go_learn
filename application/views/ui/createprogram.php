@@ -207,18 +207,7 @@
                                                 </select>
                                 </div>
                               </div>
-							   <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
-                                <div class="mdc-text-field w-100 mdc-ripple-upgraded">
-                                  <div class="mdc-line-ripple"></div>
-                                  <label for="text-field-hero-input" class="mdc-floating-label">TTT</label>
-                                  <select class="mdc-text-field__input training_type" id="ttt" name="ttt" >
-                                       
-                                                     <option disabled selected value> </option>
-                                                    <option value="1"  <?php echo isset($value)?($value->ttt=='1'?'selected':''):''?>>Yes</option>
-                                                    <option value="0"  <?php echo isset($value)?($value->ttt=='2'?'selected':''):''?>>No</option>
-                                                </select>
-                                </div>
-                              </div>
+							
 							   <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded">
                                   <div class="mdc-line-ripple"></div>
@@ -245,6 +234,7 @@
                                   <label for="" class="mdc-floating-label">End Date:</label>
                                 </div>
                               </div>
+							  
                               <input type="hidden" name="id" id="id" value="<?php echo (isset($editEmployee)) ? $editEmployee[0]['id'] : '' ?>">
                               
                               <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
@@ -476,32 +466,35 @@
 							  
 							  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3">
                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded">
-                                  <input class="mdc-text-field__input" id="  from_date" name="from_date"   min="<?php echo date("Y-m-d"); ?>" value="<?php echo $value->from_date; ?>"   >
-                                  <label for="" class="mdc-floating-label">Start Date:</label>
+								 <input id="dp1" type="text" class="form-control clickable input-md mdc-text-field__input" id="DtChkIn" ">
+                                  <!--<input class="mdc-text-field__input" id="  from_date" name="from_date"   min="<?php echo date("Y-m-d"); ?>" value="<?php echo $value->from_date; ?>"   >-->
+                                  <label for="text-field-hero-input" class="mdc-floating-label">Start Date:</label>
                                 </div>
                               </div>
 							   <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3">
                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded">
-                                  <input class="mdc-text-field__input" name="to_date" input type="date" id="to_date" min="<?php echo date("Y-m-d"); ?>" value="<?php echo $value->to_date; ?>" type="10/07/1984">
+								<input id="dp2" type="text" class="form-control clickable input-md mdc-text-field__input" id="DtChkOut" ">
+                                  <!--<input class="mdc-text-field__input" name="to_date" input type="date" id="to_date" min="<?php echo date("Y-m-d"); ?>" value="<?php echo $value->to_date; ?>" type="10/07/1984">-->
                                   <div class="mdc-line-ripple"></div>
-                                  <label for="" class="mdc-floating-label">End Date:</label>
+                                  <label for="text-field-hero-input" class="mdc-floating-label">End Date:</label>
                                 </div>
                               </div>
                               <input type="hidden" name="id" id="id" value="<?php echo (isset($editEmployee)) ? $editEmployee[0]['id'] : '' ?>">
                               
                               <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3">
-                                <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                                <div class="mdc-text-field w-100 mdc-ripple-upgraded ">
                                   <input class="mdc-text-field__input" name="start_time" type="text" id="start_time"  value="<?php echo $value->start_time; ?>">
                                   <div class="mdc-line-ripple"></div>
-                                  <label for="text-field-hero-input" class="mdc-floating-label">Start Time:</label>
+                                  <label for="start_time" class="mdc-floating-label">Start Time:</label>
                                 </div>
                               </div>
                               
                               <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3">
                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded">
-                                  <input class="mdc-text-field__input" name="end_time"  type="time" id="end_time" placeholder="End Time"  value="<?php echo $value->end_time; ?>"  >
+								  
+                                  <input class="mdc-text-field__input" name="end_time"  type="text" id="end_time"   value="<?php echo $value->end_time; ?>"  >
                                   <div class="mdc-line-ripple"></div>
-                                  <label for="text-field-hero-input" class="mdc-floating-label">End Time:</label>
+                                  <label for="end_time" class="mdc-floating-label">End Time:</label>
                                 </div>
                               </div>
                               
@@ -582,15 +575,146 @@
      <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://unpkg.com/gijgo@1.9.14/js/gijgo.min.js" type="text/javascript"></script>
     <link href="https://unpkg.com/gijgo@1.9.14/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="https://weareoutman.github.io/clockpicker/dist/jquery-clockpicker.min.js"></script>
+<link rel="stylesheet" href="https://weareoutman.github.io/clockpicker/dist/jquery-clockpicker.min.css"></link>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css"></link>
   <style>
     .error {
       color: #fa4040;
       font-size: 12px;
       margin-top: 2%;
-    }
+    }input {
+  padding:10px;
+	font-family: FontAwesome, "Open Sans", Verdana, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+  border-radius: 0 !important;
+}
+
+.form-control {
+  border-radius: 0 !important;
+  font-size: 12x;
+}
+
+.clickable { cursor: pointer; }
   </style>
      <script>
-        $('#start_time').timepicker();
+        $("input[name=start_time]").clockpicker({       
+  placement: 'bottom',
+  align: 'left',
+  autoclose: true,
+  default: 'now',
+  donetext: "Select",
+  init: function() { 
+                            console.log("colorpicker initiated");
+                        },
+                        beforeShow: function() {
+                            console.log("before show");
+                        },
+                        afterShow: function() {
+                            console.log("after show");
+                        },
+                        beforeHide: function() {
+                            console.log("before hide");
+                        },
+                        afterHide: function() {
+                            console.log("after hide");
+                        },
+                        beforeHourSelect: function() {
+                            console.log("before hour selected");
+                        },
+                        afterHourSelect: function() {
+                            console.log("after hour selected");
+                        },
+                        beforeDone: function() {
+                            console.log("before done");
+                        },
+                        afterDone: function() {
+                            console.log("after done");
+                        }
+});
+        $("input[name=end_time]").clockpicker({       
+  placement: 'bottom',
+  align: 'left',
+  autoclose: true,
+  default: 'now',
+  donetext: "Select",
+  init: function() { 
+                            console.log("colorpicker initiated");
+                        },
+                        beforeShow: function() {
+                            console.log("before show");
+                        },
+                        afterShow: function() {
+                            console.log("after show");
+                        },
+                        beforeHide: function() {
+                            console.log("before hide");
+                        },
+                        afterHide: function() {
+                            console.log("after hide");
+                        },
+                        beforeHourSelect: function() {
+                            console.log("before hour selected");
+                        },
+                        afterHourSelect: function() {
+                            console.log("after hour selected");
+                        },
+                        beforeDone: function() {
+                            console.log("before done");
+                        },
+                        afterDone: function() {
+                            console.log("after done");
+                        }
+});
+$(document).ready(function(){
+
+$('.input-daterange').datepicker({
+    format: 'dd-mm-yyyy',
+    autoclose: true,
+    calendarWeeks : true,
+    clearBtn: true,
+    disableTouchKeyboard: true
+});
+
+});
+var nowTemp = new Date();
+var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+
+var checkin = $('#dp1').datepicker({
+
+  beforeShowDay: function(date) {
+    return date.valueOf() >= now.valueOf();
+  },
+  autoclose: true
+
+}).on('changeDate', function(ev) {
+  if (ev.date.valueOf() > checkout.datepicker("getDate").valueOf() || !checkout.datepicker("getDate").valueOf()) {
+
+    var newDate = new Date(ev.date);
+    newDate.setDate(newDate.getDate() + 1);
+    checkout.datepicker("update", newDate);
+
+  }
+  $('#dp2')[0].focus();
+});
+
+
+var checkout = $('#dp2').datepicker({
+  beforeShowDay: function(date) {
+    if (!checkin.datepicker("getDate").valueOf()) {
+      return date.valueOf() >= new Date().valueOf();
+    } else {
+      return date.valueOf() > checkin.datepicker("getDate").valueOf();
+    }
+  },
+  autoclose: true
+
+}).on('changeDate', function(ev) {});
+
     </script>
 </body>
 

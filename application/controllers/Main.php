@@ -619,7 +619,10 @@ class Main extends CI_Controller {
         redirect(base_url().'ui/course','refresh');   
 	    //}
 	}
-	
+	public function newcourse(){
+		$data['h_title'] = "Go Learn  "; 	    
+		$this->load->view('ui/newcourse');
+	}
 	public function test($id=false){
 	    //if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
 	    $data['coursedata'] = $this->Super_model->coursedata($id);

@@ -307,38 +307,7 @@
                                 </div>
                               </div>
 
-                           <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-1">
-                                <div class="mdc-text-field w-100 mdc-ripple-upgraded" name="dob" id='dob'
-                                  style='padding-right: 114px;'>
-                                  <div class="mdc-line-ripple"></div>
-                                  <label for="text-field-hero-input" class="mdc-floating-label">DOB</label>
-                                </div>
-                              </div>
-							  
-                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3">
-                                <div class="mdc-text-field w-100 mdc-ripple-upgraded" name="dob" id="reportrange">
-                                  <span style="padding: 10px;"></span><i class="fa fa-caret-down"></i>
-                                  <div class="mdc-line-ripple"></div>
-                                </div>
-                              </div>
-							  
-                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-1">
-                                <div class="mdc-text-field w-100 mdc-ripple-upgraded" name="doj" id='doj'
-                                  style='padding-right: 114px;'>
-                                  <div class="mdc-line-ripple"></div>
-                                  <label for="text-field-hero-input" class="mdc-floating-label">DOJ</label>
-								  
-                                </div>
-                              </div>
-							  
-                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3">
-                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded" type="text" name="birthday">
-                                  <span style="padding: 10px;"></span><i class="fa fa-caret-down"></i>
-                                  <div class="mdc-line-ripple">
-                                    </div>
-                                  </div>
-                               </div>
-                               
+                          
 							    <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4"></div>
                               <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
                                 <button type="submit"
