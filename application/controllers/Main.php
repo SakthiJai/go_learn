@@ -621,7 +621,7 @@ class Main extends CI_Controller {
 	}
 	public function newcourse(){
 		$data['h_title'] = "Go Learn  "; 	    
-		$this->load->view('ui/newcourse');
+		$this->load->view('ui/newcourse',$data);
 	}
 	public function test($id=false){
 	    //if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
@@ -923,6 +923,7 @@ class Main extends CI_Controller {
 		$this->load->view('ui/createprogram.php',$data);
 	}
 	public function creatingprogram(){
+		//print_r($_POST);exit;
 	    $programList_id = $this->input->post('program_id');
 	    //print_r($programList_id);exit;
 	    //if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');

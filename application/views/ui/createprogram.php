@@ -303,7 +303,7 @@
                         </form>
 						<?php } ?>
        <?php }else{ ?>
-	   <form id="createProgram" action="<?php echo base_url('main/'); ?>" method="POST">creatingprogram
+	   <form id="createProgram" action="<?php echo base_url('main/creatingprogram'); ?>" method="POST">
                         <input type="hidden" id="program_id" name="program_id" value>
                         <input type="hidden" id="base_url" name="base_url" value="<?php echo $base_url ?>"/>
                           <div class="mdc-layout-grid">
@@ -419,7 +419,7 @@
                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded">
                                   <div class="mdc-line-ripple"></div>
                                   <label for="text-field-hero-input" class="mdc-floating-label">Training Mode</label>
-                                  <select class="mdc-text-field__input training_type" id="faculty_type" name="faculty_type" >
+                                  <select class="mdc-text-field__input training_type" id="training_mode" name="training_mode" >
                                        
                                                   <option disabled selected value> </option>
                                                    <option value="1">Physical</option>
@@ -466,14 +466,14 @@
 							  
 							  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3">
                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded">
-								 <input id="dp1" type="text" class="form-control clickable input-md mdc-text-field__input" id="DtChkIn" ">
+								 <input id="dp1" type="text" class="form-control clickable input-md mdc-text-field__input" id="  from_date" name="from_date"   min="<?php echo date("Y-m-d"); ?>" value="<?php echo $value->from_date; ?>">
                                   <!--<input class="mdc-text-field__input" id="  from_date" name="from_date"   min="<?php echo date("Y-m-d"); ?>" value="<?php echo $value->from_date; ?>"   >-->
                                   <label for="text-field-hero-input" class="mdc-floating-label">Start Date:</label>
                                 </div>
                               </div>
 							   <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3">
                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded">
-								<input id="dp2" type="text" class="form-control clickable input-md mdc-text-field__input" id="DtChkOut" ">
+								<input id="dp2" type="text" class="form-control clickable input-md mdc-text-field__input" name="to_date" input type="date" id="to_date" min="<?php echo date("Y-m-d"); ?>" value="<?php echo $value->to_date; ?>" type="10/07/1984">
                                   <!--<input class="mdc-text-field__input" name="to_date" input type="date" id="to_date" min="<?php echo date("Y-m-d"); ?>" value="<?php echo $value->to_date; ?>" type="10/07/1984">-->
                                   <div class="mdc-line-ripple"></div>
                                   <label for="text-field-hero-input" class="mdc-floating-label">End Date:</label>
@@ -535,9 +535,9 @@
                                   Submit
                                 </button>&nbsp;&nbsp;&nbsp;&nbsp; 
                                   
-                                <button
+                                <button type="reset" id="configreset"
                                   class=" mt-1 btn btn-primary mdc-button mdc-button--unelevated filled-button--info mdc-ripple-upgraded vertical-center"
-                                  style="--mdc-ripple-fg-size:56px; --mdc-ripple-fg-scale:2.19553; --mdc-ripple-fg-translate-start:8.23752px, -2.59998px; --mdc-ripple-fg-translate-end:13px, -1px;">
+                                  style="--mdc-ripple-fg-size:56px; --mdc-ripple-fg-scale:2.19553; --mdc-ripple-fg-translate-start:8.23752px, -2.59998px; --mdc-ripple-fg-translate-end:13px, -1px;"  onclick="myFunction()">
                                   Cancel
                                 </button>
                               </div>
@@ -564,112 +564,25 @@
       </div>
     </div>
   </div>
-  
-  <link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url(); ?>assets/css/daterangepicker.css" />
-  <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/main.js"></script>
-  <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.min.js"></script>
+   <link rel="stylesheet" type="text/css"  href="<?php echo base_url(); ?>assets/css/datepicker.min.css.css" />
+  <link rel="stylesheet" type="text/css"  href="<?php echo base_url(); ?>assets/css/gijgo.min.css" />
+  <link rel="stylesheet" type="text/css"  href="<?php echo base_url(); ?>assets/css/jquery-clockpicker.min.css" />
+  <link rel="stylesheet" type="text/css"  href="<?php echo base_url(); ?>assets/css/create_program.css" />
+<script type="text/javascript" src="<?php echo base_url();?>assets/js/main.js"></script>
+  <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.min.js"></script>
   <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/validate.min.js"></script>
-  <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/moment.min.js"></script>
+  <script type="text/javascript" src="<?php echo base_url();?>assets/js/moment.min.js"></script>
   <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/daterangepicker.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>assets/js/createprogram.js"></script>
-     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="https://unpkg.com/gijgo@1.9.14/js/gijgo.min.js" type="text/javascript"></script>
-    <link href="https://unpkg.com/gijgo@1.9.14/css/gijgo.min.css" rel="stylesheet" type="text/css" />
-	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-<script src="https://weareoutman.github.io/clockpicker/dist/jquery-clockpicker.min.js"></script>
-<link rel="stylesheet" href="https://weareoutman.github.io/clockpicker/dist/jquery-clockpicker.min.css"></link>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.min.js"></script>
+  <script type="text/javascript" src="<?php echo base_url();?>assets/js/createprogram.js"></script>
+  <script type="text/javascript" src="<?php echo base_url();?>assets/js/ckeditor.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>assets/js/clockpicker.min.js"></script>
+	 <script type="text/javascript" src="<?php echo base_url();?>assets/js/gijgo.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>assets/js/bootstrap-datepicker.min.js"></script>
+ <link rel="stylesheet" type="text/css"  href="<?php echo base_url(); ?>assets/css/datepicker.min.css.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css"></link>
-  <style>
-    .error {
-      color: #fa4040;
-      font-size: 12px;
-      margin-top: 2%;
-    }input {
-  padding:10px;
-	font-family: FontAwesome, "Open Sans", Verdana, sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  text-decoration: inherit;
-  border-radius: 0 !important;
-}
-
-.form-control {
-  border-radius: 0 !important;
-  font-size: 12x;
-}
-
-.clickable { cursor: pointer; }
-  </style>
+  
      <script>
-        $("input[name=start_time]").clockpicker({       
-  placement: 'bottom',
-  align: 'left',
-  autoclose: true,
-  default: 'now',
-  donetext: "Select",
-  init: function() { 
-                            console.log("colorpicker initiated");
-                        },
-                        beforeShow: function() {
-                            console.log("before show");
-                        },
-                        afterShow: function() {
-                            console.log("after show");
-                        },
-                        beforeHide: function() {
-                            console.log("before hide");
-                        },
-                        afterHide: function() {
-                            console.log("after hide");
-                        },
-                        beforeHourSelect: function() {
-                            console.log("before hour selected");
-                        },
-                        afterHourSelect: function() {
-                            console.log("after hour selected");
-                        },
-                        beforeDone: function() {
-                            console.log("before done");
-                        },
-                        afterDone: function() {
-                            console.log("after done");
-                        }
-});
-        $("input[name=end_time]").clockpicker({       
-  placement: 'bottom',
-  align: 'left',
-  autoclose: true,
-  default: 'now',
-  donetext: "Select",
-  init: function() { 
-                            console.log("colorpicker initiated");
-                        },
-                        beforeShow: function() {
-                            console.log("before show");
-                        },
-                        afterShow: function() {
-                            console.log("after show");
-                        },
-                        beforeHide: function() {
-                            console.log("before hide");
-                        },
-                        afterHide: function() {
-                            console.log("after hide");
-                        },
-                        beforeHourSelect: function() {
-                            console.log("before hour selected");
-                        },
-                        afterHourSelect: function() {
-                            console.log("after hour selected");
-                        },
-                        beforeDone: function() {
-                            console.log("before done");
-                        },
-                        afterDone: function() {
-                            console.log("after done");
-                        }
-});
+
 $(document).ready(function(){
 
 $('.input-daterange').datepicker({

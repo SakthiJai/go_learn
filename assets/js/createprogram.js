@@ -3,6 +3,7 @@
 var baseurl = $('#base_url').val();
 console.log(baseurl);
 
+
 $('#divLoading').hide();
  $(document).ready(function() {
         $('#createProgram').validate({
@@ -138,22 +139,22 @@ $('#divLoading').hide();
             },
 
             highlight: function(element) {
-                $(element).closest('.form-control').addClass('error');
+                $(element).closest('.mdc-line-ripple').addClass('error');
             },
             unhighlight: function(element) {
-                $(element).closest('.form-control').removeClass('error');
+                $(element).closest('.mdc-line-ripple').removeClass('error');
             },
             submitHandler: function(form) {
              
               
                
-                var formdata = $("#createProgram").serialize();
-                var id = $("#id").val();
+                var formdata = $("#createPrograms").serialize();
+				console.log(formdata);
+               // var id = $("#id").val();
 				
-                if (id != "") {
+                if (formdata != "") {
 					 form.submit();
                 } else {
- "main/creatingprogram"
             }
 
                 //checkEmpValue(form);
@@ -161,8 +162,124 @@ $('#divLoading').hide();
             }
         });
     });
+ $(document).ready(function() {
+             $("input[name=start_time]").clockpicker({       
+  placement: 'bottom',
+  align: 'left',
+  autoclose: true,
+  default: 'now',
+  donetext: "Select",
+  init: function() { 
+                            console.log("colorpicker initiated");
+                        },
+                        beforeShow: function() {
+                            console.log("before show");
+                        },
+                        afterShow: function() {
+                            console.log("after show");
+                        },
+                        beforeHide: function() {
+                            console.log("before hide");
+                        },
+                        afterHide: function() {
+                            console.log("after hide");
+                        },
+                        beforeHourSelect: function() {
+                            console.log("before hour selected");
+                        },
+                        afterHourSelect: function() {
+                            console.log("after hour selected");
+                        },
+                        beforeDone: function() {
+                            console.log("before done");
+                        },
+                        afterDone: function() {
+                            console.log("after done");
+                        }
+});
+        $("input[name=end_time]").clockpicker({       
+  placement: 'bottom',
+  align: 'left',
+  autoclose: true,
+  default: 'now',
+  donetext: "Select",
+  init: function() { 
+                            console.log("colorpicker initiated");
+                        },
+                        beforeShow: function() {
+                            console.log("before show");
+                        },
+                        afterShow: function() {
+                            console.log("after show");
+                        },
+                        beforeHide: function() {
+                            console.log("before hide");
+                        },
+                        afterHide: function() {
+                            console.log("after hide");
+                        },
+                        beforeHourSelect: function() {
+                            console.log("before hour selected");
+                        },
+                        afterHourSelect: function() {
+                            console.log("after hour selected");
+                        },
+                        beforeDone: function() {
+                            console.log("before done");
+                        },
+                        afterDone: function() {
+                            console.log("after done");
+                        }
+});
+ });
 
-/*
+$(document).ready(function(){
+
+$('.input-daterange').datepicker({
+    format: 'dd-mm-yyyy',
+    autoclose: true,
+    calendarWeeks : true,
+    clearBtn: true,
+    disableTouchKeyboard: true
+});
+
+});
+var nowTemp = new Date();
+var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+
+var checkin = $('#dp1').datepicker({
+
+  beforeShowDay: function(date) {
+    return date.valueOf() >= now.valueOf();
+  },
+  autoclose: true
+
+}).on('changeDate', function(ev) {
+  if (ev.date.valueOf() > checkout.datepicker("getDate").valueOf() || !checkout.datepicker("getDate").valueOf()) {
+
+    var newDate = new Date(ev.date);
+    newDate.setDate(newDate.getDate() + 1);
+    checkout.datepicker("update", newDate);
+
+  }
+  $('#dp2')[0].focus();
+});
+
+
+var checkout = $('#dp2').datepicker({
+  beforeShowDay: function(date) {
+    if (!checkin.datepicker("getDate").valueOf()) {
+      return date.valueOf() >= new Date().valueOf();
+    } else {
+      return date.valueOf() > checkin.datepicker("getDate").valueOf();
+    }
+  },
+  autoclose: true
+
+}).on('changeDate', function(ev) {});
+
+   
+
     function updateRelevents() {
 
         console.log('test');
@@ -281,7 +398,7 @@ $('.btn-danger').hide();
 });
 
 
-/*$( document ).ready(function() {
+$( document ).ready(function() {
     var date_input = document.getElementById('start_time');
 //date_input.valueAsDate = new Date();
 
@@ -318,7 +435,7 @@ function(value, element, params) {
         || (Number(value) >= Number($(params).val())); 
 },'Must be greater than From Date.');;
     
-});*/
+});
    
 
 $("input[name='from_date']").change(function() {
@@ -326,4 +443,6 @@ $("input[name='from_date']").change(function() {
 })
 
 
-   
+   function myFunction() {
+  document.getElementById("createProgram").reset();
+}

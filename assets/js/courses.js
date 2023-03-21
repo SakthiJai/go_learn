@@ -499,5 +499,188 @@ $(".deactivatestatus").on('click', function(e){
 });
 },5000)
 }
+   
+$(document).ready(function()
+{
+
+var settings = {
+	url: "upload.php",
+	method: "POST",
+	allowedTypes:"jpg,png,gif,doc,pdf,zip",
+	fileName: "myfile",
+	multiple: true,
+	
+	dragdropWidth:800,
+	onSuccess:function(files,data,xhr)
+	{
+		$("#status").html("<font color='green'>Upload is success</font>");
+		
+	},
+	onError: function(files,status,errMsg)
+	{		
+		$("#status").html("<font color='red'>Upload is Failed</font>");
+	}
+}
+$("#mulitplefileuploader").uploadFile(settings);
+
+});
+	
+$("#startbutton").click(function()
+	{
+		extraObj.startUpload();
+		
+	});
+    tinymce.init({
+      selector: 'textarea',
+      // plugins: ["bootstrapaccordion"],
+
+      // plugins: 'a11ychecker advcode casechange export formatpainter linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinymcespellchecker',
+      //  toolbar: 'a11ycheck addcomment showcomments casechange checklist code export formatpainter pageembed permanentpen table',
+      plugins: [
+        "advlist accordion autolink lists link image charmap print code preview anchor",
+        "searchreplace visualblocks code fullscreen",
+        "insertdatetime media table contextmenu paste",
+      ],
+      toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | accordion code",
+
+      toolbar_mode: 'floating',
+      tinycomments_mode: 'embedded',
+      tinycomments_author: 'Author name',
+      height: '500',
+    });
+    tinymce.PluginManager.add('accordion', function (editor) {
+      editor.addButton('accordion', {
+        text: 'Accordion',
+        icon: false,
+        onclick: function onclick() {
+          editor.windowManager.open({
+            title: 'Accordion Picker',
+            body: {
+              type: 'textbox',
+              name: 'my_textbox',
+              layout: 'flow',
+              label: '# of accordions'
+            },
+            onsubmit: function onsubmit(e) {
+              var accordionSet = [];
+              var curAccordion = Date.now();
+              var accordionCount = parseInt(e.data.my_textbox);
+              for (var i = 0; i < accordionCount; i++) {
+                var panel = '\n                    <div class="panel panel-default">\n                      <div class="panel-heading mceNonEditable productAccordion" role="tab" id="heading' + (curAccordion + i) + '">\n                        <h4 class="panel-title">\n                          <a role="button" data-toggle="collapse" class="mceEditable collapsed" data-parent="#accordion' + curAccordion + '" href="#collapse' + (curAccordion + i) + '" aria-expanded="true" aria-controls="collapse' + (curAccordion + i) + '">\n                            Change this header!\n                          </a>\n                        </h4>\n                      </div>\n                      <div id="collapse' + (curAccordion + i) + '" class="panel-collapse collapse mceNonEditable" role="tabpanel" aria-labelledby="heading' + (curAccordion + i) + '">\n                        <div class="panel-body mceEditable">\n                          <p>Change this content</p>\n                        </div>\n                      </div>\n                    </div>\n                ';
+                accordionSet.push(panel);
+              }
+
+              var accordion = '\n                    <div class="panel-group" id="accordion' + curAccordion + '" role="tablist" aria-multiselectable="true">\n                      ' + accordionSet.join('') + '\n                  </div>';
+              editor.insertContent(accordion);
+            }
+          });
+        }
+      });
+    });
+
+    setTimeout(function () { getContent() }, 3000);
+    function addTerms() {
+
+      var formdata = $("#terms").serialize();
+      //alert($("#id").val());
+      console.log(tinymce.get('description').getContent());
+      var url = "addTermsandConditions";
+
+      $.ajax({
+        type: "POST",
+        url: url,
+        data: { data: tinymce.get('description').getContent(), type: $('#type').val() }, // serializes the form's elements.
+        beforeSend: function (xhr, type) {
+          if (!type.crossDomain) {
+            xhr.setRequestHeader('X-CSRF-Token', $('meta[name="_token"]').attr('content'));
+          }
+        },
+        success: function (data) {
+          //console.log(data);
+          if (data.result == 'Success') {
+            location.reload();
+          }
+        }
+      });
+    }
+
+
+    function getContent() {
+      console.log('121S');
+      $.ajax({
+        url: "getTerms",
+        type: "post",
+        data: { _token: $('meta[name="_token"]').attr('content') },
+        dataType: "JSON",
+        beforeSend: function (xhr, type) {
+          if (!type.crossDomain) {
+            //  xhr.setRequestHeader('X-CSRF-Token', $('meta[name="_token"]').attr('content'));
+          }
+        },
+        success: function (data) {
+
+          //console.log(data.content)
+          //$('textarea[name="content"]').val(data.content);
+          tinyMCE.activeEditor.setContent(data.data);
+
+
+        },
+
+        error: function (jqXHR, textStatus, errorThrown) {
+          alert('Error get data from ajax');
+        }
+      });
+      // body...
+    }
+	  var notifyOptions = {
+        iconButtons: {
+            className: 'fa fa-question about',
+            method: function (e, modal) {
+                ssi_modal.closeAll('notify');
+                var btn = $(this).addClass('disabled');
+                ssi_modal.dialog({
+                    onClose: function () {
+                        btn.removeClass('disabled')
+                    },
+                    onShow: function () {
+                    },
+                    okBtn: {className: 'btn btn-primary btn-sm'},
+                    title: 'ssi-modal',
+                    content: 'ssi-modal is an open source modal window plugin that only depends on jquery. It has many options and it\'s super flexible, maybe the most flexible modal out there... For more details click <a class="sss" href="http://ssbeefeater.github.io/#ssi-modal" target="_blank">here</a>',
+                    sizeClass: 'small',
+                    animation: true
+                });
+            }
+        }
+    };
+
+    // option 1
+
+
+    $('#ssi-upload').ssi_uploader({
+        
+        inForm:true
+    });
+
+    // option 2
+
+    var uploader = $('#ssi-upload').ssi_uploader({
+        
+    });
+
+    $( "#myForm" ).on( "submit", function( event ) {
+        event.preventDefault();
+        uploader.data('ssi_upload').uploadFiles();
+        uploader.on('onUpload.ssi-uploader',function(){
+            $( "#myForm" ).submit();
+        });
+    });
+   $(function () {
+      $('input[name="daterange"]').daterangepicker({
+        opens: 'left'
+      }, function (start, end, label) {
+        console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+      });
+    });
 
 
