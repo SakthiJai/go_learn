@@ -1,77 +1,11 @@
 
 
-
-$('#divLoading').hide();
-
-document.getElementById("course_name").addEventListener("change", updateRelevents);
-setTimeout(function(){
-$('.btn-danger').hide();
-},1000);
-    $(function(){
-    var dtToday = new Date();
-
-    var month = dtToday.getMonth() + 1;
-    var day = dtToday.getDate();
-    var year = dtToday.getFullYear();
-
-    if(month < 10)
-        month = '0' + month.toString();
-    if(day < 10)
-        day = '0' + day.toString();
-
-    var maxDate = year + '-' + month + '-' + day;    
-    $('#txtDate').attr('max', maxDate);
-});
-
-
-$( document ).ready(function() {
-    var date_input = document.getElementById('start_time');
-//date_input.valueAsDate = new Date();
-
-date_input.onchange = function(){
- $('#end_time').val('');
-	var spiltTime= this.value.split(":");
-	var no_of_hours = $('#no_of_hrs').val().split('.');
-	let min = no_of_hours[1];
-	let time = parseInt(spiltTime[0])+parseInt($('#no_of_hrs').val())+":"+spiltTime[1]+":"+0+0;
-	var endtime= addTimes('0:'+ min, time).split(':');	
-   $('#end_time').val(endtime[0]+":"+endtime[1])
-}
-function addTimes(t0, t1) {
-  return secsToTime(timeToSecs(t0) + timeToSecs(t1));
-}
-function timeToSecs(time) {
-  let [h, m, s] = time.split(':');
-  return h*3600 + (m|0)*60 + (s|0)*1;
-}
-function secsToTime(seconds) {
-  let z = n => (n<10? '0' : '') + n; 
-  return (seconds / 3600 | 0) + ':' +
-       z((seconds % 3600) / 60 | 0) + ':' +
-        z(seconds % 60);
-}
-       jQuery.validator.addMethod("greaterThan", 
-function(value, element, params) {
-
-    if (!/Invalid|NaN/.test(new Date(value))) {
-        return new Date(value) >= new Date($(params).val());
-    }
-
-    return isNaN(value) && isNaN($(params).val()) 
-        || (Number(value) >= Number($(params).val())); 
-},'Must be greater than From Date.');;
-    
-});
-   
-
-$("input[name='from_date']").change(function() {
-  $("input[name='to_date']").val($(this).val());
-})
-
-
 var baseurl = $('#base_url').val();
 console.log(baseurl);
-    $(document).ready(function() {
+
+
+$('#divLoading').hide();
+ $(document).ready(function() {
         $('#createProgram').validate({
             rules: {
                 course_name: {
@@ -205,32 +139,146 @@ console.log(baseurl);
             },
 
             highlight: function(element) {
-                $(element).closest('.form-control').addClass('error');
+                $(element).closest('.mdc-line-ripple').addClass('error');
             },
             unhighlight: function(element) {
-                $(element).closest('.form-control').removeClass('error');
+                $(element).closest('.mdc-line-ripple').removeClass('error');
             },
             submitHandler: function(form) {
              
               
                
-                var formdata = $("#createProgram").serialize();
-                var id = $("#id").val();
-                if (id != "") {
-
-                    //    var url="updateProgram";
+                var formdata = $("#createPrograms").serialize();
+				console.log(formdata);
+               // var id = $("#id").val();
+				
+                if (formdata != "") {
+					 form.submit();
                 } else {
+            }
 
-                    //   var url="createprogram";
-
-                }
-
-                checkEmpValue(form);
-                
+                //checkEmpValue(form);
+                form.submit();
             }
         });
     });
+ $(document).ready(function() {
+             $("input[name=start_time]").clockpicker({       
+  placement: 'bottom',
+  align: 'left',
+  autoclose: true,
+  default: 'now',
+  donetext: "Select",
+  init: function() { 
+                            console.log("colorpicker initiated");
+                        },
+                        beforeShow: function() {
+                            console.log("before show");
+                        },
+                        afterShow: function() {
+                            console.log("after show");
+                        },
+                        beforeHide: function() {
+                            console.log("before hide");
+                        },
+                        afterHide: function() {
+                            console.log("after hide");
+                        },
+                        beforeHourSelect: function() {
+                            console.log("before hour selected");
+                        },
+                        afterHourSelect: function() {
+                            console.log("after hour selected");
+                        },
+                        beforeDone: function() {
+                            console.log("before done");
+                        },
+                        afterDone: function() {
+                            console.log("after done");
+                        }
+});
+        $("input[name=end_time]").clockpicker({       
+  placement: 'bottom',
+  align: 'left',
+  autoclose: true,
+  default: 'now',
+  donetext: "Select",
+  init: function() { 
+                            console.log("colorpicker initiated");
+                        },
+                        beforeShow: function() {
+                            console.log("before show");
+                        },
+                        afterShow: function() {
+                            console.log("after show");
+                        },
+                        beforeHide: function() {
+                            console.log("before hide");
+                        },
+                        afterHide: function() {
+                            console.log("after hide");
+                        },
+                        beforeHourSelect: function() {
+                            console.log("before hour selected");
+                        },
+                        afterHourSelect: function() {
+                            console.log("after hour selected");
+                        },
+                        beforeDone: function() {
+                            console.log("before done");
+                        },
+                        afterDone: function() {
+                            console.log("after done");
+                        }
+});
+ });
 
+$(document).ready(function(){
+
+$('.input-daterange').datepicker({
+    format: 'dd-mm-yyyy',
+    autoclose: true,
+    calendarWeeks : true,
+    clearBtn: true,
+    disableTouchKeyboard: true
+});
+
+});
+var nowTemp = new Date();
+var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+
+var checkin = $('#dp1').datepicker({
+
+  beforeShowDay: function(date) {
+    return date.valueOf() >= now.valueOf();
+  },
+  autoclose: true
+
+}).on('changeDate', function(ev) {
+  if (ev.date.valueOf() > checkout.datepicker("getDate").valueOf() || !checkout.datepicker("getDate").valueOf()) {
+
+    var newDate = new Date(ev.date);
+    newDate.setDate(newDate.getDate() + 1);
+    checkout.datepicker("update", newDate);
+
+  }
+  $('#dp2')[0].focus();
+});
+
+
+var checkout = $('#dp2').datepicker({
+  beforeShowDay: function(date) {
+    if (!checkin.datepicker("getDate").valueOf()) {
+      return date.valueOf() >= new Date().valueOf();
+    } else {
+      return date.valueOf() > checkin.datepicker("getDate").valueOf();
+    }
+  },
+  autoclose: true
+
+}).on('changeDate', function(ev) {});
+
+   
 
     function updateRelevents() {
 
@@ -328,3 +376,73 @@ console.log(baseurl);
  		
 		
 
+
+document.getElementById("course_name").addEventListener("change", updateRelevents);
+setTimeout(function(){
+$('.btn-danger').hide();
+},1000);
+    $(function(){
+    var dtToday = new Date();
+
+    var month = dtToday.getMonth() + 1;
+    var day = dtToday.getDate();
+    var year = dtToday.getFullYear();
+
+    if(month < 10)
+        month = '0' + month.toString();
+    if(day < 10)
+        day = '0' + day.toString();
+
+    var maxDate = year + '-' + month + '-' + day;    
+    $('#txtDate').attr('max', maxDate);
+});
+
+
+$( document ).ready(function() {
+    var date_input = document.getElementById('start_time');
+//date_input.valueAsDate = new Date();
+
+date_input.onchange = function(){
+ $('#end_time').val('');
+	var spiltTime= this.value.split(":");
+	var no_of_hours = $('#no_of_hrs').val().split('.');
+	let min = no_of_hours[1];
+	let time = parseInt(spiltTime[0])+parseInt($('#no_of_hrs').val())+":"+spiltTime[1]+":"+0+0;
+	var endtime= addTimes('0:'+ min, time).split(':');	
+   $('#end_time').val(endtime[0]+":"+endtime[1])
+}
+function addTimes(t0, t1) {
+  return secsToTime(timeToSecs(t0) + timeToSecs(t1));
+}
+function timeToSecs(time) {
+  let [h, m, s] = time.split(':');
+  return h*3600 + (m|0)*60 + (s|0)*1;
+}
+function secsToTime(seconds) {
+  let z = n => (n<10? '0' : '') + n; 
+  return (seconds / 3600 | 0) + ':' +
+       z((seconds % 3600) / 60 | 0) + ':' +
+        z(seconds % 60);
+}
+       jQuery.validator.addMethod("greaterThan", 
+function(value, element, params) {
+
+    if (!/Invalid|NaN/.test(new Date(value))) {
+        return new Date(value) >= new Date($(params).val());
+    }
+
+    return isNaN(value) && isNaN($(params).val()) 
+        || (Number(value) >= Number($(params).val())); 
+},'Must be greater than From Date.');;
+    
+});
+   
+
+$("input[name='from_date']").change(function() {
+  $("input[name='to_date']").val($(this).val());
+})
+
+
+   function myFunction() {
+  document.getElementById("createProgram").reset();
+}

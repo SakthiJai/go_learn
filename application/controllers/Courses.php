@@ -32,8 +32,8 @@ class Courses extends CI_Controller {
 		$this->load->view('superadmin/header',$data);
 		$this->load->view('superadmin/course.php',$data);
     }
+	
     	public function course_adding(){
-//print_r($_POST); exit;
 	    $course = $this->input->post('course_title');
 	    
 	    $exitcourse = $this->Admin_model->exitcourse($course,$this->input->post('courseid'));

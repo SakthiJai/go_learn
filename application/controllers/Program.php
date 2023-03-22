@@ -74,11 +74,36 @@ class Program extends CI_Controller {
 	//	print_r($data);
 		if(isset($id) && !empty($id)){
 			$data['editprogramGroup'] = $this->Super_model->editprogramGroup($id);
+			$this->load->view('ui/addprogramGroup',$data);
 		}
 		$data['h_title'] = "Program Group"; 	    
 		$this->load->view('ui/programGroup.php',$data);
 	}
-	public function addprogramGroup()
+	public function addprogramGroup(){
+		$data['h_title'] = "Go Learn "; 	    
+	    $this->load->view('ui/addprogramGroup',$data);
+	}
+	public function addprogramGroup_master(){
+		$data = array(
+		    'group_name' => $this->input->post('name'),
+		);
+		//print_r($data);exit();
+        $insertUserData = $this->Super_model->addprogramGroup($data);
+		if($data){
+				$this->session->set_flashdata('msg','<div class="alert alert-success text-center" style="color: #008a5d;
+    background-color: rgba(0, 182, 122, 0.2);
+    border-color: #00a770;    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;">Added Successfully.</div>');
+			redirect('Program/programGroup'); 
+			
+			}else{
+				redirect('Program/addprogramGroup'); 
+			}
+	}
+	/*public function addprogramGroup_master()
     {
     	//print_r($_POST);exit();
 		$data = array(
@@ -88,7 +113,7 @@ class Program extends CI_Controller {
         $insertUserData = $this->Super_model->addprogramGroup($data);
         $this->session->set_flashdata('msg','<div class="alert alert-success text-center">submit Successed.</div>');
         redirect(base_url().'Program/programGroup','refresh');            
-    }
+    }*/
     	public function updateprogramGroup($id)
 	{
 		$data['program']=$this->Super_model->program();
@@ -100,7 +125,13 @@ class Program extends CI_Controller {
 				
 			$res=$this->Super_model->updateprogramGroup($id,$inputdata);
 			if($res) {
-				$this->session->set_flashdata('msg','<div class="alert alert-success text-center">Updated Successed.</div>');
+				$this->session->set_flashdata('msg','<div class="alert alert-success text-center" style="color: #008a5d;
+    background-color: rgba(0, 182, 122, 0.2);
+    border-color: #00a770;    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;">Updated Successfully.</div>');
 				redirect(base_url().'Program/programGroup','refresh'); 
 			}else{
 				$this->session->set_flashdata('msg','<div class="alert alert-danger text-center"> Updated Failed! Try Again </div>');
@@ -154,7 +185,13 @@ class Program extends CI_Controller {
 	{
 	     //print_r($id);exit();
 	    $updateUserData = $this->Super_model->deleteprogram($id);
-                 $this->session->set_flashdata('msg','<div class="alert alert-danger" style="padding: 7px; margin-top: 8px;">Program Deleted Updated</div>');
+                 $this->session->set_flashdata('msg','<div class="alert alert-success text-center" style="color: #008a5d;
+    background-color: rgba(0, 182, 122, 0.2);
+    border-color: #00a770;    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;">Deleted Successfully.</div>');
         redirect(base_url().'superadmin/program','refresh'); 
 	
 	}

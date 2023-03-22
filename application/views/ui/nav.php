@@ -41,7 +41,10 @@
                       <i class="mdi mdi-settings-outline text-primary"></i>                      
                     </div>
                     <div class="item-content d-flex align-items-start flex-column justify-content-center">
-                      <h6 class="item-subject font-weight-normal">Logout</h6>
+					 <a class="mdc-drawer-link" href="<?php echo base_url('main/logout'); ?>">
+                     <h6 class="item-subject font-weight-normal">Logout</h6>
+                    </a>
+                     
                     </div>
                   </li>
                 </ul>

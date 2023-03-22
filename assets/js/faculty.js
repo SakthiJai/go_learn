@@ -1,4 +1,7 @@
-//document.getElementById("facultyid").addEventListener("blur", checkFaculty());
+//document.getElementById("facultyid").addEventListener("blur", checkFaculty());\
+setTimeout(function() { 
+  $(".alert-success").hide();
+}, 2000);
 $(document).ready(function() {
         $('#addFaculty').validate({
             rules: {
@@ -129,7 +132,7 @@ $("#facultyid").on("keyup", function() {
                 id: $('#facultyid').val()
             },
             function(data) {
-                console.log(JSON.parse(data));
+                console.log(data);
                 var list = JSON.parse(data);
                 if (data!=500) {
                     $('#facultyname').val(list.name);
@@ -189,3 +192,22 @@ console.log('8ygeiqfvhbiykhjnfc');
         } else
             return false;
     }
+		function showConfirmation(id)
+	{
+	  Swal.fire({
+      title: 'Do you want delete this details ?',
+      text: "",
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonColor: 'green',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.href= 'faculty_delete/'+id;
+      } else {
+        console.log('clicked cancel');
+      }
+    })
+	  
+	}

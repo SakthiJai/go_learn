@@ -1,57 +1,37 @@
-<div class="app-main__outer table-responsive">
-    <div class="app-main__inner " >
-        <div class="app-page-title">
-            <div class="page-title-wrapper">
-                <div class="page-title-heading">
-                    <div class="page-title-icon">
-                        <i class="fa fa-users icon-gradient bg-sunny-morning"></i>
-                    </div>
-                    <div>Division Report data
-                        <div class="page-title-subheading"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--<div class="row">
-            <div class="col-md-12">
-                <div class="main-card mb-3 card">
-                    <div class="card-body">
-                        <div class="tab-content">
-                            <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
-                                <div class="main-card mb-3 card">
-                                    <div class="card-body">
-                                        <form class="">
-                                            <div class="form-row">
-                                                <div class="col-md-6">
-                                                    <div class="position-relative form-group">
-                                                        <label for="exampleDate" class="">  <strong> From Date :</strong></label>
-                                                        <input name="fromdate" input type="date" id="exampleDate" placeholder="10/7/2010" type="Date" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="position-relative form-group">
-                                                        <label for="exampleDate" class="">  <strong> End Date :</strong></label>
-                                                        <input name="enddate" input type="date" id="exampleDate" placeholder="10/7/2010" type="Date" class="form-control">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="d-block text-right">
-                                                <button class="mb-2 mr-2 btn btn-success">submit</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> 
-            </div>
-        </div>-->
-        <div class="row ">
-            <div class="col-md-12">
-                <div class="main-card mb-3 card ">
-                    <div class="card-body table-responsive">
-                        <table id="datatable-buttons" class="table table-bordered">
+<!DOCTYPE html>
+<html lang="en">
+<?php include('header.php');?>
+<body>
+<script src="<?php echo base_url(); ?>/assets/js/preloader.js"></script>
+  <div class="body-wrapper">
+    <!-- partial:partials/_sidebar.html -->
+    <?php include('sidebar.php');?>
+    <!-- partial -->
+    <div class="main-wrapper mdc-drawer-app-content">
+      <!-- partial:partials/_navbar.html -->
+		<?php include('nav.php');?>
+      <!-- partial -->
+      <div class="page-wrapper mdc-toolbar-fixed-adjust">
+        <main class="content-wrapper">
+          <div class="mdc-layout-grid">
+            <div class="mdc-layout-grid__inner">
+              
+              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                <div class="mdc-card">
+                  <div class="d-flex justify-content-between">
+                   <button class="mdc-button mdc-button--outlined outlined-button--secondary mdc-ripple-upgraded" style="--mdc-ripple-fg-size:95px; --mdc-ripple-fg-scale:1.82773; --mdc-ripple-fg-translate-start:-36.7px, -39.1px; --mdc-ripple-fg-translate-end:32.3125px, -29.5px;">
+                     Division Report data
+                      </button>
+                   
+                  </div>
+				   &nbsp;&nbsp;&nbsp;&nbsp;
+				  
+                 	<center><span class=""> <?php echo $this->session->flashdata('msg'); ?></span></center>
+					
+                  <div class="mdc-layout-grid__inner mt-2">
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--span-8-tablet">
+                        <div class="table-responsive border">
+                           <table id="datatable-buttons" class="table table-bordered">
                             <thead>
                                     <tr>
                                         <th class="th-sm">S.No</th>
@@ -273,52 +253,44 @@
                                       <td>0.00</td>
                                     </tr>
                                 </tbody>
-                            <tfoot>
-                                    <tr>
-                                      <th class="th-sm">S.No</th>
-                                      <th class="th-sm">Division</th>
-                                      <th class="th-sm">Behavioural</th>
-                                      <th class="th-sm">Technical</th>
-                                      <th class="th-sm">Functional</th>
-                                      <th class="th-sm">SHE</th>
-                                      <th class="th-sm">OJT</th>
-                                      <th class="th-sm">Others</th>
-                                      <th class="th-sm">Total</th>
-                                      <th class="th-sm">No. of MS employees</th>
-                                      <th class="th-sm">No. of NMS employees</th>
-                                      <th class="th-sm">No. of Contract employees</th>
-                                      <th class="th-sm">Mandays per MS employee</th>
-                                      <th class="th-sm">Mandays per NMS employee</th>
-                                      <th class="th-sm">Mandays per contract employee</th>
-                                    </tr>
-                                </tfoot>
+                           
                         </table>
+                        </div>
                     </div>
-                </div>
+                   
+                  </div>
+                </div> 
+              </div>
+             
+             
             </div>
-        </div>
+          </div>
+        </main>
+        <!-- partial:partials/_footer.html -->
+        <?php include('footer.php');?>
+        <!-- partial -->
+      </div>
     </div>
-</div> 
-</div>
-</div>                  
+  </div>
+   <link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url();?>assets/css/daterangepicker.css" />
+   <script type="text/javascript" src="<?php echo base_url();?>assets/js/main.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.min.js"></script>
+	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/validate.min.js"></script>
+	 <script type="text/javascript" src="<?php echo base_url();?>assets/js/moment.min.js"></script>	
+ <script type="text/javascript" src="<?php echo base_url();?>assets/js/daterangepicker.js"></script>	
+	 <script type="text/javascript" src="<?php echo base_url();?>assets/js/faculty.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>assets/js/ckeditor.js"></script>
+	<script type="text/javascript" src="<?php echo base_url();?>assets/js/csweetalert2@11"></script>
 
-     
-<script type="text/javascript" src="<?php echo base_url();?>assets/scripts/main.js"></script>  
-<script type="text/javascript" src="<?php echo base_url();?>assets/js/divisionreport.js"></script>
-<!-- Required datatable js -->
-<script src="<?php echo base_url()?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="<?php echo base_url()?>assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
-<!-- Buttons examples -->
-<script src="<?php echo base_url()?>assets/plugins/datatables/dataTables.buttons.min.js"></script>
-<script src="<?php echo base_url()?>assets/plugins/datatables/buttons.bootstrap4.min.js"></script>
-<script src="<?php echo base_url()?>assets/plugins/datatables/jszip.min.js"></script>
-<script src="<?php echo base_url()?>assets/plugins/datatables/pdfmake.min.js"></script>
-<script src="<?php echo base_url()?>assets/plugins/datatables/vfs_fonts.js"></script>
-<script src="<?php echo base_url()?>assets/plugins/datatables/buttons.html5.min.js"></script>
-<script src="<?php echo base_url()?>assets/plugins/datatables/buttons.print.min.js"></script>
-<script src="<?php echo base_url()?>assets/plugins/datatables/buttons.colVis.min.js"></script>
-<!-- Responsive examples -->
-<script src="<?php echo base_url()?>assets/plugins/datatables/dataTables.responsive.min.js"></script>
-<script src="<?php echo base_url()?>assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
+
+	<style>.error {
+        color: #fa4040;
+        font-size: 12px;
+		margin-top: 2%;
+    }
+	
+</style>
 </body>
-</html>
+</html> 
+
+

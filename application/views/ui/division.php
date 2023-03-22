@@ -20,7 +20,7 @@
                 <div class="mdc-card">
                   <div class="d-flex justify-content-between">
                    <button class="mdc-button mdc-button--outlined outlined-button--secondary mdc-ripple-upgraded" style="--mdc-ripple-fg-size:95px; --mdc-ripple-fg-scale:1.82773; --mdc-ripple-fg-translate-start:-36.7px, -39.1px; --mdc-ripple-fg-translate-end:32.3125px, -29.5px;">
-                       Unit
+                       Unit Name
                       </button>
                     <div>
 					 <a class="mdc-button mdc-button--raised filled-button--secondary mdc-ripple-upgraded" href="<?php echo base_url('main/adddivision'); ?>">
@@ -30,28 +30,25 @@
                     </div>
                   </div>
 				   &nbsp;&nbsp;&nbsp;&nbsp;
-				  
-				   <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--span-8-tablet">
-                 	<center><span class=""> <?php echo $this->session->flashdata('msg'); ?></span></center>
-					</div>
+				
+					<center><span class=""> <?php echo $this->session->flashdata('msg'); ?></span></center>
+					&nbsp;&nbsp;&nbsp;&nbsp;
                   <div class="mdc-layout-grid__inner mt-2">
                     <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--span-8-tablet">
                         <div class="table-responsive border">
                           <table class="table table-hoverable">
 						  <thead>
                           <tr>
-                                            <th>S.No</th>
-                                            <th>Division</th>
-                                            <th>Division ID</th>
-											<th>Edit</th>
+                                            <th  style="text-align: center;">S.No</th>
+                                            <th  style='text-align: center;'>Unit Name</th>
+											<th  style='text-align: center;'>Action</th>
                                         </tr>
 							</thead>		
                             <tbody>
 							<?php $i=1; foreach($division->result() as $row) { ?>
                                         <tr>
-                                            <td><?php echo $i;?></td>
-											<td><?php echo $row->divisions;?></td>
-											<td><?php echo $row->id;?></td>
+                                            <td style="text-align: center;"><?php echo $i;?></td>
+											<td style="text-align: center;"><?php echo $row->divisions;?></td>
 											
 											<td style='text-align: center;'><a href="<?php echo base_url(); ?>main/division/<?php echo $row->id; ?>"  class="mdc-button mdc-button--raised icon-button filled-button--success mdc-ripple-upgraded" style="--mdc-ripple-fg-size:21px; --mdc-ripple-fg-scale:2.90056; --mdc-ripple-fg-translate-start:12.375px, 18.5px; --mdc-ripple-fg-translate-end:7.5px, 7.5px; background-color: #00bbdd;">
 											 <img alt="Eye icon" srcset="https://img.icons8.com/material/2x/visible.png 2x, https://img.icons8.com/material/1x/visible.png 1x" src="https://img.icons8.com/material/1x/visible.png" style="filter: invert(0%) sepia(0%) saturate(7465%) hue-rotate(196deg) brightness(93%) contrast(95%);">

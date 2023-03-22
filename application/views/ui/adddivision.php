@@ -21,7 +21,7 @@
                 <div class="mdc-card">
                   <div class="d-flex justify-content-between">
                    <button class="mdc-button mdc-button--outlined outlined-button--secondary mdc-ripple-upgraded" style="--mdc-ripple-fg-size:95px; --mdc-ripple-fg-scale:1.82773; --mdc-ripple-fg-translate-start:-36.7px, -39.1px; --mdc-ripple-fg-translate-end:32.3125px, -29.5px;">
-                        Unit
+                        Unit Name
                       </button>
                     
                   </div>
@@ -32,7 +32,7 @@
 						
 						        <?php if (isset($editdivision) && ($editdivision->num_rows() > 0)) {
             foreach ($editdivision->result() as $row) { ?>
-			<center><span class=""> <?php echo $this->session->flashdata('msgse'); ?></span></center>
+			<center><span class=""> <?php echo $this->session->flashdata('msg'); ?></span></center>
                   <form  id="employee" class="" action="<?php echo base_url(); ?>main/updatedivision/<?php echo $row->id; ?> " method="POST">
                     <div class="mdc-layout-grid">
                       <div class="mdc-layout-grid__inner">
@@ -40,14 +40,14 @@
                         <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
                           <div class="mdc-text-field w-100 mdc-ripple-upgraded">           
                             <div class="mdc-line-ripple"></div>
-                            <label for="text-field-hero-input" class="mdc-floating-label">Unit</label>
+                            <label for="text-field-hero-input" class="mdc-floating-label">Unit Name</label>
 							<input class="mdc-text-field__input" id="text-field-hero-input exampleText" name="division"  value="<?php echo $row->divisions;?>"  >
                           </div>
                         </div>
                        
 						 <div class="mdc-3 ayout-grid__cell stretch-card mdc-layout-grid__cell--span-2">
                           <button class=" mt-4 btn btn-primary mdc-button mdc-button--raised filled-button--success mdc-ripple-upgraded vertical-center" style="--mdc-ripple-fg-size:56px;     --mdc-ripple-fg-scale:1.96936; --mdc-ripple-fg-translate-start:22.9px, -19.6px; --mdc-ripple-fg-translate-end:18.8px, -10px ,float:   ">
-                              Submit
+                              Update
                             </button>&nbsp;&nbsp;&nbsp;&nbsp;
 							<a href="<?php echo base_url('main/division'); ?>"class=" mt-4 mdc-button mdc-button--raised filled-button--secondary mdc-ripple-upgraded"  style="--mdc-ripple-fg-size:70px; --mdc-ripple-fg-scale:1.90907; --mdc-ripple-fg-translate-start:8.11121px, -9.33333px; --mdc-ripple-fg-translate-end:24.1389px, -17px;   ">
 									 Cancel
@@ -57,15 +57,15 @@
                     </div>
                   </form>
 				  <?php } ?>   <?php }else { ?>
-				  <center><span class=""> <?php echo $this->session->flashdata('msgse'); ?></span></center>
-				    <form  id="employee" class="" action="<?php echo base_url('main/adddivision');?>" method="POST">
+				  <center><span class=""> <?php echo $this->session->flashdata('msg'); ?></span></center>
+				    <form  id="employee" class="" action="<?php echo base_url('main/adddivision_master');?>" method="POST">
                     <div class="mdc-layout-grid">
                       <div class="mdc-layout-grid__inner">
 					   
                         <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
                           <div class="mdc-text-field w-100 mdc-ripple-upgraded">           
                             <div class="mdc-line-ripple"></div>
-                            <label for="text-field-hero-input" class="mdc-floating-label">Function</label>
+                            <label for="text-field-hero-input" class="mdc-floating-label">Unit Name</label>
 							<input class="mdc-text-field__input" id="text-field-hero-input exampleText" name="division"  value="<?php echo $row->division;?>"  >
                           </div>
                         </div>
@@ -113,7 +113,7 @@
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/validate.min.js"></script>
 	 <script type="text/javascript" src="<?php echo base_url();?>assets/js/moment.min.js"></script>	
  <script type="text/javascript" src="<?php echo base_url();?>assets/js/daterangepicker.js"></script>	
-	 <script type="text/javascript" src="<?php echo base_url();?>assets/js/.js"></script>
+	 <script type="text/javascript" src="<?php echo base_url();?>assets/js/division.js"></script>
     <script type="text/javascript" src="<?php echo base_url();?>assets/js/ckeditor.js"></script>
 	<style>.error {
         color: #fa4040;

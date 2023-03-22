@@ -35,7 +35,7 @@
                         <?php if (isset($editsbu) && ($editsbu->num_rows() > 0)) {
             foreach ($editsbu->result() as $row) { ?>
                         <center><span class="">
-                            <?php echo $this->session->flashdata('msgse'); ?>
+                            <?php echo $this->session->flashdata('msg'); ?>
                           </span></center>
                         <form id="employee" class=""
                           action="<?php echo base_url(); ?>main/updatesbu/<?php echo $row->id; ?> " method="POST">
@@ -47,14 +47,15 @@
                                   <div class="mdc-line-ripple"></div>
                                   <label for="text-field-hero-input" class="mdc-floating-label">SBU</label>
                                   <input class="mdc-text-field__input" id="text-field-hero-input exampleText" name="sbu"
-                                    value="<?php echo $row->sbu;?>">
+                                    value="<?php echo $row->sbu;?>" pattern="^[a-zA-Z0-9]+$">
+									<span id="lblError" style="color: red"></span>
                                 </div>
                               </div>
 
                               <div class="mdc-3 ayout-grid__cell stretch-card mdc-layout-grid__cell--span-2">
                                 <button
                                   class=" mt-4 btn btn-primary mdc-button mdc-button--raised filled-button--success mdc-ripple-upgraded vertical-center"
-                                  style="--mdc-ripple-fg-size:56px;     --mdc-ripple-fg-scale:1.96936; --mdc-ripple-fg-translate-start:22.9px, -19.6px; --mdc-ripple-fg-translate-end:18.8px, -10px ,float:   ">
+                                  style="--mdc-ripple-fg-size:56px;     --mdc-ripple-fg-scale:1.96936; --mdc-ripple-fg-translate-start:22.9px, -19.6px; --mdc-ripple-fg-translate-end:18.8px, -10px ,float: right;   ">
                                   Update
                                 </button>&nbsp;&nbsp;&nbsp;&nbsp;
                                 <a href="<?php echo base_url('main/sbu_master'); ?>"
@@ -69,7 +70,7 @@
                         <?php } ?>
                         <?php }else { ?>
                         <center><span class="">
-                            <?php echo $this->session->flashdata('msgse'); ?>
+                            <?php echo $this->session->flashdata('msg'); ?>
                           </span></center>
                         <form id="employee" class="" action="<?php echo base_url('main/addSbu_master');?>" method="POST">
                           <div class="mdc-layout-grid">
@@ -79,13 +80,13 @@
                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded">
                                   <div class="mdc-line-ripple"></div>
                                   <label for="text-field-hero-input" class="mdc-floating-label">SBU</label>
-                                  <input class="mdc-text-field__input" id="text-field-hero-input exampleText" name="sbu">
+                                  <input class="mdc-text-field__input" id="exampleText" name="sbu" pattern="^[a-zA-Z0-9]+$">
                                 </div>
                               </div>
                               <div class="mdc-3 ayout-grid__cell stretch-card mdc-layout-grid__cell--span-2">
                                 <button
                                   class=" mt-4 btn btn-primary mdc-button mdc-button--raised filled-button--success mdc-ripple-upgraded vertical-center"
-                                  style="--mdc-ripple-fg-size:56px;     --mdc-ripple-fg-scale:1.96936; --mdc-ripple-fg-translate-start:22.9px, -19.6px; --mdc-ripple-fg-translate-end:18.8px, -10px ,float:" >
+                                  style="--mdc-ripple-fg-size:56px;     --mdc-ripple-fg-scale:1.96936; --mdc-ripple-fg-translate-start:22.9px, -19.6px; --mdc-ripple-fg-translate-end:18.8px, -10px ,float:right; " >
                                   Submit
                                 </button>&nbsp;&nbsp;&nbsp;&nbsp;
                                 <a href="<?php echo base_url('main/sbu_master'); ?>"

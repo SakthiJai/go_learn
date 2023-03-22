@@ -454,13 +454,13 @@ class Super_model extends CI_model {
 		return $this->db->insert('designation',$data);
 	}
 	public function organization(){
-		return $this->db->from('organication')->order_by('id','organication')->get();
+		return $this->db->from('organization')->order_by('id','organization')->get();
 	}
-	public function organication_master(){
-		return $this->db->from('organication')->get();
+	public function organization_master(){
+		return $this->db->from('organization')->get();
 	}
-	public function addorganication($data){
-		return $this->db->insert('organication',$data);
+	public function addorganization($data){
+		return $this->db->insert('organization',$data);
 	}
 	public function function_master(){
 		return $this->db->from('function')->get();
@@ -478,13 +478,13 @@ class Super_model extends CI_model {
 		return $this->db->insert('gender',$data);
 	}
 	public function editorg($id){
-        return $this->db->from('organication')->where('id',$id)->get();	
+        return $this->db->from('organization')->where('id',$id)->get();	
     }
 	public function updateorg($id,$data){
-        return $this->db->where('id',$id)->update('organication',$data); 
+        return $this->db->where('id',$id)->update('organization',$data); 
     }
 	public function delete_org($id){
-        $this->db->where('id',$id)->delete('organication');
+        $this->db->where('id',$id)->delete('organization');
         return true;
     }
 	public function editsbu($id){

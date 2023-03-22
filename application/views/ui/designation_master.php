@@ -112,12 +112,7 @@
         font-size: 12px;
 		margin-top: 2%;
     }
-	.demo{  background-color: #f2f2f2;
-  color: #333;
-  font-weight: bold;
-  
-  padding: 12px;
-  border: 1px solid #ccc;}
+	
 </style>
 </body>
 </html> 
