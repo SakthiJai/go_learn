@@ -125,7 +125,7 @@
               </div>
             </div>
             <div class="mdc-list-item mdc-drawer-item">
-              <a class="mdc-drawer-link" href="<?php echo base_url('main/course'); ?>" target="_blank"    >
+              <a class="mdc-drawer-link" href="<?php echo base_url('main/course'); ?>"     >
                 <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">description</i>
                 New Course
               </a>

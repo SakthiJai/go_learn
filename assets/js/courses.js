@@ -17,7 +17,7 @@ for (let i = length; i > 0; --i) result += characters[Math.round(Math.random() *
 
 function pageLoad(){window.location.href='baseurl+superadmin/course';}
 document.courseadd.onclick = function(){
-    var radVal = document.courseadd.test.value;
+  //  var radVal = document.courseadd.test.value;
 }
 //var editId = '<?php echo $this->uri->segment(3);?>';
 var editId = $('#editId').val();

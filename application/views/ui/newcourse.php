@@ -31,9 +31,25 @@
                     <div class="menu-button-container">
                       <div class="mdc-card">
                         <form id="courseadd" name="courseadd"  action="<?php echo base_url();?>courses/course_adding" method="POST" enctype="multipart/form-data">
+						<input type="hidden" id="base_url" name="base_url" value="<?php echo $baseurl ?>"/>
                           <div class="mdc-layout-grid">
                             <div class="mdc-layout-grid__inner">
-							
+							 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
+							   <div class="col-sm-4 col-lg-4 col-md-4 col-xs-12">
+                            <label for>Package Images </label><br>
+                            <div class="form-file mb-3">
+                                <label class="form-file-label">
+                                    <img id="blah" alt="your image"
+                                        onclick="document.getElementById('title').click()"
+                                      src="<?php echo base_url();?>assets/images/preview-icon_101018.png" width="100"
+                                        height="100" />
+                                </label>
+                                <input id="title" name="image" type="file"  class="form-file-input"
+                                    style="visibility:hidden" 
+                                    onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">
+                            </div>
+                        </div>
+						 </div>
                               <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded">
                                   <input class="mdc-text-field__input" id="test_temp_id" name="test_temp_id" type="hidden"  value="<?php echo $this->uri->segment(3);?>">
@@ -44,6 +60,7 @@
                                   <label for="text-field-hero-input" class="mdc-floating-label">Tittle</label>
                                 </div>
                               </div>
+							 
 							   <!-- <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop">
 						 <label for="" class="">Course Cover Image </label>
 						 <input type="file" name="ssi-upload" multiple id="ssi-upload"/ style="width: 474px;">
@@ -87,26 +104,59 @@
                           
                           </div>
                         </div>
-						 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop">
-						 <input type="file" name="ssi-upload" multiple id="ssi-upload"/ style="width: 474px;">
-						 </div>
 						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
-                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+						 <input type="file"  class="mdc-floating-label" name="ssi-upload" multiple id="ssi-upload"/ style="width: 474px;">
+						 </div>
+						 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3">
+                          <div class="mdc-text-field w-100 mdc-ripple-upgraded" style="padding-right: 271px;">
                             <div class="mdc-line-ripple"></div>
-                            <label for="text-field-hero-input" class="mdc-floating-label">Description : </label>
-							 
+                            <label for="text-field-hero-input" class="mdc-floating-label">Learning&nbsp;Level&nbsp;Evaluation</label>
                           </div>
                         </div>
-						<div >
-							
-						</div>
-							  
-                             
-							
-
+						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
+                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                            <div class="mdc-line-ripple"></div>
+                           <label for="opt4" class="radio">
+    <input id="name name22" type="radio" class="radioBtnClass" name="test"  value="1" <?php echo  (isset($details[0]->posttest_id) && $details[0]->pretest_id==1 )?'checked':""?>>
+    <span class="label"></span>Pre test
+  </label>
+  <label for="opt2" class="radio">
+    <input id="name name33" type="radio" class="radioBtnClass" name="test"  value="2"  <?php echo  (isset($details[0]->posttest_id) && $details[0]->posttest_id==1 )?'checked':""?>>
+    <span class="label"></span>Post test
+  </label>
+  
+  <label for="opt3" class="radio">
+    <input id="name name44" type="radio"  class="radioBtnClass" name="test"  value="3" <?php echo  (isset($details[0]->pre_and_post) && $details[0]->pre_and_post==1 )?'checked':""?>>
+    <span class="label"></span>Pre and Post test
+  </label>
+  
+  
+  
+                          </div>
+                        </div>
+						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-2">
+                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                            <div class="mdc-line-ripple"></div>
+							<button  id="viewQuestion" class="mdc-button mdc-button--unelevated filled-button--info mdc-ripple-upgraded" style="--mdc-ripple-fg-size:38px; --mdc-ripple-fg-scale:2.19553; --mdc-ripple-fg-translate-start:25.0375px, -15.4px; --mdc-ripple-fg-translate-end:13px, -1px; width: 152px; height: 50px; ">
+                      View Questions
+                      </button>
                           
-							    <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4"></div>
-                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
+                          </div>
+                        </div>
+                            </div>
+                          </div>
+						   <div class="card-body">
+							 <input type="hidden" name="tid" id="tid" value="1">
+							  <input type="hidden" name="type" id="type" value="terms">
+							 <label  > Description</label>
+							   <textarea id="description" name="description" name="content"></textarea>
+						</div>
+							
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						
+						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12"></div>
+						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4"></div>
+						 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
                                 <button type="submit"
                                   class=" btn btn-primary mdc-button mdc-button--raised filled-button--success mdc-ripple-upgraded vertical-center"
                                   style="--mdc-ripple-fg-size:56px;     --mdc-ripple-fg-scale:1.96936; --mdc-ripple-fg-translate-start:22.9px, -19.6px; --mdc-ripple-fg-translate-end:18.8px, -10px ,float: right;     width: 200px;">
@@ -117,10 +167,7 @@
 									 Cancel
 									</a>
                               </div>
-							   <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4"></div>
-
-                            </div>
-                          </div>
+							  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4"></div>
                         </form>
                       </div>
                     </div>
@@ -139,7 +186,8 @@
       </div>
     </div>
   </div>
-   <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+  
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
   <link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url();?>assets/css/daterangepicker.css" />
   
   <link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url();?>assets/css/courses.css" />
@@ -172,7 +220,9 @@
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/coursefeedbackform.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/ssi-uploader.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.3.7/tinymce.min.js"></script>
+  
 
+ 
  
 
 <style>
@@ -373,7 +423,7 @@ $Exclamation23: -0px -188px 31px 31px;
 
 .ssi-previewBox {
   float: left;
-  width: 100%;
+  width: 65%;
   color: #ccc;
   padding: 10px;
 }
@@ -826,6 +876,11 @@ span.ssi-InputLabel input[type="file"] {
       font-size: 12px;
       margin-top: 2%;
     }
+	
+	#description_ifr{
+	
+	height:200px !important;
+	}
 </style>
 <script>
 function callListGrid()
