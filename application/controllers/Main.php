@@ -68,7 +68,8 @@ class Main extends CI_Controller {
         $sess_array = array('username' => '');
         $this->session->unset_userdata('superadmin_login', $sess_array);
         $data['message_display'] = 'Successfully Logout';
-        redirect(base_url().'main/logout');
+		$this->load->view('ui/login');
+       // redirect(base_url().'main/logout');
             
     }
 	public function dashboard(){
@@ -245,16 +246,28 @@ class Main extends CI_Controller {
 	    $this->load->view('ui/division',$data);
 	}
 	public function adddivision(){
-		//print($_POST);exit;
+       $data['h_title'] = "Go Learn "; 	    
+	    $this->load->view('ui/adddivision',$data);        
+    }
+	public function adddivision_master(){
 		$data = array(
 	        	'divisions' => $this->input->post('division')
 			    );
-				//print_r($data);exit;
         $insertUserData = $this->Super_model->adddivision($data);
-		//print_r($insertUserData);exit;
-        $this->session->set_flashdata('msg','<div class="alert alert-success text-center">Successfully Submitted. Thank you.</div>');
-        redirect(base_url().'ui/adddivision','refresh');            
-    }
+		if($data){
+				$this->session->set_flashdata('msg','<div class="alert alert-success text-center" style="color: #008a5d;
+    background-color: rgba(0, 182, 122, 0.2);
+    border-color: #00a770;    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;">Added Successfully.</div>');
+			redirect('main/division'); 
+			
+			}else{
+				redirect('main/adddivision'); 
+			}
+	}
 	public function updatedivision($id){
 		$data['division']=$this->Super_model->division();
 		$data['editdivision'] = $this->Super_model->editdivision($id);	
@@ -263,10 +276,22 @@ class Main extends CI_Controller {
 				);
 			$res=$this->Super_model->updatedivision($id,$inputdata);
 			if($res) {
-				$this->session->set_flashdata('msg','<div class="alert alert-success text-center">Updated Successfully.</div>');
+				$this->session->set_flashdata('msg','<div class="alert alert-success text-center" style="color: #008a5d;
+					background-color: rgba(0, 182, 122, 0.2);
+					border-color: #00a770;    position: relative;
+					padding: 0.75rem 1.25rem;
+					margin-bottom: 1rem;
+					border: 1px solid transparent;
+					border-radius: 0.25rem;">Updated Successfully.</div>');
 				redirect(base_url().'main/division','refresh'); 
 			}else{
-				$this->session->set_flashdata('msg','<div class="alert alert-danger text-center"> Updated Failed! Try Again </div>');
+				$this->session->set_flashdata('msg','<div class="alert alert-success text-center" style="color: #008a5d;
+				background-color: rgba(0, 182, 122, 0.2);
+				border-color: #00a770;    position: relative;
+				padding: 0.75rem 1.25rem;
+				margin-bottom: 1rem;
+				border: 1px solid transparent;
+				border-radius: 0.25rem;">Update Not Successfully.</div>');
 				redirect(base_url().'main/division','refresh'); 
 			}
 	}
@@ -290,37 +315,51 @@ class Main extends CI_Controller {
 		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
 		$data['faculty']=$this->Super_model->faculty();
 		if(isset($id) && !empty($id)){
+			//print_r($id);exit;
 			$data['editfaculty'] = $this->Super_model->editfaculty($id);
-		}
+			$this->load->view('ui/addfaculty',$data);
+		}else{
 		$data['h_title'] = "Go Learn "; 	    
-		$this->load->view('ui/header',$data);
-		$this->load->view('ui/faculty.php',$data);
+		$this->load->view('ui/faculty',$data);
+		}
 	}
 	
 		public function addfaculty()
     {
-    	//print_r($_POST);exit();
-    
+    	$data['h_title'] = "Go Learn ";
+        $this->load->view('ui/addfaculty',$data);		
+    }
+     public function addfaculty_master(){
 		$data = array(
-		'name' => $this->input->post('facultyname'),
+		'name' => $this->input->post('name'),
 		'mobile' => $this->input->post('mobile'),
         'email' => $this->input->post('email'),
-        'company_name' => $this->input->post('facultycomp'),
+        'company_name' => $this->input->post('company_name'),
         'city' => $this->input->post('city'),
         'state' => $this->input->post('state'),
         'country' => $this->input->post('country'),
        'faculty_type'=>$this->input->post('faculty_type'),
         'emp_id'=>$this->input->post('facultyid')
 			);
-		//print_r($data);exit();
+		//print_r($data['name']);exit();
         $insertUserData = $this->Super_model->addfaculty($data);
-		$this->session->set_flashdata('msg','<div class="alert alert-success text-center">Faculty Added Successfully.</div>');   
-        $this->load->view('main/addfaculty',$data);		
-    }
-
+		if($data){
+				$this->session->set_flashdata('msg','<div class="alert alert-success text-center" style="color: #008a5d;
+    background-color: rgba(0, 182, 122, 0.2);
+    border-color: #00a770;    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;">Added Successfully.</div>');
+			redirect('main/faculty'); 
+			
+			}else{
+				redirect('main/addfaculty'); 
+			}
+	}
 	public function updatefaculty($id)
 	{
-		$data['faculty']=$this->Super_model->faculty();
+		//$data['faculty']=$this->Super_model->faculty();
 		$data['editfaculty'] = $this->Super_model->editfaculty($id);	
 			$inputdata = array(
 				'name' => $this->input->post('name'),
@@ -334,18 +373,30 @@ class Main extends CI_Controller {
 				
 			$res=$this->Super_model->updatefaculty($id,$inputdata);
 			if($res) {
-				$this->session->set_flashdata('msg','<div class="alert alert-success text-center">Updated Successed.</div>');
-				redirect(base_url().'ui/faculty','refresh'); 
+				$this->session->set_flashdata('msg','<div class="alert alert-success text-center" style="color: #008a5d;
+					background-color: rgba(0, 182, 122, 0.2);
+					border-color: #00a770;    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;">Updated Successfully.</div>');
+				redirect(base_url().'main/faculty','refresh');
 			}else{
 				$this->session->set_flashdata('msg','<div class="alert alert-danger text-center"> Updated Failed! Try Again </div>');
-				redirect(base_url().'ui/faculty','refresh'); 
+				redirect(base_url().'ui/addfaculty','refresh'); 
 			}
 			
 	}
 	public function faculty_delete($id){
 		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
         $result= $this->Super_model->faculty_delete($id);
-		$this->session->set_flashdata('msg','<div class="alert alert-danger text-center">Deleted</div>');
+		$this->session->set_flashdata('msg','<div class="alert alert-success text-center" style="color: #008a5d;
+					background-color: rgba(0, 182, 122, 0.2);
+					border-color: #00a770;    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;">Deleted Successfully.</div>');
 		//print_r($id);exit;
         redirect($_SERVER['HTTP_REFERER']);
 	}
@@ -354,42 +405,77 @@ class Main extends CI_Controller {
 		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
 		$data['program_types']=$this->Super_model->program_types();
 		if(isset($id) && !empty($id)){
+			//print_r($id);exit;
 			$data['editprogram_types'] = $this->Super_model->editprogram_types($id);
-		}
+			$this->load->view('ui/addprogram_types',$data);
+		}else{
 		$data['h_title'] = "Go Learn "; 	    
-		$this->load->view('ui/header',$data);
-		$this->load->view('ui/program_types.php',$data);
+		$this->load->view('ui/program_types',$data);
 	}
-	
+	}
 	public function addprogram_types()
     {
-    	//print_r($_POST);exit();
-		$data = array(
+    	$data['h_title'] = "Go Learn "; 	    
+		$this->load->view('ui/addprogram_types',$data);
+                 
+    }
+	public function addprogram_types_master(){
+			$data = array(
 		    'type' => $this->input->post('type'),
 		);
-		//print_r($data);exit();
         $insertUserData = $this->Super_model->addprogram_types($data);
-        $this->session->set_flashdata('msg','<div class="alert alert-success text-center">submit Successed.</div>');
-        redirect(base_url().'ui/program_types','refresh');            
-    }
-
+		if($data){
+				$this->session->set_flashdata('msg','<div class="alert alert-success text-center" style="color: #008a5d;
+    background-color: rgba(0, 182, 122, 0.2);
+    border-color: #00a770;    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;">Added Successfully.</div>');
+			redirect('main/program_types'); 
+			
+			}else{
+				redirect('main/addprogram_types'); 
+			}
+	}
+	public function deleteProgramtypes($id)
+    
+	{
+	     //print_r($id);exit();
+	    $updateUserData = $this->Super_model->deleteProgramtypes($id);
+                 $this->session->set_flashdata('msg','<div class="alert alert-success text-center" style="color: #008a5d;
+    background-color: rgba(0, 182, 122, 0.2);
+    border-color: #00a770;    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;">Deleted  Successfully.</div>');
+        redirect(base_url().'main/program_types','refresh'); 
 	
+	}
 	public function updateprogram_types($id)
 	{
-		$data['program_types']=$this->Super_model->program_types();
+		//$data['program_types']=$this->Super_model->program_types();
 		$data['editprogram_types'] = $this->Super_model->editprogram_types($id);	
 
 			$inputdata = array(
 				'type' => $this->input->post('type'),
 				);
-				
+				//print_r($inputdata);exit;
 			$res=$this->Super_model->updateprogram_types($id,$inputdata);
+			//print_r($res);exit;
 			if($res) {
-				$this->session->set_flashdata('msg','<div class="alert alert-success text-center">Updated Successfully!</div>'); 
-				redirect(base_url().'ui/program_types','refresh'); 
+				$this->session->set_flashdata('msg','<div class="alert alert-success text-center" style="color: #008a5d;
+    background-color: rgba(0, 182, 122, 0.2);
+    border-color: #00a770;    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;">Updated Successfully.</div>'); 
+				redirect(base_url().'main/program_types','refresh'); 
 			}else{
 				$this->session->set_flashdata('msg','<div class="alert alert-success text-center">Update Failed.</div>');
-				redirect(base_url().'ui/program_types','refresh'); 
+				redirect(base_url().'main/program_types','refresh'); 
 			}
 			
 	}
@@ -533,7 +619,10 @@ class Main extends CI_Controller {
         redirect(base_url().'ui/course','refresh');   
 	    //}
 	}
-	
+	public function newcourse(){
+		$data['h_title'] = "Go Learn  "; 	    
+		$this->load->view('ui/newcourse',$data);
+	}
 	public function test($id=false){
 	    //if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
 	    $data['coursedata'] = $this->Super_model->coursedata($id);
@@ -834,6 +923,7 @@ class Main extends CI_Controller {
 		$this->load->view('ui/createprogram.php',$data);
 	}
 	public function creatingprogram(){
+		//print_r($_POST);exit;
 	    $programList_id = $this->input->post('program_id');
 	    //print_r($programList_id);exit;
 	    //if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
@@ -954,6 +1044,7 @@ class Main extends CI_Controller {
 	public function programs(){
 	    //if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
 		$data['programs']=$this->Super_model->programs();
+		//print_r($data['programs']);exit;
 		$data['h_title'] = "Go Learn  programs"; 	    
 		$this->load->view('ui/header',$data);
 		$this->load->view('ui/programs.php',$data);
@@ -1442,7 +1533,8 @@ $message ='<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http:
                 break; 
             }
         }
-        echo $error;
+		//print_r($divisionaa);exit;
+        //echo $error;
 	}
 	public function store_assign_emp(){
 	    //print_r($this->input->post('assign_empid'));exit;
@@ -2083,18 +2175,13 @@ $headers .= 'From: '.$from."\r\n".
 	public function addsbu(){
 		
 		     $data['h_title'] = "Go Learn "; 	
-			 $this->load->view('ui/addsbu',$data);
-		
-		
-		 
+			 $this->load->view('ui/addsbu',$data);	 
 	}
 	public function addSbu_master(){
-		
-		
-		     
 			$data = array(
 			'sbu' => $this->input->post('sbu')
 			);
+			
 			$data=$this->Super_model->addsbu($data);
 			if($data){
 				$this->session->set_flashdata('msg','<div class="alert alert-success text-center" style="color: #008a5d;
@@ -2159,20 +2246,35 @@ $headers .= 'From: '.$from."\r\n".
 		}
 	}
 	public function addbranch(){
-		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
-		$data = array(
-		'branch' => $this->input->post('branch_plant'));
-		//print_r($data);exit;
-		$data['addbranch']=$this->Super_model->addbranch($data);
 		$data['h_title'] = "Go Learn "; 	    
 	    $this->load->view('ui/addbranch',$data);
+	}
+	public function addbranch_master(){
+			$data = array(
+			'branch' => $this->input->post('branch_plant')
+			);
+			//print_r($data);exit;
+			$data['addbranch']=$this->Super_model->addbranch($data);
+			if($data){
+				$this->session->set_flashdata('msg','<div class="alert alert-success text-center" style="color: #008a5d;
+    background-color: rgba(0, 182, 122, 0.2);
+    border-color: #00a770;    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;">Added Successfully.</div>');
+			redirect('main/branch_master'); 
+			
+			}else{
+				redirect('main/addbranch'); 
+			}
 	}
 	public function updatebranch($id)
 	{
 		//$data['sbu']=$this->Super_model->sbu();
 		$data['editsbu'] = $this->Super_model->editsbu($id);	
 			$inputdata = array(
-				'branch' => $this->input->post('branch'));
+				'branch' => $this->input->post('branch_plant'));
 			$res=$this->Super_model->updatebranch($id,$inputdata);
 			if($res) {
 				$this->session->set_flashdata('msg','<div class="alert alert-success text-center" style="color: #008a5d;
@@ -2215,13 +2317,27 @@ $headers .= 'From: '.$from."\r\n".
 	}
 	
 	public function addgrade(){
-		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
-		$data = array(
+		$data['h_title'] = "Go Learn "; 	    
+	    $this->load->view('ui/addgrade',$data);
+	}
+	public function addgrade_master(){
+			$data = array(
 		'grade' => $this->input->post('grade'));
 		//print_r($data);exit;
 		$data['addgrade']=$this->Super_model->addgrade($data);
-		$data['h_title'] = "Go Learn "; 	    
-	    $this->load->view('ui/addgrade',$data);
+			if($data){
+				$this->session->set_flashdata('msg','<div class="alert alert-success text-center" style="color: #008a5d;
+    background-color: rgba(0, 182, 122, 0.2);
+    border-color: #00a770;    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;">Added Successfully.</div>');
+			redirect('main/grade_master'); 
+			
+			}else{
+				redirect('main/addgrade'); 
+			}
 	}
 	public function updategrade($id)
 	{
@@ -2269,13 +2385,27 @@ $headers .= 'From: '.$from."\r\n".
 		}
 	}
 	public function addemployee_type(){
-		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
-		$data = array(
-		'type' => $this->input->post('emp_type'));
-		$data['addemployee_type']=$this->Super_model->addemployee_type($data);
 		$data['h_title'] = "Go Learn "; 	    
 	    $this->load->view('ui/addemployee_type',$data);
 	
+	}
+   public function addemployee_master(){
+		$data = array(
+		'type' => $this->input->post('emp_type'));
+		$data['addemployee_type']=$this->Super_model->addemployee_type($data);
+			if($data){
+				$this->session->set_flashdata('msg','<div class="alert alert-success text-center" style="color: #008a5d;
+    background-color: rgba(0, 182, 122, 0.2);
+    border-color: #00a770;    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;">Added Successfully.</div>');
+			redirect('main/employee_type_master'); 
+			
+			}else{
+				redirect('main/addemployee_type'); 
+			}
 	}
 	public function update_emp_type($id)
 	{
@@ -2324,14 +2454,27 @@ $headers .= 'From: '.$from."\r\n".
 	}
 	
 	public function adddesignation(){
-		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
-		$data = array(
-		'designation' => $this->input->post('designation'));
-		//print_r($data);exit;
-		$data['adddesignation']=$this->Super_model->adddesignation($data);
 		$data['h_title'] = "Go Learn "; 	    
 	    $this->load->view('ui/adddesignation',$data);
 	}	
+	 public function adddesignation_master(){
+			$data = array(
+		'designation' => $this->input->post('designation'));
+		$data['adddesignation']=$this->Super_model->adddesignation($data);
+			if($data){
+				$this->session->set_flashdata('msg','<div class="alert alert-success text-center" style="color: #008a5d;
+    background-color: rgba(0, 182, 122, 0.2);
+    border-color: #00a770;    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;">Added Successfully.</div>');
+			redirect('main/designation_master'); 
+			
+			}else{
+				redirect('main/adddesignation'); 
+			}
+	}
 	public function update_des($id)
 	{
 		//$data['sbu']=$this->Super_model->sbu();
@@ -2366,32 +2509,47 @@ $headers .= 'From: '.$from."\r\n".
         redirect(base_url().'main/designation_master','refresh');
 	}
 	
-    public function organication_master($id=false){
-		$data['organication_master']=$this->Super_model->organication_master();
+    public function organization_master($id=false){
+		$data['organization_master']=$this->Super_model->organization_master();
 		if(isset($id) && !empty($id)){
 			$data['editorg'] = $this->Super_model->editorg($id);
-			 $this->load->view('ui/addorganication',$data);
+			 $this->load->view('ui/addorganization',$data);
 			// print_r($data['editsbu']);exit;
 		}else{
 		$data['h_title'] = "Go Learn "; 	    
-	    $this->load->view('ui/organication_master',$data);
+	    $this->load->view('ui/organization_master',$data);
 		}
 	}
-	public function addorganication(){
-		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
-		$data = array(
-		'organication' => $this->input->post('organication'));
-		//print_r($data);exit;
-		$data['addorganication']=$this->Super_model->addorganication($data);
+	public function addorganization(){
+		
 		$data['h_title'] = "Go Learn "; 	    
-	    $this->load->view('ui/addorganication',$data);
+	    $this->load->view('ui/addorganization',$data);
 	}	
+	 public function addorganization_master(){
+		$data = array(
+		'organization' => $this->input->post('organization'));
+		$data['addorganization']=$this->Super_model->addorganization($data);
+		if($data){
+				$this->session->set_flashdata('msg','<div class="alert alert-success text-center" style="color: #008a5d;
+    background-color: rgba(0, 182, 122, 0.2);
+    border-color: #00a770;    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;">Added Successfully.</div>');
+			redirect('main/organization_master'); 
+			
+			}else{
+				redirect('main/addorganization'); 
+			}
+	}
 	public function updateorg($id)
 	{
 		//$data['sbu']=$this->Super_model->sbu();
 		$data['editorg'] = $this->Super_model->editorg($id);	
 			$inputdata = array(
-				'organication' => $this->input->post('organication'));
+				'organization' => $this->input->post('organization'));
+				//print_r(oraganization);exit;
 			$res=$this->Super_model->updateorg($id,$inputdata);
 			if($res) {
 				$this->session->set_flashdata('msg','<div class="alert alert-success text-center" style="color: #008a5d;
@@ -2401,10 +2559,10 @@ $headers .= 'From: '.$from."\r\n".
     margin-bottom: 1rem;
     border: 1px solid transparent;
     border-radius: 0.25rem;">Updated Successfully.</div>');
-				redirect(base_url().'main/organication_master','refresh'); 
+				redirect(base_url().'main/organization_master','refresh'); 
 			}else{
 				$this->session->set_flashdata('msg','<div class="alert alert-danger text-center"> Updated Failed! Try Again </div>');
-				redirect(base_url().'main/organication_master','refresh'); 
+				redirect(base_url().'main/organization_master','refresh'); 
 			}	
 	}
 	public function delete_org($id){
@@ -2417,7 +2575,7 @@ $headers .= 'From: '.$from."\r\n".
     margin-bottom: 1rem;
     border: 1px solid transparent;
     border-radius: 0.25rem;"> Deleted Successfully. </div>');
-        redirect(base_url().'main/grade_master','refresh');
+        redirect(base_url().'main/organization_master','refresh');
 	}
 	 public function function_master($id=false){
 		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
@@ -2433,14 +2591,27 @@ $headers .= 'From: '.$from."\r\n".
 		}
 	}
 	public function addfunction(){
-		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
-		$data = array(
-		'function' => $this->input->post('function'));
-		//print_r($data);exit;
-		$data['addfunction']=$this->Super_model->addfunction($data);
 		$data['h_title'] = "Go Learn "; 	    
 	    $this->load->view('ui/addfunction',$data);
-	}	
+	}	  
+	public function addfunction_master(){
+		$data = array(
+		'function' => $this->input->post('function'));
+		$data['addfunction']=$this->Super_model->addfunction($data);
+		if($data){
+				$this->session->set_flashdata('msg','<div class="alert alert-success text-center" style="color: #008a5d;
+    background-color: rgba(0, 182, 122, 0.2);
+    border-color: #00a770;    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;">Added Successfully.</div>');
+			redirect('main/function_master'); 
+			
+			}else{
+				redirect('main/addfunction'); 
+			}
+	}
 	public function updatefunction($id)
 	{
 		//$data['sbu']=$this->Super_model->sbu();
@@ -2487,16 +2658,29 @@ $headers .= 'From: '.$from."\r\n".
 		}
 	}
 	public function addgender(){
-		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
-		$data = array(
-		'gender' => $this->input->post('gender'));
-		$data['addgender']=$this->Super_model->addgender($data);
 		$data['h_title'] = "Go Learn "; 	    
 	    $this->load->view('ui/addgender',$data);
 	}	
+	public function addgender_master(){
+			$data = array(
+		'gender' => $this->input->post('gender'));
+		$data['addgender']=$this->Super_model->addgender($data);
+		if($data){
+				$this->session->set_flashdata('msg','<div class="alert alert-success text-center" style="color: #008a5d;
+    background-color: rgba(0, 182, 122, 0.2);
+    border-color: #00a770;    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;">Added Successfully.</div>');
+			redirect('main/gender_master'); 
+			
+			}else{
+				redirect('main/addgender'); 
+			}
+	}
 	public function updategender($id)
 	{
-		//$data['sbu']=$this->Super_model->sbu();
 		$data['editgender'] = $this->Super_model->editgender($id);	
 			$inputdata = array(
 				'gender' => $this->input->post('gender'));
