@@ -6,7 +6,7 @@ console.log('12233443332222222222');
                 //Buttons examples
                 var table = $('#datatable-buttons').DataTable({
                     lengthChange: false,
-                    buttons: ['excel']
+                    //buttons: ['excel']
                 });
 
                 table.buttons().container()
