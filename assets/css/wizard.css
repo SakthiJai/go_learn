@@ -1,0 +1,73 @@
+.wizard {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+}
+.wizard > .steps {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+.wizard ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.wizard > .steps .current a {
+    background: #7a00ff;
+    color: #ffffff;
+    cursor: default;
+}
+.wizard > .steps > ul > li {
+    width: 25%;
+    float: left;
+    text-align: center;
+}
+
+.wizard > .steps .disabled a {
+    background: #e6e9ed;
+    color: #434a54;
+    cursor: default;
+}
+.wizard > .content {
+    background: #e9eaef;
+    display: block;
+    margin: 0.5em;
+    min-height: 29em;
+    overflow: hidden;
+    position: relative;
+    width: auto;
+    border-radius: 5px;
+}
+.wizard > .content > .body {
+    float: left;
+    position: absolute;
+    width: 95%;
+    height: 100%;
+    padding: 2.5%;
+    overflow-y: auto;
+}	
+.wizard > .content > .title {
+    position: absolute;
+    left: -999em;
+}
+.wizard > .actions {
+    padding-top: 20px;
+    position: relative;
+    display: block;
+    text-align: right;
+    width: 100%;
+}
+.wizard > .actions > ul {
+    display: inline-block;
+    text-align: right;
+}
+.wizard ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.wizard ul > li {
+    display: block;
+    padding: 0;
+}
