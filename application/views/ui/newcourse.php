@@ -23,7 +23,7 @@
                   <div class="d-flex justify-content-between">
                     <button class="mdc-button mdc-button--outlined outlined-button--secondary mdc-ripple-upgraded"
                       style="--mdc-ripple-fg-size:95px; --mdc-ripple-fg-scale:1.82773; --mdc-ripple-fg-translate-start:-36.7px, -39.1px; --mdc-ripple-fg-translate-end:32.3125px, -29.5px;">
-                      Add Employee
+                      Add Course
                     </button>
                   </div>
                   <div class="template-demo">
@@ -34,48 +34,38 @@
 						<input type="hidden" id="base_url" name="base_url" value="<?php echo $baseurl ?>"/>
                           <div class="mdc-layout-grid">
                             <div class="mdc-layout-grid__inner">
-							 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
-							   <div class="col-sm-4 col-lg-4 col-md-4 col-xs-12">
-                            <label for>Package Images </label><br>
-                            <div class="form-file mb-3">
-                                <label class="form-file-label">
-                                    <img id="blah" alt="your image"
-                                        onclick="document.getElementById('title').click()"
-                                      src="<?php echo base_url();?>assets/images/preview-icon_101018.png" width="100"
-                                        height="100" />
-                                </label>
-                                <input id="title" name="image" type="file"  class="form-file-input"
-                                    style="visibility:hidden" 
-                                    onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">
-                            </div>
-                        </div>
-						 </div>
-                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
+							
+							  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded">
                                   <input class="mdc-text-field__input" id="test_temp_id" name="test_temp_id" type="hidden"  value="<?php echo $this->uri->segment(3);?>">
 								   <input type="hidden" name="courseid" value="<?php echo $this->uri->segment(3);?>"/>
 								    <input class="mdc-text-field__input" id="course_title" name="course_title" type="text" class="form-control" placeholder="Title"
-                                                        value="<?php echo isset($details[0])?$details[0]->course_title:"";?>" onkeypress="return NumbersOnly(this,event)">
+                                        value="<?php echo isset($details[0])?$details[0]->course_title:"";?>" onkeypress="return NumbersOnly(this,event)">
                                   <div class="mdc-line-ripple"></div>
                                   <label for="text-field-hero-input" class="mdc-floating-label">Tittle</label>
                                 </div>
                               </div>
-							 
-							   <!-- <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop">
-						 <label for="" class="">Course Cover Image </label>
-						 <input type="file" name="ssi-upload" multiple id="ssi-upload"/ style="width: 474px;">
-						 </div>-->
 							  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
+                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                            <div class="mdc-line-ripple"></div>
+                            <label for="text-field-hero-input" class="mdc-floating-label">Program Name: </label>
+                            <select class="mdc-text-field__input training_type" name="program_name" id="program_name">
+                              <option disabled selected value> </option>
+<option >7 </option>
+                            </select>
+                          </div>
+                        </div>
+						  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
                           <div class="mdc-text-field w-100 mdc-ripple-upgraded">
                             <div class="mdc-line-ripple"></div>
                             <label for="text-field-hero-input" class="mdc-floating-label">Program Type : </label>
                             <select class="mdc-text-field__input training_type" name="training_type" id="training_type">
                               <option disabled selected value> </option>
-
+<option >7 </option>
                             </select>
                           </div>
                         </div>
-							  <input type="hidden" name="id" id="id" value="<?php echo (isset($editEmployee))? $editEmployee[0]['id']:''?>">
+						<input type="hidden" name="id" id="id" value="<?php echo (isset($editEmployee))? $editEmployee[0]['id']:''?>">
 							  
                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
                           <div class="mdc-text-field w-100 mdc-ripple-upgraded">
@@ -83,92 +73,124 @@
                             <label for="text-field-hero-input" class="mdc-floating-label">Program Group: </label>
                             <select class="mdc-text-field__input training_type" name="program_group" id="program_group">
                               <option disabled selected value> </option>
-
+<option >7 </option>
                             </select>
                           </div>
                         </div>
-						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
+						 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
                           <div class="mdc-text-field w-100 mdc-ripple-upgraded">
                             <div class="mdc-line-ripple"></div>
-                            <label for="text-field-hero-input" class="mdc-floating-label">Program Name: </label>
-                            <select class="mdc-text-field__input training_type" name="program_name" id="program_name">
-                              <option disabled selected value> </option>
-
-                            </select>
-                          </div>
+                           <div class="mdc-form-field"> <label for>Learning Level Evaluation:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+						   <div class="mdc-form-field">
+                      <div class="mdc-checkbox mdc-checkbox--secondary">
+                        <input type="checkbox" id="checkbox-1" class="mdc-checkbox__native-control" >
+                        <div class="mdc-checkbox__background">
+                          <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                            <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
+                          </svg>
+                          <div class="mdc-checkbox__mixedmark"></div>
                         </div>
-						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-2">
-                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
-                            <div class="mdc-line-ripple"></div>
-                            <label for="text-field-hero-input" class="mdc-floating-label">PDF file: </label>
-                          
-                          </div>
+                      </div>
+                      <label for="basic-disabled" id="basic-disabled-checkbox-label" >Pre test</label>
+                    </div>
+					<div class="mdc-form-field">
+                      <div class="mdc-checkbox mdc-checkbox--secondary">
+                        <input type="checkbox" id=" basic-disabled-checkbox" class="mdc-checkbox__native-control" >
+                        <div class="mdc-checkbox__background" >
+                          <svg class="mdc-checkbox__checkmark" style="border-color: #ff420f;
+   " viewBox="0 0 24 24">
+                            <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
+                          </svg>
+                          <div class="mdc-checkbox__mixedmark"></div>
                         </div>
+                      </div>
+                      <label for="basic-disabled" id="basic-disabled-checkbox-label">Post test</label>
+                    </div>
+					<div class="mdc-form-field">
+                      <div class="mdc-checkbox mdc-checkbox--secondary">
+                        <input type="checkbox" id="basic-disabled-checkbox" class="mdc-checkbox__native-control" >
+                        <div class="mdc-checkbox__background" >
+                          <svg class="mdc-checkbox__checkmark"   viewBox="0 0 24 24">
+                            <path class="mdc-checkbox__checkmark-path" fill="none" style="border-color: #ff420f;
+    background-color: #ff420f;" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
+                          </svg>
+                          <div class="mdc-checkbox__mixedmark"></div>
+                        </div>
+                      </div>
+                      <label for="basic-disabled" id="basic-disabled-checkbox-label">Pre and Post test</label>
+                    </div>
+                          </div>
+                        </div> 
+							 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
+							   <div class="col-sm-4 col-lg-4 col-md-4 col-xs-12">
+                            <label for> Images: </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <div class="form-file mb-3">
+                                <label class="form-file-label">
+                                    <img id="blah" alt="your image"
+                                        onclick="document.getElementById('title').click()"
+                                      src="<?php echo base_url();?>assets/images/preview-icon_101018.png" width="200"
+                                        height="200" />
+                                </label>
+                                <input id="title" name="image" type="file"  class="form-file-input"
+                                    style="visibility:hidden" 
+                                    onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">
+                            </div>
+                        </div>
+						 </div>
+                            
+							 
+							   <!-- <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop">
+						 <label for="" class="">Course Cover Image </label>
+						 <input type="file" name="ssi-upload" multiple id="ssi-upload"/ style="width: 474px;">
+						 </div>-->
+							  
+							  <input type="hidden" name="id" id="id" value="<?php echo (isset($editEmployee))? $editEmployee[0]['id']:''?>">
+							  
+                           
+						
+						
 						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
+						<div class="col-sm-4 col-lg-4 col-md-4 col-xs-12">
+						  <label for>PDF files :</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						 <input type="file"  class="mdc-floating-label" name="ssi-upload" multiple id="ssi-upload"/ style="width: 474px;">
 						 </div>
-						 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3">
-                          <div class="mdc-text-field w-100 mdc-ripple-upgraded" style="padding-right: 271px;">
-                            <div class="mdc-line-ripple"></div>
-                            <label for="text-field-hero-input" class="mdc-floating-label">Learning&nbsp;Level&nbsp;Evaluation</label>
-                          </div>
-                        </div>
-						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
-                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
-                            <div class="mdc-line-ripple"></div>
-                           <label for="opt4" class="radio">
-    <input id="name name22" type="radio" class="radioBtnClass" name="test"  value="1" <?php echo  (isset($details[0]->posttest_id) && $details[0]->pretest_id==1 )?'checked':""?>>
-    <span class="label"></span>Pre test
-  </label>
-  <label for="opt2" class="radio">
-    <input id="name name33" type="radio" class="radioBtnClass" name="test"  value="2"  <?php echo  (isset($details[0]->posttest_id) && $details[0]->posttest_id==1 )?'checked':""?>>
-    <span class="label"></span>Post test
-  </label>
-  
-  <label for="opt3" class="radio">
-    <input id="name name44" type="radio"  class="radioBtnClass" name="test"  value="3" <?php echo  (isset($details[0]->pre_and_post) && $details[0]->pre_and_post==1 )?'checked':""?>>
-    <span class="label"></span>Pre and Post test
-  </label>
-  
-  
-  
-                          </div>
-                        </div>
-						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-2">
-                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
-                            <div class="mdc-line-ripple"></div>
-							<button  id="viewQuestion" class="mdc-button mdc-button--unelevated filled-button--info mdc-ripple-upgraded" style="--mdc-ripple-fg-size:38px; --mdc-ripple-fg-scale:2.19553; --mdc-ripple-fg-translate-start:25.0375px, -15.4px; --mdc-ripple-fg-translate-end:13px, -1px; width: 152px; height: 50px; ">
-                      View Questions
-                      </button>
-                          
-                          </div>
-                        </div>
+						 </div>
+					
+                </div>
+                        
+						
+					
+				
+					
+						
+					
                             </div>
                           </div>
+						  
 						   <div class="card-body">
 							 <input type="hidden" name="tid" id="tid" value="1">
 							  <input type="hidden" name="type" id="type" value="terms">
-							 <label  > Description</label>
+							 <label  > Description:</label>
 							   <textarea id="description" name="description" name="content"></textarea>
-						</div>
-							
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						
-						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12"></div>
-						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4"></div>
-						 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
+						 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4"></div>
+						 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12" style="margin-left: 26%;
+">
                                 <button type="submit"
                                   class=" btn btn-primary mdc-button mdc-button--raised filled-button--success mdc-ripple-upgraded vertical-center"
                                   style="--mdc-ripple-fg-size:56px;     --mdc-ripple-fg-scale:1.96936; --mdc-ripple-fg-translate-start:22.9px, -19.6px; --mdc-ripple-fg-translate-end:18.8px, -10px ,float: right;     width: 200px;">
                                   Submit
 
                                 </button>&nbsp;&nbsp;&nbsp;&nbsp;
-								<a href="<?php echo base_url('main/emp'); ?>"class=" mdc-button mdc-button--raised filled-button--secondary mdc-ripple-upgraded"  style="--mdc-ripple-fg-size:70px; --mdc-ripple-fg-scale:1.90907; --mdc-ripple-fg-translate-start:8.11121px, -9.33333px; --mdc-ripple-fg-translate-end:24.1389px, -17px;     width: 200px;  ">
+								<a href="<?php echo base_url('main/course'); ?>"class=" mdc-button mdc-button--raised filled-button--secondary mdc-ripple-upgraded"  style="--mdc-ripple-fg-size:70px; --mdc-ripple-fg-scale:1.90907; --mdc-ripple-fg-translate-start:8.11121px, -9.33333px; --mdc-ripple-fg-translate-end:24.1389px, -17px;     width: 200px;  ">
 									 Cancel
 									</a>
                               </div>
-							  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4"></div>
+						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4"></div>
+						
                         </form>
+						
                       </div>
                     </div>
                   </div>
@@ -200,24 +222,9 @@
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/csweetalert2@11"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/courses.js"></script>
   <!-- Required datatable js -->
-  <script src="<?php echo base_url()?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
-  <script src="<?php echo base_url()?>assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
-  <!-- Buttons examples -->
-  <script src="<?php echo base_url()?>assets/plugins/datatables/dataTables.buttons.min.js"></script>
-  <script src="<?php echo base_url()?>assets/plugins/datatables/buttons.bootstrap4.min.js"></script>
-  <script src="<?php echo base_url()?>assets/plugins/datatables/jszip.min.js"></script>
-  <script src="<?php echo base_url()?>assets/plugins/datatables/pdfmake.min.js"></script>
-  <script src="<?php echo base_url()?>assets/plugins/datatables/vfs_fonts.js"></script>
-
-  <script src="<?php echo base_url()?>assets/plugins/datatables/buttons.html5.min.js"></script>
-  <script src="<?php echo base_url()?>assets/plugins/datatables/buttons.print.min.js"></script>
-  <script src="<?php echo base_url()?>assets/plugins/datatables/buttons.colVis.min.js"></script>
-  <!-- Responsive examples -->
-  <script src="<?php echo base_url()?>assets/plugins/datatables/dataTables.responsive.min.js"></script>
-  <script src="<?php echo base_url()?>assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
-  <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.validate.js"></script>
+  <!-- Responsive examples  <script type="text/javascript" src="<?php echo base_url();?>assets/js/coursefeedbackform.js"></script> -->
   <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/prequestion.js"></script>
-  <script type="text/javascript" src="<?php echo base_url();?>assets/js/coursefeedbackform.js"></script>
+ 
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/ssi-uploader.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.3.7/tinymce.min.js"></script>
   
@@ -226,661 +233,6 @@
  
 
 <style>
- .error {
-      color: red !important;
-      font-size: 12px !important;
-    }
-
-    .table-responsive {
-      overflow-x: none !important;
-    }
-
-    .center {
-      margin-top: 50px;
-    }
-
-    .modal-header {
-      padding-bottom: 5px;
-    }
-
-    .modal-footer {
-      padding: 0;
-    }
-
-    .modal-footer .btn-group button {
-      height: 40px;
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-      border: none;
-      border-right: 1px solid #ddd;
-    }
-
-    .modal-footer .btn-group:last-child>button {
-      border-right: 0;
-    }
-
-    #service_image-error {
-      float: left;
-    }
-	$ban-10: -0px -0px 18px 18px;
-$ban-7: -0px -18px 18px 18px;
-$ban-7w: -0px -36px 18px 18px;
-$Check-7: -0px -54px 18px 18px;
-$Exclamation-7: -0px -72px 18px 18px;
-$trash-10: -0px -90px 18px 18px;
-$trash-7: -0px -108px 18px 18px;
-$ban-23: -0px -126px 31px 31px;
-$Check-23: -0px -157px 31px 31px;
-$Exclamation23: -0px -188px 31px 31px;
-@mixin sprite-width($sprite) {
-  width: nth($sprite, 3);
-}
-@mixin sprite-height($sprite) {
-  height: nth($sprite, 4);
-}
-@function sprite-width($sprite) {
-   @return nth($sprite, 3);
-}
-@function sprite-height($sprite) {
-   @return nth($sprite, 4);
-}
-@mixin sprite-position($sprite) {
-  $sprite-offset-x: nth($sprite, 1);
-  $sprite-offset-y: nth($sprite, 2);
-  background-position: $sprite-offset-x $sprite-offset-y;
-}
-@mixin sprite($sprite, $display: block) {
-   @include sprite-position($sprite);
-  background-repeat: no-repeat;
-  overflow: hidden;
-  display: $display;
-  @include sprite-width($sprite);
-  @include sprite-height($sprite);
-}
-
-.icon {
-  background-image: url('images/sprite.png');
-}
-
-
-.icon, span.ban7, span.ban7w, span.ban10, span.ban23, span.check7, span.check23, span.exclamation7, span.exclamation23, span.trash7, span.trash10 {
-  background-image: url("images/sprite.png");
-}
-
-.icon, span.ban7, span.ban7w, span.ban10, span.ban23, span.check7, span.check23, span.exclamation7, span.exclamation23, span.trash7, span.trash10 {
-  background-image: url("images/sprite.png");
-}
-
-.ssi-tooltipText {
-  border: 1px #b7b7b7 solid;
-  border-radius: 6px;
-  padding: 7px;
-  color: #fff;
-  display: block;
-  white-space: nowrap;
-  max-width: 200px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  background-color: #151515;
-  position: absolute;
-  font-size: 14px;
-  font-weight: 500;
-  opacity: 1;
-  z-index: 30000;
-}
-
-.ssi-tooltipText.ssi-fade {
-  -webkit-transition: opacity .8s;
-  transition: opacity .8s;
-}
-
-.ssi-tooltipText.ssi-fadeOut {
-  opacity: 0;
-}
-
-.ssi-tooltipText.ssi-fadeIn {
-  opacity: 1;
-}
-
-.ssi-button {
-  display: inline-block;
-  text-align: center;
-  vertical-align: middle;
-  font-size: 12px;
-  text-decoration: none;
-  border: 1px solid #aeaeae;
-  cursor: pointer;
-  padding: 6px 6px;
-  margin: 0 0 0 2px;
-  border-radius: 3px;
-  color: whitesmoke;
-}
-
-.ssi-button.error {
-  background: #cf5144;
-}
-
-.ssi-button.error:hover {
-  background: #ab4b3f;
-}
-
-.ssi-button.error:active {
-  background: #8f493e;
-}
-
-.ssi-button.info {
-  background: #006cbc;
-}
-
-.ssi-button.info:hover {
-  background: #0054a0;
-}
-
-.ssi-button.info:active {
-  background: #004d8e;
-}
-
-.ssi-button.success {
-  background: #40b056;
-      width: 223px;
-    height: 46px;
-    font-size: 20px;
-}
-
-.ssi-button.success:hover {
-  background: #389e48;
-}
-
-.ssi-button.success:active {
-  background: #2f963b;
-}
-
-.ssi-button[disabled] {
-  opacity: 0.8;
-  pointer-events: none;
-}
-
-.ssi-statusLabel {
-  padding: 2px 6px;
-  text-align: center;
-  font-size: 10px;
-  color: #fff;
-  font-weight: 600;
-  border-radius: 2px;
-}
-
-.ssi-statusLabel.error {
-  background: #cf5144;
-}
-
-.ssi-statusLabel.success {
-  background: #40b056;
-}
-
-.selected {
-  opacity: 0.4;
-}
-
-.ssi-previewBox {
-  float: left;
-  width: 65%;
-  color: #ccc;
-  padding: 10px;
-}
-
-.ssi-dropZonePreview {
-  min-height: 175px;
-  border: 2px dashed #ccc;
-  content: 'Drag n Drop Files';
-}
-
-.ssi-removeBtn {
-  margin: 5px 0 5px 0;
-  padding: 0;
-}
-
-#ssi-info::after {
-  content: ' ';
-  display: block;
-  clear: both;
-}
-
-#ssi-info #ssi-DropZoneBack {
-  z-index: -1;
-  float: left;
-  overflow: hidden;
-}
-
-#ssi-info #ssi-fileNumber {
-  float: right;
-}
-
-#ssi-info #ssi-fileNumber:hover {
-  cursor: pointer;
-  color: #636363;
-}
-
-.ssi-uploader::after {
-  content: ' ';
-  display: block;
-  clear: both;
-}
-
-.ssi-uploadFiles {
-  position: relative;
-  float: left;
-  border: 1px solid #aaaaaa;
-  overflow: hidden;
-  border-radius: 3px;
-  width: 180px;
-  min-height: 32px;
-  margin: 2px 2px 2px 0;
-  font-size: 15px;
-  vertical-align: middle;
-  line-height: 30px;
-  -webkit-transition: height .3s;
-  transition: height .3s;
-  background: #FFFFFF;
-  padding-right: 1px;
-}
-
-span.ban7 {
-  background-position: 0px -18px;
-  background-repeat: no-repeat;
-  overflow: hidden;
-  display: block;
-  width: 18px;
-  height: 18px;
-}
-
-span.ban7w {
-  background-position: 0px -36px;
-  background-repeat: no-repeat;
-  overflow: hidden;
-  display: block;
-  width: 18px;
-  height: 18px;
-  background-color: #cf5144;
-  margin-top: 2px;
-  height: 17px;
-}
-
-span.ban10 {
-  background-position: 0px 0px;
-  background-repeat: no-repeat;
-  overflow: hidden;
-  display: block;
-  width: 18px;
-  height: 18px;
-}
-
-span.ban23 {
-  background-position: 0px -126px;
-  background-repeat: no-repeat;
-  overflow: hidden;
-  display: block;
-  width: 31px;
-  height: 31px;
-}
-
-span.check7 {
-  background-position: 0px -54px;
-  background-repeat: no-repeat;
-  overflow: hidden;
-  display: block;
-  width: 18px;
-  height: 18px;
-  background-color: #40b056;
-  margin-top: 2px;
-  height: 17px;
-}
-
-span.check23 {
-  background-position: 0px -157px;
-  background-repeat: no-repeat;
-  overflow: hidden;
-  display: block;
-  width: 31px;
-  height: 31px;
-}
-
-span.exclamation7 {
-  background-position: 0px -72px;
-  background-repeat: no-repeat;
-  overflow: hidden;
-  display: block;
-  width: 18px;
-  height: 18px;
-  margin-top: 2px;
-  background-color: #cf5144;
-  height: 17px;
-  border-radius: 3px;
-}
-
-span.exclamation23 {
-  background-position: 0px -188px;
-  background-repeat: no-repeat;
-  overflow: hidden;
-  display: block;
-  width: 31px;
-  height: 31px;
-}
-
-span.trash7 {
-  background-position: 0px -108px;
-  background-repeat: no-repeat;
-  overflow: hidden;
-  display: block;
-  width: 18px;
-  height: 18px;
-}
-
-span.trash10 {
-  background-position: 0px -90px;
-  background-repeat: no-repeat;
-  overflow: hidden;
-  display: block;
-  width: 18px;
-  height: 18px;
-}
-
-.ssi-previewBox.ssi-dragOver, .ssi-dragOver .ssi-dropZone {
-  color: #ba2919;
-  border-color: #ba2919;
-}
-
-.ssi-buttonWrapper {
-  float: left;
-  padding: 5px;
-}
-
-.ssi-noPreviewMessage {
-  position: relative;
-  z-index: 1;
-  border-radius: 4px;
-  margin: 1px;
-  float: right;
-  width: 35px;
-  height: 31px;
-  padding: 0;
-}
-
-.ssi-noPreviewMessage span {
-  margin: 0 auto;
-}
-
-.ssi-noPreviewSubMessage {
-  width: 15px;
-  height: 15px;
-  padding: 0;
-}
-
-.ssi-totalvalue {
-  float: right;
-  margin: 2px;
-}
-
-.ssi-upImgTd {
-  position: relative;
-}
-
-.ssi-upImgTd .fa-spin {
-  display: inline-block;
-  position: absolute;
-  top: 45%;
-  left: 45%;
-}
-
-.ssi-uploadProgressNoPreview {
-  position: absolute;
-  display: block;
-  text-align: center;
-  width: 0;
-  height: 35px;
-  background: #5cb85c;
-  -webkit-transition: width .3s;
-  transition: width .3s;
-  opacity: 0.6;
-}
-
-.ssi-uploadNoDropZone {
-  border: 1px solid #ccc;
-}
-
-.ssi-uploadProgress {
-  margin-top: 4px;
-  display: block;
-  text-align: center;
-  width: 0;
-  height: 10px;
-  background: #5cb85c;
-  -webkit-transition: width .3s;
-  transition: width .3s;
-}
-
-.ssi-uploadProgressNoPre {
-  position: absolute;
-  height: 19px;
-  margin-top: 0;
-  opacity: 0.6;
-}
-
-.ssi-uploaderNP {
-  position: relative;
-}
-
-.ssi-uploaderNP::after {
-  content: ' ';
-  display: block;
-  clear: both;
-}
-
-.ssi-uploadDetails {
-  width: 180px;
-  max-height: 0;
-  top: 37px;
-  background: #FFFFFF;
-  position: absolute;
-  -webkit-transition: max-height .2s ease-out;
-  transition: max-height .2s ease-out;
-  border-radius: 3px;
-  overflow: hidden;
-  padding-right: 2px;
-}
-
-.ssi-uploadBoxWrapper {
-  float: left;
-}
-
-.ssi-uploadBoxOpened {
-  max-height: 200px;
-  z-index: 2000;
-  overflow: auto;
-  border: 0.1mm solid #dcdcdc;
-  -webkit-transition: max-height .5s ease-out;
-  transition: max-height .5s ease-out;
-}
-
-table.ssi-fileList {
-  font-size: 10px;
-  margin: 5px;
-}
-
-table.ssi-fileList tr td:first-child {
-  border: 0.1mm solid #dcdcdc;
-  /*border: 0.1mm solid black;*/
-  width: 89%;
-  position: relative;
-}
-
-table.ssi-fileList tr td:nth-child(2) {
-  padding-left: 7px;
-}
-
-table.ssi-fileList tr {
-  line-height: 18px;
-}
-
-table.ssi-fileList tr.ssi-space > td {
-  border: none;
-  padding-bottom: 2px;
-}
-
-.ssi-uploadProgress.hide {
-  margin-top: 0;
-  opacity: 0;
-  -webkit-transition: opacity 1.3s;
-  transition: opacity 1.3s;
-}
-
-.ssi-canceledProgressBar {
-  width: 100% !important;
-  background: #d9534f;
-}
-
-.ssi-imgToUploadTable h2 {
-  margin: 0;
-}
-
-.ssi-hidden {
-  display: none;
-}
-
-.ssi-imgToUploadTable tr:first-child td:first-child {
-  height: 126px;
-}
-
-.ssi-imgToUploadTable tr td {
-  width: 140px;
-}
-
-.ssi-imgToUploadTable {
-  border: 1px solid #e1e1e1;
-  color: #000000;
-  font-size: 15px;
-  margin-right: 4px;
-  box-shadow: 0 10px 6px -6px #777;
-  padding: 5px;
-  display: inline-block;
-  width: 150px;
-  -ms-word-break: break-all;
-  word-break: break-all;
-  word-break: break-word;
-  -webkit-hyphens: auto;
-  -ms-hyphens: auto;
-      hyphens: auto;
-}
-
-.ssi-imgToUpload {
-  width: 140px;
-  height: 128px;
-}
-
-.ssi-btnIn {
-  float: left;
-}
-
-.ssi-ieCompatibilityForm {
-  display: none;
-}
-
-span.ssi-InputLabel input[type="file"] {
-  display: none;
-}
-
-.ssi-abortUpload {
-  padding: 0;
-}
-
-.ssi-abortUpload .ban7w {
-  margin: 0;
-}
-
-.ssi-removeBtnNP {
-  border: none;
-  color: #ff696d;
-  font-size: 11px;
-  margin: 0;
-  padding: 0;
-}
-
-.ssi-InputLabel.disabled, .ssi-InputLabel.disabled:hover, .ssi-InputLabel.disabled:active {
-  cursor: not-allowed;
-  background: #5cb85c;
-  opacity: .65;
-}
-
-.ssi-check {
-  color: #005900;
-}
-
-.ssi-boxHover {
-  cursor: pointer;
-}
-
-.ssi-upI.imgTd {
-  position: relative;
-}
-
-/*@author http://codepen.io/tevko/pen/DdsnK*/
-.document-item {
-  display: inline-block;
-  width: 69px;
-  height: 74px;
-  color: black;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  background: inherit;
-}
-
-.document-item::before {
-  position: absolute;
-  width: 69px;
-  height: 74px;
-  left: 0;
-  top: -7px;
-  content: '';
-  border: solid 2px #920035;
-}
-
-.document-item::after {
-  content: attr(filetype);
-  left: -4px;
-  padding: 0px 2px;
-  text-align: right;
-  line-height: 1.3;
-  position: absolute;
-  background-color: #000;
-  color: #fff;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  top: 9px;
-}
-
-.document-item .fileCorner {
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 13px 0 0 13px;
-  border-color: white transparent transparent #920035;
-  position: absolute;
-  top: -7px;
-  left: 61px;
-}
- .error {
-      color: #fa4040;
-      font-size: 12px;
-      margin-top: 2%;
-    }
-	
-	#description_ifr{
-	
-	height:200px !important;
-	}
 </style>
 <script>
 function callListGrid()
@@ -920,7 +272,7 @@ messages : {
 		//var id=$("#id").val();
 		//form.submit();
 		$.ajax({
-                            url:'https://vidhyapeeth.coromandel.biz/superadmin/superadmin/addevaluation_quation', // point to server-side controller method
+                            url:baseurl+'/main/addevaluation_quation', // point to server-side controller method
                             dataType: 'text', // what to expect back from the server
                             cache: false,
                             /*contentType: false,
@@ -930,7 +282,7 @@ messages : {
                             success: function (response) { console.log(response);
                                 $("#components")[0].reset();
                                
-                               $('#feedbackquestions').load("https://vidhyapeeth.coromandel.biz/superadmin/superadmin/feedbackevaluation_quation/"+$('#fid').val())
+                               $('#feedbackquestions').load(baseurl+"main/feedbackevaluation_quation/"+$('#fid').val())
                             },
                             error: function (response) {
                                // $(form)[0].reset();
@@ -940,7 +292,7 @@ messages : {
   
       }
    });
-	$('#feedbackquestions').load("https://vidhyapeeth.coromandel.biz/superadmin/superadmin/feedbackevaluation_quation/"+$('#fid').val())},3000)
+	$('#feedbackquestions').load(baseurl+"main/feedbackevaluation_quation/"+$('#fid').val())},3000)
 }
 $(".addnewbtn").click(function() {
 $('#showCourseAdd').show();
@@ -953,7 +305,7 @@ $('#update').hide();
 function getFeedbcaklist(){
  setTimeout(function(){
 
-$('#feedbackquestions').load("https://vidhyapeeth.coromandel.biz/superadmin/superadmin/feedbackevaluation_quation/"+$('#fid').val())
+$('#feedbackquestions').load(baseurl+"main/feedbackevaluation_quation/"+$('#fid').val())
 
 },2000)
 
@@ -967,7 +319,7 @@ $( ".activestatus").on('click',function(e) { console.log(e);
 	{
 		$.ajax({
             type: "POST",
-            url: baseurl+"superadmin/activeevaluation_quation",
+            url: baseurl+"main/activeevaluation_quation",
             data: {'id':$(this).attr('id'), 'status':1},
             success: function(data) {
                 if(data) {
@@ -983,7 +335,7 @@ $(".deactivatestatus").on('click', function(e){
 	{
 		$.ajax({
             type: "POST",
-            url: baseurl+"superadmin/activeevaluation_quation",
+            url: baseurl+"main/activeevaluation_quation",
             data: {'id':$(this).attr('id'), 'status':2},
             success: function(data) {
                 if(data) {
@@ -1017,7 +369,7 @@ var settings = {
 		$("#status").html("<font color='red'>Upload is Failed</font>");
 	}
 }
-$("#mulitplefileuploader").uploadFile(settings);
+//$("#mulitplefileuploader").uploadFile(settings);
 
 });
 	
@@ -1153,10 +505,10 @@ $("#startbutton").click(function()
     // option 1
 
 
-    $('#ssi-upload').ssi_uploader({
+   // $('#ssi-upload').ssi_uploader({
         
-        inForm:true
-    });
+   //     inForm:true
+   // });
 
     // option 2
 
