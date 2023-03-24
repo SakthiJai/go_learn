@@ -340,6 +340,7 @@ order by A.id desc,D.type asc limit 1000) AS AA GROUP BY AA.pid,AA.course_name,A
 		return $this->db->from('program_group')->order_by('id','desc')->get();
 	}
 	public function exitcourse($course,$id){
+		//print_r($id);exit;
 	    if($id==''){
         $query = $this->db->from('course')->where('course_title',$course)->get();
 	    }

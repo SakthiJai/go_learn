@@ -49,14 +49,12 @@
                          <table id="datatable-buttons" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
                                             <thead>
                                                 <tr>
-                                                    <th class="th-sm">S.No</th>
-                                                    <th class="th-sm">Course Title</th>
-                                                    <th class="th-sm">Training Type</th>
-                                                    <th class="th-sm">image</th>
-                                                    <th class="th-sm">PDF</th>
-                                                    <th class="th-sm">PDF2</th>
-                                                    <th class="th-sm">PDF3</th>
-                                                    <th class="th-sm">Action</th>
+                                                    <th style='text-align: center;' class="">S.No</th>
+                                                    <th style='text-align: center;' class="">Course Title</th>
+                                                    <th style='text-align: center;' class="">Training Type</th>
+                                                    <th style='text-align: center;' class="">image</th>
+                                                    <th style='text-align: center;' class="">PDF</th>
+                                                    <th  style='text-align: center;'class="">Action</th>
                                                     <!--<th class="th-sm">Edit</th>
                                                     <th class="th-sm">Delete</th>-->
                                                 </tr>
@@ -64,17 +62,20 @@
                                             <tbody>
                                                 <?php $i=1; foreach($course->result() as $data) { ?>
                                                 <tr>
-                                                    <td><?php echo $i; ?></td>
-                                                    <td><?php echo $data->course_title; ?></td>
-                                                   <td><?php echo $data->training_type; ?></td>
-                                                     <td><?php if($data->image) { ?><img src="<?php echo base_url();?>assets/images/course/<?php echo $data->image; ?>" alt=" " width="30"><?php } ?></td>
-                                                    <td><?php if($data->pdf_file) { ?><a href="<?php echo base_url();?>assets/pdf/<?php echo $data->pdf_file; ?>" target="_blank">PDF</a><?php } ?></td>
-                                                    <td><?php if($data->pdf_file2) { ?><a href="<?php echo base_url();?>assets/pdf/<?php echo $data->pdf_file2; ?>" target="_blank">PDF2</a><?php } ?></td>
-                                                    <td><?php if($data->pdf_file3) { ?><a href="<?php echo base_url();?>assets/pdf/<?php echo $data->pdf_file3; ?>" target="_blank">PDF3</a><?php } ?></td>
-                                                    <td>
+                                                    <td style='text-align: center;'><?php echo $i; ?></td>
+                                                    <td style='text-align: center;'><?php echo $data->course_title; ?></td>
+                                                   <td style='text-align: center;'><?php echo $data->training_type; ?></td>
+                                                     <td style='text-align: center;'><?php if($data->image) { ?><img src="<?php echo base_url();?>assets/images/course/<?php echo $data->image; ?>" alt=" " width="30"><?php } ?></td>
+                                                    <td style='text-align: center;'ss><?php if($data->pdf_file) { ?><a href="<?php echo base_url();?>assets/pdf/<?php echo $data->pdf_file; ?>" target="_blank">PDF</a><?php } ?></td>
+                                                    
 													<?php if($login_details['name']!='admin' && $login_details['admin_type']!='admin' && $login_details['status']!=2){?>
-                                                        <a class="btn btn-success" href="<?php echo base_url();?>superadmin/editcourse/<?php echo $data->id; ?>">Edit</a>
-                                                        <a class="btn btn-danger" href="<?php echo base_url();?>/courses/deleteCourse/<?php echo $data->id; ?>">Delete</a>
+													 <td style='text-align: center;'><a href="<?php echo base_url(); ?>main/editcourse/<?php echo $row->id; ?>"  class="mdc-button mdc-button--raised icon-button filled-button--success mdc-ripple-upgraded" style="--mdc-ripple-fg-size:21px; --mdc-ripple-fg-scale:2.90056; --mdc-ripple-fg-translate-start:12.375px, 18.5px; --mdc-ripple-fg-translate-end:7.5px, 7.5px; background-color: #00bbdd;">
+											 <img alt="Eye icon" srcset="https://img.icons8.com/material/2x/visible.png 2x, https://img.icons8.com/material/1x/visible.png 1x" src="https://img.icons8.com/material/1x/visible.png" style="filter: invert(0%) sepia(0%) saturate(7465%) hue-rotate(196deg) brightness(93%) contrast(95%);">
+												 
+												</a>
+												<a   href="<?php echo base_url();?>/courses/deleteCourse/<?php echo $data->id; ?>"  class="mdc-button mdc-button--raised icon-button filled-button--success mdc-ripple-upgraded" style="--mdc-ripple-fg-size:21px; --mdc-ripple-fg-scale:2.90056; --mdc-ripple-fg-translate-start:12.375px, 18.5px; --mdc-ripple-fg-translate-end:7.5px, 7.5px; background-color: #ff420f;" ><i class="material-icons mdc-button__icon"  onclick="showConfirmation(<?php echo $row->id;?>)" style="margin-right: 10px;margin-left: 9px;text-align: center;"; >delete</i>
+												</a></td>
+													
 														<?php }?>
                                                         </td>
                                                     <!--<td><a class="btn btn-info"><i class="pe-7s-note" aria-hidden="true"></i></a></td>

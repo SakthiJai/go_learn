@@ -480,9 +480,13 @@ class Main extends CI_Controller {
 			
 	}
 		
-	
+	public function newcourse(){
+		$data['h_title'] = "Go Learn  "; 	    
+		$this->load->view('ui/newcourse',$data);
+	}
 	public function course($id=false)
 	{
+		
 		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
 		$data['baseurl']=base_url();
 		$data['course']=$this->Super_model->course();
@@ -491,6 +495,7 @@ class Main extends CI_Controller {
 		$data['program_group']=$this->Super_model->program_group1();
 		$data['program_types']=$this->Super_model->program_types();
 		if(isset($id) && !empty($id)){
+			
 			$data['editcourse'] = $this->Super_model->editcourse($id);
 		}
 		$data['h_title'] = "Go Learn  Course List"; 	    
@@ -506,11 +511,10 @@ class Main extends CI_Controller {
 	        $data['program_name']=$this->Super_model->program();
 	        $data['program_group']=$this->Super_model->program_group1();
 	          $data['h_title'] = "Edit Course"; 	    
-		    $this->load->view('ui/header',$data);
-		    $this->load->view('ui/course',$data);
+		    $this->load->view('ui/newcourse',$data);
 	    }
 	public function course_adding(){
-	    //print_r($_POST);exit();
+	    print_r($_POST);exit();
 	    $course = $this->input->post('course_title');
 	    
 	    /*$exitcourse = $this->Super_model->exitcourse($course);
@@ -619,10 +623,7 @@ class Main extends CI_Controller {
         redirect(base_url().'ui/course','refresh');   
 	    //}
 	}
-	public function newcourse(){
-		$data['h_title'] = "Go Learn  "; 	    
-		$this->load->view('ui/newcourse',$data);
-	}
+	
 	public function test($id=false){
 	    //if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
 	    $data['coursedata'] = $this->Super_model->coursedata($id);
