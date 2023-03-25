@@ -514,7 +514,11 @@ class Main extends CI_Controller {
 		    $this->load->view('ui/newcourse',$data);
 	    }
 	public function course_adding(){
-	    print_r($_POST);exit();
+	   // print_r($_POST);exit();
+	   $data['program_name']=$this->Super_model->program1();
+	   $data['program_type']=$this->Super_model->program_type1();
+	   $data['program_group']=$this->Super_model->program_group1();
+	   $data['program_types']=$this->Super_model->program_types();
 	    $course = $this->input->post('course_title');
 	    
 	    /*$exitcourse = $this->Super_model->exitcourse($course);
@@ -587,8 +591,8 @@ class Main extends CI_Controller {
             'pdf_file' => $picture2,
             'pdf_file2' => $picture3,
             'pdf_file3' => $picture4,
-            'text' => $text,  
-            'test' => $test,  
+          //  'text' => $text,  
+           // 'test' => $test,  
         );
             //print_r($data);exit(); 
             $updateUserData = $this->Super_model->course_adding($data);

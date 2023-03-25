@@ -669,20 +669,7 @@ $("#startbutton").click(function()
         
     });
 
-    $( "#myForm" ).on( "submit", function( event ) {
-        event.preventDefault();
-        uploader.data('ssi_upload').uploadFiles();
-        uploader.on('onUpload.ssi-uploader',function(){
-            $( "#myForm" ).submit();
-        });
-    });
-   $(function () {
-      $('input[name="daterange"]').daterangepicker({
-        opens: 'left'
-      }, function (start, end, label) {
-        console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
-      });
-    });
+ 
 function callListGrid()
 { console.log("222");
 	setTimeout(function(){
