@@ -28,457 +28,10 @@
 
 	<div class="page-wrapper mdc-toolbar-fixed-adjust">
 		<main class="content-wrapper">
-			<div class="mdc-layout-grid">
-				<div class="mdc-layout-grid__inner">
-					<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
-						<div class="mdc-card">
-							<div class="d-flex justify-content-between">
-								<button
-									class="mdc-button mdc-button--outlined outlined-button--secondary mdc-ripple-upgraded"
-									style="--mdc-ripple-fg-size:95px; --mdc-ripple-fg-scale:1.82773; --mdc-ripple-fg-translate-start:-36.7px, -39.1px; --mdc-ripple-fg-translate-end:32.3125px, -29.5px;">Add Course</button>
-									
-							 </div>
-							 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<div class="template-demo">
-							<div class="mdc-card">
-							<section id="tabs" class="project-tab">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <nav>
-                            <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                                <a class="nav-item nav-link " id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Pre Test</a>
-                                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Post Test</a>
-                                <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Pre/Post Test</a>
-                            </div>
-                        </nav>
-                        <div class="tab-content" id="nav-tabContent">
-                            
-                            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                               <form action="" method="">
-									<!--        You can switch " data-color="blue" "  with one of the next bright colors: "green", "orange", "red", "purple"             -->
-
-									<div class="wizard-header">
-										<h3 class="wizard-title">
-											 Add Test Questions
-										</h3>
-										<h5></h5>
-									</div>
-									
-
-									<div class="tab-content">
-										<div class="tab-pane" id="details">
-											<div class="row">
-												<div class="col-sm-12">
-													<h4 class="info-text"> Let's start with the basic details.
-													</h4>
-												</div>
-											<div class="row">
-												<div class="col-sm-10 col-sm-offset-1">
-													<div class="form-group">
-														<label>Question</label>
-														<textarea class="form-control" placeholder=""
-															rows="4"></textarea>
-													</div>
-												</div>
-												<div class="col-sm-10 col-sm-offset-1">
-													<div class="picture-container">
-														<div class="picture">
-															<img src="<?php echo base_url(); ?>assets/wizard/img/default-avatar.png" class="picture-src" id="wizardPicturePreview" title=""/>
-															<input type="file" id="wizard-picture">
-														</div>
-														<h6>Choose Image</h6>
-													</div>
-		                                	   </div>
-											</div>
-											<div class="col-sm-6">
-												<div class="input-group">
-													 <span class="input-group-addon">
-															<i class="material-icons">create</i>
-														</span>
-													<div class="form-group label-floating">
-														<label class="control-label">Option A</label>
-														<input name="option1" type="text" class="form-control">
-													</div>
-												</div>
-
-												<div class="input-group">
-													 <span class="input-group-addon">
-															<i class="material-icons">create</i>
-														</span>
-													<div class="form-group label-floating">
-														<label class="control-label">Option B</label>
-														<input name="option2" type="text"
-															class="form-control">
-													</div>
-												</div>
-											</div>
-											<div class="col-sm-6">
-													<div class="input-group">
-														 <span class="input-group-addon">
-															<i class="material-icons">create</i>
-														</span>
-														<div class="form-group label-floating">
-															<label class="control-label">Option C</label>
-															<input name="option3" type="text" class="form-control">
-														</div>
-													</div>
-
-													<div class="input-group">
-														<span class="input-group-addon">
-															<i class="material-icons">create</i>
-														</span>
-														<div class="form-group label-floating">
-															<label class="control-label">Option D</label>
-															<input name="option4" type="text"
-																class="form-control">
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="tab-pane" id="captain">
-											 <div class="tab-pane" id="details">
-											<div class="row">
-												<div class="col-sm-12">
-													<h4 class="info-text"> Let's start with the basic details.
-													</h4>
-												</div>
-											<div class="row">
-												<div class="col-sm-10 col-sm-offset-1">
-													<div class="form-group">
-														<!--<label>Question</label>
-														<textarea class="form-control" placeholder=""
-															rows="4"></textarea>-->
-													</div>
-												</div>
-												<div class="col-sm-10 col-sm-offset-1">
-													<div class="picture-container">
-														<div class="picture">
-															<img src="<?php echo base_url(); ?>assets/wizard/img/default-avatar.png" class="picture-src" id="wizardPicturePreview" title=""/>
-															<input type="file" id="wizard-picture">
-														</div>
-														<h6>Choose Image</h6>
-													</div>
-		                                	   </div>
-											</div>
-											<div class="col-sm-6">
-												<div class="input-group">
-													 <span class="input-group-addon">
-															<i class="material-icons">create</i>
-														</span>
-													<div class="form-group label-floating">
-														<label class="control-label">Option A</label>
-														<input name="option1" type="text" class="form-control">
-													</div>
-												</div>
-
-												<div class="input-group">
-													 <span class="input-group-addon">
-															<i class="material-icons">create</i>
-														</span>
-													<div class="form-group label-floating">
-														<label class="control-label">Option B</label>
-														<input name="option2" type="text"
-															class="form-control">
-													</div>
-												</div>
-											</div>
-											<div class="col-sm-6">
-													<div class="input-group">
-														 <span class="input-group-addon">
-															<i class="material-icons">create</i>
-														</span>
-														<div class="form-group label-floating">
-															<label class="control-label">Option C</label>
-															<input name="option3" type="text" class="form-control">
-														</div>
-													</div>
-
-													<div class="input-group">
-														<span class="input-group-addon">
-															<i class="material-icons">create</i>
-														</span>
-														<div class="form-group label-floating">
-															<label class="control-label">Option D</label>
-															<input name="option4" type="text"
-																class="form-control">
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										</div>
-										<div class="tab-pane" id="description">
-											<div class="tab-pane" id="details">
-											<div class="row">
-												<div class="col-sm-12">
-													<h4 class="info-text"> Let's start with the basic details.
-													</h4>
-												</div>
-											<div class="row">
-												<div class="col-sm-10 col-sm-offset-1">
-													<div class="form-group">
-														<label>Question</label>
-														<textarea class="form-control" placeholder=""
-															rows="4" style="width: 100%;height: 107px;display: block;" ></textarea>
-													</div>
-												</div>
-												<div class="col-sm-10 col-sm-offset-1">
-													<div class="picture-container">
-														<div class="picture">
-															<img src="<?php echo base_url(); ?>assets/wizard/img/default-avatar.png" class="picture-src" id="wizardPicturePreview" title=""/>
-															<input type="file" id="wizard-picture">
-														</div>
-														<h6>Choose Image</h6>
-													</div>
-		                                	   </div>
-											</div>
-											<div class="col-sm-6">
-												<div class="input-group">
-													 <span class="input-group-addon">
-															<i class="material-icons">create</i>
-														</span>
-													<div class="form-group label-floating">
-														<label class="control-label">Option A</label>
-														<input name="option1" type="text" class="form-control">
-													</div>
-												</div>
-
-												<div class="input-group">
-													 <span class="input-group-addon">
-															<i class="material-icons">create</i>
-														</span>
-													<div class="form-group label-floating">
-														<label class="control-label">Option B</label>
-														<input name="option2" type="text"
-															class="form-control">
-													</div>
-												</div>
-											</div>
-											<div class="col-sm-6">
-													<div class="input-group">
-														 <span class="input-group-addon">
-															<i class="material-icons">create</i>
-														</span>
-														<div class="form-group label-floating">
-															<label class="control-label">Option C</label>
-															<input name="option3" type="text" class="form-control">
-														</div>
-													</div>
-
-													<div class="input-group">
-														<span class="input-group-addon">
-															<i class="material-icons">create</i>
-														</span>
-														<div class="form-group label-floating">
-															<label class="control-label">Option D</label>
-															<input name="option4" type="text"
-																class="form-control">
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										</div>
-									</div>
-									<div class="wizard-footer">
-										<div class="pull-right">
-											
-											<input type='button'
-												class='btn btn-finish btn-fill btn-success btn-wd' name='finish'
-												value='Submit' />
-										</div>
-										<div class="pull-left">
-											<input type='button'
-												class='btn btn-previous btn-fill btn-default btn-wd'
-												name='previous' value='Previous' />
-
-											 
-										</div>
-										<div class="clearfix"></div>
-									</div>
-								</form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-		</div>
-		
-								<h5 class="card-sub-title mb-2 mb-sm-0"></h5>
-								<div class="menu-button-container">
-									<div class="mdc-card">
-										<form id="courseadd" name="courseadd"  action="<?php echo base_url();?>courses/course_adding" method="POST" enctype="multipart/form-data">
-						<input type="hidden" id="base_url" name="base_url" value="<?php echo $baseurl ?>"/>
-                          <div class="mdc-layout-grid">
-                            <div class="mdc-layout-grid__inner">
-							
-							  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
-                                <div class="mdc-text-field w-100 mdc-ripple-upgraded">
-                                  <input class="mdc-text-field__input" id="test_temp_id" name="test_temp_id" type="hidden"  value="<?php echo $this->uri->segment(3);?>">
-								   <input type="hidden" name="courseid" value="<?php echo $this->uri->segment(3);?>"/>
-								    <input class="mdc-text-field__input" id="course_title" name="course_title" type="text" class="form-control" placeholder="Title"
-                                        value="<?php echo isset($details[0])?$details[0]->course_title:"";?>" onkeypress="return NumbersOnly(this,event)">
-                                  <div class="mdc-line-ripple"></div>
-                                  <label for="text-field-hero-input" class="mdc-floating-label">Tittle</label>
-                                </div>
-                              </div>
-							  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
-                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
-                            <div class="mdc-line-ripple"></div>
-                            <label for="text-field-hero-input" class="mdc-floating-label">Program Name: </label>
-                            <select class="mdc-text-field__input training_type" name="program_name" id="program_name">
-                              <option disabled selected value> </option>
-<option >7 </option>
-                            </select>
-                          </div>
-                        </div>
-						  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
-                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
-                            <div class="mdc-line-ripple"></div>
-                            <label for="text-field-hero-input" class="mdc-floating-label">Program Type : </label>
-                            <select class="mdc-text-field__input training_type" name="training_type" id="training_type">
-                              <option disabled selected value> </option>
-<option >7 </option>
-                            </select>
-                          </div>
-                        </div>
-						<input type="hidden" name="id" id="id" value="<?php echo (isset($editEmployee))? $editEmployee[0]['id']:''?>">
-							  
-                             <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
-                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
-                            <div class="mdc-line-ripple"></div>
-                            <label for="text-field-hero-input" class="mdc-floating-label">Program Group: </label>
-                            <select class="mdc-text-field__input training_type" name="program_group" id="program_group">
-                              <option disabled selected value> </option>
-<option >7 </option>
-                            </select>
-                          </div>
-                        </div>
-						 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
-                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
-                            <div class="mdc-line-ripple"></div>
-                           <div class="mdc-form-field"> <label for>Learning Level Evaluation:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-						   <div class="mdc-form-field">
-                      <div class="mdc-checkbox mdc-checkbox--secondary">
-                        <input type="checkbox" id="checkbox-1" class="mdc-checkbox__native-control" >
-                        <div class="mdc-checkbox__background">
-                          <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-                            <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
-                          </svg>
-                          <div class="mdc-checkbox__mixedmark"></div>
-                        </div>
-                      </div>
-                      <label for="basic-disabled" id="basic-disabled-checkbox-label" >Pre test</label>
-                    </div>
-					<div class="mdc-form-field">
-                      <div class="mdc-checkbox mdc-checkbox--secondary">
-                        <input type="checkbox" id=" basic-disabled-checkbox" class="mdc-checkbox__native-control" >
-                        <div class="mdc-checkbox__background" >
-                          <svg class="mdc-checkbox__checkmark" style="border-color: #ff420f;
-   " viewBox="0 0 24 24">
-                            <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
-                          </svg>
-                          <div class="mdc-checkbox__mixedmark"></div>
-                        </div>
-                      </div>
-                      <label for="basic-disabled" id="basic-disabled-checkbox-label">Post test</label>
-                    </div>
-					<div class="mdc-form-field">
-                      <div class="mdc-checkbox mdc-checkbox--secondary">
-                        <input type="checkbox" id="basic-disabled-checkbox" class="mdc-checkbox__native-control" >
-                        <div class="mdc-checkbox__background" >
-                          <svg class="mdc-checkbox__checkmark"   viewBox="0 0 24 24">
-                            <path class="mdc-checkbox__checkmark-path" fill="none" style="border-color: #ff420f;
-    background-color: #ff420f;" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
-                          </svg>
-                          <div class="mdc-checkbox__mixedmark"></div>
-                        </div>
-                      </div>
-                      <label for="basic-disabled" id="basic-disabled-checkbox-label">Pre and Post test</label>
-                    </div>
-                          </div>
-                        </div> 
-							 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
-							   <div class="col-sm-4 col-lg-4 col-md-4 col-xs-12">
-                            <label for> Images: </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <div class="form-file mb-3">
-                                <label class="form-file-label">
-                                    <img id="blah" alt="your image"
-                                        onclick="document.getElementById('title').click()"
-                                      src="<?php echo base_url();?>assets/images/preview-icon_101018.png" width="200"
-                                        height="200" />
-                                </label>
-                                <input id="title" name="image" type="file"  class="form-file-input"
-                                    style="visibility:hidden" 
-                                    onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">
-                            </div>
-                        </div>
-						 </div>
-                            
-							 
-							   <!-- <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop">
-						 <label for="" class="">Course Cover Image </label>
-						 <input type="file" name="ssi-upload" multiple id="ssi-upload"/ style="width: 474px;">
-						 </div>-->
-							  
-							  <input type="hidden" name="id" id="id" value="<?php echo (isset($editEmployee))? $editEmployee[0]['id']:''?>">
-							  
-                           
-						
-						
-						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
-						<div class="col-sm-4 col-lg-4 col-md-4 col-xs-12">
-						  <label for>PDF files :</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						 <input type="file"  class="mdc-floating-label" name="ssi-upload"  id="ssi-upload" style=" !important width: 328px;">
-						 </div>
-						 </div>
-					
-                </div>
-                        
-						
-					
-				
-					
-						
-					
-                            </div>
-                          </div>
-						  
-						   <div class="card-body">
-							 <input type="hidden" name="tid" id="tid" value="1">
-							  <input type="hidden" name="type" id="type" value="terms">
-							 <label  > Description:</label>
-							   <textarea id="description" name="description" name="content"></textarea>
-						</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						
-						 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4"></div>
-						 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12" style="margin-left: 26%;
-">
-                                <button type="submit"
-                                  class=" btn btn-primary mdc-button mdc-button--raised filled-button--success mdc-ripple-upgraded vertical-center"
-                                  style="--mdc-ripple-fg-size:56px;     --mdc-ripple-fg-scale:1.96936; --mdc-ripple-fg-translate-start:22.9px, -19.6px; --mdc-ripple-fg-translate-end:18.8px, -10px ,float: right;     width: 200px;">
-                                  Submit
-
-                                </button>&nbsp;&nbsp;&nbsp;&nbsp;
-								<a href="<?php echo base_url('main/course'); ?>"class=" mdc-button mdc-button--raised filled-button--secondary mdc-ripple-upgraded"  style="--mdc-ripple-fg-size:70px; --mdc-ripple-fg-scale:1.90907; --mdc-ripple-fg-translate-start:8.11121px, -9.33333px; --mdc-ripple-fg-translate-end:24.1389px, -17px;     width: 200px;  ">
-									 Cancel
-									</a>
-                              </div>
-						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4"></div>
-						
-                        </form>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+			
 				
 		<!--   Big container   -->
-			<div class="container">
+			
 				<div class="row">
 					<div class="col-sm-12">
 						<!--      Wizard container        -->
@@ -488,20 +41,166 @@
 									<!--        You can switch " data-color="blue" "  with one of the next bright colors: "green", "orange", "red", "purple"             -->
 
 									<div class="wizard-header">
-										<h3 class="wizard-title">
-											 Add Test Questions
-										</h3>
-										<h5></h5>
+										<button
+									class="mdc-button mdc-button--outlined outlined-button--secondary mdc-ripple-upgraded"
+									style="--mdc-ripple-fg-size:95px; --mdc-ripple-fg-scale:1.82773; --mdc-ripple-fg-translate-start:-36.7px, -39.1px; --mdc-ripple-fg-translate-end:32.3125px, -29.5px;">Add New Course</button>
 									</div>
 									<div class="wizard-navigation">
 										<ul>
-											<li><a href="#details" data-toggle="tab">Pre Test</a></li>
-											<li><a href="#captain" data-toggle="tab">Post Test</a></li>
-											<li><a href="#description" data-toggle="tab">Pre/Post Test</a></li>
+											<li><a href="#coursedetails" data-toggle="tab">Course Details</a></li>
+											<li><a href="#details" data-toggle="tab">Pre Test questions</a></li>
+											<li><a href="#captain" data-toggle="tab">Post Test questions</a></li>
+											<li><a href="#description" data-toggle="tab">Feed Back</a></li>
 										</ul>
 									</div>
 
 									<div class="tab-content">
+									<div class="tab-pane" id="coursedetails">
+											<div class="row">
+												<div class="mdc-layout-grid">
+												<div class="mdc-layout-grid__inner">
+												
+												  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
+													<div class="mdc-text-field w-100 mdc-ripple-upgraded">
+													  <input class="mdc-text-field__input" id="test_temp_id" name="test_temp_id" type="hidden"  value="<?php echo $this->uri->segment(3);?>">
+													   <input type="hidden" name="courseid" value="<?php echo $this->uri->segment(3);?>"/>
+														<input class="mdc-text-field__input" id="course_title" name="course_title" type="text" class="form-control" placeholder="Title"
+															value="<?php echo isset($details[0])?$details[0]->course_title:"";?>" onkeypress="return NumbersOnly(this,event)">
+													  <div class="mdc-line-ripple"></div>
+													  <label for="text-field-hero-input" class="mdc-floating-label">Tittle</label>
+													</div>
+												  </div>
+												  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
+											  <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+												<div class="mdc-line-ripple"></div>
+												<label for="text-field-hero-input" class="mdc-floating-label">Program Name: </label>
+												<select class="mdc-text-field__input training_type" name="program_name" id="program_name">
+												  <option disabled selected value> </option>
+													<option >7 </option>
+												</select>
+											  </div>
+											</div>
+											  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
+											  <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+												<div class="mdc-line-ripple"></div>
+												<label for="text-field-hero-input" class="mdc-floating-label">Program Type : </label>
+												<select class="mdc-text-field__input training_type" name="training_type" id="training_type">
+												  <option disabled selected value> </option>
+													<option >7 </option>
+												</select>
+											  </div>
+											</div>
+											<input type="hidden" name="id" id="id" value="<?php echo (isset($editEmployee))? $editEmployee[0]['id']:''?>">
+												  
+												<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
+												  <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+													<div class="mdc-line-ripple"></div>
+													<label for="text-field-hero-input" class="mdc-floating-label">Program Group: </label>
+													<select class="mdc-text-field__input training_type" name="program_group" id="program_group">
+													  <option disabled selected value> </option>
+															<option >7 </option>
+													</select>
+												  </div>
+												</div>
+												<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+												 
+													
+													<label for="text-field-hero-input" class="mdc-floating-label">Course Description: </label>
+													 <textarea id="description" name="description" name="content" class="mt-2"></textarea>
+												  
+												</div>
+												
+											 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+											  <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+												<div class="mdc-line-ripple"></div>
+											   <div class="mdc-form-field"> <label for>Learning Level Evaluation:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+											   <div class="mdc-form-field">
+												<div class="mdc-checkbox mdc-checkbox--secondary">
+											<input type="checkbox" id="checkbox-1" class="mdc-checkbox__native-control" >
+											<div class="mdc-checkbox__background">
+											  <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+												<path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
+											  </svg>
+											  <div class="mdc-checkbox__mixedmark"></div>
+											</div>
+										  </div>
+										  <span for="basic-disabled" id="basic-disabled-checkbox-label" >Pre test1</span>
+										</div>
+										<div class="mdc-form-field">
+										  <div class="mdc-checkbox mdc-checkbox--secondary">
+											<input type="checkbox" id=" basic-disabled-checkbox" class="mdc-checkbox__native-control" >
+											<div class="mdc-checkbox__background" >
+											  <svg class="mdc-checkbox__checkmark" style="border-color: #ff420f;
+					   " viewBox="0 0 24 24">
+												<path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
+											  </svg>
+											  <div class="mdc-checkbox__mixedmark"></div>
+											</div>
+										  </div>
+										  <span for="basic-disabled" id="basic-disabled-checkbox-label">Post test</span>
+										</div>
+										<div class="mdc-form-field">
+										  <div class="mdc-checkbox mdc-checkbox--secondary">
+											<input type="checkbox" id="basic-disabled-checkbox" class="mdc-checkbox__native-control" >
+											<div class="mdc-checkbox__background" >
+											  <svg class="mdc-checkbox__checkmark"   viewBox="0 0 24 24">
+												<path class="mdc-checkbox__checkmark-path" fill="none" style="border-color: #ff420f;
+						background-color: #ff420f;" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
+											  </svg>
+											  <div class="mdc-checkbox__mixedmark"></div>
+											</div>
+										  </div>
+										  <span for="basic-disabled" id="basic-disabled-checkbox-label">Pre and Post test</span>
+										</div>
+											  </div>
+											</div> 
+												 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
+												   <div class="col-sm-4 col-lg-4 col-md-4 col-xs-12">
+														<label for> Course Images: </label>
+														<div class="form-file mb-3" style="width:100%">
+															
+																<img id="blah" alt="your image"
+																	onclick="document.getElementById('title').click()"
+																  src="<?php echo base_url();?>assets/images/preview-icon_101018.png" style="width:100%;border-radius:50%"/>
+															
+															<input id="title" name="image" type="file"  class="form-file-input"
+																style="visibility:hidden" 
+																onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">
+														</div>
+													</div>
+											 </div>
+												
+												 
+												   <!-- <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop">
+											 <label for="" class="">Course Cover Image </label>
+											 <input type="file" name="ssi-upload" multiple id="ssi-upload"/ style="width: 474px;">
+											 </div>-->
+												  
+												  <input type="hidden" name="id" id="id" value="<?php echo (isset($editEmployee))? $editEmployee[0]['id']:''?>">
+												  
+											   
+											
+											
+											
+											 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
+												  <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+													<div class="mdc-line-ripple"></div>
+													<label for="text-field-hero-input" class="mdc-floating-label">Course PDF files: </label>
+														<input type="file"  class="mdc-floating-label" name="ssi-upload"  id="ssi-upload" style=" !important width: 328px;">
+												  </div>
+												</div>
+										
+									</div>
+											
+											
+										
+									
+										
+											
+										
+												</div>
+											</div>
+									</div>		
 										<div class="tab-pane" id="details">
 											<div class="row">
 												<div class="col-sm-12">
@@ -739,7 +438,7 @@
 						</div> <!-- wizard container -->
 					</div>
 				</div> <!-- row -->
-			</div> <!--  big container -->
+			 <!--  big container -->
 	     </div>
 	  </main>
 	</div>
@@ -788,6 +487,9 @@
     background-color: red;
     border-color: #dee2e6 #dee2e6 #fff;
 }
+.mce-panel{width:100%;}
+.mdc-floating-label{padding:1%}
+#mceu_17{margin-top:3%;margin-right:1.5%};
 </style>
     <script>
 function callListGrid()
@@ -981,7 +683,7 @@ $("#startbutton").click(function()
       });
     });
 
-    setTimeout(function () { getContent() }, 3000);
+    
     function addTerms() {
 
       var formdata = $("#terms").serialize();
