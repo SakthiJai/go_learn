@@ -480,7 +480,8 @@ class Main extends CI_Controller {
 			
 	}
 		
-	public function newcourse(){
+	public function newcourse($id=false){
+		
 		$data['baseurl']=base_url();
 		$data['course']=$this->Super_model->course();
 		$data['program_name']=$this->Super_model->program1();
@@ -515,12 +516,15 @@ class Main extends CI_Controller {
 	}
 	public function editcourse($id)
 	    {
+			
 			$data['feedbackmainid'] = $this->Admin_model->getfeedbackmainid($id);
 	        $data['details'] = $this->Admin_model->getCourse($id);
+			//print_r($data['details'] );exit;
 	        $data['course']=$this->Super_model->course(); 
 	        $data['program_types']=$this->Super_model->program_types();
 	        $data['program_name']=$this->Super_model->program();
 	        $data['program_group']=$this->Super_model->program_group1();
+			//print_r(  $data['details'] );exit;
 	          $data['h_title'] = "Edit Course"; 	    
 		    $this->load->view('ui/newcourse',$data);
 	    }
@@ -627,6 +631,10 @@ class Main extends CI_Controller {
                     ) ;
                 $this->Super_model->feedback_questionadd($data1);
             }
+			if(isset($id) && !empty($id)){
+			
+				$data['editcourse'] = $this->Super_model->editcourse($id);
+			}
         //print_r($evaluationqus);exit();
             if($updateUserData >0){
                // echo "<script>alert('Successfully submitted. Thank you. ');</script>";
@@ -1046,11 +1054,61 @@ class Main extends CI_Controller {
 		$data['program_types']=$this->Super_model->program_types();
 		if(isset($id) && !empty($id)){
 			$data['editprogram'] = $this->Super_model->editprogram($id);
+			$this->load->view('ui/addprogramname',$data);
 		}
 		$data['h_title'] = "Go Learn  Program"; 	    
 		$this->load->view('ui/header',$data);
 		$this->load->view('ui/program.php',$data);
 	}
+	public function addprogramname(){
+		$data['h_title'] = "Go Learn "; 	    
+	    $this->load->view('ui/addprogramname',$data);
+	}	
+
+	public function addprogram()
+    {
+    	//print_r($_POST);exit();
+		$data = array(
+		    'program_name' => $this->input->post('programname'),
+		);
+		//print_r($data);exit();
+        $insertUserData = $this->Super_model->creatingprogram($data);
+        $this->session->set_flashdata('msg','<div class="alert alert-success text-center">submit Successed.</div>');
+        redirect(base_url().'main/program','refresh');            
+    }
+	public function updateprogramname($id)
+	{
+		//print_r($id);exit;
+	//	$data['program']=$this->Super_model->program();
+		$data['editprogram'] = $this->Super_model->editprogram($id);	
+			$inputdata = array(
+				'program_name' => $this->input->post('name')
+				);
+				
+			$res=$this->Super_model->updateprogramname($id,$inputdata);
+			print_r($res);exit;
+			if($res) {
+				$this->session->set_flashdata('msg','<div class="alert alert-success text-center">Updated Successed.</div>');
+				redirect(base_url().'main/program','refresh'); 
+			}else{
+				$this->session->set_flashdata('msg','<div class="alert alert-danger text-center"> Updated Failed! Try Again </div>');
+				redirect(base_url().'main/program','refresh'); 
+			}
+			
+	}
+	public function delete_programname($id){
+		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
+		$result= $this->Super_model->delete_sbu($id);
+		$this->session->set_flashdata('msg','<div class="alert alert-success text-center" style="color: #008a5d;
+    background-color: rgba(0, 182, 122, 0.2);
+    border-color: #00a770;    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;">Deleted Successfully. </div>');
+        redirect(base_url().'main/program','refresh');
+	}
+	
 // 	public function program(){
 // 	    //if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
 // 		$data['program']=$this->Super_model->program();

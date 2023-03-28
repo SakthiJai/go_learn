@@ -102,7 +102,7 @@
               <div class="mdc-expansion-panel" id="sample-page-submenu1">
                 <nav class="mdc-list mdc-drawer-submenu">
                   <div class="mdc-list-item mdc-drawer-item">
-                    <a class="mdc-drawer-link" href="<?php echo base_url('main/program'); ?>s">
+                    <a class="mdc-drawer-link" href="<?php echo base_url('main/program'); ?>">
                     Program Name
                     </a>
                   </div>

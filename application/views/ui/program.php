@@ -24,7 +24,7 @@
                        Program Name
                       </button>
                     <div>
-					 <a class="mdc-button mdc-button--raised filled-button--secondary mdc-ripple-upgraded" href="<?php echo base_url('main/addsbu'); ?>">
+					 <a class="mdc-button mdc-button--raised filled-button--secondary mdc-ripple-upgraded" href="<?php echo base_url('main/addprogramname'); ?>">
                                     New Program Name
                                 </a>&nbsp;&nbsp;
                         
@@ -39,8 +39,8 @@
 						  <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--span-12-tablet">
                         <div class="table-responsive border">
 						</div>
-						<center><span class=""> <?php echo $this->session->flashdata('msg'); ?></span></center>
-                  <form  id="employee" class="" action="<?php echo base_url('main/sbu_master');?>" method="POST">
+            <center><span class=""> <?php echo $this->session->flashdata('msg'); ?></span></center>
+                  <form  id="employee" class="" action="<?php echo base_url('main/progrem');?>" method="POST">
                     <div class="mdc-layout-grid">
                       <div class="mdc-layout-grid__inner">
                     <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--span-12-tablet">
@@ -50,7 +50,7 @@
                                 <tr>
                                     <th>S.No</th>
                                     <th>Program Name</th>
-                                    <th>Edit</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <?php $i = 1; ?>
@@ -60,14 +60,20 @@
                                     <tr>
                                         <td><?php echo $i; ?></td>
                                         <td><?php echo $row->program_name; ?></td>
-                            <td>
-							<?php if($login_details['name']!='admin' && $login_details['admin_type']!='admin' && $login_details['status']!=2){?>
-                                <a href="<?php echo base_url(); ?>Program/program/<?php echo $row->id; ?>" class="btn btn-info">Edit</a>
+                           
+						<!--	<?php if($login_details['name']!='admin' && $login_details['admin_type']!='admin' && $login_details['status']!=2){?>
+                                <a href="<?php echo base_url(); ?>main/program/<?php echo $row->id; ?>" class="btn btn-info">Edit</a>
                                 <?php if(($super_admin->user_name!=10002221) || ($super_admin->user_name!=12345)|| ($super_admin->user_name!=10004000) || ($super_admin->user_name!=10005935)){ ?>
-                                <a class="btn btn-danger" href="<?php echo base_url(); ?>Program/deleteProgram/<?php  echo $row->id; ?>">Delete</a>
+                                <a class="btn btn-danger" href="<?php echo base_url(); ?>Program/deleteProgram/<?php  echo $row->id; ?>">Delete</a>-->
+                                <td style='text-align: center;'><a href="<?php echo base_url(); ?>main/program/<?php echo $row->id; ?>"  class="mdc-button mdc-button--raised icon-button filled-button--success mdc-ripple-upgraded" style="--mdc-ripple-fg-size:21px; --mdc-ripple-fg-scale:2.90056; --mdc-ripple-fg-translate-start:12.375px, 18.5px; --mdc-ripple-fg-translate-end:7.5px, 7.5px; background-color: #00bbdd;">
+											 <img alt="Eye icon" srcset="https://img.icons8.com/material/2x/visible.png 2x, https://img.icons8.com/material/1x/visible.png 1x" src="https://img.icons8.com/material/1x/visible.png" style="filter: invert(0%) sepia(0%) saturate(7465%) hue-rotate(196deg) brightness(93%) contrast(95%);">
+												 
+												</a>
+												<a   class="mdc-button mdc-button--raised icon-button filled-button--success mdc-ripple-upgraded" style="--mdc-ripple-fg-size:21px; --mdc-ripple-fg-scale:2.90056; --mdc-ripple-fg-translate-start:12.375px, 18.5px; --mdc-ripple-fg-translate-end:7.5px, 7.5px; background-color: #ff420f;" ><i class="material-icons mdc-button__icon"  onclick="showConfirmation(<?php echo $row->id;?>)" style="margin-right: 10px;margin-left: 9px;text-align: center;"; >delete</i>
+												</a></td>
                                 <?php } ?>
-							<?php } ?>	
-                                </td>
+							<!--<?php } ?>	-->
+                                
                                     </tr>
                                 <?php $i++;
                                 }  ?>
@@ -115,7 +121,7 @@
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/validate.min.js"></script>
 	 <script type="text/javascript" src="<?php echo base_url();?>assets/js/moment.min.js"></script>	
  <script type="text/javascript" src="<?php echo base_url();?>assets/js/daterangepicker.js"></script>	
-	 <script type="text/javascript" src="<?php echo base_url();?>assets/js/sbu.js"></script>
+	 <script type="text/javascript" src="<?php echo base_url();?>assets/js/program.js"></script>
     <script type="text/javascript" src="<?php echo base_url();?>assets/js/ckeditor.js"></script>
 	<script type="text/javascript" src="<?php echo base_url();?>assets/js/csweetalert2@11"></script>
 

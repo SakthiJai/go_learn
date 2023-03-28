@@ -188,6 +188,10 @@ class Super_model extends CI_model {
     {
 		return $this->db->insert('program_types',$insertUserData);
     }
+    public function addProgram($insertUserData)
+    {
+		return $this->db->insert('',$insertUserData);
+    }
     /*--------------------program_types--------------------------*/
     /*--------------------program--------------------------*/
     public function editprogram($id){
@@ -195,6 +199,10 @@ class Super_model extends CI_model {
     }
     
     public function updateprogram($id,$data){
+        return $this->db->where('id',$id)->update('program',$data);	
+        
+    }
+    public function updateprogramname($id,$data){
         return $this->db->where('id',$id)->update('program',$data);	
         
     }

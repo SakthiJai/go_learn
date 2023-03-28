@@ -32,7 +32,7 @@ class Program extends CI_Controller {
 		}
 		$data['h_title'] = "Vidhyapeeth Program"; 	    
 		$this->load->view('superadmin/header',$data);
-		$this->load->view('superadmin/program.php',$data);
+		$this->load->view('program/program.php',$data);
 	}
 	
     public function loginn(){

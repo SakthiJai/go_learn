@@ -81,15 +81,12 @@
 																		class="mdc-floating-label">Tittle</label>
 																</div>
 															</div>
-															<div
-																class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
-																<div class="mdc-text-field w-100 mdc-ripple-upgraded">
-																	<div class="mdc-line-ripple"></div>
-																	<label for="text-field-hero-input"
-																		class="mdc-floating-label">Program Name:
-																	</label>
-																<select name="program_name" id="program_name" class="" required>
-                                                    <option value="">Select program name</option>
+															<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
+																<div class="mdc-text-field w-100 mdc-ripple-upgraded" style="--mdc-ripple-fg-size:198px; --mdc-ripple-fg-scale:1.7396; --mdc-ripple-fg-translate-start:-33.4px, -93.4px; --mdc-ripple-fg-translate-end:66.7px, -76.5px;">
+                                  <div class="mdc-line-ripple" style="transform-origin: 65.6px center;"></div>
+                                  <label for="text-field-hero-input" class="mdc-floating-label">Employee Type</label>
+								  <select name="program_name" id="program_name" class="mdc-text-field__input" required>
+								  <option disabled selected value> </option>
                                                     <?php foreach($program_name->result() as $row) { ?>
 													<?Php if($row->id==$details[0]->program_id){?>
 														<option  value="<?php echo $row->id; ?>" selected><?php echo $row->program_name; ?></option>
@@ -98,8 +95,8 @@
 													    <?php }?>
                                                     <?php }?>
                                                     
-                                                    </select> 
-																</div>
+                                                    </select>
+                                </div>
 															</div>
 															<div
 																class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
@@ -108,8 +105,8 @@
 																	<label for="text-field-hero-input"
 																		class="mdc-floating-label">Program Type :
 																	</label>
-																	<select name="training_type" id="training_type" class="form-control" required>
-                                                    <option value="">Select program type</option>
+																	<select name="training_type" id="training_type" class="mdc-text-field__input" required>
+																	<option disabled selected value> </option>
                                                     <?php foreach($program_types->result() as $rowss) {?>
                                                      <?Php if($rowss->id==$details[0]->traning_type_id){?>
 														<option  value="<?php echo $rowss->id; ?>" selected><?php echo $rowss->type;?></option>
@@ -118,7 +115,7 @@
 													<?php } ?>
                                                     <?php } ?>
                                                     
-                                                    </select> 
+                                                    </select>
 																</div>
 															</div>
 															<input type="hidden" name="id" id="id"
@@ -131,8 +128,8 @@
 																	<label for="text-field-hero-input"
 																		class="mdc-floating-label">Program Group:
 																	</label>
-																	<select name="program_group" id="program_group" class="form-control" required>
-                                                    <option value="">Select program group</option>
+																	<select name="program_group" id="program_group" class="mdc-text-field__input" required>
+																	<option disabled selected value> </option>
                                                     <?php foreach($program_group->result() as $rows) { ?>  
 													<?Php if($rows->id==$details[0]->program_group_id){?>
 														<option  value="<?php echo $rows->id; ?>" selected><?php echo $rows->group_name; ?></option>
@@ -152,7 +149,7 @@
 																	class="mdc-floating-label">Course Description:
 																</label>
 																<textarea id="description" name="description"
-																	name="content" class="mt-2"><?php echo  isset($details[0]->description)?$details[0]->description:""; ?></textarea>
+																	name="content" class="mt-2"></textarea>
 
 															</div>
 

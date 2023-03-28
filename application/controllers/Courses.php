@@ -160,7 +160,7 @@ class Courses extends CI_Controller {
 	{
 	    $updateUserData = $this->Admin_model->deleteCourse($id);
                 $this->session->set_flashdata('msg','<div class="alert alert-danger" style="padding: 7px; margin-top: 8px;">Course Deleted Updated</div>');
-        redirect(base_url().'superadmin/course','refresh'); 
+        redirect(base_url().'main/course','refresh'); 
 
 	}
 	
