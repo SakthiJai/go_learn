@@ -506,10 +506,7 @@ class Main extends CI_Controller {
 		$data['program_type']=$this->Super_model->program_type1();
 		$data['program_group']=$this->Super_model->program_group1();
 		$data['program_types']=$this->Super_model->program_types();
-		if(isset($id) && !empty($id)){
-			
-			$data['editcourse'] = $this->Super_model->editcourse($id);
-		}
+		
 		$data['h_title'] = "Go Learn  Course List"; 	    
 		$this->load->view('ui/header',$data);
 		$this->load->view('ui/course',$data);

@@ -109,7 +109,7 @@
 																	<option disabled selected value> </option>
                                                     <?php foreach($program_types->result() as $rowss) {?>
                                                      <?Php if($rowss->id==$details[0]->traning_type_id){?>
-														<option  value="<?php echo $rowss->id; ?>" selected><?php echo $rowss->type;?></option>
+														<option  value="<?php echo $rowss->type; ?>" selected><?php echo $rowss->type;?></option>
 													<?php } else{?>
 														<option  value="<?php echo $rowss->id; ?>"><?php echo $rowss->type;?></option>
 													<?php } ?>
