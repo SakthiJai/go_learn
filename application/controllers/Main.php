@@ -481,8 +481,19 @@ class Main extends CI_Controller {
 	}
 		
 	public function newcourse(){
+		$data['baseurl']=base_url();
+		$data['course']=$this->Super_model->course();
+		$data['program_name']=$this->Super_model->program1();
+		$data['program_type']=$this->Super_model->program_type1();
+		$data['program_group']=$this->Super_model->program_group1();
+		$data['program_types']=$this->Super_model->program_types();
+		if(isset($id) && !empty($id)){
+			
+			$data['editcourse'] = $this->Super_model->editcourse($id);
+		}
 		$data['h_title'] = "Go Learn  "; 	    
 		$this->load->view('ui/newcourse',$data);
+		
 	}
 	public function course($id=false)
 	{
@@ -514,8 +525,9 @@ class Main extends CI_Controller {
 		    $this->load->view('ui/newcourse',$data);
 	    }
 	public function course_adding(){
-	   // print_r($_POST);exit();
+	   //print_r($_POST);exit();
 	   $data['program_name']=$this->Super_model->program1();
+	   //print_r( $data['program_name']);exit();
 	   $data['program_type']=$this->Super_model->program_type1();
 	   $data['program_group']=$this->Super_model->program_group1();
 	   $data['program_types']=$this->Super_model->program_types();
@@ -624,7 +636,7 @@ class Main extends CI_Controller {
                  $this->session->set_flashdata('msg','<div class="alert alert-success text-center">Faild Please Try Again. .</div>');
             }
         
-        redirect(base_url().'ui/course','refresh');   
+        redirect(base_url().'main/course','refresh');   
 	    //}
 	}
 	

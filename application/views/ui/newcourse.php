@@ -88,11 +88,17 @@
 																	<label for="text-field-hero-input"
 																		class="mdc-floating-label">Program Name:
 																	</label>
-																	<select class="mdc-text-field__input training_type"
-																		name="program_name" id="program_name">
-																		<option disabled selected value> </option>
-																		<option>7 </option>
-																	</select>
+																<select name="program_name" id="program_name" class="" required>
+                                                    <option value="">Select program name</option>
+                                                    <?php foreach($program_name->result() as $row) { ?>
+													<?Php if($row->id==$details[0]->program_id){?>
+														<option  value="<?php echo $row->id; ?>" selected><?php echo $row->program_name; ?></option>
+													   <?php }else{?>	
+													   <option  value="<?php echo $row->id; ?>"><?php echo $row->program_name; ?></option>
+													    <?php }?>
+                                                    <?php }?>
+                                                    
+                                                    </select> 
 																</div>
 															</div>
 															<div
@@ -102,11 +108,17 @@
 																	<label for="text-field-hero-input"
 																		class="mdc-floating-label">Program Type :
 																	</label>
-																	<select class="mdc-text-field__input training_type"
-																		name="training_type" id="training_type">
-																		<option disabled selected value> </option>
-																		<option>7 </option>
-																	</select>
+																	<select name="training_type" id="training_type" class="form-control" required>
+                                                    <option value="">Select program type</option>
+                                                    <?php foreach($program_types->result() as $rowss) {?>
+                                                     <?Php if($rowss->id==$details[0]->traning_type_id){?>
+														<option  value="<?php echo $rowss->id; ?>" selected><?php echo $rowss->type;?></option>
+													<?php } else{?>
+														<option  value="<?php echo $rowss->id; ?>"><?php echo $rowss->type;?></option>
+													<?php } ?>
+                                                    <?php } ?>
+                                                    
+                                                    </select> 
 																</div>
 															</div>
 															<input type="hidden" name="id" id="id"
@@ -119,11 +131,17 @@
 																	<label for="text-field-hero-input"
 																		class="mdc-floating-label">Program Group:
 																	</label>
-																	<select class="mdc-text-field__input training_type"
-																		name="program_group" id="program_group">
-																		<option disabled selected value> </option>
-																		<option>7 </option>
-																	</select>
+																	<select name="program_group" id="program_group" class="form-control" required>
+                                                    <option value="">Select program group</option>
+                                                    <?php foreach($program_group->result() as $rows) { ?>  
+													<?Php if($rows->id==$details[0]->program_group_id){?>
+														<option  value="<?php echo $rows->id; ?>" selected><?php echo $rows->group_name; ?></option>
+													<?php }else{?>
+														  <option  value="<?php echo $rows->id; ?>"><?php echo $rows->group_name; ?></option>
+													<?php }?>
+                                                    <?php } ?>
+                                                    
+                                                    </select> 
 																</div>
 															</div>
 															<div
@@ -134,7 +152,7 @@
 																	class="mdc-floating-label">Course Description:
 																</label>
 																<textarea id="description" name="description"
-																	name="content" class="mt-2"></textarea>
+																	name="content" class="mt-2"><?php echo  isset($details[0]->description)?$details[0]->description:""; ?></textarea>
 
 															</div>
 
