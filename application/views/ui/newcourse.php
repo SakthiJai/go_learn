@@ -277,7 +277,7 @@
 																<button   type="submit" class=" mt-4 btn btn-primary mdc-button mdc-button--raised filled-button--success mdc-ripple-upgraded vertical-center" style="--mdc-ripple-fg-size:56px;     --mdc-ripple-fg-scale:1.96936; --mdc-ripple-fg-translate-start:22.9px, -19.6px; --mdc-ripple-fg-translate-end:18.8px, -10px ,float:   ">
 																	Submit
 																	</button>&nbsp;&nbsp;&nbsp;&nbsp;
-																	<a href="<?php echo base_url('main/designation_master'); ?>"class=" mt-4 mdc-button mdc-button--raised filled-button--secondary mdc-ripple-upgraded"  style="--mdc-ripple-fg-size:70px; --mdc-ripple-fg-scale:1.90907; --mdc-ripple-fg-translate-start:8.11121px, -9.33333px; --mdc-ripple-fg-translate-end:24.1389px, -17px;   ">
+																	<a href="<?php echo base_url('main/course'); ?>"class=" mt-4 mdc-button mdc-button--raised filled-button--secondary mdc-ripple-upgraded"  style="--mdc-ripple-fg-size:70px; --mdc-ripple-fg-scale:1.90907; --mdc-ripple-fg-translate-start:8.11121px, -9.33333px; --mdc-ripple-fg-translate-end:24.1389px, -17px;   ">
 																			Cancel
 																			</a>
 															</div>

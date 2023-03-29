@@ -40,7 +40,7 @@
 						  <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--span-12-tablet">
                         <div class="table-responsive border">
 						</div>
-						<center><span class=""> <?php echo $this->session->flashdata('msg'); ?></span></center>
+            <center><span class="test"> <?php echo $this->session->flashdata('msg'); ?></span></center>
                   <form  id="employee" class="" action="<?php echo base_url('main/sbu_master');?>" method="POST">
                     <div class="mdc-layout-grid">
                       <div class="mdc-layout-grid__inner">
@@ -73,7 +73,7 @@
 											 <img alt="Eye icon" srcset="https://img.icons8.com/material/2x/visible.png 2x, https://img.icons8.com/material/1x/visible.png 1x" src="https://img.icons8.com/material/1x/visible.png" style="filter: invert(0%) sepia(0%) saturate(7465%) hue-rotate(196deg) brightness(93%) contrast(95%);">
 												 
 												</a>
-												<a   href="<?php echo base_url();?>/courses/deleteCourse/<?php echo $data->id; ?>"  class="mdc-button mdc-button--raised icon-button filled-button--success mdc-ripple-upgraded" style="--mdc-ripple-fg-size:21px; --mdc-ripple-fg-scale:2.90056; --mdc-ripple-fg-translate-start:12.375px, 18.5px; --mdc-ripple-fg-translate-end:7.5px, 7.5px; background-color: #ff420f;" ><i class="material-icons mdc-button__icon"  onclick="showConfirmation(<?php echo $row->id;?>)" style="margin-right: 10px;margin-left: 9px;text-align: center;"; >delete</i>
+												<a    class="mdc-button mdc-button--raised icon-button filled-button--success mdc-ripple-upgraded" style="--mdc-ripple-fg-size:21px; --mdc-ripple-fg-scale:2.90056; --mdc-ripple-fg-translate-start:12.375px, 18.5px; --mdc-ripple-fg-translate-end:7.5px, 7.5px; background-color: #ff420f;" ><i class="material-icons mdc-button__icon"  onclick="showConfirmation(<?php echo $row->id;?>)" style="margin-right: 10px;margin-left: 9px;text-align: center;"; >delete</i>
 												</a></td>
 													
 													<!--	<?php }?>-->
@@ -160,6 +160,7 @@
   
 
 }
+.test{padding: 7px;color: #008a5d;background-color: rgba(0, 182, 122, 0.2);border-color: #00a770;position: relative;padding: 0.75rem 1.25rem;margin-bottom: 1rem;border: 1px solid transparent;border-radius: 0.25rem;margin-top: 8px;}
 .alert {
     font-size: 0.75rem;
 }
