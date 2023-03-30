@@ -106,6 +106,8 @@
  <script type="text/javascript" src="<?php echo base_url();?>assets/js/daterangepicker.js"></script>	
 	 <script type="text/javascript" src="<?php echo base_url();?>assets/js/sbu.js"></script>
     <script type="text/javascript" src="<?php echo base_url();?>assets/js/ckeditor.js"></script>
+    
+	<script type="text/javascript" src="<?php echo base_url();?>assets/js/csweetalert2@11"></script>
 	<style>.error {
         color: #fa4040;
         font-size: 12px;

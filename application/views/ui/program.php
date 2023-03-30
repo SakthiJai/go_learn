@@ -48,9 +48,9 @@
                           <table id="datatable-buttons" class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th>S.No</th>
-                                    <th>Program Name</th>
-                                    <th>Action</th>
+                                    <th style='text-align: center;'>S.No</th>
+                                    <th style='text-align: center;'>Program Name</th>
+                                    <th style='text-align: center;'>Action</th>
                                 </tr>
                             </thead>
                             <?php $i = 1; ?>
@@ -58,8 +58,8 @@
 
                                 <?php foreach ($program->result() as $row) { ?>
                                     <tr>
-                                        <td><?php echo $i; ?></td>
-                                        <td><?php echo $row->program_name; ?></td>
+                                        <td style='text-align: center;'><?php echo $i; ?></td>
+                                        <td style='text-align: center;'><?php echo $row->program_name; ?></td>
                            
 						<!--	<?php if($login_details['name']!='admin' && $login_details['admin_type']!='admin' && $login_details['status']!=2){?>
                                 <a href="<?php echo base_url(); ?>main/program/<?php echo $row->id; ?>" class="btn btn-info">Edit</a>

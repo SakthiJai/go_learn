@@ -149,7 +149,7 @@
 																	class="mdc-floating-label">Course Description:
 																</label>
 																<textarea id="description" name="description"
-																	name="content" class="mt-2"></textarea>
+																	 class="mt-2"></textarea>
 
 															</div>
 
@@ -164,8 +164,8 @@
 																	<div class="mdc-form-field">
 																		<div
 																			class="mdc-checkbox mdc-checkbox--secondary">
-																			<input type="checkbox" id="checkbox-1"
-																				class="mdc-checkbox__native-control">
+																			<input type="checkbox" id="" name="test"
+																				class="mdc-checkbox__native-control"  value="1" <?php echo  (isset($details[0]->posttest_id) && $details[0]->pretest_id==1 )?'checked':""?>>
 																			<div class="mdc-checkbox__background">
 																				<svg class="mdc-checkbox__checkmark"
 																					viewBox="0 0 24 24">
@@ -187,8 +187,8 @@
 																		<div
 																			class="mdc-checkbox mdc-checkbox--secondary">
 																			<input type="checkbox"
-																				id=" basic-disabled-checkbox"
-																				class="mdc-checkbox__native-control">
+																				id="" name="test"
+																				class="mdc-checkbox__native-control" value="2"  <?php echo  (isset($details[0]->posttest_id) && $details[0]->posttest_id==1 )?'checked':""?> >
 																			<div class="mdc-checkbox__background">
 																				<svg class="mdc-checkbox__checkmark"
 																					style="border-color: #ff420f;
@@ -211,8 +211,8 @@
 																		<div
 																			class="mdc-checkbox mdc-checkbox--secondary">
 																			<input type="checkbox"
-																				id="basic-disabled-checkbox"
-																				class="mdc-checkbox__native-control">
+																				id="" name="test"
+																				class="mdc-checkbox__native-control" value="3" <?php echo  (isset($details[0]->pre_and_post) && $details[0]->pre_and_post==1 )?'checked':""?>>
 																			<div class="mdc-checkbox__background">
 																				<svg class="mdc-checkbox__checkmark"
 																					viewBox="0 0 24 24">

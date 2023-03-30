@@ -606,33 +606,7 @@ $("#startbutton").click(function()
     }*/
 
 
-    function getContent() {
-      console.log('121S');
-      $.ajax({
-        url: "getTerms",
-        type: "post",
-        data: { _token: $('meta[name="_token"]').attr('content') },
-        dataType: "JSON",
-        beforeSend: function (xhr, type) {
-          if (!type.crossDomain) {
-            //  xhr.setRequestHeader('X-CSRF-Token', $('meta[name="_token"]').attr('content'));
-          }
-        },
-        success: function (data) {
-
-          //console.log(data.content)
-          //$('textarea[name="content"]').val(data.content);
-          tinyMCE.activeEditor.setContent(data.data);
-
-
-        },
-
-        error: function (jqXHR, textStatus, errorThrown) {
-          alert('Error get data from ajax');
-        }
-      });
-      // body...
-    }
+   
 	  var notifyOptions = {
         iconButtons: {
             className: 'fa fa-question about',
@@ -958,13 +932,7 @@ $("#startbutton").click(function()
             $( "#myForm" ).submit();
         });
     });
-   $(function () {
-      $('input[name="daterange"]').daterangepicker({
-        opens: 'left'
-      }, function (start, end, label) {
-        console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
-      });
-    });
+  
 
     function showConfirmation(id)
     {

@@ -571,6 +571,10 @@ class Super_model extends CI_model {
 	public function updateEmp($id,$data){
 		 return $this->db->where('id',$id)->update('emp',$data);	  
     }
+    public function delete_programname($id){
+        $this->db->where('id',$id)->delete('program');
+        return true;
+    }
 	
 }
 ?>

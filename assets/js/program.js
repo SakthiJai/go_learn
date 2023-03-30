@@ -91,7 +91,7 @@ function NumbersOnly(MyField, e, dec) {
         confirmButtonText: 'Yes'
       }).then((result) => {
         if (result.isConfirmed) {
-          window.location.href= 'updateprogramname/'+id;
+          window.location.href= 'delete_programname/'+id;
         } else {
           console.log('clicked cancel');
         }
