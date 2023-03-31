@@ -247,7 +247,8 @@ class Super_model extends CI_model {
     }
     public function assigned_emp($id){
 		//print_r($id);exit;
-        $assigned_emp = $this->db->query("select assign_emp.*,emp.name from assign_emp left join emp on  emp.emp_id = assign_emp.employee_id  where assign_emp.program_id = $id group by assign_emp.employee_id order by assign_emp.employee_id,employee_id,emp.emp_id");
+         $query=("select assign_emp.*,emp.name from assign_emp left join emp on  emp.emp_id = assign_emp.employee_id  where assign_emp.program_id = $id group by assign_emp.employee_id order by assign_emp.employee_id,employee_id,emp.emp_id");
+        $assigned_emp = $this->db->$query;
         return $assigned_emp;
     }
     public function assigned_empdelete($id){
@@ -293,6 +294,7 @@ class Super_model extends CI_model {
                         ->get();*/
                         
         $list = $this->db->query("select course.program_id,course.program_group_id,course.traning_type_id from course where id='".$id."'");
+        //print_r($list);exit;
         return $list->result();                
     }
     public function getProgramDetails($id)

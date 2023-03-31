@@ -46,21 +46,8 @@ class Program extends CI_Controller {
 		);
 		//print_r($data);exit();
         $insertUserData = $this->Super_model->creatingprogram($data);
-        	if($insertUserData){
-				if($insertUserData){
-					$this->session->set_flashdata('msg','<div class="alert alert-success text-center" style="color: #008a5d;
-		background-color: rgba(0, 182, 122, 0.2);
-		border-color: #00a770;    position: relative;
-		padding: 0.75rem 1.25rem;
-		margin-bottom: 1rem;
-		border: 1px solid transparent;
-		border-radius: 0.25rem;">Added Successfully.</div>');
-				
-			redirect('main/program_types'); 
-			
-			}else{
-				redirect('main/addprogram_types'); 
-			}
+        $this->session->set_flashdata('msg','<div class="alert alert-success text-center">submit Successed.</div>');
+        redirect(base_url().'superadmin/program','refresh');            
     }
 	public function updateprogram($id)
 	{

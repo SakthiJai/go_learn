@@ -9,7 +9,7 @@ $(document).ready(function() {
             messages: {
 				sbu: {
                    required: "Enter SBU"
-				    pattern: "Special characters are not allowed"
+				    //pattern: "Special characters are not allowed"
                 },
             },
 

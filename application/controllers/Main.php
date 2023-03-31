@@ -639,8 +639,15 @@ class Main extends CI_Controller {
 		}
 	public function deleteCourse($id)
 	{
+
 	    $updateUserData = $this->Admin_model->deleteCourse($id);
-                $this->session->set_flashdata('msg','<div class="alert alert-danger" style="padding: 7px; margin-top: 8px;">Course Deleted Updated</div>');
+		$this->session->set_flashdata('msg',' <div class="alert alert-success text-center" style="color: #008a5d;
+		background-color: rgba(0, 182, 122, 0.2);
+		border-color: #00a770;    position: relative;
+		padding: 0.75rem 1.25rem;
+		margin-bottom: 1rem;
+		border: 1px solid transparent;
+		border-radius: 0.25rem;"> Deleted Successfully. </div>');
         redirect(base_url().'main/course','refresh'); 
 
 	}
@@ -949,6 +956,7 @@ class Main extends CI_Controller {
 	    //print_r($programList_id);exit;
 	    //if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
 	    $course = $this->input->post('course_name');
+		//print_r($course);exit;
 	    $courseDetails = $this->db->query("SELECT id,course_title,training_type,program_id,program_group_id,traning_type_id FROM course WHERE id=$course")->row();
 	    $evalutionDetails = $this->db->query("SELECT id FROM `evaluation` where  course_id=$course ")->row();
 	    //print_r($courseDetails);
@@ -985,6 +993,7 @@ class Main extends CI_Controller {
 	    	'updated_at'=>date('Y-m-d h:i:s'),
 	    );
         if($programList_id==""){
+			//print_r($data);exit;
             $insertid = $this->Super_model->creatingprograms($data);
             $programId  =  $insertid ;
         }else{
@@ -1072,7 +1081,14 @@ class Main extends CI_Controller {
 		);
 		//print_r($data);exit();
         $insertUserData = $this->Super_model->creatingprogram($data);
-        $this->session->set_flashdata('msg','<div class="alert alert-success text-center">submit Successed.</div>');
+		$this->session->set_flashdata('msg','<div class="alert alert-success text-center" style="color: #008a5d;
+		background-color: rgba(0, 182, 122, 0.2);
+		border-color: #00a770;    position: relative;
+		padding: 0.75rem 1.25rem;
+		margin-bottom: 1rem;
+		border: 1px solid transparent;
+		border-radius: 0.25rem;">Added Successfully.</div>');
+				
         redirect(base_url().'main/program','refresh');            
     }
 	public function updateprogramname($id)
@@ -1601,6 +1617,7 @@ $message ='<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http:
 	}
 		public function checkFaculty()
 	{
+
 	    $emp_id = explode(' ',$_POST['id']);
 		//print_r($emp_id);exit;
 	    $error = 0;
@@ -1613,8 +1630,7 @@ $message ='<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http:
                 break; 
             }
         }
-		//print_r($divisionaa);exit;
-        //echo $error;
+		 echo json_encode($divisionaa);
 	}
 	public function store_assign_emp(){
 	    //print_r($this->input->post('assign_empid'));exit;
@@ -2329,6 +2345,10 @@ $headers .= 'From: '.$from."\r\n".
 		$data['h_title'] = "Go Learn "; 	    
 	    $this->load->view('ui/addbranch',$data);
 	}
+	public function prequestion(){
+		$data['h_title'] = "Go Learn "; 	    
+	    $this->load->view('ui/prequestion',$data);
+	}
 	public function addbranch_master(){
 			$data = array(
 			'branch' => $this->input->post('branch_plant')
@@ -2791,6 +2811,58 @@ $headers .= 'From: '.$from."\r\n".
     border-radius: 0.25rem;"> Deleted Successfully. </div>');
         redirect(base_url().'main/gender_master','refresh');
 	}
-
+    public function addprepostquation()
+    {
+		//print_r($_POST);exit;
+        $picture1 ='';
+        if($_FILES['image']['name']){
+        $config['upload_path'] = 'assets/images/test/';
+        $config['allowed_types'] = 'jpg|jpeg|png|gif';
+        $config['file_name'] = $_FILES['image']['name'];
+        $config['encrypt_name'] = TRUE;
+        $this->load->library('upload',$config);
+        $this->upload->initialize($config);   
+        if($this->upload->do_upload('image')){
+            $uploadData = $this->upload->data();
+            $picture1 = $uploadData['file_name'];
+            }
+        }
+    
+    	//print_r($picture1);exit();
+		$test_id = $this->input->post('test_id');
+		$quations=	$this->input->post('quations');
+		$option1 =  $this->input->post('option1');
+		$option2 =  $this->input->post('option2');
+		$option3 =  $this->input->post('option3');
+		$option4 =  $this->input->post('option4');
+		
+		$answer1  =  $this->input->post('answer');
+		 if($answer1 == 1){
+			$answer = $this->input->post('option1');
+		 } elseif($answer1 == 2) {
+			$answer = $this->input->post('option2'); 
+		 } elseif($answer1 == 3) {
+			$answer = $this->input->post('option3'); 
+		 } elseif($answer1 == 4) {
+			$answer = $this->input->post('option4'); 
+		 }
+		 
+		$data = array(
+		'test_id' => $test_id,
+		'quations'=> $quations,
+		'option1' => $option1,
+		'option2' => $option2,
+		'option3' => $option3, 
+		'option4' => $option4, 
+		'answer'  => $answer  
+			);
+		if(!empty($picture1)){
+				$data['image']=$picture1;
+		}
+		//print_r($data);exit();
+        $insertUserData = $this->Admin_model->addprepostquation($data);
+         "<script>alert('Successfully submitted. Thank you.');</script>";
+        redirect(base_url('main/course/'.$test_id),'refresh');
+    }
 }
 ?>

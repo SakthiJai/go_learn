@@ -310,7 +310,7 @@
                                   <label for="text-field-hero-input" class="mdc-floating-label">RO Name</label>
                                 </div>
                               </div>
-
+                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-8"></div>
                       <!--       <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-1">
                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded" name="dob" id='dob'
                                   style='padding-right: 114px;' >
@@ -342,8 +342,8 @@
                                   </div>
                                </div>
                               </div>   -->
-							  
-                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
+                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4"></div>
+                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
                                 <button
                                   class=" mt-1 btn btn-primary mdc-button mdc-button--raised filled-button--success mdc-ripple-upgraded vertical-center"
                                   style="--mdc-ripple-fg-size:56px;     --mdc-ripple-fg-scale:1.96936; --mdc-ripple-fg-translate-start:22.9px, -19.6px; --mdc-ripple-fg-translate-end:18.8px, -10px ,float: right; ">
@@ -356,6 +356,7 @@
                                   Cancel
                                 </button>
                               </div>
+                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4"></div>
 
 
                             </div>

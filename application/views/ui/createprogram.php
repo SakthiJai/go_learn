@@ -526,9 +526,9 @@
                               </div>
                            
                               
-
+                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4"></div>
                               
-                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
+                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
                                 <button
                                   class=" mt-1 btn btn-primary mdc-button mdc-button--raised filled-button--success mdc-ripple-upgraded vertical-center"
                                   style="--mdc-ripple-fg-size:56px;     --mdc-ripple-fg-scale:1.96936; --mdc-ripple-fg-translate-start:22.9px, -19.6px; --mdc-ripple-fg-translate-end:18.8px, -10px ,float: right; ">
@@ -541,7 +541,7 @@
                                   Cancel
                                 </button>
                               </div>
-
+                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4"></div>
 
                             </div>
                           </div>

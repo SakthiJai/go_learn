@@ -487,7 +487,7 @@ $(".deactivatestatus").on('click', function(e){
 	{
 		$.ajax({
             type: "POST",
-            url: baseurl+"superadmin/activeevaluation_quation",
+            url: baseurl+"main/activeevaluation_quation",
             data: {'id':$(this).attr('id'), 'status':2},
             success: function(data) {
                 if(data) {
@@ -647,7 +647,7 @@ $("#startbutton").click(function()
 function callListGrid()
 { console.log("222");
 	setTimeout(function(){
-	$('#listgrid').load("/superadmin/coursequestionslist/"+$('.radioBtnClass:checked').val()+"/"+$('#test_temp_id').val())
+	$('#listgrid').load("/main/coursequestionslist/"+$('.radioBtnClass:checked').val()+"/"+$('#test_temp_id').val())
 	},3000);
 }
 function updateFeedBack()
@@ -865,7 +865,7 @@ $("#startbutton").click(function()
     function getContent() {
       console.log('121S');
       $.ajax({
-        url: "getTerms",
+        url: baseurl+"main/getTerms",
         type: "post",
         data: { _token: $('meta[name="_token"]').attr('content') },
         dataType: "JSON",

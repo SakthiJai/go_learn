@@ -284,7 +284,7 @@ var checkout = $('#dp2').datepicker({
 
         console.log('test');
         $.post(
-           baseurl+ "superadmin/getCourseDetails", {
+           baseurl+ "main/getCourseDetails", {
                 id: $('#course_name').val()
             },
             function(data) {
@@ -306,7 +306,7 @@ var checkout = $('#dp2').datepicker({
         $('#empnot').text("");
         //  console.log($(that).val());
         $.post(
-            baseurl+"superadmin/checkEmpValue", {
+            baseurl+"main/checkEmpValue", {
                 id: $('#assignemployee').val(),
             },
             function(data) {
@@ -331,7 +331,7 @@ var checkout = $('#dp2').datepicker({
         var program_id= $('#program_id').val();
           $('#assign_emp_check').text("");
         $.post(
-            baseurl+"superadmin/asignemployeecheck", {
+            baseurl+"main/asignemployeecheck", {
                 id: $('#assignemployee').val(),fromdate:$('#from_date').val(),todate:$('#to_date').val(),program_id : program_id
             },
             function(data) {
@@ -357,7 +357,7 @@ var checkout = $('#dp2').datepicker({
         $('.training_type option[value=""]').attr("selected", "selected");
         console.log($(that).val());
         $.post(
-            baseurl+"superadmin/getProgramDetails", {
+            baseurl+"main/getProgramDetails", {
                 id: $(that).val()
             },
             function(data) {

@@ -24,7 +24,12 @@
                 Assign Training course
               
                       </button>
-                    
+                      <div>
+					 <a class="mdc-button mdc-button--raised filled-button--secondary mdc-ripple-upgraded" href="<?php echo base_url('main/createprogram'); ?>">
+                                    New Assign Training course
+                                </a>&nbsp;&nbsp;
+                        
+                    </div>
                   </div>
                  
                   <div class="mdc-layout-grid__inner mt-2">
@@ -33,49 +38,52 @@
                           <table class="table table-hoverable">
 						  <thead>
                           <tr>
-                                  <th class="th-sm">S.No</th>
-                                  <th class="th-sm">Program Created User</th>
-                                  <th class="th-sm">Course Name</th>
-                                  <th class="th-sm">Program Name</th>
-                                  <th class="th-sm">Program Group Name</th>
-                                  <th class="th-sm">Training Type</th>
-                                  <th class="th-sm">Nature of Program</th>
-                                  <th class="th-sm">Tni Source</th>
-                                  <th class="th-sm">Cost Per Program</th>
-                                  <th class="th-sm">Cost Per Emp</th>
-                                  <th class="th-sm">Faculty Name</th>
-                                  <th class="th-sm">Faculty Type</th>
-                                  <th class="th-sm">Training Mode</th>
-                                  <th class="th-sm">No Of Hrs</th>
-                                  <th class="th-sm">Venue</th>
-                                  <th class="th-sm">Location</th>
-                                  <th class="th-sm">TTT</th>
-                                  <th class="th-sm">Evaluation Type</th>
-                              <!--    <th class="th-sm">Assign</th> -->
+                                  <th class="th-sm test">S.No</th>
+                                  <th class="th-sm test">Program Created User</th>
+                                  <th class="th-sm test">Course Name</th>
+                                  <th class="th-sm test ">Program Name</th>
+                                  <th class="th-sm test ">Program Group Name</th>
+                                  <th class="th-sm test">Training Type</th>
+                                  <th class="th-sm test">Nature of Program</th>
+                                  <th class="th-sm test">Tni Source</th>
+                                  <th class="th-sm test">Cost Per Program</th>
+                                  <th class="th-sm test">Cost Per Emp</th>
+                                  <th class="th-sm test">Faculty Name</th>
+                                  <th class="th-sm test">Faculty Type</th>
+                                  <th class="th-sm test">Training Mode</th>
+                                  <th class="th-sm test">No Of Hrs</th>
+                                  <th class="th-sm test">Venue</th>
+                                  <th class="th-sm test">Location</th>
+                                  <th class="th-sm test">TTT</th>
+                                  <th class="th-sm test">Evaluation Type</th>
+                                <th class="th-sm test">Assign</th> 
                                 </tr>
 							</thead>		
                             <tbody>
 							<?php $i=1; foreach($programs->result() as $row) { ?>
                                 <tr>
-                                    <td><?php echo $i; ?></td>
-                                    <td><?php echo $row->created_user;?></td>
-                                    <td><?php echo $row->course_name;?></td>
-                                    <td><?php echo $row->program_name;?></td>
-                                    <td><?php echo $row->program_group_name;?></td>
-                                    <td><?php echo $row->training_type;?></td>
-                                    <td><?php echo $row->nature_program;?></td>
-                                    <td><?php echo $row->tni_source;?></td>
-                                    <td><?php echo $row->cost_per_program;?></td>
-                                    <td><?php echo $row->cost_per_emp;?></td>
-                                    <td><?php echo $row->faculty_name;?></td>
-                                    <td><?php echo $row->faculty_type;?></td>
-                                    <td><?php echo $row->training_mode;?></td>
-                                    <td><?php echo $row->no_of_hrs;?></td>
-                                    <td><?php echo $row->venue;?></td>
-                                    <td><?php echo $row->location;?></td>
-                                    <td><?php echo $row->ttt;?></td>
-                                    <td><?php echo $row->evaluation;?></td>
-                                   <!-- <td><a href="<//?php echo base_url('superadmin/assign_emp/'.$row->id);?>"><button class="mt-1 btn btn-success">Assign Employee</button></a></td>-->
+                                    <td class="test"><?php echo $i; ?></td>
+                                    <td class="test"><?php echo $row->created_user;?></td>
+                                    <td class="test"><?php echo $row->course_name;?></td>
+                                    <td class="test"><?php echo $row->program_name;?></td>
+                                    <td class="test"><?php echo $row->program_group_name;?></td>
+                                    <td class="test"><?php echo $row->training_type;?></td>
+                                    <td class="test"><?php echo $row->nature_program;?></td>
+                                    <td class="test"><?php echo $row->tni_source;?></td>
+                                    <td class="test"><?php echo $row->cost_per_program;?></td>
+                                    <td class="test"><?php echo $row->cost_per_emp;?></td>
+                                    <td class="test"><?php echo $row->faculty_name;?></td>
+                                    <td class="test"><?php echo $row->faculty_type;?></td>
+                                    <td class="test"><?php echo $row->training_mode;?></td>
+                                    <td class="test"><?php echo $row->no_of_hrs;?></td>
+                                    <td class="test"><?php echo $row->venue;?></td>
+                                    <td class="test"><?php echo $row->location;?></td>
+                                    <td class="test"><?php echo $row->ttt;?></td>
+                                    <td class="test"><?php echo $row->evaluation;?></td>
+                                   <td class="test">
+                                   <button  href="<?php echo base_url('main/assign_emp/'.$row->id);?>" class="mdc-button mdc-button--raised mdc-button--dense mdc-ripple-upgraded" style="--mdc-ripple-fg-size:44px; --mdc-ripple-fg-scale:2.06378; --mdc-ripple-fg-translate-start:35.3375px, -10.2px; --mdc-ripple-fg-translate-end:15.1px, -6px;">
+                                   Assign Employee
+                                        </button></td>
                                     <!--<td><a href="addcourse.html"><button class="mt-1 btn btn-success">Add Course</button></a></td>-->
                                     <!--<td><a class="btn btn-info"><i class="pe-7s-note" aria-hidden="true"></i></a></td>-->
                                     <!--<td><a class="btn btn-danger"><i class="pe-7s-trash" aria-hidden="true"></i></a></td>-->
@@ -98,6 +106,40 @@
       </div>
     </div>
   </div>
-  
+  <script type="text/javascript" src="<?php echo base_url();?>assets/scripts/main.js"></script>
+<!-- Required datatable js -->
+<script src="<?php echo base_url()?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="<?php echo base_url()?>assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+<!-- Buttons examples -->
+<script src="<?php echo base_url()?>assets/plugins/datatables/dataTables.buttons.min.js"></script>
+<script src="<?php echo base_url()?>assets/plugins/datatables/buttons.bootstrap4.min.js"></script>
+<script src="<?php echo base_url()?>assets/plugins/datatables/jszip.min.js"></script>
+<script src="<?php echo base_url()?>assets/plugins/datatables/pdfmake.min.js"></script>
+<script src="<?php echo base_url()?>assets/plugins/datatables/vfs_fonts.js"></script>
+<script src="<?php echo base_url()?>assets/plugins/datatables/buttons.html5.min.js"></script>
+<script src="<?php echo base_url()?>assets/plugins/datatables/buttons.print.min.js"></script>
+<script src="<?php echo base_url()?>assets/plugins/datatables/buttons.colVis.min.js"></script>
+<!-- Responsive examples -->
+<script src="<?php echo base_url()?>assets/plugins/datatables/dataTables.responsive.min.js"></script>
+<script src="<?php echo base_url()?>assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
+       
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('#datatable').DataTable();
+
+                //Buttons examples
+                var table = $('#datatable-buttons').DataTable({
+                    lengthChange: false,
+                    buttons: ['excel']
+                });
+
+                table.buttons().container()
+                        .appendTo('#datatable-buttons_wrapper .col-md-6:eq(0)');
+            } );
+
+        </script>
+<style> 
+.{text-align: center;}
+</style>
 </body>
 </html> 

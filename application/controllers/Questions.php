@@ -195,6 +195,7 @@ class Questions extends CI_Controller {
     }
     public function addprepostquation()
     {
+		//print_r($_POST);exit;
         $picture1 ='';
         if($_FILES['image']['name']){
         $config['upload_path'] = 'assets/images/test/';
