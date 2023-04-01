@@ -865,7 +865,7 @@ $("#startbutton").click(function()
     function getContent() {
       console.log('121S');
       $.ajax({
-        url: baseurl+"main/getTerms",
+       // url: baseurl+"main/getTerms",
         type: "post",
         data: { _token: $('meta[name="_token"]').attr('content') },
         dataType: "JSON",

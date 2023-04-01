@@ -532,7 +532,13 @@ class Main extends CI_Controller {
 			
 			$exitcourse = $this->Admin_model->exitcourse($course,$this->input->post('courseid'));
 			if($exitcourse == 2){
-				$this->session->set_flashdata('msg','<div class="alert alert-danger" style="padding: 7px; margin-top: 8px;">Course title already exist. Try another title</div>');
+				$this->session->set_flashdata('msg','<div class="alert alert-success text-center" style="color: #008a5d;
+				background-color: rgba(0, 182, 122, 0.2);
+				border-color: #00a770;    position: relative;
+				padding: 0.75rem 1.25rem;
+				margin-bottom: 1rem;
+				border: 1px solid transparent;
+				border-radius: 0.25rem;">Added Successfully.</div>');
 				redirect(base_url().'main/course','refresh');
 			} 
 			
@@ -616,7 +622,13 @@ class Main extends CI_Controller {
 					$updateUserData = $this->Admin_model->course_adding($data);
 					$newCourseid= $updateUserData;
 					//$this->Admin_model->evalutionUpdate(777,$this->input->post('feedback_main_id'));
-					 $this->session->set_flashdata('msg','<div class="alert alert-success" style="padding: 7px; margin-top: 8px;">Course Successfully added</div>');
+					$this->session->set_flashdata('msg','<div class="alert alert-success text-center" style="color: #008a5d;
+					background-color: rgba(0, 182, 122, 0.2);
+					border-color: #00a770;    position: relative;
+					padding: 0.75rem 1.25rem;
+					margin-bottom: 1rem;
+					border: 1px solid transparent;
+					border-radius: 0.25rem;">Added Successfully.</div>');
 				}
 				else
 				{
@@ -729,7 +741,7 @@ class Main extends CI_Controller {
 		}
 		//print_r($data);exit();
         $insertUserData = $this->Super_model->pretestquestions_adding($data);
-        redirect(base_url('ui/pretest_questions/'.$id),'refresh');
+        redirect(base_url('main/newcourse/'.$data),'refresh');
 	}
 	public function posttest_questions($id=false){
 	    //if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
@@ -795,7 +807,7 @@ class Main extends CI_Controller {
 		}
 		//print_r($data);exit();
         $insertUserData = $this->Super_model->posttestquestions_adding($data);
-        redirect(base_url('ui/posttest_questions/'.$id),'refresh');
+        redirect(base_url('main/newcourse/'.$id),'refresh');
 	}
 	public function test_questions($id=false){
 	    //if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
@@ -809,7 +821,7 @@ class Main extends CI_Controller {
 		$data['post_questions']=$this->Super_model->posttest_questions($id);
 		$data['h_title'] = "Go Learn  test";
 		$this->load->view('ui/header',$data);
-		$this->load->view('ui/add_testquestions.php',$data);
+		$this->load->view('ui/newcourse',$data);
 	}
 	public function testquestions_adding($id=false){
 	            $picture1 ='';
@@ -863,7 +875,7 @@ class Main extends CI_Controller {
 		//print_r($data);exit();
         $insertUserData = $this->Super_model->pretestquestions_adding($data);
         $insertUserData = $this->Super_model->posttestquestions_adding($data);
-        redirect(base_url('ui/test_questions/'.$id),'refresh');
+        redirect(base_url('main/newcourse/'.$id),'refresh');
 	}
 	public function feedback_questions($id){
 	    //if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
@@ -2345,10 +2357,8 @@ $headers .= 'From: '.$from."\r\n".
 		$data['h_title'] = "Go Learn "; 	    
 	    $this->load->view('ui/addbranch',$data);
 	}
-	public function prequestion(){
-		$data['h_title'] = "Go Learn "; 	    
-	    $this->load->view('ui/prequestion',$data);
-	}
+	
+	
 	public function addbranch_master(){
 			$data = array(
 			'branch' => $this->input->post('branch_plant')
@@ -2811,6 +2821,19 @@ $headers .= 'From: '.$from."\r\n".
     border-radius: 0.25rem;"> Deleted Successfully. </div>');
         redirect(base_url().'main/gender_master','refresh');
 	}
+	public function prequestion($id=false,$view=false)
+	{
+	    //if($this->session->userdata('admin_login')==NULL) redirect(base_url());
+		$data['id']=$id;
+		$data['testquation']=$this->Admin_model->testquation($id);
+        $data['testtile']=$this->Admin_model->testtile($id);
+        $data['test_id']=$id;
+		$data['h_title'] = "Vidhyapeeth Program"; 	    
+		$this->load->view('superadmin/header',$data);
+		$this->load->view('main/newcourse',$data);
+		
+	
+	}
     public function addprepostquation()
     {
 		//print_r($_POST);exit;
@@ -2864,5 +2887,229 @@ $headers .= 'From: '.$from."\r\n".
          "<script>alert('Successfully submitted. Thank you.');</script>";
         redirect(base_url('main/course/'.$test_id),'refresh');
     }
+	public function postquestion($id=false,$view=false)
+	{
+	    //if($this->session->userdata('admin_login')==NULL) redirect(base_url());
+		$data['id']=$id;
+		$data['testquation']=$this->Admin_model->testquation($id);
+        $data['testtile']=$this->Admin_model->testtile($id);
+        $data['test_id']=$id;
+		$data['h_title'] = "Vidhyapeeth Program"; 	    
+		$this->load->view('main/header',$data);
+		$this->load->view('main/course/',$data);
+		
+	
+	}
+	public function addquation()
+    {
+        $picture1 ='';
+        if(isset($_FILES['image']['name'])){
+        $config['upload_path'] = 'assets/images/test/';
+        $config['allowed_types'] = 'jpg|jpeg|png|gif';
+        $config['file_name'] = $_FILES['image']['name'];
+        $config['encrypt_name'] = TRUE;
+        $this->load->library('upload',$config);
+        $this->upload->initialize($config);   
+        if($this->upload->do_upload('image')){
+            $uploadData = $this->upload->data();
+            $picture1 = $uploadData['file_name'];
+            }
+        }
+        
+    	//print_r($picture1);exit();
+		$test_id = $this->input->post('test_id');
+		$quations=	$this->input->post('quations');
+		$option1 =  $this->input->post('option1');
+		$option2 =  $this->input->post('option2');
+		$option3 =  $this->input->post('option3');
+		$option4 =  $this->input->post('option4');
+		
+		$answer1  =  $this->input->post('answer');
+		 if($answer1 == 1){
+			$answer = $this->input->post('option1');
+		 } elseif($answer1 == 2) {
+			$answer = $this->input->post('option2'); 
+		 } elseif($answer1 == 3) {
+			$answer = $this->input->post('option3'); 
+		 } elseif($answer1 == 4) {
+			$answer = $this->input->post('option4'); 
+		 }
+		 $testtype=$this->input->post('test_type');
+		  if($testtype==3){
+            $data = array(
+		'test_id' => $test_id,
+		'quations'=> $quations,
+		'option1' => $option1,
+		'option2' => $option2,
+		'option3' => $option3, 
+		'option4' => $option4, 
+		'answer'  => $answer,  
+		'temp'=>1,
+		'test_type'=>1
+			);
+			$insertUserData = $this->Admin_model->addquation($data);
+			$datas = array(
+		'test_id' => $test_id,
+		'quations'=> $quations,
+		'option1' => $option1,
+		'option2' => $option2,
+		'option3' => $option3, 
+		'option4' => $option4, 
+		'answer'  => $answer,  
+		'temp'=>1,
+		'test_type'=>2
+			);
+			$insertUserData = $this->Admin_model->addquation($datas);
+        }else{
+		$data1 = array(
+		'test_id' => $test_id,
+		'quations'=> $quations,
+		'option1' => $option1,
+		'option2' => $option2,
+		'option3' => $option3, 
+		'option4' => $option4, 
+		'answer'  => $answer,  
+		'temp'=>1,
+		'test_type'=>$this->input->post('test_type')
+			);
+				$insertUserData = $this->Admin_model->addquation($data1);
+        }
+		if(!empty($picture1)){
+				$data['image']=$picture1;
+		}
+		//print_r($data);exit();
+        
+       // echo $test_id;
+         "<script>alert('Successfully submitted. Thank you.');</script>";
+        redirect(base_url('questions/prequestion/'.$test_id),'refresh');
+    }
+    public function addpostquation()
+    {
+        $picture1 ='';
+        if($_FILES['image']['name']){
+        $config['upload_path'] = 'assets/images/test/';
+        $config['allowed_types'] = 'jpg|jpeg|png|gif';
+        $config['file_name'] = $_FILES['image']['name'];
+        $config['encrypt_name'] = TRUE;
+        $this->load->library('upload',$config);
+        $this->upload->initialize($config);   
+        if($this->upload->do_upload('image')){
+            $uploadData = $this->upload->data();
+            $picture1 = $uploadData['file_name'];
+            }
+        }
+        
+    	//print_r($picture1);exit();
+		$test_id = $this->input->post('test_id');
+		$quations=	$this->input->post('quations');
+		$option1 =  $this->input->post('option1');
+		$option2 =  $this->input->post('option2');
+		$option3 =  $this->input->post('option3');
+		$option4 =  $this->input->post('option4');
+		
+		$answer1  =  $this->input->post('answer');
+		 if($answer1 == 1){
+			$answer = $this->input->post('option1');
+		 } elseif($answer1 == 2) {
+			$answer = $this->input->post('option2'); 
+		 } elseif($answer1 == 3) {
+			$answer = $this->input->post('option3'); 
+		 } elseif($answer1 == 4) {
+			$answer = $this->input->post('option4'); 
+		 }
+		 
+		$data = array(
+		'test_id' => $test_id,
+		'quations'=> $quations,
+		'option1' => $option1,
+		'option2' => $option2,
+		'option3' => $option3, 
+		'option4' => $option4, 
+		'answer'  => $answer  
+			);
+		if(!empty($picture1)){
+				$data['image']=$picture1;
+		}
+		//print_r($data);exit();
+        $insertUserData = $this->Admin_model->addpostquation($data);
+         "<script>alert('Successfully submitted. Thank you.');</script>";
+        redirect(base_url('main/newcoruse/'.$test_id),'refresh');
+    }
+	public function testquation($id=false)
+    {
+      //if($this->session->userdata('admin_login')==NULL) redirect(base_url());
+        $data['testquation']=$this->Admin_model->testquation($id);
+        $data['testtile']=$this->Admin_model->testtile($id);
+		print_r($data['testquation']);exit;
+        $data['test_id']=$id;
+		redirect(base_url('main/course/'.$data),'refresh');
+      //  $this->load->view('testquation',$data);
+      
+    }
+    public function deletetestquation($id,$test_id){
+        $data=$this->Admin_model->deletetestquation($id);
+       $this->session->set_flashdata('msg','<div class="alert alert-success text-center">Question Deleted Successfully.</div>');
+        redirect(base_url('superadmin/editcourse/'.$test_id),'refresh');
+    }
+    public function edittestquation($id=false,$test_id=false){
+        if($this->session->userdata('admin_login')== NULL) redirect('Welcome/loginn_admin');
+        $data['testquation']=$this->Admin_model->edittestquation($id);
+        $data['testtile']=$this->Admin_model->testtile($test_id);
+        $data['test_id']=$test_id;
+        //$this->load->view('header.php');
+        //$this->load->view('sidenav.php');
+        $this->load->view('edit-testquation',$data);
+        //$this->load->view('footer.php');
+    }
+    
+    public function updatequation($id){
+        $picture1 ='';
+        if(!empty($_FILES['image']['name'])){
+        $config['upload_path'] = '../assets/images/test/';
+        $config['allowed_types'] = 'jpg|jpeg|png|gif';
+        $config['file_name'] = $_FILES['image']['name'];
+        $config['encrypt_name'] = TRUE;
+        $this->load->library('upload',$config);
+        $this->upload->initialize($config);   
+        if($this->upload->do_upload('image')){
+            $uploadData = $this->upload->data();
+            $picture1 = $uploadData['file_name'];
+            }
+        }
+        
+        $test_id=$this->input->post('test_id');
+        $quations=	$this->input->post('quations');
+        $option1 = $this->input->post('option1');
+        $option2 = $this->input->post('option2');
+        $option3 = $this->input->post('option3');
+        $option4 = $this->input->post('option4');
+        $answer1 = $this->input->post('answer');
+        if($answer1 == 1){
+        $answer = $this->input->post('option1');
+        } elseif($answer1 == 2) {
+        $answer = $this->input->post('option2'); 
+        } elseif($answer1 == 3) {
+        $answer = $this->input->post('option3'); 
+        } elseif($answer1 == 4) {
+        $answer = $this->input->post('option4'); 
+        }
+        $data = array(
+        'test_id'=>$test_id,
+        'quations'=> $quations,
+        'option1' => $option1,
+        'option2' => $option2,
+        'option3' => $option3, 
+        'option4' => $option4, 
+        'answer' => $answer 
+        );
+        if(!empty($picture1)){
+				$data['image']=$picture1;
+		}
+        //print_r($data);exit();
+        $res = $this->Admin_model->updatequation($id,$data);
+         "<script>alert('Successfully submitted. Thank you. ');</script>";
+        redirect(base_url('index.php/welcome/testquation/'.$test_id),'refresh');	
+    }
+
 }
 ?>

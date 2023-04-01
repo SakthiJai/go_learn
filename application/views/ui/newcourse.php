@@ -148,9 +148,10 @@
 																<label for="text-field-hero-input"
 																	class="mdc-floating-label">Course Description:
 																</label>
+																
 																<textarea id="description" name="description"
-																	 class="mt-2"></textarea>
-
+																	 class="mt-2"><?php echo  isset($details[0]->description)?$details[0]->description:""; ?></textarea>
+																	
 															</div>
 
 															<div
@@ -226,8 +227,8 @@
 																			</div>
 																		</div>
 																		<span for="basic-disabled"
-																			id="basic-disabled-checkbox-label">Pre and
-																			Post test</span>
+																			id="basic-disabled-checkbox-label">Feedback
+																			</span>
 																	</div>
 																</div>
 															</div>
@@ -308,69 +309,59 @@
                                         <div class="col-md-12"><center><h4 class="page-title"><?php //echo $row->course_title; ?> </h4><br></center></div><br>
                                         <?php } ?>
                                     </div>
-                                    <form id="questions" method="POST" action="<?php echo base_url('main/addprepostquation');?>" class="form-horizontal" enctype="multipart/form-data">
-									
-									<div class="form-group row">
-										<input type="text"  name="test_id" class="form-control" value="<?php echo $id;?>" hidden>
-										<input type="text"  name="test_type" id="test_type" class="form-control" value="<?php echo $type;?>" hidden>
-										
-										<div class="col-sm-12 col-md-12">
-											<label for="name" class="col-form-label">Question :</label><br>
-                                            <textarea required name="quations" id="info" rows="3" class="form-control"></textarea>
-                                            
-                                            <div id="cke_msgText"></div>
-										</div>
-									</div>
-									<div class="form-group row">
-                                        <div class="col-sm-12 col-md-6">
-                                            <label  for="input" class="col-form-label">Image</label>
-                                            <input id="questionImage" name="image" type="file" class="form-control">
-                                            <input id="test_id" name="test_id" type="text" class="form-control" value="<?php echo $courseid;?>" hidden>
-                                            <input type="text"  name="test_type" id="test_type" class="form-control" value="<?php echo $type;?>" hidden>
-                                        </div>
-                                    </div>
-									<div class="form-group row">
-										<div class="col-sm-6 col-md-6">
-										
-											<label for="input" class="col-form-label" >option 1</label>
-                                            <input type="text" id="option1"  name="option1" class="form-control" required>
-										</div>
-										<div class="col-sm-6 col-md-6">
-											<label for="input" class="col-form-label" >option 2</label>
-                                            <input type="text" id="option2" name="option2" class="form-control" required>
-										</div>
-										<div class="col-sm-6 col-md-6">
-											<label for="input" class="col-form-label" >option 3</label>
-                                            <input type="text" id="option3" name="option3" class="form-control">
-										</div>
-										<div class="col-sm-6 col-md-6">
-											<label for="input" class="col-form-label" >option 4</label>
-                                            <input type="text" id="option4" name="option4" class="form-control">
-										</div>
-									</div>
-									<div class="form-group row">
-                                        <div class="form-group col-md-6">
-											<label for="input" class="col-form-label" required>Answer</label>
-                                            <!--<input type="text"  name="answer" class="form-control">-->
-                                            <select name="answer" id="answer" class="form-control" type="text" id="option2" name="option2">
-												<option value="">select</option>
-												<option value="1">Option 1</option>
-												<option value="2">Option 2</option>
-												<option value="3">Option 3</option>
-												<option value="4">Option 4</option>
-											</select>
-										</div>
-									</div>
-									<div class="form-group row">
-                                        <div class="col-sm-12 col-md-12">
-											<center>
-												<button class="btn btn-success">Submit</button>
-											</center>
-                                        </div>
-                                    </div>
-                                </form>
+									<form class="" action="<?php echo base_url();?>main/posttestquestions_adding/<?php echo $c_id; ?>" method="POST" enctype="multipart/form-data">
+                                            <div class="form-group">
+                                                <div class="form-group row">
+                                                    <label for="title" class="form-control-label col-md-2">Question: </label>
+                                                    <div class="col-md-12">
+                                                        <textarea id="info mce_0_ifr" name="quations" type="text" class="form-control"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="title" class="form-control-label col-md-2">Image <br> <span style = "color:#10adf5;">(size : 500 * 300)</span></label>
+                                                    <div class="col-md-10">
+                                                        <input id="title" name="image" type="file" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="title" class="form-control-label col-md-2">Option 1:</label>
+                                                    <div class="col-md-10"><input id="option" name="option1" type="text" class="form-control" placeholder="Title" >
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="title" class="form-control-label col-md-2">Option 2:</label>
+                                                    <div class="col-md-10"><input id="option" name="option2" type="text" class="form-control" placeholder="Title" >
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="title" class="form-control-label col-md-2">Option 3:</label>
+                                                    <div class="col-md-10"><input id="option" name="option3" type="text" class="form-control" placeholder="Title" >
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="title" class="form-control-label col-md-2">Option 4:</label>
+                                                    <div class="col-md-10"><input id="option" name="option4" type="text" class="form-control" placeholder="Title" >
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="name" class="form-control-label col-md-2">Answer :</label><br>
+                                                    <div class="col-md-10">
+                                                        <select name="answer" class="form-control" required>
+                                                            <option value="">Select</option>
+                                                            <option value="1">Option 1</option>
+                                                            <option value="2">Option 2</option>
+                                                            <option value="3">Option 3</option>
+                                                            <option value="4">Option 4</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="d-block text-right">
+                                                    <button type="submit" class="mb-2 mr-2 btn btn-success">SUBMIT</button>
+                                                </div>
+                                            </div>
+                                        </form>
                                 </div>
-                            <?php //} ?>    
+                            
                                 <div class="row">
                                         <?php foreach($testtile as $row) { ?>
                                             <div class="col-md-12"><center><h4 class="page-title">Questions</h4><br></center>
@@ -383,7 +374,43 @@
                                             </div>
                                     </div>
 									<div class="main-card mb-3 card">
-										
+										 <table id="datatable-buttons" class="table table-bordered">
+                                        <thead>
+                                        <tr>
+										    <th>S No</th>
+										    <th>Question</th>
+										    <th>Option 1</th>
+										    <!--<th>Program Type</th>-->
+										    <!--<th>Course id</th>-->
+										    <th>Option 2</th>
+										    <th>Option 3</th>
+										    <th>Option 4</th>
+										    <th>Answer</th>
+										    
+										   
+										    <th>Action</th>
+									    </tr>
+                                        </thead>
+										<tbody>
+										<?php $i=1; 
+										  foreach($pertest_questions as $row)  { ?>
+										<tr>
+											<td><?php echo $i;?></td>
+											<td><?php echo $row->quations;?></td>
+											<td><?php echo $row->option1;?></td>
+											<td><?php echo $row->option2;?></td>
+										    <td><?php echo $row->option3;?></td>
+											<td><?php echo $row->option4;?></td>
+											<td><?php echo $row->answer;?></td>
+								
+							                <td>
+							         
+							         <a href="<?php echo base_url();?>questions/deletetestquation/<?php echo $row->id;?>/<?php echo $this->uri->segment(3);?>" class="btn btn-danger" onclick="return confirm ('Do you want to Delete this record?');">Delete </a>
+							             </td>
+										</tr>
+									<?php $i++; } ?>
+                                        </tbody>
+                                    </table>
 									</div>
                                     
                                 
@@ -405,67 +432,58 @@
                                         <div class="col-md-12"><center><h4 class="page-title"><?php //echo $row->course_title; ?> </h4><br></center></div><br>
                                         <?php } ?>
                                     </div>
-                                    <form id="questions" method="POST"action="<?php echo base_url('questions/addpostquation');?>" class="form-horizontal" enctype="multipart/form-data">
-									
-									<div class="form-group row">
-										<input type="text"  name="test_id" class="form-control" value="<?php echo $id;?>" hidden>
-										<input type="text"  name="test_type" id="test_type" class="form-control" value="<?php echo $type;?>" hidden>
-										
-										<div class="col-sm-12 col-md-12">
-											<label for="name" class="col-form-label">Question :</label><br>
-                                            <textarea required name="quations" id="info" rows="3" class="form-control"></textarea>
-                                            
-                                            <div id="cke_msgText"></div>
-										</div>
-									</div>
-									<div class="form-group row">
-                                        <div class="col-sm-12 col-md-6">
-                                            <label  for="input" class="col-form-label">Image</label>
-                                            <input id="questionImage" name="image" type="file" class="form-control">
-                                            <input id="test_id" name="test_id" type="text" class="form-control" value="<?php echo $courseid;?>" hidden>
-                                            <input type="text"  name="test_type" id="test_type" class="form-control" value="<?php echo $type;?>" hidden>
-                                        </div>
-                                    </div>
-									<div class="form-group row">
-										<div class="col-sm-6 col-md-6">
-										
-											<label for="input" class="col-form-label" >option 1</label>
-                                            <input type="text" id="option1"  name="option1" class="form-control" required>
-										</div>
-										<div class="col-sm-6 col-md-6">
-											<label for="input" class="col-form-label" >option 2</label>
-                                            <input type="text" id="option2" name="option2" class="form-control" required>
-										</div>
-										<div class="col-sm-6 col-md-6">
-											<label for="input" class="col-form-label" >option 3</label>
-                                            <input type="text" id="option3" name="option3" class="form-control">
-										</div>
-										<div class="col-sm-6 col-md-6">
-											<label for="input" class="col-form-label" >option 4</label>
-                                            <input type="text" id="option4" name="option4" class="form-control">
-										</div>
-									</div>
-									<div class="form-group row">
-                                        <div class="form-group col-md-6">
-											<label for="input" class="col-form-label" required>Answer</label>
-                                            <!--<input type="text"  name="answer" class="form-control">-->
-                                            <select name="answer" id="answer" class="form-control" type="text" id="option2" name="option2">
-												<option value="">select</option>
-												<option value="1">Option 1</option>
-												<option value="2">Option 2</option>
-												<option value="3">Option 3</option>
-												<option value="4">Option 4</option>
-											</select>
-										</div>
-									</div>
-									<div class="form-group row">
-                                        <div class="col-sm-12 col-md-12">
-											<center>
-												<button class="btn btn-success">Submit</button>
-											</center>
-                                        </div>
-                                    </div>
-                                </form>
+                                    <div class="d-block text-center"> <h6> <strong><?php echo $courese_name; ?></strong></h6></div>
+                                        <form class="" action="<?php echo base_url();?>main/posttestquestions_adding/<?php echo $c_id; ?>" method="POST" enctype="multipart/form-data">
+                                            <div class="form-group">
+                                                <div class="form-group row">
+                                                    <label for="title" class="form-control-label col-md-2">Question: </label>
+                                                    <div class="col-md-12">
+                                                        <textarea id="info" name="quations" type="text" class="form-control"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="title" class="form-control-label col-md-2">Image <br> <span style = "color:#10adf5;">(size : 500 * 300)</span></label>
+                                                    <div class="col-md-10">
+                                                        <input id="title" name="image" type="file" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="title" class="form-control-label col-md-2">Option 1:</label>
+                                                    <div class="col-md-10"><input id="option" name="option1" type="text" class="form-control" placeholder="Title" >
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="title" class="form-control-label col-md-2">Option 2:</label>
+                                                    <div class="col-md-10"><input id="option" name="option2" type="text" class="form-control" placeholder="Title" >
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="title" class="form-control-label col-md-2">Option 3:</label>
+                                                    <div class="col-md-10"><input id="option" name="option3" type="text" class="form-control" placeholder="Title" >
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="title" class="form-control-label col-md-2">Option 4:</label>
+                                                    <div class="col-md-10"><input id="option" name="option4" type="text" class="form-control" placeholder="Title" >
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="name" class="form-control-label col-md-2">Answer :</label><br>
+                                                    <div class="col-md-10">
+                                                        <select name="answer" class="form-control" required>
+                                                            <option value="">Select</option>
+                                                            <option value="1">Option 1</option>
+                                                            <option value="2">Option 2</option>
+                                                            <option value="3">Option 3</option>
+                                                            <option value="4">Option 4</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="d-block text-right">
+                                                    <button type="submit" class="mb-2 mr-2 btn btn-success">SUBMIT</button>
+                                                </div>
+                                            </div>
+                                        </form>
                                 </div>
                             <?php //} ?>    
                                 <div class="row">
@@ -476,6 +494,45 @@
                                             
                                         <?php } ?>
                                     </div>
+									<div class="main-card mb-3 card">
+										 <table id="datatable-buttons" class="table table-bordered">
+                                        <thead>
+                                        <tr>
+										    <th>S No</th>
+										    <th>Question</th>
+										    <th>Option 1</th>
+										    <!--<th>Program Type</th>-->
+										    <!--<th>Course id</th>-->
+										    <th>Option 2</th>
+										    <th>Option 3</th>
+										    <th>Option 4</th>
+										    <th>Answer</th>
+										    
+										   
+										    <th>Action</th>
+									    </tr>
+                                        </thead>
+										<tbody>
+										<?php $i=1; 
+										  foreach($testquation as $row)  { ?>
+										<tr>
+											<td><?php echo $i;?></td>
+											<td><?php echo $row->quations;?></td>
+											<td><?php echo $row->option1;?></td>
+											<td><?php echo $row->option2;?></td>
+										    <td><?php echo $row->option3;?></td>
+											<td><?php echo $row->option4;?></td>
+											<td><?php echo $row->answer;?></td>
+								
+							                <td>
+							         
+							         <a href="<?php echo base_url();?>questions/deletetestquation/<?php echo $row->id;?>/<?php echo $this->uri->segment(3);?>" class="btn btn-danger" onclick="return confirm ('Do you want to Delete this record?');">Delete </a>
+							             </td>
+										</tr>
+									<?php $i++; } ?>
+                                        </tbody>
+                                    </table>
+									</div>
 								
                                     
                                 
@@ -485,80 +542,26 @@
         </div>
 											</div>
 											<div class="tab-pane" id="description">
-												<div class="tab-pane" id="details">
-													<div class="row">
-														<div class="col-sm-12">
-															<h4 class="info-text"> Let's start with the basic details.
-															</h4>
-														</div>
-														<div class="row">
-															<div class="col-sm-10 col-sm-offset-1">
-																<div class="form-group">
-																	<label>Question</label>
-																	<textarea class="form-control" placeholder=""
-																		rows="4"></textarea>
-																</div>
-															</div>
-															<div class="col-sm-10 col-sm-offset-1">
-																<div class="picture-container">
-																	<div class="picture">
-																		<img src="<?php echo base_url(); ?>assets/wizard/img/default-avatar.png"
-																			class="picture-src"
-																			id="wizardPicturePreview" title="" />
-																		<input type="file" id="wizard-picture">
-																	</div>
-																	<h6>Choose Image</h6>
-																</div>
+															<div class="tab-pane" id="details">
+															<div class="main-card mb-3 card">
+												<div class="card-body">
+													<center><span class="btn-danger"> <?php echo $this->session->flashdata('msg'); ?></span></center>
+													<form class=""  action="<?php echo base_url();?>main/addfeedback_quation" method="POST" enctype="multipart/form-data">
+														<div class="col-md-12">
+															<div class="position-relative form-group">
+																<label for="exampleText" class=""> Components:</label>
+																<input name="quations" id="exampleText" placeholder="" type="text" class="form-control">
+																<input id="name" name="type" type="text" class="form-control" value="Training Components" placeholder="Question" hidden>
+																<input type="text"  name="course_id" class="form-control" value="<?php echo $c_id;?>" hidden>
 															</div>
 														</div>
-														<div class="col-sm-6">
-															<div class="input-group">
-																<span class="input-group-addon">
-																	<i class="material-icons">create</i>
-																</span>
-																<div class="form-group label-floating">
-																	<label class="control-label">Option A</label>
-																	<input name="option1" type="text"
-																		class="form-control">
-																</div>
-															</div>
-
-															<div class="input-group">
-																<span class="input-group-addon">
-																	<i class="material-icons">create</i>
-																</span>
-																<div class="form-group label-floating">
-																	<label class="control-label">Option B</label>
-																	<input name="option2" type="text"
-																		class="form-control">
-																</div>
-															</div>
+														<div class="d-block text-right">
+															<button class="mb-2 mr-2 btn btn-success">ADD</button>
 														</div>
-														<div class="col-sm-6">
-															<div class="input-group">
-																<span class="input-group-addon">
-																	<i class="material-icons">create</i>
-																</span>
-																<div class="form-group label-floating">
-																	<label class="control-label">Option C</label>
-																	<input name="option3" type="text"
-																		class="form-control">
-																</div>
-															</div>
-
-															<div class="input-group">
-																<span class="input-group-addon">
-																	<i class="material-icons">create</i>
-																</span>
-																<div class="form-group label-floating">
-																	<label class="control-label">Option D</label>
-																	<input name="option4" type="text"
-																		class="form-control">
-																</div>
-															</div>
-														</div>
-													</div>
+													</form>
 												</div>
+											</div>
+															</div>
 											</div>
 										</div>
 										<div class="wizard-footer">
