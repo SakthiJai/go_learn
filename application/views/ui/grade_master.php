@@ -39,7 +39,7 @@
                       <div class="mdc-layout-grid__inner">
 					     <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--span-12-tablet">
                         <div class="table-responsive border">
-                          <table class="table table-hoverable">
+                          <table  id="gradetable" class="table table-striped table-bordered dt-responsive nowrap table table-hoverable">
 						  <thead>
 							<tr>
                                         <th  style='text-align: center;'>S No</th>
@@ -52,11 +52,13 @@
                                       <tr>
                                             <td style='text-align: center;'><?php echo $i;?></td>
                                             <td style='text-align: center;'><?php echo $row->grade;?></td>
-											<td style='text-align: center;'><a href="<?php echo base_url(); ?>main/grade_master/<?php echo $row->id; ?>"  class="mdc-button mdc-button--raised icon-button filled-button--success mdc-ripple-upgraded" style="--mdc-ripple-fg-size:21px; --mdc-ripple-fg-scale:2.90056; --mdc-ripple-fg-translate-start:12.375px, 18.5px; --mdc-ripple-fg-translate-end:7.5px, 7.5px; background-color: #00bbdd;">
-											 <img alt="Eye icon" srcset="https://img.icons8.com/material/2x/visible.png 2x, https://img.icons8.com/material/1x/visible.png 1x" src="https://img.icons8.com/material/1x/visible.png" style="filter: invert(0%) sepia(0%) saturate(7465%) hue-rotate(196deg) brightness(93%) contrast(95%);">
+											<td style='text-align: center;'><a href="<?php echo base_url(); ?>main/grade_master/<?php echo $row->id; ?>"  class="mdc-button mdc-button--raised icon-button filled-button--success mdc-ripple-upgraded" style="background-color: #00bbdd;padding: 2%;text-decoration:none">
+											 
+                       <i class="glyphicon glyphicon-search" ></i>
 												</a>
-													<a   class="mdc-button mdc-button--raised icon-button filled-button--success mdc-ripple-upgraded" style="--mdc-ripple-fg-size:21px; --mdc-ripple-fg-scale:2.90056; --mdc-ripple-fg-translate-start:12.375px, 18.5px; --mdc-ripple-fg-translate-end:7.5px, 7.5px; background-color: #ff420f;" ><i class="material-icons mdc-button__icon"  onclick="showConfirmation(<?php echo $row->id;?>)" style="margin-right: 10px;margin-left: 9px;text-align: center;"; >delete</i>
-												</a></td>
+											
+                        <button type="button" onclick="showConfirmation(<?php echo $row->id;?>)"  class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button>
+                      </td>
                                         </tr>
 										<?php $i++;   }  ?>
                               
@@ -94,6 +96,8 @@
     </div>
   </div>
   <link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url();?>assets/css/daterangepicker.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url();?>assets/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url();?>assets/css/dataTables.bootstrap.css" />
    <script type="text/javascript" src="<?php echo base_url();?>assets/js/main.js"></script>
     <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.min.js"></script>
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/validate.min.js"></script>
@@ -102,6 +106,9 @@
     <script type="text/javascript" src="<?php echo base_url();?>assets/js/ckeditor.js"></script>
 		 <script type="text/javascript" src="<?php echo base_url();?>assets/js/grade.js"></script>
 	<script type="text/javascript" src="<?php echo base_url();?>assets/js/csweetalert2@11"></script>
+  <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+  <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="<?php echo base_url();?>assets/js/dataTables.bootstrap.js"></script>
 	<style>.error {
         color: #fa4040;
         font-size: 12px;

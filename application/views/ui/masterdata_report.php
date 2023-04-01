@@ -43,7 +43,7 @@
 
 
 
-                                  <table id="datatable-buttons" class="table table-bordered datatable">
+                                  <table id="sbutable" class="table table-striped table-bordered dt-responsive nowrap table table-hoverable">
                                     <thead>
                                       <tr>
                                         <th>S No</th>
@@ -123,6 +123,9 @@
     </div>
   </div>
   <link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url();?>assets/css/daterangepicker.css" />
+  
+  <link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url();?>assets/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url();?>assets/css/dataTables.bootstrap.css" />
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/main.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.min.js"></script>
   <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/validate.min.js"></script>
@@ -148,6 +151,10 @@
   <!-- Responsive examples -->
   <script src="<?php echo base_url()?>assets/plugins/datatables/dataTables.responsive.min.js"></script>
   <script src="<?php echo base_url()?>assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
+  
+	<script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="<?php echo base_url();?>assets/js/dataTables.bootstrap.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
   <script
     src="https://www.bootstrapdash.com/demo/material-dash-bootstrap/template/assets/vendors/sweetalert/sweetalert.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -167,6 +174,18 @@
       border: 1px solid #ccc;
     }
   </style>
+  <script>
+
+$(document).ready(function() {
+    $('#sbutable').dataTable();
+    buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+
+     $("[data-toggle=tooltip]").tooltip();
+    
+} );
+</script>
 </body>
 
 </html>

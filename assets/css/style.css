@@ -220,3 +220,8 @@ a:hover{
 		justify-content: center;
 	}
 }
+.mdc-drawer-link 
+{
+	font-size:1.3rem !important;
+	height:35px;
+}

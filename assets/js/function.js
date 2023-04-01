@@ -59,3 +59,13 @@ $(document).ready(function() {
 	setTimeout(function() { 
   $(".alert-success").hide();
 }, 2000);
+
+$(document).ready(function() {
+  $('#sbutable').dataTable();
+  buttons: [
+                  'copy', 'csv', 'excel', 'pdf', 'print'
+              ]
+
+   $("[data-toggle=tooltip]").tooltip();
+  
+} );

@@ -39,7 +39,7 @@
                     <div
                       class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--span-8-tablet">
                       <div class="table-responsive border">
-                        <table class="table table-hoverable">
+                        <table id="sbutable" class="table table-striped table-bordered dt-responsive nowrap table table-hoverable">
                           <thead>
                             <tr>
                               <th>S.No</th>
@@ -144,9 +144,15 @@
     </div>
   </div>
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/main.js"></script>
+  
+  <link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url();?>assets/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url();?>assets/css/dataTables.bootstrap.css" />
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.min.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/addemp.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/ckeditor.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+	<script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="<?php echo base_url();?>assets/js/dataTables.bootstrap.js"></script>
 </body>
 
 </html>

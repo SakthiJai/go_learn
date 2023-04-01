@@ -3110,6 +3110,77 @@ $headers .= 'From: '.$from."\r\n".
          "<script>alert('Successfully submitted. Thank you. ');</script>";
         redirect(base_url('index.php/welcome/testquation/'.$test_id),'refresh');	
     }
+	public function programGroup($id=false){
+		//if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
+			$data['group']=$this->Super_model->group();
+		//	print_r($data);
+			if(isset($id) && !empty($id)){
+				$data['editprogramGroup'] = $this->Super_model->editprogramGroup($id);
+				$this->load->view('ui/addprogramGroup',$data);
+			}
+			$data['h_title'] = "Program Group"; 	    
+			$this->load->view('ui/programGroup',$data);
+		}
+		public function addprogramGroup(){
+			$data['h_title'] = "Go Learn "; 	    
+			$this->load->view('ui/addprogramGroup',$data);
+		}
+		public function addprogramGroup_master(){
+			$data = array(
+				'group_name' => $this->input->post('name'),
+			);
+			//print_r($data);exit();
+			$insertUserData = $this->Super_model->addprogramGroup($data);
+			if($data){
+					$this->session->set_flashdata('msg','<div class="alert alert-success text-center" style="color: #008a5d;
+		background-color: rgba(0, 182, 122, 0.2);
+		border-color: #00a770;    position: relative;
+		padding: 0.75rem 1.25rem;
+		margin-bottom: 1rem;
+		border: 1px solid transparent;
+		border-radius: 0.25rem;">Added Successfully.</div>');
+				redirect('main/programGroup'); 
+				
+				}else{
+					redirect('main/addprogramGroup'); 
+				}
+		}
+		/*public function addprogramGroup_master()
+		{
+			//print_r($_POST);exit();
+			$data = array(
+				'group_name' => $this->input->post('name'),
+			);
+			//print_r($data);exit();
+			$insertUserData = $this->Super_model->addprogramGroup($data);
+			$this->session->set_flashdata('msg','<div class="alert alert-success text-center">submit Successed.</div>');
+			redirect(base_url().'Program/programGroup','refresh');            
+		}*/
+			public function updateprogramGroup($id)
+		{
+			$data['program']=$this->Super_model->program();
+			$data['editprogramGroup'] = $this->Super_model->editprogramGroup($id);	
+	
+				$inputdata = array(
+					'group_name' => $this->input->post('name')
+					);
+					
+				$res=$this->Super_model->updateprogramGroup($id,$inputdata);
+				if($res) {
+					$this->session->set_flashdata('msg','<div class="alert alert-success text-center" style="color: #008a5d;
+		background-color: rgba(0, 182, 122, 0.2);
+		border-color: #00a770;    position: relative;
+		padding: 0.75rem 1.25rem;
+		margin-bottom: 1rem;
+		border: 1px solid transparent;
+		border-radius: 0.25rem;">Updated Successfully.</div>');
+					redirect(base_url().'main/programGroup','refresh'); 
+				}else{
+					$this->session->set_flashdata('msg','<div class="alert alert-danger text-center"> Updated Failed! Try Again </div>');
+					redirect(base_url().'main/programGroup','refresh'); 
+				}
+				
+		}
 
 }
 ?>

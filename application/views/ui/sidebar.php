@@ -107,7 +107,7 @@
                     </a>
                   </div>
                   <div class="mdc-list-item mdc-drawer-item">
-                    <a class="mdc-drawer-link" href="<?php echo base_url('program/programGroup'); ?>">
+                    <a class="mdc-drawer-link" href="<?php echo base_url('main/programGroup'); ?>">
                     Program Group
                     </a>
                   </div>
@@ -151,7 +151,7 @@
               </a>
               <div class="mdc-expansion-panel" id="sample-page-submenu">
                 <nav class="mdc-list mdc-drawer-submenu">
-                  <div class="mdc-list-item mdc-drawer-item">
+                  <!--<div class="mdc-list-item mdc-drawer-item">
                     <a class="mdc-drawer-link" href="<?php echo base_url('main/sbureport'); ?>">
                     SBU Wise
                     </a>
@@ -166,16 +166,21 @@
                     MandaysMaster&nbsp;Data
                     </a>
                   </div>
-                 <!-- <div class="mdc-list-item mdc-drawer-item">
+                <div class="mdc-list-item mdc-drawer-item">
                     <a class="mdc-drawer-link" href="<?php echo base_url('Reports/attendance'); ?>">
                     Attendance
                     </a>
-                  </div>-->
-                  <div class="mdc-list-item mdc-drawer-item">
+                  </div>   <div class="mdc-list-item mdc-drawer-item">
                     <a class="mdc-drawer-link" href="<?php echo base_url('main/evaluationreport'); ?>">
                     Evaluation Feedback
                     </a>
+                  </div>-->
+                  <div class="mdc-list-item mdc-drawer-item">
+                    <a class="mdc-drawer-link" href="<?php echo base_url('main/masterdatareport'); ?>">
+                    MandaysMaster&nbsp;Data
+                    </a>
                   </div>
+                
                 </nav>
               </div>
             </div>

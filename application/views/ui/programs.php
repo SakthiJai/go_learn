@@ -35,7 +35,7 @@
                   <div class="mdc-layout-grid__inner mt-2">
                     <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--span-8-tablet">
                         <div class="table-responsive border">
-                          <table class="table table-hoverable">
+                          <table  id="sbutable" class="table table-striped table-bordered dt-responsive nowrap table table-hoverable">
 						  <thead>
                           <tr>
                                   <th class="th-sm test">S.No</th>
@@ -106,6 +106,8 @@
       </div>
     </div>
   </div>
+  <link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url();?>assets/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url();?>assets/css/dataTables.bootstrap.css" />
   <script type="text/javascript" src="<?php echo base_url();?>assets/scripts/main.js"></script>
 <!-- Required datatable js -->
 <script src="<?php echo base_url()?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
@@ -120,12 +122,12 @@
 <script src="<?php echo base_url()?>assets/plugins/datatables/buttons.print.min.js"></script>
 <script src="<?php echo base_url()?>assets/plugins/datatables/buttons.colVis.min.js"></script>
 <!-- Responsive examples -->
-<script src="<?php echo base_url()?>assets/plugins/datatables/dataTables.responsive.min.js"></script>
-<script src="<?php echo base_url()?>assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
+	<script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="<?php echo base_url();?>assets/js/dataTables.bootstrap.js"></script>
        
         <script type="text/javascript">
             $(document).ready(function() {
-                $('#datatable').DataTable();
+                $('#sbutable').DataTable();
 
                 //Buttons examples
                 var table = $('#datatable-buttons').DataTable({

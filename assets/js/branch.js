@@ -56,3 +56,10 @@ $(document).ready(function() {
 	setTimeout(function() { 
   $(".alert-success").hide();
 }, 2000);
+
+$(document).ready(function() {
+  $('#branchtable').dataTable();
+  
+   $("[data-toggle=tooltip]").tooltip();
+  
+} );

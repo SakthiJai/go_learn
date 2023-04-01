@@ -54,3 +54,13 @@ function NumbersOnly(MyField, e, dec)
     })
 	  
 	}
+  
+$(document).ready(function() {
+  $('#sbutable').dataTable();
+  buttons: [
+                  'copy', 'csv', 'excel', 'pdf', 'print'
+              ]
+
+   $("[data-toggle=tooltip]").tooltip();
+  
+} );
