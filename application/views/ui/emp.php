@@ -111,15 +111,19 @@
                                 <?php } ?>
 								</td>
 								  <td>
-									<?php if($row->admin=='admin'){ ?>
-									  <a class="btn btn-danger"></a>
+									<?php if($row->admin=='admin'){ ?> 
+                       <a href="<?php echo base_url();?>main/viewEmployee/<?php echo $row->id;?>"
+                                   class="mdc-button mdc-button--raised icon-button filled-button--success mdc-ripple-upgraded" style="background-color: #00bbdd;padding: 2%;text-decoration:none">
+											 
+                       <i class="glyphicon glyphicon-search" ></i>
+												</a>
 									<?php }else{ ?>
 									
                                    <a href="<?php echo base_url();?>main/viewEmployee/<?php echo $row->id;?>"
-									  class="mdc-button mdc-button--raised filled-button--success mdc-ripple-upgraded"
-									  style="--mdc-ripple-fg-size:56px; --mdc-ripple-fg-scale:1.96936; --mdc-ripple-fg-translate-start:8.5px, -4.40001px; --mdc-ripple-fg-translate-end:18.8px, -10px;">
-									  View
-									</a>
+                                   class="mdc-button mdc-button--raised icon-button filled-button--success mdc-ripple-upgraded" style="background-color: #00bbdd;padding: 2%;text-decoration:none">
+											 
+                       <i class="glyphicon glyphicon-search" ></i>
+												</a>
 
 									<?php } ?>
 
@@ -143,6 +147,7 @@
       </div>
     </div>
   </div>
+
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/main.js"></script>
   
   <link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url();?>assets/css/bootstrap.min.css" />

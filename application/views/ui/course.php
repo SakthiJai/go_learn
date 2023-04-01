@@ -40,7 +40,7 @@
 						  <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--span-12-tablet">
                         <div class="table-responsive border">
 						</div>
-            <center><span class="test"> <?php echo $this->session->flashdata('msg'); ?></span></center>
+            <center><span > <?php echo $this->session->flashdata('msg'); ?></span></center>
                   <form  id="employee" class="" action="<?php echo base_url('main/sbu_master');?>" method="POST">
                     <div class="mdc-layout-grid">
                       <div class="mdc-layout-grid__inner">
