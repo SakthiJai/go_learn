@@ -211,6 +211,7 @@ class Super_model extends CI_model {
         return $this->db->insert_id();
     }
     public function creatingprograms($data){
+        
         $this->db->insert('programs',$data);
         return $this->db->insert_id();
     }

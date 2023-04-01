@@ -142,6 +142,10 @@
     
 } );  
         </script>
+        <style>.table-responsive {
+   
+   overflow-x: hidden;
+}</style>
 	<style>.error {
         color: #fa4040;
         font-size: 12px;

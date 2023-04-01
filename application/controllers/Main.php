@@ -1008,11 +1008,14 @@ class Main extends CI_Controller {
 			//print_r($data);exit;
             $insertid = $this->Super_model->creatingprograms($data);
             $programId  =  $insertid ;
+			$this->session->set_flashdata('msg','<div class="alert alert-success text-center">Successfully submitted. Thank you.</div>');
+		redirect(base_url().'main/programs','refresh'); 
         }else{
             $updateid = $this->Super_model->updatingprograms($data,$programList_id);
              $programId  =  $updateid ;
         }
-      
+		$this->session->set_flashdata('msg','<div class="alert alert-success text-center">Successfully submitted. Thank you.</div>');
+		redirect(base_url().'ui/createprogram','refresh'); 
         
         //print_r($programId);exit;
         if($insertid!=''){

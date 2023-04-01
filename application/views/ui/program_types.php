@@ -128,7 +128,10 @@
 <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
 
 
-
+<style>.table-responsive {
+   
+   overflow-x: hidden;
+}</style>
 	<style>.error {
         color: #fa4040;
         font-size: 12px;

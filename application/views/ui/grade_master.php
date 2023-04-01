@@ -116,5 +116,9 @@
     }
 	
   </style>
+  <style>.table-responsive {
+   
+   overflow-x: hidden;
+}</style>
 </body>
 </html> 

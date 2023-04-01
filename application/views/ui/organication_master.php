@@ -126,5 +126,11 @@
   padding: 12px;
   border: 1px solid #ccc;}
 </style>
+
+
+<style>.table-responsive {
+   
+   overflow-x: hidden;
+}</style>
 </body>
 </html> 

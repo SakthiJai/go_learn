@@ -119,5 +119,9 @@
         font-size: 12px;
 		margin-top: 2%;
     }</style>
+    <style>.table-responsive {
+   
+   overflow-x: hidden;
+}</style>
 </body>
 </html> 

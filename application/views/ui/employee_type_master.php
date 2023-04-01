@@ -109,6 +109,7 @@
 	<script type="text/javascript" src="<?php echo base_url();?>assets/js/csweetalert2@11"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.dataTables.min.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/dataTables.bootstrap.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
 	<style>.error {
         color: #fa4040;
         font-size: 12px;
@@ -126,5 +127,9 @@ $(document).ready(function() {
     
 } );
 </script>
+<style>.table-responsive {
+   
+   overflow-x: hidden;
+}</style>
 </body>
 </html> 

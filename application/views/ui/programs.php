@@ -44,18 +44,7 @@
                                   <th class="th-sm test ">Program Name</th>
                                   <th class="th-sm test ">Program Group Name</th>
                                   <th class="th-sm test">Training Type</th>
-                                  <th class="th-sm test">Nature of Program</th>
-                                  <th class="th-sm test">Tni Source</th>
-                                  <th class="th-sm test">Cost Per Program</th>
-                                  <th class="th-sm test">Cost Per Emp</th>
-                                  <th class="th-sm test">Faculty Name</th>
-                                  <th class="th-sm test">Faculty Type</th>
-                                  <th class="th-sm test">Training Mode</th>
-                                  <th class="th-sm test">No Of Hrs</th>
-                                  <th class="th-sm test">Venue</th>
-                                  <th class="th-sm test">Location</th>
-                                  <th class="th-sm test">TTT</th>
-                                  <th class="th-sm test">Evaluation Type</th>
+                                
                                 <th class="th-sm test">Assign</th> 
                                 </tr>
 							</thead>		
@@ -68,18 +57,7 @@
                                     <td class="test"><?php echo $row->program_name;?></td>
                                     <td class="test"><?php echo $row->program_group_name;?></td>
                                     <td class="test"><?php echo $row->training_type;?></td>
-                                    <td class="test"><?php echo $row->nature_program;?></td>
-                                    <td class="test"><?php echo $row->tni_source;?></td>
-                                    <td class="test"><?php echo $row->cost_per_program;?></td>
-                                    <td class="test"><?php echo $row->cost_per_emp;?></td>
-                                    <td class="test"><?php echo $row->faculty_name;?></td>
-                                    <td class="test"><?php echo $row->faculty_type;?></td>
-                                    <td class="test"><?php echo $row->training_mode;?></td>
-                                    <td class="test"><?php echo $row->no_of_hrs;?></td>
-                                    <td class="test"><?php echo $row->venue;?></td>
-                                    <td class="test"><?php echo $row->location;?></td>
-                                    <td class="test"><?php echo $row->ttt;?></td>
-                                    <td class="test"><?php echo $row->evaluation;?></td>
+                                   
                                    <td class="test">
                                    <button  href="<?php echo base_url('main/assign_emp/'.$row->id);?>" class="mdc-button mdc-button--raised mdc-button--dense mdc-ripple-upgraded" style="--mdc-ripple-fg-size:44px; --mdc-ripple-fg-scale:2.06378; --mdc-ripple-fg-translate-start:35.3375px, -10.2px; --mdc-ripple-fg-translate-end:15.1px, -6px;">
                                    Assign Employee
