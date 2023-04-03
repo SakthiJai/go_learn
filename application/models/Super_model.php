@@ -228,6 +228,11 @@ class Super_model extends CI_model {
     public function programs(){
         return $this->db->select('programs.*')->from('programs')->order_by('programs.id','desc')->get();
     }
+    
+    public function deleteCourse($id)
+    {
+         return $this->db->where('id',$id)->delete('course');
+    }
     public function program_group1(){
             return $this->db->from('program_group')->order_by('group_name','ASC')->get();
     }

@@ -652,7 +652,7 @@ class Main extends CI_Controller {
 	public function deleteCourse($id)
 	{
 
-	    $updateUserData = $this->Admin_model->deleteCourse($id);
+	    $updateUserData = $this->Super_model->deleteCourse($id);
 		$this->session->set_flashdata('msg',' <div class="alert alert-success text-center" style="color: #008a5d;
 		background-color: rgba(0, 182, 122, 0.2);
 		border-color: #00a770;    position: relative;
@@ -1155,6 +1155,7 @@ class Main extends CI_Controller {
 	public function programs(){
 	    //if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
 		$data['programs']=$this->Super_model->programs();
+		$data['events']=   $this->Event_model->events();
 		//print_r($data['programs']);exit;
 		$data['h_title'] = "Go Learn  programs"; 	    
 		$this->load->view('ui/header',$data);
@@ -2255,7 +2256,7 @@ $headers .= 'From: '.$from."\r\n".
 	    $data['events']=   $this->Event_model->events();
         	$data['h_title'] = "Programs List"; 	    
 	        $this->load->view('ui/header',$data);
-		    $this->load->view('ui/events_list.php',$data);
+			redirect(base_url().'main/programs','refresh');
 	    }
 	}
 	public function admindetails(){

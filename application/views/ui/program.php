@@ -70,7 +70,7 @@
                        <i class="glyphicon glyphicon-search" ></i>
 												</a>
 											
-                        <button type="button" onclick="showConfirmation(<?php echo $row->id;?>)"  class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button>
+                        <button type="button" onclick="showConfirmation(<?php echo $row->id;?>)" style="padding:7px;" class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button>
                       </td>
                                 <?php } ?>
 							<!--<?php } ?>	-->

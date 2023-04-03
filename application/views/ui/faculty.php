@@ -63,7 +63,7 @@
                                         <td style="text-align: center;"><?php echo $row->city; ?></td>
                                         <td style="text-align: center;"><?php echo $row->state; ?></td>
                                         <td style="text-align: center;"><?php echo $row->country; ?></td>
-										 <td style='text-align: center;'><a href="<?php echo base_url(); ?>main/faculty/<?php echo $row->id; ?>"    class="mdc-button mdc-button--raised icon-button filled-button--success mdc-ripple-upgraded" style="background-color: #00bbdd;padding: 2%;text-decoration:none">
+										 <td style='text-align: center;'><a href="<?php echo base_url(); ?>main/faculty/<?php echo $row->id; ?>"    class="mdc-button mdc-button--raised icon-button filled-button--success mdc-ripple-upgraded" style="background-color: #00bbdd;padding: 12%;text-decoration:none">
 											 
                        <i class="glyphicon glyphicon-search" ></i>
 												</a>

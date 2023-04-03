@@ -36,38 +36,48 @@
                     <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--span-8-tablet">
                         <div class="table-responsive border">
                           <table  id="sbutable" class="table table-striped table-bordered dt-responsive nowrap table table-hoverable">
-						  <thead>
-                          <tr>
-                                  <th class="th-sm test">S.No</th>
-                                  <th class="th-sm test">Program Created User</th>
-                                  <th class="th-sm test">Course Name</th>
-                                  <th class="th-sm test ">Program Name</th>
-                                  <th class="th-sm test ">Program Group Name</th>
-                                  <th class="th-sm test">Training Type</th>
-                                
-                                <th class="th-sm test">Assign</th> 
-                                </tr>
-							</thead>		
-                            <tbody>
-							<?php $i=1; foreach($programs->result() as $row) { ?>
-                                <tr>
-                                    <td class="test"><?php echo $i; ?></td>
-                                    <td class="test"><?php echo $row->created_user;?></td>
-                                    <td class="test"><?php echo $row->course_name;?></td>
-                                    <td class="test"><?php echo $row->program_name;?></td>
-                                    <td class="test"><?php echo $row->program_group_name;?></td>
-                                    <td class="test"><?php echo $row->training_type;?></td>
-                                   
-                                   <td class="test">
-                                   <button  href="<?php echo base_url('main/assign_emp/'.$row->id);?>" class="mdc-button mdc-button--raised mdc-button--dense mdc-ripple-upgraded" style="--mdc-ripple-fg-size:44px; --mdc-ripple-fg-scale:2.06378; --mdc-ripple-fg-translate-start:35.3375px, -10.2px; --mdc-ripple-fg-translate-end:15.1px, -6px;">
-                                   Assign Employee
-                                        </button></td>
-                                    <!--<td><a href="addcourse.html"><button class="mt-1 btn btn-success">Add Course</button></a></td>-->
-                                    <!--<td><a class="btn btn-info"><i class="pe-7s-note" aria-hidden="true"></i></a></td>-->
-                                    <!--<td><a class="btn btn-danger"><i class="pe-7s-trash" aria-hidden="true"></i></a></td>-->
-                                </tr>
-                                <?php $i++; } ?>
-                            </tbody>
+                          <thead>
+                                        <tr>
+										    <th>S No</th>
+										    <th>Program Created</th>
+										    <th>Program Name</th>
+										     <th>Course Name</th>
+										    <th>From Date</th>
+										    <th>To Date</th>
+										    <th>Action</th>
+									    </tr>
+                                        </thead>
+										<tbody>
+										<?php $i=1; foreach($events->result() as $row) {  ?>
+										<tr>
+											<td><?php echo $i;?></td>
+											<td><?php echo $row->created_user;?></td>
+											<td><?php echo $row->program_name;?></td>
+											<td><?php echo $row->course_title;?></td>
+											<td><?php echo date('d-m-Y', strtotime($row->from_date));?></td>
+											<td><?php echo date('d-m-Y', strtotime($row->to_date));?></td>
+									
+											<td style='text-align: center;'>
+											
+											
+											<a href="<?php echo base_url();?>index.php/main/assign_emp/<?php echo $row->id;?>/0"class="btn btn-primary">Assign </a>
+                      <?php if($login_details['name']!='admin' && $login_details['admin_type']!='admin' && $login_details['status']!=2){?>
+											<?php if($row->from_date > date('Y-m-d')){ 	?> <a href="<?php echo base_url();?>index.php/main/createprogram/<?php echo $row->id;?>"  class="mdc-button mdc-button--raised icon-button filled-button--success mdc-ripple-upgraded" style="background-color: #00bbdd;padding: 8%;text-decoration:none">
+											 
+                       <i class="glyphicon glyphicon-search" ></i>
+												</a>
+											<?php } ?>
+											<?php } ?>
+											
+                      <button type="button" onclick="showConfirmation(<?php echo $row->id;?>)"  class="btn btn-danger btn-xs" style="padding:8px;" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button>
+											<!--<?php if($login_details['name']!='admin' && $login_details['admin_type']!='admin' && $login_details['status']!=2){?>
+							            	<?php if($row->from_date > date('Y-m-d')){ 	?><button type="button" onclick="showConfirmation(<?php echo $row->id;?>)"  class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button>
+											<?php  }?>
+											<?php  }?>-->
+											</td> 
+										</tr>
+									<?php $i++; } ?>
+                                        </tbody>
                           </table>
                         </div>
                     </div>
@@ -86,7 +96,10 @@
   </div>
   <link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url();?>assets/css/bootstrap.min.css" />
   <link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url();?>assets/css/dataTables.bootstrap.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url();?>assets/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url();?>assets/css/dataTables.bootstrap.css" />
   <script type="text/javascript" src="<?php echo base_url();?>assets/scripts/main.js"></script>
+  <script type="text/javascript" src="<?php echo base_url();?>assets/js/events_list.js"></script> 
 <!-- Required datatable js -->
 <script src="<?php echo base_url()?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url()?>assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
@@ -99,9 +112,11 @@
 <script src="<?php echo base_url()?>assets/plugins/datatables/buttons.html5.min.js"></script>
 <script src="<?php echo base_url()?>assets/plugins/datatables/buttons.print.min.js"></script>
 <script src="<?php echo base_url()?>assets/plugins/datatables/buttons.colVis.min.js"></script>
-<!-- Responsive examples -->
-	<script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.dataTables.min.js"></script>
+<!-- Responsive examples --><script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.dataTables.min.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/dataTables.bootstrap.js"></script>
+<link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+<script type="text/javascript" src="<?php echo base_url();?>assets/js/csweetalert2@11"></script>
        
         <script type="text/javascript">
             $(document).ready(function() {
@@ -117,9 +132,30 @@
                         .appendTo('#datatable-buttons_wrapper .col-md-6:eq(0)');
             } );
 
+            function showConfirmation(id)
+	{
+		
+	  Swal.fire({
+      title: 'Do you want delete this details ?',
+      text: "",
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonColor: 'green',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.href= 'programdelete/'+id;
+      } else {
+        console.log('clicked cancel');
+      }
+    })
+	  
+	}
+	
         </script>
 <style> 
-.{text-align: center;}
+. {text-align: center;}
 </style>
 </body>
 </html> 

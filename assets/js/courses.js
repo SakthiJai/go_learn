@@ -959,3 +959,12 @@ $("#startbutton").click(function()
       
 
 
+    $(document).ready(function() {
+      $('#sbutable').dataTable();
+      buttons: [
+                      'copy', 'csv', 'excel', 'pdf', 'print'
+                  ]
+  
+       $("[data-toggle=tooltip]").tooltip();
+      
+  } );

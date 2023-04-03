@@ -110,17 +110,17 @@
                                 </div>
                                 <?php } ?>
 								</td>
-								  <td>
+								  <td style="text-align: center;">
 									<?php if($row->admin=='admin'){ ?> 
                        <a href="<?php echo base_url();?>main/viewEmployee/<?php echo $row->id;?>"
-                                   class="mdc-button mdc-button--raised icon-button filled-button--success mdc-ripple-upgraded" style="background-color: #00bbdd;padding: 2%;text-decoration:none">
+                                   class="mdc-button mdc-button--raised icon-button filled-button--success mdc-ripple-upgraded" style=" padding: 12%; background-color: #00bbdd;text-decoration:none">
 											 
                        <i class="glyphicon glyphicon-search" ></i>
 												</a>
 									<?php }else{ ?>
 									
                                    <a href="<?php echo base_url();?>main/viewEmployee/<?php echo $row->id;?>"
-                                   class="mdc-button mdc-button--raised icon-button filled-button--success mdc-ripple-upgraded" style="background-color: #00bbdd;padding: 2%;text-decoration:none">
+                                   class="mdc-button mdc-button--raised icon-button filled-button--success mdc-ripple-upgraded" style=" padding: 12%;background-color: #00bbdd;text-decoration:none">
 											 
                        <i class="glyphicon glyphicon-search" ></i>
 												</a>

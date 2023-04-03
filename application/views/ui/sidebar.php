@@ -65,9 +65,10 @@
                     Grade 
                     </a>
                   </div>
+                  
 				   <div class="mdc-list-item mdc-drawer-item">
                     <a class="mdc-drawer-link" href="<?php echo base_url('main/employee_type_master'); ?>">
-                    Employee Type
+                     Employee Type
                     </a>
                   </div>
 				   <div class="mdc-list-item mdc-drawer-item">
@@ -170,11 +171,12 @@
                     <a class="mdc-drawer-link" href="<?php echo base_url('Reports/attendance'); ?>">
                     Attendance
                     </a>
-                  </div>   <div class="mdc-list-item mdc-drawer-item">
+                  </div>   -->
+                  <div class="mdc-list-item mdc-drawer-item">
                     <a class="mdc-drawer-link" href="<?php echo base_url('main/evaluationreport'); ?>">
                     Evaluation Feedback
                     </a>
-                  </div>-->
+                  </div>
                   <div class="mdc-list-item mdc-drawer-item">
                     <a class="mdc-drawer-link" href="<?php echo base_url('main/masterdatareport'); ?>">
                     MandaysMaster&nbsp;Data
