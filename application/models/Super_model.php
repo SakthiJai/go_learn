@@ -24,7 +24,7 @@ class Super_model extends CI_model {
 		return $this->db->from('divisions')->order_by('id','divisions')->get();
 	}
     public function addingemp($emp_id,$insertUserData){
-      //  $query =$this->db->query("select * from emp where emp_id = $emp_id");
+     //  $query =$this->db->query("select * from emp where emp_id = $emp_id");
 		
 		//$query = $this->db->table('emp')->where('emp_id',$emp_id)->select('emp.*')->get()->getNumRows();
 	  
@@ -34,8 +34,9 @@ class Super_model extends CI_model {
 		 
            if ($count_row >= 1){
                return false;
-			   // return $this->db->update('emp',$insertUserData);
+			 return $this->db->update('emp',$insertUserData);
            } else {
+           // print_r("ihiehvde");exit;
                return $this->db->insert('emp',$insertUserData);
            }   
      }
@@ -583,6 +584,27 @@ class Super_model extends CI_model {
         $this->db->where('id',$id)->delete('program');
         return true;
     }
+    public function course_detial($id){
+        // print_r($id);exit;
+        return $this->db->from('programs')->where('id',$id)->get();	
+        }
+        public function findemp($post){
+         //  print_r($_post['sbu']);exit;
+            if($post['sbu']!="" && $post['branch_plant']=="" &&  $post['emp_type']=="")
+            {
+                return $this->db->from('emp')->where('sbu',$post['sbu'])->get();	
+            }
+            else if($post['sbu']!="" && $post['branch_plant']!="" &&  $post['emp_type']=="")
+            {
+                return $this->db->from('emp')->where('sbu',$post['sbu'])->where('branch_plant',$post['branch_plant'])->get();	
+            }
+            else if($post['sbu']!="" && $post['branch_plant']!="" &&  $post['emp_type']!="")
+            {
+                return $this->db->from('emp')->where('sbu',$post['sbu'])->where('branch_plant',$post['branch_plant'])->where('emp_type',$post['emp_type'])->get();	
+            }
+        	//print_r($id);exit;
+           
+            }
 	
 }
 ?>

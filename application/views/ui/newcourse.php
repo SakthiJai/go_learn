@@ -182,7 +182,7 @@
 																		</div>
 																		<span for="basic-disabled"
 																			id="basic-disabled-checkbox-label">Pre
-																			test1</span>
+																			test</span>
 																	</div>
 																	<div class="mdc-form-field">
 																		<div

@@ -20,11 +20,11 @@
               <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
                 <div class="mdc-card">
                   <div class="d-flex justify-content-between">
-                   <button class="mdc-button mdc-button--outlined outlined-button--secondary mdc-ripple-upgraded" style="--mdc-ripple-fg-size:95px; --mdc-ripple-fg-scale:1.82773; --mdc-ripple-fg-translate-start:-36.7px, -39.1px; --mdc-ripple-fg-translate-end:32.3125px, -29.5px;">
+                   <button class="mdc-button mdc-button--outlined outlined-button--secondary mdc-ripple-upgraded" style=" font-size: 12px;--mdc-ripple-fg-size:95px; --mdc-ripple-fg-scale:1.82773; --mdc-ripple-fg-translate-start:-36.7px, -39.1px; --mdc-ripple-fg-translate-end:32.3125px, -29.5px;">
                        Program Group
                       </button>
                     <div>
-					 <a class="mdc-button mdc-button--raised filled-button--secondary mdc-ripple-upgraded" href="<?php echo base_url('Program/addprogramGroup'); ?>">
+					 <a style="font-size: 12px;" class="mdc-button mdc-button--raised filled-button--secondary mdc-ripple-upgraded" href="<?php echo base_url('Program/addprogramGroup'); ?>">
                                     Add Program Group
                                 </a>&nbsp;&nbsp;
                         
@@ -47,7 +47,7 @@
                         <div class="table-responsive border">
                            <table id="sbutable" class="table table-striped table-bordered dt-responsive nowrap table table-hoverable">
                                       <thead>
-                                      <tr>
+                                      <tr  style="background: white;">
                                           <th style='text-align: center;'>S.No</th>
                                           <th style='text-align: center;'>Group Name</th>
                                           <th style='text-align: center;'>Edit</th>
@@ -57,7 +57,7 @@
                                       <tbody>
                   
                   <?php foreach($group->result() as $row) { ?>
-                                      <tr>
+                                      <tr  style="background: white;">
                                           <td style='text-align: center;'><?php echo $i;?></td>
                     <td style='text-align: center;'><?php echo $row->group_name;?></td>
                 

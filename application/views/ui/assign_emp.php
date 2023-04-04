@@ -39,22 +39,17 @@
                             <div class="mdc-layout-grid__inner">
 
                               <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-8">
-                                <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                              
                                   <div class="mdc-line-ripple"></div>
-                                  <label for="text-field-hero-input" class="mdc-floating-label">Employee ID's:(Enter Employee ID's separated by space ( ) like 123XXX 456XXX 789XXX) </label>
+                                  <?php if(isset($course_detial)){foreach($course_detial->result() as $row) {  ?>
+                                  <label for="text-field-hero-input" class="mdc-floating-label">Details :</label><br>
+                                  <label ><br><?php echo $row->created_user;?><br><?php echo $row->program_name;?><br><?php echo $row->course_title;?><br><?php echo date('d-m-Y', strtotime($row->from_date));?><br><?php echo date('d-m-Y', strtotime($row->to_date));?></label> <?php } }?>
                                   
-                                  <input class="mdc-text-field__input" id="text-field-hero-input exampleText" name="emp_ids" placeholder="" type="text">
-									<span id="lblError" style="color: red"></span>
-                                </div>
-                              </div>
-                              <div class="mdc-3 ayout-grid__cell stretch-card mdc-layout-grid__cell--span-2">
-                                <button
-                                  class=" mt-4 btn btn-primary mdc-button mdc-button--raised filled-button--success mdc-ripple-upgraded vertical-center"
-                                  style="--mdc-ripple-fg-size:56px;     --mdc-ripple-fg-scale:1.96936; --mdc-ripple-fg-translate-start:22.9px, -19.6px; --mdc-ripple-fg-translate-end:18.8px, -10px ,float: right;   ">
-                                  Submit
-                                </button>
+                                 
+                                  
                                
                               </div>
+                           
 
                             
                             </div>
@@ -64,6 +59,111 @@
                     </div>
                   </div>
                   <div class="template-demo">
+                    <h5 class="card-sub-title mb-2 mb-sm-0"></h5>
+                    <div class="menu-button-container">
+                      <div class="mdc-card">
+                        <center><span class="">
+                            <?php echo $this->session->flashdata('msg'); ?>
+                          </span></center>
+                        <form    id="tasts"action="<?php echo base_url('main/assign_emp/'.$program_id);?>" method="POST" enctype="multipart/form-data">
+                          <div class="mdc-layout-grid">
+                            <div class="mdc-layout-grid__inner">
+
+                             <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
+                                <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                                  <div class="mdc-line-ripple"></div>
+                                  <label for="text-field-hero-input" class="mdc-floating-label">SBU</label>
+                                  <select class="mdc-text-field__input" name="sbu"  id="sbu" placeholder="SBU">
+                                    <option value="" disabled selected value> </option>
+                                    <?php foreach ($sbu->result() as $sbu) { ?>
+                                      <?php if ($sbu->sbu != null): ?>
+                                        <option value="<?php echo $sbu->id; ?>">
+                                          <?php echo $sbu->sbu; ?>
+                                        </option>
+                                      <?php endif; ?>
+                                    <?php } ?>
+
+                                  </select>
+                                </div>
+                              </div>
+
+                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
+                                <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                                  <div class="mdc-line-ripple"></div>
+                                  <label for="text-field-hero-input" class="mdc-floating-label">Branch/Plant</label>
+                                  <select class="mdc-text-field__input" name="branch_plant" placeholder="SBU">
+                                    <option value="" disabled selected value> </option>
+                                    <?php foreach ($branch->result() as $branch) { ?>
+                                      <?php if ($branch->branch != null): ?>
+                                        <option value="<?php echo $branch->id; ?>">
+                                          <?php echo $branch->branch; ?>
+                                        </option>
+                                      <?php endif; ?>
+                                    <?php } ?>
+                                  </select>
+                                </div>
+                              </div>
+                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop">
+                                <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                                  <div class="mdc-line-ripple"></div>
+                                  <label for="text-field-hero-input" class="mdc-floating-label">Employee Type</label>
+                                  <select class="mdc-text-field__input" name="emp_type">
+                                    <option value="" disabled selected value></option>
+                                    <?php foreach ($employee_type->result() as $employee_type) { ?>
+                                      <?php if ($employee_type->type != null): ?>
+                                        <option value="<?php echo $employee_type->id; ?>">
+                                          <?php echo $employee_type->type; ?>
+                                        </option>
+                                      <?php endif; ?>
+                                    <?php } ?>
+                                  </select>
+                                </div>
+                              </div>
+                              <div class="col-sm-12" id="button_div" ><button class="mdc-button mdc-button--raised filled-button--secondary mdc-ripple-upgraded" style="--mdc-ripple-fg-size:65px; --mdc-ripple-fg-scale:1.92918; --mdc-ripple-fg-translate-start:8.3125px, -2.7px; --mdc-ripple-fg-translate-end:22.3188px, -14.5px;">
+                      Find
+                    </button></div>
+
+                            
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="template-demo">
+                    <h5 class="card-sub-title mb-2 mb-sm-0"></h5>
+                    <div class="menu-button-container">
+                      <div class="mdc-card">
+                        <center><span class="">
+                            <?php echo $this->session->flashdata('msg'); ?>
+                          </span></center>
+                        
+                            <table id="dtBasicExample" class="table table-striped table-bordered table-sm">
+                            <thead>
+                               <tr>
+                                   <th class="th-sm">S.No</th>
+                                   <th class="th-sm">Employee ID</th>
+                                   <th class="th-sm">Employee Name</th>
+                               </tr>
+                            </thead>
+                            <tbody>
+                              <?php if( $findemp){?>
+                                <?php  $i=1; foreach($findemp->result() as $emp){?>
+                                  <tr>
+										<td><?php echo $i++; ?></td>
+										<td><?php echo $emp->employee_id; ?></td>
+										<td><?php echo $emp->name; ?></td>
+									</tr>
+								<?php } ?>
+                                  <?php } ?>
+                                
+								
+                            </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                 <!-- <div class="template-demo">
                       <h5 class="card-sub-title mb-2 mb-sm-0"></h5>
                       <div class="menu-button-container">
                         <div class="mdc-card">
@@ -73,7 +173,7 @@
 						<center><span class=""> <?php echo $this->session->flashdata('msg'); ?></span></center>
                         <form method="POST" action="<?php echo base_url(); ?>main/store_assign_emp">
 				    <input type="hidden" value="<?php echo $program_id;?>" name="program_id" >
-					<!--<input type="hidden" value="<?php echo $division_id; ?>" name="division_id" >-->
+					<!--<input type="hidden" value="<?php echo $division_id; ?>" name="division_id" >
                     <div class="card-body  table-responsive">
                         <table id="dtBasicExample" class="table table-striped table-bordered table-sm mzxcc">
                             <thead>
@@ -152,7 +252,7 @@
                     </div>
                   
                   </div>
-                </div> 
+                </div> -->
               </div>
               
               
@@ -168,11 +268,17 @@
     </div>
   </div>
   <link rel="stylesheet" href="<?php echo base_url();?>assets/css/assign_emp.css">
-<script type="text/javascript" src="<?php echo base_url();?>assets/scripts/main.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.min.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery-ui.min.js"></script>
+  <link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url();?>assets/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="<?php echo base_url();?>assets/css/dataTables.bootstrap.css" />
+  <script type="text/javascript" src="<?php echo base_url();?>assets/js/main.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.min.js"></script>
+	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/validate.min.js"></script>
+	 <script type="text/javascript" src="<?php echo base_url();?>assets/js/moment.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>assets/js/assignemp.js"></script>
 	<script type="text/javascript" src="<?php echo base_url();?>assets/js/csweetalert2@11"></script>
+  <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="<?php echo base_url();?>assets/js/dataTables.bootstrap.js"></script>
+<link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
 
 
 	<style>.error {
@@ -200,6 +306,16 @@
     -webkit-box-shadow: none;
     box-shadow: none;
 }
+<script>
+$(document).ready(function() {
+  $('#dtBasicExample').dataTable();
+  buttons: [
+                  'copy', 'csv', 'excel', 'pdf', 'print'
+              ]
+
+   $("[data-toggle=tooltip]").tooltip();
+  
+} );</script>
 </style>
 </body>
 </html> 

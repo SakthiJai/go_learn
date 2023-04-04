@@ -21,11 +21,11 @@
                   <div class="d-flex justify-content-between">
 
                     <button class="mdc-button mdc-button--outlined outlined-button--secondary mdc-ripple-upgraded"
-                      style="--mdc-ripple-fg-size:65px; --mdc-ripple-fg-scale:1.92333; --mdc-ripple-fg-translate-start:-21.6875px, -3.5px; --mdc-ripple-fg-translate-end:22.1188px, -14.5px;">
+                      style=" font-size: 12px;--mdc-ripple-fg-size:65px; --mdc-ripple-fg-scale:1.92333; --mdc-ripple-fg-translate-start:-21.6875px, -3.5px; --mdc-ripple-fg-translate-end:22.1188px, -14.5px;">
                          Employee Details
                     </button>
                     <div>
-                      <a class="mdc-button mdc-button--raised filled-button--secondary mdc-ripple-upgraded"
+                      <a  style="font-size: 12px;"class="mdc-button mdc-button--raised filled-button--secondary mdc-ripple-upgraded"
                         href="<?php echo base_url('main/addemp'); ?>">
                         New Employee
                       </a>&nbsp;&nbsp;
@@ -34,54 +34,54 @@
 
                     </div>
                   </div>
-
+                  <div class="template-demo">
                   <div class="mdc-layout-grid__inner mt-2">
                     <div
                       class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--span-8-tablet">
                       <div class="table-responsive border">
                         <table id="sbutable" class="table table-striped table-bordered dt-responsive nowrap table table-hoverable">
                           <thead>
-                            <tr>
-                              <th>S.No</th>
-                              <th>Employee ID</th>
-                              <th>Name</th>
-                              <th>Phone</th>
-                              <th>Email</th>
-                              <th>Designation</th>
-                              <th>Status</th>
-                              <th>Action</th>
+                            <tr style="background: white;">
+                              <th  style='text-align: center;'>S.No</th>
+                              <th  style='text-align: center;'>Employee ID</th>
+                              <th style='text-align: center;' >Name</th>
+                              <th style='text-align: center;'>Phone</th>
+                              <th style='text-align: center;'>Email</th>
+                              <th style='text-align: center;'>Designation</th>
+                              <th style='text-align: center;'>Status</th>
+                              <th style='text-align: center;'>Action</th>
                             </tr>
                           </thead>
                           <tbody>
                              <?php $i=1; foreach($emp->result() as $row) { ?>
 							 
-                            <tr>
-                              <td>
+                            <tr  style="background: white;">
+                              <td  style='text-align: center;'>
                                 <?php echo $i;?>
                               </td>
-                              <td>
+                              <td  style='text-align: center;'>
                                 <?php echo $row->emp_id;?>
                               </td>
-                              <td>
+                              <td  style='text-align: center;'>
                                 <?php echo $row->name;?>
                               </td>
-                              <td>
+                              <td  style='text-align: center;'>
                                 <?php echo $row->mobile;?>
                               </td>
-                              <td>
+                              <td  style='text-align: center;'>
                                 <?php echo $row->email;?>
                               </td>
-                              <td>
+                              <td  style='text-align: center;'>
                                 <?php echo $row->designation;?>
                               </td>
-                              <td>
+                              <td  style='text-align: center;'>
                                 <?php if($row->emp_status==1){ ?>
                               
 							  
                                 <div class="mdc-form-field">
                                   <div class="mdc-checkbox mdc-checkbox--success">
                                     <input type="checkbox" id="basic-disabled-checkbox"
-                                      class="mdc-checkbox__native-control" checked>
+                                      class="mdc-checkbox__native-control" checked >
                                     <div class="mdc-checkbox__background">
                                       <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
                                         <path class="mdc-checkbox__checkmark-path" fill="none"
@@ -134,6 +134,7 @@
                         </table>
                       </div>
                     </div>
+                  </div>
                   </div>
                 </div>
               </div>

@@ -19,13 +19,13 @@
                 <div class="mdc-card">
                   <div class="d-flex justify-content-between">
                     
-					<button class="mdc-button mdc-button--outlined outlined-button--secondary mdc-ripple-upgraded" style="--mdc-ripple-fg-size:65px; --mdc-ripple-fg-scale:1.92333; --mdc-ripple-fg-translate-start:-21.6875px, -3.5px; --mdc-ripple-fg-translate-end:22.1188px, -14.5px;">
+					<button class="mdc-button mdc-button--outlined outlined-button--secondary mdc-ripple-upgraded" style=" font-size: 12px;--mdc-ripple-fg-size:65px; --mdc-ripple-fg-scale:1.92333; --mdc-ripple-fg-translate-start:-21.6875px, -3.5px; --mdc-ripple-fg-translate-end:22.1188px, -14.5px;">
                        
                 Assign Training course
               
                       </button>
                       <div>
-					 <a class="mdc-button mdc-button--raised filled-button--secondary mdc-ripple-upgraded" href="<?php echo base_url('main/createprogram'); ?>">
+					 <a  style="font-size: 12px;"class="mdc-button mdc-button--raised filled-button--secondary mdc-ripple-upgraded" href="<?php echo base_url('main/createprogram'); ?>">
                                     New Assign Training course
                                 </a>&nbsp;&nbsp;
                         
@@ -37,7 +37,7 @@
                         <div class="table-responsive border">
                           <table  id="sbutable" class="table table-striped table-bordered dt-responsive nowrap table table-hoverable">
                           <thead>
-                                        <tr>
+                                        <tr  style="background: white;">
 										    <th>S No</th>
 										    <th>Program Created</th>
 										    <th>Program Name</th>
@@ -49,7 +49,7 @@
                                         </thead>
 										<tbody>
 										<?php $i=1; foreach($events->result() as $row) {  ?>
-										<tr>
+										<tr  style="background: white;">
 											<td><?php echo $i;?></td>
 											<td><?php echo $row->created_user;?></td>
 											<td><?php echo $row->program_name;?></td>

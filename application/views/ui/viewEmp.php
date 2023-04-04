@@ -47,7 +47,7 @@
 							  <input type="hidden" name="id" id="id" value="<?php echo (isset($editEmployee))? $editEmployee[0]['id']:''?>">
                               <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded">
-                                  <input class="mdc-text-field__input" id="text-field-hero-input 1" name="firstname" value="<?php echo (isset($editEmployee))? $editEmployee[0]['name']:''?>">
+                                  <input class="mdc-text-field__input" id="text-field-hero-input 1" name="firstname" created_user>
                                   <div class="mdc-line-ripple"></div>
                                   <label for="text-field-hero-input" class="mdc-floating-label">First Name</label>
                                 </div>
@@ -201,9 +201,9 @@
                                     placeholder="Organization Unit">
                                     <option value="" disabled selected value></option>
 										<?php foreach($organization->result() as $organization){ ?>
-										  <?php if ($organization->organication != null): ?>
+										  <?php if ($organization->organization != null): ?>
 											<option value="<?php echo $organization->id; ?>">
-											  <?php echo $organization->organication; ?>
+											  <?php echo $organization->organization; ?>
 											</option>
 										   <?php endif; ?>
 										<?php } ?>
@@ -310,7 +310,7 @@
                                   <label for="text-field-hero-input" class="mdc-floating-label">RO Name</label>
                                 </div>
                               </div>
-                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-8"></div>
+
                       <!--       <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-1">
                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded" name="dob" id='dob'
                                   style='padding-right: 114px;' >
@@ -342,8 +342,9 @@
                                   </div>
                                </div>
                               </div>   -->
-                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4"></div>
-                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
+							  
+                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
+                              <div class="mdc-text-field w-100 mdc-ripple-upgraded" style="background: white;">
                                 <button
                                   class=" mt-1 btn btn-primary mdc-button mdc-button--raised filled-button--success mdc-ripple-upgraded vertical-center"
                                   style="--mdc-ripple-fg-size:56px;     --mdc-ripple-fg-scale:1.96936; --mdc-ripple-fg-translate-start:22.9px, -19.6px; --mdc-ripple-fg-translate-end:18.8px, -10px ,float: right; ">
@@ -351,13 +352,11 @@
                                 </button>&nbsp;&nbsp;&nbsp;&nbsp; 
 								  
                                 <button
-                                  class=" mt-1 btn btn-primary mdc-button mdc-button--unelevated filled-button--info mdc-ripple-upgraded vertical-center"
-                                  style="--mdc-ripple-fg-size:56px; --mdc-ripple-fg-scale:2.19553; --mdc-ripple-fg-translate-start:8.23752px, -2.59998px; --mdc-ripple-fg-translate-end:13px, -1px;">
+                                  class="  mt-4 mdc-button mdc-button--raised filled-button--secondary mdc-ripple-upgraded"  style="--mdc-ripple-fg-size:70px; --mdc-ripple-fg-scale:1.90907; --mdc-ripple-fg-translate-start:8.11121px, -9.33333px; --mdc-ripple-fg-translate-end:24.1389px, -17px;    ">
                                   Cancel
                                 </button>
                               </div>
-                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4"></div>
-
+                              </div>
 
                             </div>
                           </div>

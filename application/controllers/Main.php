@@ -118,7 +118,7 @@ class Main extends CI_Controller {
 	}
 	
 	public function addingemp(){
-    	//print_r($_POST);exit();
+    //	print_r($_POST);exit();
        $division=$this->input->post('division_id');
        $sql="select * from divisions where id='".$division."'";
        $q=$this->db->query($sql);
@@ -151,7 +151,7 @@ class Main extends CI_Controller {
 		'fro_id' => $this->input->post('fro_id'),
 		'fro_name' => $this->input->post('fro_name'),
 		'ro_id' => $this->input->post('ro_id'),
-		'ro_name' => $this->input->post('ro_name'),
+		'ro_name' => $this->input->post('ro_name')
 		/*'blood_group' => $this->input->post('blood_group'),
 		 'religion' => $this->input->post('religion'),
 		 'birth_place' => $this->input->post('birth_place'),
@@ -171,13 +171,13 @@ class Main extends CI_Controller {
 		);
 		// print_r($data);exit();
         $insertUserData = $this->Super_model->addingemp($emp_id,$data);
-		 
+		//print_r($insertUserData);exit();
         if($insertUserData){
         	$this->session->set_flashdata('msg', '<div class="alert alert-success text-center">Successfully Submitted</div>');
         } else {     
         	$this->session->set_flashdata('msg', '<div class="alert alert-danger text-center">Employee ID Already Exist</div>');
         }
-        redirect(base_url().'main/addemp','refresh');            
+        redirect(base_url().'main/emp','refresh');            
     }
 	 
 	public function updateEmp()
@@ -327,9 +327,11 @@ class Main extends CI_Controller {
 		public function addfaculty()
     {
     	$data['h_title'] = "Go Learn ";
-        $this->load->view('ui/addfaculty',$data);		
+        $this->load->view('ui/addfaculty',$data);	
+			
     }
      public function addfaculty_master(){
+		//print_r($_POST);exit();
 		$data = array(
 		'name' => $this->input->post('name'),
 		'mobile' => $this->input->post('mobile'),
@@ -341,7 +343,7 @@ class Main extends CI_Controller {
        'faculty_type'=>$this->input->post('faculty_type'),
         'emp_id'=>$this->input->post('facultyid')
 			);
-		//print_r($data['name']);exit();
+		
         $insertUserData = $this->Super_model->addfaculty($data);
 		if($data){
 				$this->session->set_flashdata('msg','<div class="alert alert-success text-center" style="color: #008a5d;
@@ -1162,9 +1164,21 @@ class Main extends CI_Controller {
 		$this->load->view('ui/programs.php',$data);
 	}
 	public function assign_emp($id=false){
-	    //if($this->session->userdata('superadmin_login')==NULL) redirect(base_url().'superadmin');
-	    //$data['sbu'] = $this->Super_model->selectsbu($division_id);
-        //print_r($data['sbu']);exit;
+	//print_r($_POST);exit;
+	
+
+		if($_POST){
+			
+			$data['findemp']=$this->Super_model->findemp($_POST);
+		}
+		
+		
+	
+		$data['course_detial']=$this->Super_model->course_detial($id);
+		//$data['events']=   $this->Event_model->events();
+		$data['sbu']=$this->Super_model->sbu();
+		$data['branch']=$this->Super_model->branch();
+		$data['employee_type']=$this->Super_model->employee_type();
         if(isset($_POST) && !empty($_POST)){
         $emp_ids=$this->input->post('emp_ids');
         $emp_ids1=trim($emp_ids);
@@ -1174,6 +1188,8 @@ class Main extends CI_Controller {
                 $data['emp_list'] = $this->Super_model->selectemp_ids($emp_ids3);
             }
         }
+		
+		
         $data['program_id']=$id;
         // $data['division_id']=$division_id;
         $data['assigned_emp']  = $this->Super_model->assigned_emp($id);

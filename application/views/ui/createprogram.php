@@ -283,20 +283,24 @@
                               
 
                               
-                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
+                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
+                              <div  style="background: white;" class="mdc-text-field w-100 mdc-ripple-upgraded">
                                 <button
                                   class=" mt-1 btn btn-primary mdc-button mdc-button--raised filled-button--success mdc-ripple-upgraded vertical-center"
                                   style="--mdc-ripple-fg-size:56px;     --mdc-ripple-fg-scale:1.96936; --mdc-ripple-fg-translate-start:22.9px, -19.6px; --mdc-ripple-fg-translate-end:18.8px, -10px ,float: right; ">
                                   Submit
                                 </button>&nbsp;&nbsp;&nbsp;&nbsp; 
-                                  
-                                <a href="http://localhost/go_learn/main/programs" class="mt-4 mdc-button mdc-button--raised filled-button--secondary mdc-ripple-upgraded" style="--mdc-ripple-fg-size:41px; --mdc-ripple-fg-scale:2.13995; --mdc-ripple-fg-translate-start:21px, -8.69998px; --mdc-ripple-fg-translate-end:13.95px, -2.5px;">
+                              
+                                      <a href="<?php echo base_url('main/programs'); ?>"
+                                  class=" mt-1 btn btn-primary mdc-button mdc-button--unelevated filled-button--info mdc-ripple-upgraded vertical-center"
+                                  style="--mdc-ripple-fg-size:56px;  background-color: #ff420f;--mdc-ripple-fg-scale:2.19553; --mdc-ripple-fg-translate-start:8.23752px, -2.59998px; --mdc-ripple-fg-translate-end:13px, -1px;">
                                   Cancel
-                                </a>
+                                                        </a>
+                                      </div>
                               </div>
+                              
 
 
-                            </div>
                           </div>
                         </form>
 						<?php } ?>
@@ -532,9 +536,11 @@
                                   style="--mdc-ripple-fg-size:56px;     --mdc-ripple-fg-scale:1.96936; --mdc-ripple-fg-translate-start:22.9px, -19.6px; --mdc-ripple-fg-translate-end:18.8px, -10px ,float: right; ">
                                   Submit
                                 </button>&nbsp;&nbsp;&nbsp;&nbsp; 
-                                <a href="http://localhost/go_learn/main/programs" class="mt-4 mdc-button mdc-button--raised filled-button--secondary mdc-ripple-upgraded" style="--mdc-ripple-fg-size:41px; --mdc-ripple-fg-scale:2.13995; --mdc-ripple-fg-translate-start:-11px, -16.7px; --mdc-ripple-fg-translate-end:13.95px, -2.5px;">
+                                <a href="<?php echo base_url('main/programs'); ?>"
+                                  class=" mt-1 btn btn-primary mdc-button mdc-button--unelevated filled-button--info mdc-ripple-upgraded vertical-center"
+                                  style="--mdc-ripple-fg-size:56px;  background-color: #ff420f;--mdc-ripple-fg-scale:2.19553; --mdc-ripple-fg-translate-start:8.23752px, -2.59998px; --mdc-ripple-fg-translate-end:13px, -1px;">
                                   Cancel
-                                </a>
+                                                        </a>
                               </div>
                               <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4"></div>
 

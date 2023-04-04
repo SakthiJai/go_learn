@@ -147,7 +147,7 @@ $("#facultyid").on("keyup", function() {
             }
         );
 })
-    function checkFaculty(form) {
+    /*function checkFaculty(form) {
 console.log('8ygeiqfvhbiykhjnfc');
         $('#empnot').text("");
           console.log($('#facultyid').val());
@@ -170,7 +170,7 @@ console.log('8ygeiqfvhbiykhjnfc');
 
             }
         );
-    }
+    }*/
 
     function NumbersOnly(MyField, e, dec) {
         var key;
