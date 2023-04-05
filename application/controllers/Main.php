@@ -1164,6 +1164,7 @@ class Main extends CI_Controller {
 		$this->load->view('ui/programs.php',$data);
 	}
 	public function assign_emp($id=false){
+		$data['baseurl']=base_url();
 	//print_r($_POST);exit;
 	
 
@@ -1173,7 +1174,6 @@ class Main extends CI_Controller {
 		}
 		
 		
-	
 		$data['course_detial']=$this->Super_model->course_detial($id);
 		//$data['events']=   $this->Event_model->events();
 		$data['sbu']=$this->Super_model->sbu();
@@ -1181,6 +1181,7 @@ class Main extends CI_Controller {
 		$data['employee_type']=$this->Super_model->employee_type();
         if(isset($_POST) && !empty($_POST)){
         $emp_ids=$this->input->post('emp_ids');
+		//+print_r($emp_ids);exit;
         $emp_ids1=trim($emp_ids);
         $emp_ids2= str_replace(" ",",","$emp_ids1");
         $emp_ids3= str_replace(",,",",","$emp_ids2");
@@ -1665,6 +1666,7 @@ $message ='<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http:
 		 echo json_encode($divisionaa);
 	}
 	public function store_assign_emp(){
+		$data['baseurl']=base_url();
 	    //print_r($this->input->post('assign_empid'));exit;
         if($this->input->post('assign_empid')){
             $emp_id=$this->input->post('assign_empid');
@@ -1695,9 +1697,9 @@ $message ='<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http:
         }
     
         if($rs==1){
-            redirect(base_url().'ui/assign_emp/'.$program_id.'/'.$division_id,'refresh'); 
+            redirect(base_url().'main/assign_emp/'.$program_id.'/'.$division_id,'refresh'); 
         }else{
-            redirect(base_url().'ui/assign_emp/'.$program_id.'/'.$division_id,'refresh'); 
+            redirect(base_url().'main/assign_emp/'.$program_id.'/'.$division_id,'refresh'); 
         }
 	}
 	public function assigned_empdelete($id){

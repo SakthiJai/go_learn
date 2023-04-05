@@ -55,7 +55,7 @@
                     </a>
                   </div>
                   <div class="mdc-list-item mdc-drawer-item">
-                    <a style="font-size: 15px;" class="mdc-drawer-link"  href="<?php echo base_url('main/branch_master'); ?>">
+                    <a class="mdc-drawer-link"  href="<?php echo base_url('main/branch_master'); ?>">
                     Branch
                     </a>
                   </div>
@@ -77,12 +77,12 @@
                     </a>
                   </div>
 				   <div class="mdc-list-item mdc-drawer-item">
-                    <a style="font-size: 15px;" class="mdc-drawer-link" href="<?php echo base_url('main/organization_master'); ?>">
+                    <a class="mdc-drawer-link" href="<?php echo base_url('main/organization_master'); ?>">
                     Organization 
                     </a>
                   </div>
 				   <div class="mdc-list-item mdc-drawer-item">
-                    <a style="font-size: 15px;" class="mdc-drawer-link" href="<?php echo base_url('main/function_master'); ?>">
+                    <a class="mdc-drawer-link" href="<?php echo base_url('main/function_master'); ?>">
                     Function 
                     </a>
                   </div>
@@ -133,10 +133,11 @@
                 New Course
               </a>
             </div>
+            
             <div class="mdc-list-item mdc-drawer-item">
-              <a style="font-size: 15px;" class="mdc-drawer-link" href="<?php echo base_url('main/programs'); ?>"  style="margin: -3px;">
+              <a class="mdc-drawer-link" href="<?php echo base_url('main/programs'); ?>"  style="margin: -3px;">
                 <i style="font-size: 15px;" class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" >description</i>
-                Assign&nbsp;Training &nbsp;course
+                Assign Training Course
               </a>
             </div>
           

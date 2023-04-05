@@ -584,21 +584,33 @@ class Super_model extends CI_model {
         $this->db->where('id',$id)->delete('program');
         return true;
     }
+    public function getPrograms($id)
+    {
+        /*return $this->db->select('course.program_id,course.program_group_id,course.traning_type_id')
+                        ->from('course')
+                        ->where('course.id',$id)
+                        ->get();*/
+                        
+        $list = $this->db->query("select * from programs where id='".$id."'");
+        return $list->result();                
+    }
     public function course_detial($id){
         // print_r($id);exit;
         return $this->db->from('programs')->where('id',$id)->get();	
         }
         public function findemp($post){
-         //  print_r($_post['sbu']);exit;
+         //print_r($_post['sbu']);exit;
             if($post['sbu']!="" && $post['branch_plant']=="" &&  $post['emp_type']=="")
+
             {
+               
                 return $this->db->from('emp')->where('sbu',$post['sbu'])->get();	
             }
             else if($post['sbu']!="" && $post['branch_plant']!="" &&  $post['emp_type']=="")
             {
                 return $this->db->from('emp')->where('sbu',$post['sbu'])->where('branch_plant',$post['branch_plant'])->get();	
             }
-            else if($post['sbu']!="" && $post['branch_plant']!="" &&  $post['emp_type']!="")
+            else 
             {
                 return $this->db->from('emp')->where('sbu',$post['sbu'])->where('branch_plant',$post['branch_plant'])->where('emp_type',$post['emp_type'])->get();	
             }

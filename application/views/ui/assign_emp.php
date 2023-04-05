@@ -38,17 +38,72 @@
                           <div class="mdc-layout-grid">
                             <div class="mdc-layout-grid__inner">
 
-                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-8">
+                            
                               
                                   <div class="mdc-line-ripple"></div>
+                                
+                                    <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                                    <button class="mdc-button mdc-button--outlined outlined-button--secondary mdc-ripple-upgraded" style="--mdc-ripple-fg-size:95px; --mdc-ripple-fg-scale:1.82773; --mdc-ripple-fg-translate-start:-36.7px, -39.1px; --mdc-ripple-fg-translate-end:32.3125px, -29.5px;">
+                   Course Details
+                      </button>
+                                  </div>
                                   <?php if(isset($course_detial)){foreach($course_detial->result() as $row) {  ?>
-                                  <label for="text-field-hero-input" class="mdc-floating-label">Details :</label><br>
-                                  <label ><br><?php echo $row->created_user;?><br><?php echo $row->program_name;?><br><?php echo $row->course_title;?><br><?php echo date('d-m-Y', strtotime($row->from_date));?><br><?php echo date('d-m-Y', strtotime($row->to_date));?></label> <?php } }?>
                                   
                                  
-                                  
                                
+                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop">
+                                <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                                  <div class="mdc-line-ripple"></div>
+                                  <label for="text-field-hero-input" class="mdc-floating-label">Course Tittle</label>
+                                  <input class="mdc-text-field__input" id="text-field-hero-input exampleText" name="branch_plant" value="<?php echo $row->course_name;?>" readonly >			
+                                </div>
                               </div>
+                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop">
+                                <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                                  <div class="mdc-line-ripple"></div>
+                                  <label for="text-field-hero-input" class="mdc-floating-label">Program Name</label>
+                                  <input class="mdc-text-field__input" id="text-field-hero-input exampleText" name="branch_plant" value="<?php echo $row->program_name;?>" readonly>			
+                                </div>
+                              </div>
+                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop">
+                                <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                                  <div class="mdc-line-ripple"></div>
+                                  <label for="text-field-hero-input" class="mdc-floating-label">Program Group:</label>
+                                  <input class="mdc-text-field__input" id="text-field-hero-input exampleText" name="branch_plant" value="<?php echo $row->program_group_name;?>" readonly>			
+                                </div>
+                              </div>
+                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop">
+                                <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                                  <div class="mdc-line-ripple"></div>
+                                  <label for="text-field-hero-input" class="mdc-floating-label">Faculty Name</label>
+                                  <input class="mdc-text-field__input" id="text-field-hero-input exampleText" name="branch_plant" value="<?php echo $row->faculty_name;?>" readonly>			
+                                </div>
+                              </div>
+                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop">
+                                <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                                  <div class="mdc-line-ripple"></div>
+                                  <label for="text-field-hero-input" class="mdc-floating-label">Location</label>
+                                  <input class="mdc-text-field__input" id="text-field-hero-input exampleText" name="branch_plant" value="<?php echo $row->location;?>"readonly >			
+                                </div>
+                              </div>
+                           
+                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop">
+                                <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                                  <div class="mdc-line-ripple"></div>
+                                  <label for="text-field-hero-input" class="mdc-floating-label">From Date</label>
+                                  <input class="mdc-text-field__input" id="text-field-hero-input exampleText" name="branch_plant" value="<?php echo date('d-m-Y', strtotime($row->from_date));?>"readonly >			
+                                </div>
+                              </div>
+                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop">
+                                <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                                  <div class="mdc-line-ripple"></div>
+                                  <label for="text-field-hero-input" class="mdc-floating-label">End Date</label>
+                                  <input class="mdc-text-field__input" id="text-field-hero-input exampleText" name="branch_plant" value="<?php echo date('d-m-Y', strtotime($row->to_date));?>"readonly >			
+                                </div>
+                              </div>
+                              <?php } }?>
+                               
+                            
                            
 
                             
@@ -58,18 +113,17 @@
                       </div>
                     </div>
                   </div>
-                  <div class="template-demo">
                     <h5 class="card-sub-title mb-2 mb-sm-0"></h5>
                     <div class="menu-button-container">
-                      <div class="mdc-card">
+                     
                         <center><span class="">
                             <?php echo $this->session->flashdata('msg'); ?>
                           </span></center>
-                        <form    id="tasts"action="<?php echo base_url('main/assign_emp/'.$program_id);?>" method="POST" enctype="multipart/form-data">
+                        <form    id="tasts" action="<?php echo base_url('main/assign_emp/'.$program_id);?>" method="POST" enctype="multipart/form-data">
                           <div class="mdc-layout-grid">
                             <div class="mdc-layout-grid__inner">
 
-                             <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
+                             <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3">
                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded">
                                   <div class="mdc-line-ripple"></div>
                                   <label for="text-field-hero-input" class="mdc-floating-label">SBU</label>
@@ -87,7 +141,7 @@
                                 </div>
                               </div>
 
-                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
+                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3">
                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded">
                                   <div class="mdc-line-ripple"></div>
                                   <label for="text-field-hero-input" class="mdc-floating-label">Branch/Plant</label>
@@ -103,11 +157,11 @@
                                   </select>
                                 </div>
                               </div>
-                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop">
+                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop">
                                 <div class="mdc-text-field w-100 mdc-ripple-upgraded">
                                   <div class="mdc-line-ripple"></div>
                                   <label for="text-field-hero-input" class="mdc-floating-label">Employee Type</label>
-                                  <select class="mdc-text-field__input" name="emp_type">
+                                  <select class="mdc-text-field__input" name="emp_type" value="">
                                     <option value="" disabled selected value></option>
                                     <?php foreach ($employee_type->result() as $employee_type) { ?>
                                       <?php if ($employee_type->type != null): ?>
@@ -119,17 +173,21 @@
                                   </select>
                                 </div>
                               </div>
-                              <div class="col-sm-12" id="button_div" ><button class="mdc-button mdc-button--raised filled-button--secondary mdc-ripple-upgraded" style="--mdc-ripple-fg-size:65px; --mdc-ripple-fg-scale:1.92918; --mdc-ripple-fg-translate-start:8.3125px, -2.7px; --mdc-ripple-fg-translate-end:22.3188px, -14.5px;">
-                      Find
-                    </button></div>
+                              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop">
+                              <div class="mdc-text-field w-100 mdc-ripple-upgraded" style="background: white;">
+                              <button class="btn btn-primary mdc-button mdc-button--raised filled-button--success mdc-ripple-upgraded " >Find</button>&nbsp;&nbsp;
+                              <button type="button" class="btn btn-primary mdc-button mdc-button--raised filled-button--secondary mdc-ripple-upgraded" >Cancel</button>
+                                      </div>
+                              </div>
+                              
 
                             
                             </div>
                           </div>
                         </form>
-                      </div>
+                     
                     </div>
-                  </div>
+                  
                   <div class="template-demo">
                     <h5 class="card-sub-title mb-2 mb-sm-0"></h5>
                     <div class="menu-button-container">
@@ -137,32 +195,90 @@
                         <center><span class="">
                             <?php echo $this->session->flashdata('msg'); ?>
                           </span></center>
-                        
+                          <form id="assigns" method="POST" action="<?php echo base_url(); ?>main/store_assign_emp" onsubmit=" myfunction()">
+                          <input type="hidden" id="base_url" name="base_url" value="<?php echo $baseurl ?>"/>
+                          <div class="error" id="empnot1"></div>
+                        <div class="error" id="assign_emp_check1"></div>
+                          <input type="hidden" value="<?php echo $program_id;?>" name="program_id" >
+                          <input type="hidden" value="<?php echo $emp_id;?>" name="emp_id" >
+				    <input type="hidden" value="<?php echo $program_id;?>" name="program_id" >
+					<input type="hidden" id="admin_type" name="admin_type" value="<?php echo $login_details['admin_type']; ?>"/>
+					<input type="hidden" id="admin_status" name="admin_status" value="<?php echo $login_details['name']; ?>"/>
+					<input type="hidden" id="admin_id" name="admin_id" value="<?php echo $login_details['id']; ?>"/>
+					<input type="hidden" id="admin_id" name="admin_id" value="<?php echo $login_details['admin_location']; ?>"/>
                             <table id="dtBasicExample" class="table table-striped table-bordered table-sm">
                             <thead>
-                               <tr>
-                                   <th class="th-sm">S.No</th>
-                                   <th class="th-sm">Employee ID</th>
-                                   <th class="th-sm">Employee Name</th>
+                               <tr style="background: white;">
+                               <th style="text-align:center"class="th-sm">S.no</th>
+                                   <th style="text-align:center"class="th-sm">Employee ID</th>
+                                   <th style="text-align:center" class="th-sm">Employee Name</th>
+                                   <th style="text-align:center">
+                     <div class="mdc-checkbox mdc-checkbox--secondary">
+																			<input input="" type="checkbox" name="assign_emp" id="selectAll" class="mdc-checkbox__native-control">
+																			<div class="mdc-checkbox__background">
+																				<svg class="mdc-checkbox__checkmark" style="border-color: #ff420f;
+					   " viewBox="0 0 24 24">
+																					<path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59">
+																					</path>
+																				</svg>
+																				<div class="mdc-checkbox__mixedmark">
+																				</div>
+																			</div>
+																		</div>
+																		<span for="basic-disabled" id="basic-disabled-checkbox-label">Select All
+																			</span>
+																	
+                                </th>
                                </tr>
+                           
                             </thead>
                             <tbody>
-                              <?php if( $findemp){?>
+                              <?php if( !empty($findemp)){?>
                                 <?php  $i=1; foreach($findemp->result() as $emp){?>
-                                  <tr>
-										<td><?php echo $i++; ?></td>
-										<td><?php echo $emp->employee_id; ?></td>
-										<td><?php echo $emp->name; ?></td>
+                                  <tr style="background: white;">
+                                  <td style="text-align:center"><?php echo $i++; ?></td>
+										<td style="text-align:center"><?php echo $emp->emp_id; ?></td>
+										<td style="text-align:center"><?php echo $emp->name; ?></td>
+                    <td style="text-align:center">
+                    <div class="mdc-checkbox mdc-checkbox--secondary">
+																			<input input type="checkbox"   name="assign_empid[]" value="<?php echo $emp->emp_id; ?>" class="mdc-checkbox__native-control" >
+																			<div class="mdc-checkbox__background">
+																				<svg class="mdc-checkbox__checkmark" style="border-color: #ff420f;
+					   " viewBox="0 0 24 24">
+																					<path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59">
+																					</path>
+																				</svg>
+																				<div class="mdc-checkbox__mixedmark">
+																				</div>
+																			</div>
+																		</div></td>
 									</tr>
 								<?php } ?>
-                                  <?php } ?>
-                                
+                                  <?php } else {?>
+                                    <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop">
+                                <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                                  <div class="mdc-line-ripple"></div>
+                                  <label for="text-field-hero-input" class="mdc-floating-label">Location</label>
+                                 			
+                                </div>
+                              </div>
+
+                                    <?php } ?>
 								
                             </tbody>
                         </table>
+                   
+                        <div  class="col-sm-4" ></div>
+                        <div class="col-sm-4" id="button_div" ><button   class="mdc-button mdc-button--raised filled-button--secondary mdc-ripple-upgraded" style="--mdc-ripple-fg-size:65px; --mdc-ripple-fg-scale:1.92918; --mdc-ripple-fg-translate-start:8.3125px, -2.7px; --mdc-ripple-fg-translate-end:22.3188px, -14.5px;">
+                      Assign
+                    </button></div>
+                    <div  class="col-sm-4" ></div>
+                                </from>
                       </div>
                     </div>
                   </div>
+                 
+                                </from>
                  <!-- <div class="template-demo">
                       <h5 class="card-sub-title mb-2 mb-sm-0"></h5>
                       <div class="menu-button-container">
@@ -314,7 +430,6 @@ $(document).ready(function() {
               ]
 
    $("[data-toggle=tooltip]").tooltip();
-  
 } );</script>
 </style>
 </body>
