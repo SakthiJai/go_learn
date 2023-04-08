@@ -9,6 +9,7 @@ class Main extends CI_Controller {
 		$this->load->model('Super_model');
 		$this->load->model('Admin_model');
 		$this->load->model('Master_model');
+		$this->load->model('User_model');
 		$this->load->model('Event_model');
 		$this->load->library('form_validation');
 		$this->load->helper('url');
@@ -50,12 +51,19 @@ class Main extends CI_Controller {
 				    'user_name' => $result[0]->user_name,
 				    'id' => $result[0]->id,
 				);
-				
+			//	print_r($result[0]->emp_type);exit;
 			$this->session->set_userdata('superadmin_login', $session_data);
-             redirect(base_url().'main/dashboard');
-				}else{
-					$this->session->set_flashdata('signinmsg', '<div class="alert alert-danger text-center"> Your Email Id was not Activated !Please Activate Your Email</div>');
-                }
+			print_r($result[0]->emp_type);exit;
+			if($result[0]->emp_type == 3) {
+			      redirect(base_url().'main/dashboard');
+			}
+            else if($result[0]->emp_type == 1)  {
+			      redirect(base_url().'Test/userDashboard');}
+			}
+			else{
+				$this->session->set_flashdata('signinmsg', '<div class="alert alert-danger text-center"> Your Email Id was not Activated !Please Activate Your Email</div>');
+			}
+			
 			} 
 			else {
 				$this->session->set_flashdata('signinmsg', '<div class="alert alert-danger text-center">Invalid Username or Password! Please try with correct details </div>');
@@ -177,7 +185,7 @@ class Main extends CI_Controller {
         } else {     
         	$this->session->set_flashdata('msg', '<div class="alert alert-danger text-center">Employee ID Already Exist</div>');
         }
-        redirect(base_url().'main/emp','refresh');            
+        redirect(base_url().'main/addemp','refresh');            
     }
 	 
 	public function updateEmp()

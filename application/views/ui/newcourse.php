@@ -285,7 +285,7 @@
 
 													</div>
 												</div>
-											
+											</div>
 											<div class="tab-pane" id="details">
 											<div class="row">
 			<div class="col-md-12">
@@ -708,7 +708,7 @@
 											<div class="clearfix"></div>
 										</div>
 									
-										</div>
+								
 							</div> <!-- wizard container -->
 						</div>
 					    </div> <!-- row -->

@@ -18,7 +18,7 @@
             <form method="POST" action="<?php echo base_url('/main/log_in');?>" >
 				<!--<img src="<?php echo base_url();?>assets/images/logo-inverse.png">-->
 				<h2 class="title" style="color:#2a427a;"><img src="https://www.golearning.fr/wp-content/themes/go_learning_v3/public/img/logo_couleur.svg"/></h2> 
-				<h2 class="title">Super Admin</h2>
+				<!-- <h2 class="title">Super Admin</h2> -->
 				<span style="color:red;"><?php echo $this->session->flashdata('signinmsg'); ?></span>
            		<div class="input-div one">
            		   <div class="i">
