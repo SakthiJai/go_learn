@@ -1,9 +1,10 @@
 var baseurl = $('#base_url').val();
+console.log(baseurl);
 //CKEDITOR.replace('description');
 $( "#viewQuestion" ).click(function() {
  document.getElementById("viewQuestion").addEventListener("click",editTestView);
 });
-console.log(baseurl);
+
 getrandomnumber();
 function getrandomnumber(){
 let characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
@@ -11,14 +12,14 @@ let result = ''
 let length = 20 // Customize the length here.
 for (let i = length; i > 0; --i) result += characters[Math.round(Math.random() * (characters.length - 1))]
 }
-//document.courseadd.program_name.value="<?php echo $details[0]->program_id;?>";
-//document.courseadd.program_group.value="<?php echo $details[0]->program_group_id;?>"
-//document.courseadd.training_type.value="<?php echo $details[0]->traning_type_id;?>"
+
+
 
 function pageLoad(){window.location.href='baseurl+main/course';}
 document.courseadd.onclick = function(){
   //  var radVal = document.courseadd.test.value;
 }
+
 //var editId = '<?php echo $this->uri->segment(3);?>';
 var editId = $('#editId').val();
     $(document).ready(function(){
@@ -152,57 +153,7 @@ var editId = $('#editId').val();
 		    else{
 		    $('#showCourseAdd').hide();
 		    }
-		     $('#courseadd').validate({
-    rules: {
-        course_title: 
-        {
-            required: true,
-        },
-        program_name: 
-        {
-            required: true,
-        },
-        program_group: 
-        {
-            required: true,
-        },
-        training_type: 
-        {
-            required: true,
-        },
-        
-    },
-messages : {
-    course_title:{
-        required: "Enter course Title"
-    },
-    training_type: {
-        required: "Select Program Type"
-    },
-    program_name: {
-        required: "Select Program Name"
-    },
-    program_group: {
-        required: "Select Program Group"
-    },
-    
- },
-  
-    highlight: function(element) {
-        $(element).closest('.form-control').addClass('error');
-    },
-    unhighlight: function(element) {
-        $(element).closest('.form-control').removeClass('error');
-    },
-    submitHandler: function (form) {
-            
-     
-      var formdata=$("#createProgram").serialize();
-      var id=$("#id").val();
-   form.submit();
-  
-      }
-   });
+		     
    
   
 		
@@ -212,40 +163,7 @@ messages : {
 		$('#exampleModal').modal('hide')
 	}
 	);
-	/*function dismissModal()
-	{
-	    $('#exampleModal').modal('hide')
-	}*/
-    
-         /*   $(document).ready(function() {
-               // $('#datatable').DataTable();
-
-                //Buttons examples
-                var table = $('#datatable-buttons3').DataTable({
-                    lengthChange: false,
-                    buttons: ['copy', 'excel', 'pdf', 'colvis']
-                });
-
-                table.buttons().container()
-                        .appendTo('#datatable-buttons_wrapper .col-md-6:eq(0)');
-            } );
-*/
-        
-        
-        /*
-            $(document).ready(function() {
-               // $('#datatable').DataTable();
-                
-                //Buttons examples
-                var table = $('#datatable-buttons').DataTable({
-                    lengthChange: false,
-                    buttons: ['excel']
-                });
-
-                table.buttons().container()
-                        .appendTo('#datatable-buttons_wrapper .col-md-6:eq(0)');
-            } );*/
-function NumbersOnly(MyField, e, dec)		
+	function NumbersOnly(MyField, e, dec)		
 	  {			
 		var key;			
 		var keychar;						
@@ -287,111 +205,6 @@ function editTestView(){
 }
 function updateDetails()
 {
-	setTimeout(function(){ 
-		console.log($('#course_title').val(),$('#courseTitle').text($('#course_title').val()));
-		
-		 $('#questions').validate({
-    ignore: "input:hidden:not(input:hidden.required)",
-    rules: {
-        info: 
-        {
-            required: true,
-        },
-        option1: 
-        {
-            required: true,
-        },
-        option1: 
-        {
-            required: true,
-        },                        
-        answer: 
-        {
-            required: true,
-        },
-        
-        
-    },
-messages : {
-    info:{
-        required: "Please Enter the Question"
-    },
-    option1: {
-        required: "Please Enter Option 1 value"
-    },
-    option2: {
-        required: "Please Enter Option 2 value"
-    },
-    answer: {
-        required: "Select Answer value"
-    },
-    
-    
-
- },
-  
-    highlight: function(element) {
-        $(element).closest('.form-control').addClass('error');
-    },
-    unhighlight: function(element) {
-        $(element).closest('.form-control').removeClass('error');
-    },
-    errorPlacement: function (error, element) {
-                  if ($(element).attr('id') == 'info') {
-                      $('#cke_msgText').after(error);
-                  } else {
-                      element.after(error);
-                  }
-              },
-    submitHandler: function (form) {
-            
-     
-      var file_data = $('#questionImage').prop('files')[0];
-                        var form_data = new FormData();
-                        form_data.append('name', file_data);
-                        form_data.append('quations',$('#info').val());
-                          form_data.append('test_type',  $('#test_type').val());
-                        form_data.append('option1', $('#option1').val());
-                        form_data.append('option2', $('#option2').val());
-                        form_data.append('option3', $('#option3').val());
-                        form_data.append('option4', $('#option4').val());
-                        form_data.append('answer', $('#answer').val());
-                        form_data.append('test_id', ($('#test_id').val()==""?Math.floor((Math.random() * 1000000) + 1):$('#test_id').val()));
-						//return false;
-                        $.ajax({
-                            url:baseUrl+'/main/questions/addquation', // point to server-side controller method
-                            dataType: 'text', // what to expect back from the server
-                            cache: false,
-                            contentType: false,
-                            processData: false,
-                            data: form_data,
-                            type: 'post',
-                            success: function (response) {
-                                $(form)[0].reset();
-                                $('#msg').html(response); // display success response from the server
-                                $('#test_temp_id').val(response);
-                                 $('#test_id').val(response);
-                                $('#listgrid').load('baseUrl+/go_learn/main/coursequestionslist/'+response+'/'+$('#test_type').val())
-                            },
-                            error: function (response) {
-                               // $(form)[0].reset();
-                                $('#msg').html(response); // display error response from the server
-                            }
-                        });
-  
-      }
-   
- });
- if($('#test_temp_id').val()!=""){
- $('#listgrid').load('baseUrl+/go_learn/main/coursequestionslist/'+$('#test_temp_id').val()+'/'+$('#test_type').val())
- }
-		},3000);
-}
-function callListGrid()
-{ console.log("222");
-	setTimeout(function(){
-	$('#listgrid').load("baseUrl+/go_learn/main/coursequestionslist/"+$('.radioBtnClass:checked').val()+"/"+$('#test_temp_id').val())
-	},3000);
 }
 function updateFeedBack()
 {
@@ -530,83 +343,9 @@ $("#startbutton").click(function()
 		extraObj.startUpload();
 		
 	});
-	/*
-    tinymce.init({
-      selector: 'textarea',
-      // plugins: ["bootstrapaccordion"],
-
-      // plugins: 'a11ychecker advcode casechange export formatpainter linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinymcespellchecker',
-      //  toolbar: 'a11ycheck addcomment showcomments casechange checklist code export formatpainter pageembed permanentpen table',
-      plugins: [
-        "advlist accordion autolink lists link image charmap print code preview anchor",
-        "searchreplace visualblocks code fullscreen",
-        "insertdatetime media table contextmenu paste",
-      ],
-      toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | accordion code",
-
-      toolbar_mode: 'floating',
-      tinycomments_mode: 'embedded',
-      tinycomments_author: 'Author name',
-      height: '500',
-    });
-    tinymce.PluginManager.add('accordion', function (editor) {
-      editor.addButton('accordion', {
-        text: 'Accordion',
-        icon: false,
-        onclick: function onclick() {
-          editor.windowManager.open({
-            title: 'Accordion Picker',
-            body: {
-              type: 'textbox',
-              name: 'my_textbox',
-              layout: 'flow',
-              label: '# of accordions'
-            },
-            onsubmit: function onsubmit(e) {
-              var accordionSet = [];
-              var curAccordion = Date.now();
-              var accordionCount = parseInt(e.data.my_textbox);
-              for (var i = 0; i < accordionCount; i++) {
-                var panel = '\n                    <div class="panel panel-default">\n                      <div class="panel-heading mceNonEditable productAccordion" role="tab" id="heading' + (curAccordion + i) + '">\n                        <h4 class="panel-title">\n                          <a role="button" data-toggle="collapse" class="mceEditable collapsed" data-parent="#accordion' + curAccordion + '" href="#collapse' + (curAccordion + i) + '" aria-expanded="true" aria-controls="collapse' + (curAccordion + i) + '">\n                            Change this header!\n                          </a>\n                        </h4>\n                      </div>\n                      <div id="collapse' + (curAccordion + i) + '" class="panel-collapse collapse mceNonEditable" role="tabpanel" aria-labelledby="heading' + (curAccordion + i) + '">\n                        <div class="panel-body mceEditable">\n                          <p>Change this content</p>\n                        </div>\n                      </div>\n                    </div>\n                ';
-                accordionSet.push(panel);
-              }
-
-              var accordion = '\n                    <div class="panel-group" id="accordion' + curAccordion + '" role="tablist" aria-multiselectable="true">\n                      ' + accordionSet.join('') + '\n                  </div>';
-              editor.insertContent(accordion);
-            }
-          });
-        }
-      });
-    });
-*/
+	
     setTimeout(function () { getContent() }, 3000);
-  /*  function addTerms() {
-
-      var formdata = $("#terms").serialize();
-      //alert($("#id").val());
-      console.log(tinymce.get('description').getContent());
-      var url = "addTermsandConditions";
-
-      $.ajax({
-        type: "POST",
-        url: url,
-        data: { data: tinymce.get('description').getContent(), type: $('#type').val() }, // serializes the form's elements.
-        beforeSend: function (xhr, type) {
-          if (!type.crossDomain) {
-            xhr.setRequestHeader('X-CSRF-Token', $('meta[name="_token"]').attr('content'));
-          }
-        },
-        success: function (data) {
-          //console.log(data);
-          if (data.result == 'Success') {
-            location.reload();
-          }
-        }
-      });
-    }*/
-
-
-   
+  
 	  var notifyOptions = {
         iconButtons: {
             className: 'fa fa-question about',
@@ -632,16 +371,6 @@ $("#startbutton").click(function()
     // option 1
 
 
-    $('#ssi-upload').ssi_uploader({
-        
-        inForm:true
-    });
-
-    // option 2
-
-    var uploader = $('#ssi-upload').ssi_uploader({
-        
-    });
 
  
 function callListGrid()
@@ -803,7 +532,7 @@ $("#startbutton").click(function()
       toolbar_mode: 'floating',
       tinycomments_mode: 'embedded',
       tinycomments_author: 'Author name',
-      height: '500',
+      height: '100',
     });
     tinymce.PluginManager.add('accordion', function (editor) {
       editor.addButton('accordion', {
@@ -863,30 +592,6 @@ $("#startbutton").click(function()
 
 
     function getContent() {
-      console.log('121S');
-      $.ajax({
-       // url: baseurl+"main/getTerms",
-        type: "post",
-        data: { _token: $('meta[name="_token"]').attr('content') },
-        dataType: "JSON",
-        beforeSend: function (xhr, type) {
-          if (!type.crossDomain) {
-            //  xhr.setRequestHeader('X-CSRF-Token', $('meta[name="_token"]').attr('content'));
-          }
-        },
-        success: function (data) {
-
-          //console.log(data.content)
-          //$('textarea[name="content"]').val(data.content);
-          tinyMCE.activeEditor.setContent(data.data);
-
-
-        },
-
-        error: function (jqXHR, textStatus, errorThrown) {
-          alert('Error get data from ajax');
-        }
-      });
       // body...
     }
 	  var notifyOptions = {
@@ -959,12 +664,623 @@ $("#startbutton").click(function()
       
 
 
-    $(document).ready(function() {
-      $('#sbutable').dataTable();
-      buttons: [
-                      'copy', 'csv', 'excel', 'pdf', 'print'
-                  ]
+    
+  $('#courseadd').validate({
+    rules: {
+        course_title: 
+        {
+            required: true,
+        },
+        program_name: 
+        {
+            required: true,
+        },
+        program_group: 
+        {
+            required: true,
+        },
+        training_type: 
+        {
+            required: true,
+        } 
+        
+    },
+messages : {
+    course_title:{
+        required: "Enter Course Title"
+    },
+    training_type: {
+        required: "Select Program Type"
+    },
+    program_name: {
+        required: "Select Program Name"
+    },
+    program_group: {
+        required: "Select Program Group"
+    }
+    
+ },
   
-       $("[data-toggle=tooltip]").tooltip();
-      
-  } );
+    highlight: function(element) {
+        $(element).closest('.mdc-line-ripple').addClass('error');
+    },
+    unhighlight: function(element) {
+        $(element).closest('.mdc-line-ripple').removeClass('error');
+    },
+    submitHandler: function (form) {
+        var form = document.getElementById("courseadd");
+        var formData = new FormData(form);
+        formData.append('image', $('input[name=image]')[0].files[0]); 
+      //var formdata=$("#courseadd").serialize();
+      //console.log(fromData); 
+     
+      $.ajax({
+        url:baseurl+'/main/course_adding', // point to server-side controller method
+        dataType: 'text', // what to expect back from the server
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: formData,
+        type: 'post',
+        success: function (response) { console.log(response);       
+         //   alert(response);
+         if(response==500)
+         {
+             Swal.fire({
+                 icon: 'error',
+                 title: 'Alert',
+                 text: 'Issue while save course, please contact administrator'
+             }).then(function() {
+                 
+             });
+         }
+         else if(response==501)
+         {
+             Swal.fire({
+                 icon: 'error',
+                 title: 'Alert',
+                 text: 'Issue while save course, please contact administrator'
+             }).then(function() {
+                 
+             });
+         }
+         else if(response==502)
+         {
+             Swal.fire({
+                 icon: 'error',
+                 title: 'Alert',
+                 text: 'Entered Course Already exist !'
+             }).then(function() {
+                 
+             });
+         }
+         else{
+             $('#courseid').val(response)
+             Swal.fire({
+                 title: 'Course saved successfully',
+                 text: "",
+                 icon: 'success',
+                 showCancelButton: false,
+                 confirmButtonColor: 'green',
+                 cancelButtonColor: '#d33',
+                 confirmButtonText: 'Yes'
+               }).then((result) => {
+                 if (result.isConfirmed) {
+                  
+                 } else {
+                   console.log('clicked cancel');
+                 }
+               })
+         }
+       ///  $(form)[0].reset();
+
+          
+        },
+       
+    });
+  
+      }
+   });
+   $('#postquestions').validate({
+    ignore: "input:hidden:not(input:hidden.required)",
+    rules: {
+        info: 
+        {
+            required: true,
+        },
+        option1: 
+        {
+            required: true,
+        },
+        option2: 
+        {
+            required: true,
+        },
+        option3: 
+        {
+            required: true,
+        },
+        option4: 
+        {
+            required: true,
+        },                        
+        answer: 
+        {
+            required: true,
+        },
+        
+        
+    },
+messages : {
+    info:{
+        required: "Please Enter the Question"
+    },
+    option1: {
+        required: "Please Enter Option 1 value"
+    },
+    option2: {
+        required: "Please Enter Option 2 value"
+    },
+    option3: {
+        required: "Please Enter Option 3 value"
+    },
+    option3: {
+        required: "Please Enter Option 4 value"
+    },
+    answer: {
+        required: "Select Answer value"
+    },
+    
+    
+
+ },
+  
+    highlight: function(element) {
+        $(element).closest('.form-control').addClass('error');
+    },
+    unhighlight: function(element) {
+        $(element).closest('.form-control').removeClass('error');
+    },
+    errorPlacement: function (error, element) {
+                  if ($(element).attr('id') == 'info') {
+                      $('#cke_msgText').after(error);
+                  } else {
+                      element.after(error);
+                  }
+              },
+    submitHandler: function (form) {
+        if($("#courseid").val()=="")
+        {
+            Swal.fire({
+                icon: 'warning',
+                title: '',
+                text: 'Please Save your course details before adding questions'
+            }).then(function() {
+                
+            });
+            return false;
+        }
+        var form = document.getElementById("postquestions");
+        var formData = new FormData(form);
+        formData.append('image', $('input[name=postimage]')[0].files[0]); 
+     
+        formData.append('test_id',$('#courseid').val());
+        formData.append('test_type',2);
+						//return false;
+                      
+                        $.ajax({
+                            url:baseurl+'/main/addpostquation', // point to server-side controller method
+                            dataType: 'text', // what to expect back from the server
+                            cache: false,
+                            contentType: false,
+                            processData: false,
+                            data: formData,
+                            type: 'post',
+                            success: function (response) { console.log(response)
+
+                                if(response!=500)
+                                {
+                                    var data = JSON.parse(response);
+                                    if(data.testquation.length>0)
+                                    {
+                                        $('#posttestquestions').empty();
+                                        data.testquation.forEach((element,index) => {
+
+ $('#posttestquestions').append('<tr><td>'+index+1+'</td><td>'+element.quations+'</td><td>'+element.option1+'</td><td>'+element.option2+'</td><td>'+element.option3+'</td><td>'+element.option4+'</td><td>'+element.answer+'</td><td><button type="button" onclick="deleteQuestions('+element.test_id+')" class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></td></tr>')
+                                            
+                                        });
+                                    }
+                                    console.log(data);
+                                    Swal.fire({
+                                        title: 'Question added successfully',
+                                        text: "",
+                                        icon: 'success',
+                                        showCancelButton: false,
+                                        confirmButtonColor: 'green',
+                                        cancelButtonColor: '#d33',
+                                        confirmButtonText: 'Yes'
+                                      }).then((result) => {
+                                        if (result.isConfirmed) {
+                                         
+                                        } else {
+                                          console.log('clicked cancel');
+                                        }
+                                      })
+                                   // $(form)[0].reset();
+                                }
+                                else{
+                                    
+                                        Swal.fire({
+                                            icon: 'error',
+                                            title: 'Alert',
+                                            text: 'Issue while save questions, please contact administrator'
+                                        }).then(function() {
+                                            
+                                        });
+
+                                }
+                                                              
+                                ///$('#listgrid').load('baseUrl+/go_learn/main/coursequestionslist/'+response+'/'+$('#test_type').val())
+                            },
+                            error: function (response) {
+                               // $(form)[0].reset();
+                                // display error response from the server
+                               
+                            }
+                        });
+  
+      }
+   
+ });
+ function deleteQuestions(testid)
+ {
+    Swal.fire({
+        title: 'Do you want to remove this question?',
+        text: "",
+        icon: 'Confirmation',
+        showCancelButton: true,
+        confirmButtonColor: 'green',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes'
+      }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url:baseurl+'questions/deletetestquation/'+testid+"/1", // point to server-side controller method
+                dataType: 'text', // what to expect back from the server
+                cache: false,
+                contentType: false,
+                processData: false,
+               // data: formData,
+                type: 'post',
+                success: function (response) {
+                    var data = JSON.parse(response);
+
+                                    if(response !=500 && data.testquation.length>0)
+                                    {
+                                        $('#posttestquestions').empty();
+                                        data.testquation.forEach((element,index) => {
+
+                                            $('#posttestquestions').append('<tr><td>'+index+1+'</td><td>'+element.quations+'</td><td>'+element.option1+'</td><td>'+element.option2+'</td><td>'+element.option3+'</td><td>'+element.option4+'</td><td>'+element.answer+'</td><td><button type="button" onclick="deleteQuestions('+element.test_id+')" class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></td></tr>')
+                                            
+                                        });
+                                    }
+                                    else{
+                                        Swal.fire({
+                                            icon: 'error',
+                                            title: 'Alert',
+                                            text: 'Issue while save questions, please contact administrator'
+                                        }).then(function() {
+                                            
+                                        });
+                                    }
+                }
+            });
+
+         
+        } else {
+          console.log('clicked cancel');
+        }
+      })
+ }
+ $('#questions').validate({
+    ignore: "input:hidden:not(input:hidden.required)",
+    rules: {
+        info: 
+        {
+            required: true,
+        },
+        option1: 
+        {
+            required: true,
+        },
+        option2: 
+        {
+            required: true,
+        },
+        option3: 
+        {
+            required: true,
+        },
+        option4: 
+        {
+            required: true,
+        },                        
+        answer: 
+        {
+            required: true,
+        },
+        
+        
+    },
+messages : {
+    info:{
+        required: "Please Enter the Question"
+    },
+    option1: {
+        required: "Please Enter Option 1 value"
+    },
+    option2: {
+        required: "Please Enter Option 2 value"
+    },
+    option3: {
+        required: "Please Enter Option 3 value"
+    },
+    option3: {
+        required: "Please Enter Option 4 value"
+    },
+    answer: {
+        required: "Select Answer value"
+    },
+    
+    
+
+ },
+  
+    highlight: function(element) {
+        $(element).closest('.form-control').addClass('error');
+    },
+    unhighlight: function(element) {
+        $(element).closest('.form-control').removeClass('error');
+    },
+    errorPlacement: function (error, element) {
+                  if ($(element).attr('id') == 'info') {
+                      $('#cke_msgText').after(error);
+                  } else {
+                      element.after(error);
+                  }
+              },
+    submitHandler: function (form) {
+        if($("#courseid").val()=="")
+        {
+            Swal.fire({
+                icon: 'warning',
+                title: '',
+                text: 'Please Save your course details before adding questions'
+            }).then(function() {
+                
+            });
+            return false;
+        }
+        var form = document.getElementById("questions");
+        var formData = new FormData(form);
+        formData.append('image', $('input[name=pretestimage]')[0].files[0]); 
+     
+        formData.append('test_id',$('#courseid').val());
+        formData.append('test_type',1);
+						//return false;
+                      
+                        $.ajax({
+                            url:baseurl+'/main/addquation', // point to server-side controller method
+                            dataType: 'text', // what to expect back from the server
+                            cache: false,
+                            contentType: false,
+                            processData: false,
+                            data: formData,
+                            type: 'post',
+                            success: function (response) { console.log(response)
+
+                                if(response!=500)
+                                {
+                                    var data = JSON.parse(response);
+                                    if(data.testquation.length>=0)
+                                    {
+                                        $('#pretestquestions').empty();
+                                        data.testquation.forEach((element,index) => {
+
+ $('#pretestquestions').append('<tr><td>'+index+1+'</td><td>'+element.quations+'</td><td>'+element.option1+'</td><td>'+element.option2+'</td><td>'+element.option3+'</td><td>'+element.option4+'</td><td>'+element.answer+'</td><td><button type="button" onclick="deleteQuestions('+element.test_id+')" class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></td></tr>')
+                                            
+                                        });
+                                    }
+                                    console.log(data);
+                                    Swal.fire({
+                                        title: 'Question added successfully',
+                                        text: "",
+                                        icon: 'success',
+                                        showCancelButton: false,
+                                        confirmButtonColor: 'green',
+                                        cancelButtonColor: '#d33',
+                                        confirmButtonText: 'Yes'
+                                      }).then((result) => {
+                                        if (result.isConfirmed) {
+                                         
+                                        } else {
+                                          console.log('clicked cancel');
+                                        }
+                                      })
+                                   // $(form)[0].reset();
+                                }
+                                else{
+                                    
+                                        Swal.fire({
+                                            icon: 'error',
+                                            title: 'Alert',
+                                            text: 'Issue while save questions, please contact administrator'
+                                        }).then(function() {
+                                            
+                                        });
+
+                                }
+                                                              
+                                ///$('#listgrid').load('baseUrl+/go_learn/main/coursequestionslist/'+response+'/'+$('#test_type').val())
+                            },
+                            error: function (response) {
+                               // $(form)[0].reset();
+                                // display error response from the server
+                               
+                            }
+                        });
+  
+      }
+   
+ });
+ $('#postquestions').validate({
+    ignore: "input:hidden:not(input:hidden.required)",
+    rules: {
+        info: 
+        {
+            required: true,
+        },
+        option1: 
+        {
+            required: true,
+        },
+        option2: 
+        {
+            required: true,
+        },
+        option3: 
+        {
+            required: true,
+        },
+        option4: 
+        {
+            required: true,
+        },                        
+        answer: 
+        {
+            required: true,
+        },
+        
+        
+    },
+messages : {
+    info:{
+        required: "Please Enter the Question"
+    },
+    option1: {
+        required: "Please Enter Option 1 value"
+    },
+    option2: {
+        required: "Please Enter Option 2 value"
+    },
+    option3: {
+        required: "Please Enter Option 3 value"
+    },
+    option3: {
+        required: "Please Enter Option 4 value"
+    },
+    answer: {
+        required: "Select Answer value"
+    },
+    
+    
+
+ },
+  
+    highlight: function(element) {
+        $(element).closest('.form-control').addClass('error');
+    },
+    unhighlight: function(element) {
+        $(element).closest('.form-control').removeClass('error');
+    },
+    errorPlacement: function (error, element) {
+                  if ($(element).attr('id') == 'info') {
+                      $('#cke_msgText').after(error);
+                  } else {
+                      element.after(error);
+                  }
+              },
+    submitHandler: function (form) {
+        if($("#courseid").val()=="")
+        {
+            Swal.fire({
+                icon: 'warning',
+                title: '',
+                text: 'Please Save your course details before adding questions'
+            }).then(function() {
+                
+            });
+            return false;
+        }
+        var form = document.getElementById("postquestions");
+        var formData = new FormData(form);
+        formData.append('image', $('input[name=postimage]')[0].files[0]); 
+     
+        formData.append('test_id',$('#courseid').val());
+        formData.append('test_type',2);
+						//return false;
+                      
+                        $.ajax({
+                            url:baseurl+'/main/addpostquation', // point to server-side controller method
+                            dataType: 'text', // what to expect back from the server
+                            cache: false,
+                            contentType: false,
+                            processData: false,
+                            data: formData,
+                            type: 'post',
+                            success: function (response) { console.log(response)
+
+                                if(response!=500)
+                                {
+                                    var data = JSON.parse(response);
+                                    if(data.testquation.length>0)
+                                    {
+                                        $('#posttestquestions').empty();
+                                        data.testquation.forEach((element,index) => {
+
+ $('#posttestquestions').append('<tr><td>'+index+1+'</td><td>'+element.quations+'</td><td>'+element.option1+'</td><td>'+element.option2+'</td><td>'+element.option3+'</td><td>'+element.option4+'</td><td>'+element.answer+'</td><td><button type="button" onclick="deleteQuestions('+element.test_id+')" class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></td></tr>')
+                                            
+                                        });
+                                    }
+                                    console.log(data);
+                                    Swal.fire({
+                                        title: 'Question added successfully',
+                                        text: "",
+                                        icon: 'success',
+                                        showCancelButton: false,
+                                        confirmButtonColor: 'green',
+                                        cancelButtonColor: '#d33',
+                                        confirmButtonText: 'Yes'
+                                      }).then((result) => {
+                                        if (result.isConfirmed) {
+                                         
+                                        } else {
+                                          console.log('clicked cancel');
+                                        }
+                                      })
+                                   // $(form)[0].reset();
+                                }
+                                else{
+                                    
+                                        Swal.fire({
+                                            icon: 'error',
+                                            title: 'Alert',
+                                            text: 'Issue while save questions, please contact administrator'
+                                        }).then(function() {
+                                            
+                                        });
+
+                                }
+                                                              
+                                ///$('#listgrid').load('baseUrl+/go_learn/main/coursequestionslist/'+response+'/'+$('#test_type').val())
+                            },
+                            error: function (response) {
+                               // $(form)[0].reset();
+                                // display error response from the server
+                               
+                            }
+                        });
+  
+      }
+   
+ });

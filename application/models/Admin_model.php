@@ -98,6 +98,7 @@ class Admin_model extends CI_model {
     public function course_adding($data)
     {
         $this->db->insert('course',$data);
+       // print_r($data);exit;
         return $this->db->insert_id();
     } 
     public function courese_name($id){
@@ -401,8 +402,8 @@ order by A.id desc,D.type asc limit 1000) AS AA GROUP BY AA.pid,AA.course_name,A
     }
     public function testquation($id,$type)
 	{
-		//print_r($id);exit;
-	   if($type==3){
+		//print_r($type);exit;
+	   if($type==2){
 	       return $this->db->from('test_quations')->group_by('quations')->where('test_id',$id)->get()->result();
 	   }else{
 	       return $this->db->from('test_quations')->where('test_id',$id)->where('test_type',$type)->get()->result();

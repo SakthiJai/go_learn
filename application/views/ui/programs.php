@@ -31,7 +31,9 @@
                         
                     </div>
                   </div>
-                 
+                  <center><span class="">
+                            <?php echo $this->session->flashdata('msg'); ?>
+                          </span></center>
                   <div class="mdc-layout-grid__inner mt-2">
                     <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-layout-grid__cell--span-8-tablet">
                         <div class="table-responsive border">
@@ -39,7 +41,7 @@
                           <thead>
                                         <tr  style="background: white;">
 										    <th>S No</th>
-										    <th>Program Created</th>
+										    <th >Program Created</th>
 										    <th>Program Name</th>
 										     <th>Course Name</th>
 										    <th>From Date</th>

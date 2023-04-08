@@ -260,10 +260,16 @@ class Questions extends CI_Controller {
         $this->load->view('testquation',$data);
        	$this->load->view('footer.php');
     }
-    public function deletetestquation($id,$test_id){
-        $data=$this->Admin_model->deletetestquation($id);
-       $this->session->set_flashdata('msg','<div class="alert alert-success text-center">Question Deleted Successfully.</div>');
-        redirect(base_url('superadmin/editcourse/'.$test_id),'refresh');
+    public function deletetestquation($id,$type){
+       if($this->Admin_model->deletetestquation($id))
+	   {
+			$data['testquation']=$this->Admin_model->testquation($id,$type);
+			echo json_encode($data);
+	   }
+	   else{
+		echo 500;
+	   }
+      
     }
     public function edittestquation($id=false,$test_id=false){
         if($this->session->userdata('admin_login')== NULL) redirect('Welcome/loginn_admin');

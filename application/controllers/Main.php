@@ -516,10 +516,11 @@ class Main extends CI_Controller {
 	public function editcourse($id)
 	    {
 
-			
+			$data['testquation']=$this->Admin_model->testquation($id,$type);
 			$data['feedbackmainid'] = $this->Admin_model->getfeedbackmainid($id);
 	        $data['details'] = $this->Admin_model->getCourse($id);
 			//print_r($data['details'] );exit;
+
 	        $data['course']=$this->Super_model->course(); 
 	        $data['program_types']=$this->Super_model->program_types();
 	        $data['program_name']=$this->Super_model->program();
@@ -529,19 +530,13 @@ class Main extends CI_Controller {
 		    $this->load->view('ui/newcourse',$data);
 	    }
 		public function course_adding(){
-			
+		//	print_r($_post);exit;
 			$course = $this->input->post('course_title');
 			
 			$exitcourse = $this->Admin_model->exitcourse($course,$this->input->post('courseid'));
 			if($exitcourse == 2){
-				$this->session->set_flashdata('msg','<div class="alert alert-success text-center" style="color: #008a5d;
-				background-color: rgba(0, 182, 122, 0.2);
-				border-color: #00a770;    position: relative;
-				padding: 0.75rem 1.25rem;
-				margin-bottom: 1rem;
-				border: 1px solid transparent;
-				border-radius: 0.25rem;">Added Successfully.</div>');
-				redirect(base_url().'main/course','refresh');
+				echo 502;
+				exit;
 			} 
 			
 		  $picture1 ='';
@@ -620,34 +615,39 @@ class Main extends CI_Controller {
 				'feedback'=>$this->input->post('reactionlevel')==4?1:0
 			);
 			//print_r($data);exit;
+			//print_r($data);exit;
 				if($this->input->post('courseid')==""){
+					
 					$updateUserData = $this->Admin_model->course_adding($data);
 					$newCourseid= $updateUserData;
-					//$this->Admin_model->evalutionUpdate(777,$this->input->post('feedback_main_id'));
-					$this->session->set_flashdata('msg','<div class="alert alert-success text-center" style="color: #008a5d;
-					background-color: rgba(0, 182, 122, 0.2);
-					border-color: #00a770;    position: relative;
-					padding: 0.75rem 1.25rem;
-					margin-bottom: 1rem;
-					border: 1px solid transparent;
-					border-radius: 0.25rem;">Added Successfully.</div>');
+					if($newCourseid>0){
+					echo  $newCourseid;
+					}
+					else{
+						echo 500;
+					}
 				}
-				else
+				else if($this->input->post('courseid')!="")
 				{
 				   
-					$updateUserData = $this->Admin_model->course_updating($data,$this->input->post('courseid'));
-					 $this->session->set_flashdata('msg','<div class="alert alert-success" style="padding: 7px; margin-top: 8px;">Course Successfully Updated</div>');
-					  
+					if($this->Admin_model->course_updating($data,$this->input->post('courseid')))
+					{
+					echo $this->input->post('courseid');
+					}
+					else{
+						echo 501;
+					}
 				}
 		   
-				if($this->input->post('test_temp_id')>0){
+				/*if($this->input->post('test_temp_id')>0){
 					$updateUserData = $this->Admin_model->updateFeedBackCourseId($this->input->post('test_temp_id'), $updateUserData);
 				}
 				 if($this->input->post('feedback_main_id')>0){
 					 if($this->input->post('courseid')!=""){$newCourseid = $this->input->post('courseid');}
 					$updateUserData = $this->Admin_model->updateFeedBackId($this->input->post('feedback_main_id'), $newCourseid);
-				}
-			redirect(base_url().'main/course','refresh');   
+				}*/
+				/*$data['base_url']=base_url();
+			redirect(base_url().'main/course','refresh');   */
 			
 			
 		}
@@ -692,7 +692,8 @@ class Main extends CI_Controller {
 		$this->load->view('ui/header',$data);
 		$this->load->view('ui/add_pretestquestions.php',$data);
 	}
-	public function pretestquestions_adding($id=false){
+	public function pretestquestions_adding($id=false,$type){
+		$data['testquation']=$this->Admin_model->testquation($id,$type);
 	            $picture1 ='';
         if(!empty($_FILES['image']['name'])){
         $config['upload_path'] = '../assets/images/test/';
@@ -2924,6 +2925,7 @@ $headers .= 'From: '.$from."\r\n".
 	}
 	public function addquation()
     {
+		//print_r($_POST);exit;
         $picture1 ='';
         if(isset($_FILES['image']['name'])){
         $config['upload_path'] = 'assets/images/test/';
@@ -2938,7 +2940,7 @@ $headers .= 'From: '.$from."\r\n".
             }
         }
         
-    	//print_r($picture1);exit();
+    //	print_r($test_id);exit();
 		$test_id = $this->input->post('test_id');
 		$quations=	$this->input->post('quations');
 		$option1 =  $this->input->post('option1');
@@ -2999,11 +3001,18 @@ $headers .= 'From: '.$from."\r\n".
 		if(!empty($picture1)){
 				$data['image']=$picture1;
 		}
+		if($insertUserData)
+		{
+			$data['testquation']=$this->Admin_model->testquation($test_id,1);
+			echo json_encode($data);
+		}
+		else{
+			echo 500;
+		}
 		//print_r($data);exit();
         
        // echo $test_id;
-         "<script>alert('Successfully submitted. Thank you.');</script>";
-        redirect(base_url('questions/prequestion/'.$test_id),'refresh');
+	  
     }
     public function addpostquation()
     {
@@ -3053,16 +3062,26 @@ $headers .= 'From: '.$from."\r\n".
 				$data['image']=$picture1;
 		}
 		//print_r($data);exit();
+		
         $insertUserData = $this->Admin_model->addpostquation($data);
-         "<script>alert('Successfully submitted. Thank you.');</script>";
-        redirect(base_url('main/newcoruse/'.$test_id),'refresh');
+		if(!empty($picture1)){
+			$data['image']=$picture1;
+	}
+	if($insertUserData)
+	{
+		$data['testquation']=$this->Admin_model->testquation($test_id,2);
+		echo json_encode($data);
+	}
+	else{
+		echo 500;
+	}
     }
 	public function testquation($id=false)
     {
       //if($this->session->userdata('admin_login')==NULL) redirect(base_url());
         $data['testquation']=$this->Admin_model->testquation($id);
         $data['testtile']=$this->Admin_model->testtile($id);
-		print_r($data['testquation']);exit;
+		//print_r($data['testquation']);exit;
         $data['test_id']=$id;
 		redirect(base_url('main/course/'.$data),'refresh');
       //  $this->load->view('testquation',$data);
@@ -3202,6 +3221,10 @@ $headers .= 'From: '.$from."\r\n".
 					redirect(base_url().'main/programGroup','refresh'); 
 				}
 				
+		}
+		public function pretest_page(){
+			$data['h_title'] = "Go Learn "; 	    
+			$this->load->view('ui/pretest_page',$data);
 		}
 
 }

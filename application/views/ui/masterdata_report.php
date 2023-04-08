@@ -158,10 +158,7 @@
   <script
     src="https://www.bootstrapdash.com/demo/material-dash-bootstrap/template/assets/vendors/sweetalert/sweetalert.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <style>.table-responsive {
-   
-   overflow-x: hidden;
-}</style>
+ 
   <style>
     .error {
       color: #fa4040;
