@@ -5,7 +5,7 @@ class Super_model extends CI_model {
     		//------------------------------- login ----------------//
 	public function login($data) {
 	    //print_r($data);exit;
-	 $query = $this->db->from('superadmin')->where('user_name',$data['user_name'])->where('password ',$data['password'])->limit(1)->get();
+	 $query = $this->db->from('employee')->where('user_name',$data['user_name'])->where('password ',$data['password'])->limit(1)->get();
 	    if ($query->num_rows() == 1)
 	    {
 	    	return $query;

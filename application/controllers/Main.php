@@ -43,22 +43,25 @@ class Main extends CI_Controller {
 				'user_name' => $this->input->post('user_name'),
 				'password' => $this->input->post('password')
 			);
+			
 			if ($result['res'] = $this->Super_model->login($data))  {
 				$result = $result['res']->result();
+				
 				if ($result != 0) {
 				$session_data = array(
 				    'name' => $result[0]->name,
 				    'user_name' => $result[0]->user_name,
-				    'id' => $result[0]->id,
+				    'id' => $result[0]->emp_id,
+					'emp_type'=>$result[0]->emp_type
 				);
-			//	print_r($result[0]->emp_type);exit;
+				
 			$this->session->set_userdata('superadmin_login', $session_data);
-			print_r($result[0]->emp_type);exit;
+			
 			if($result[0]->emp_type == 3) {
 			      redirect(base_url().'main/dashboard');
 			}
             else if($result[0]->emp_type == 1)  {
-			      redirect(base_url().'Test/userDashboard');}
+			      redirect(base_url().'Welcome/userDashboard');}
 			}
 			else{
 				$this->session->set_flashdata('signinmsg', '<div class="alert alert-danger text-center"> Your Email Id was not Activated !Please Activate Your Email</div>');
