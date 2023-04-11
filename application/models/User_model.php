@@ -343,7 +343,11 @@ class User_model extends CI_model
 	public function post_test_list()
 	{
        $emp_id = $this->session->userdata['superadmin_login']['id'];
-		$sql = "SELECT programs.id as test_id,assign_emp.program_id as program_id,assign_emp.employee_id as emp_id, programs.id as id, programs.course_name as course_id,( CASE WHEN assign_emp.post_test_complete =1 THEN 1 WHEN (assign_emp.post_test_complete is null || assign_emp.post_test_complete!=1) && CAST(concat(programs.to_date,' ',programs.end_time) AS DATETIME)>=now() THEN 2 WHEN (assign_emp.post_test_complete is null || assign_emp.post_test_complete!=1) && CAST(concat(programs.to_date,' ',programs.end_time) AS DATETIME)<now() THEN 3 ELSE 0 END) as status, course.course_title FROM `assign_emp` Inner JOIN programs on assign_emp.program_id=programs.id Inner JOIN course on programs.course_name=course.id WHERE employee_id ='" . $emp_id . "'";
+	  
+		$sql = "SELECT  programs.id as test_id,assign_emp.program_id as program_id,assign_emp.employee_id as emp_id, programs.id as id, programs.course_name as course_id,( CASE WHEN assign_emp.post_test_complete =1 THEN 1 WHEN (assign_emp.post_test_complete is null || assign_emp.post_test_complete!=1) && CAST(concat(programs.to_date,' ',programs.end_time) AS DATETIME)>=now() THEN 2 WHEN (assign_emp.post_test_complete is null || assign_emp.post_test_complete!=1) && CAST(concat(programs.to_date,' ',programs.end_time) AS DATETIME)<now() THEN 3 ELSE 0 END) as status, course.course_title FROM `assign_emp` Inner JOIN programs on assign_emp.program_id=programs.id Inner JOIN course on programs.course_name=course.id WHERE
+        Date(NOW()) >=  programs.to_date  AND round(TIME_TO_SEC(TIMEDIFF(programs.end_time,TIME(NOW()))))<3600 AND employee_id ='" . $emp_id ."'";
+		 
+		 
 		$query = $this->db->query($sql);
 		return $query;
 		 

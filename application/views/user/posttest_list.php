@@ -54,14 +54,14 @@
 									<?php if ($row->status == 1){ ?>
 								   <a href="<?php echo base_url();?>Test/postTestResults/<?php echo $row->test_id;?>/<?php echo $row->course_id;?>/<?php echo $row->program_id;?>" 
 									  class="mdc-button mdc-button--raised filled-button--success mdc-ripple-upgraded" style="font-size: 14px;">
-									 View Result <?php echo $row->test_type;?>
+									 View Result 
 									</a> 
 									<?php } else if ($row->status == 2) { ?>
 								
 							    	<a href="<?php echo base_url();?>Test/post_test/<?php echo $row->test_id;?>/<?php echo $row->course_id;?>" 
 									  class="mdc-button mdc-button--raised filled-button--success mdc-ripple-upgraded"
 									  style="font-size: 12px;">
-									 Take Test<?php echo $row->course;?>
+									 Take Test
 									</a>
 									<?php } else if ($row->status == 3) { ?>
 										 <a href="<?php echo base_url();?>Test/post_test/<?php echo $row->test_id;?>"
